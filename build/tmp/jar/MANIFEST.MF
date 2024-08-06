@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: gtca
+Specification-Vendor: mordgren, sensesgone
+Specification-Version: 1
+Implementation-Title: GTCA
+Implementation-Version: 0.0.1a
+Implementation-Vendor: mordgren, sensesgone
+Implementation-Timestamp: 2024-08-06T05:51:19+0300
+
