@@ -1,9 +1,11 @@
 package net.mordgren.gtca.common.data.fuels;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import dev.arbor.gtnn.data.GTNNRecipes;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.ItemStack;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import dev.arbor.gtnn.block.PlantCasingBlock;
 import java.util.function.Consumer;
@@ -47,26 +49,28 @@ public class AltFuels {
                 .circuitMeta(3)
                 .blastFurnaceTemp(3200)
                 .inputFluids(Oxygen.getFluid(4000))
-                .inputItems(ChemicalHelper.get(TagPrefix.dust, Aluminium, 1))
-                .inputItems(ChemicalHelper.get(TagPrefix.dust, Silicon, 1))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, (GTCAMaterials.AluminosilicateCatalyst), 1))
+                .inputItems(getItem("dust", Aluminium, 1))
+                .inputItems(getItem("dust", Silicon, 1))
+                .outputItems(getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1))
                 .save(provider);
 
         BLAST_RECIPES.recipeBuilder("aluminosilicate_catalyst_sio2").EUt(96).duration(60)
                 .circuitMeta(3)
                 .blastFurnaceTemp(3200)
                 .inputFluids(Oxygen.getFluid(2000))
-                .inputItems(ChemicalHelper.get(TagPrefix.dust, Aluminium, 1))
-                .inputItems(ChemicalHelper.get(TagPrefix.dust, SiliconDioxide, 1))
-                .outputItems(ChemicalHelper.get(TagPrefix.dust, (GTCAMaterials.AluminosilicateCatalyst), 1))
+                .inputItems(getItem("dust", Aluminium, 1))
+                .inputItems(getItem("dust", SiliconDioxide, 1))
+                .outputItems(getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1))
                 .save(provider);
 
         INSTANCE.getDEHYDRATOR_RECIPES().recipeBuilder("dymethyl_ether").EUt(1280).duration(240)
                 .inputFluids(Methanol.getFluid(4000))
-                .chancedInput(ChemicalHelper.get(TagPrefix.dust, (GTCAMaterials.AluminosilicateCatalyst), 1), 7400, 0)
-                .chancedOutput(ChemicalHelper.get(TagPrefix.dust, Zeolite, 1),2000,0)
+                .chancedInput((getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1)), 7400, 0)
+                .chancedOutput((getItem("dust", Zeolite, 1)),2000,0)
                 .outputFluids(GTCAMaterials.DymethylEther.getFluid(12000))
                 .save(provider);
     }
-    private static ChemicalHelper getItem()
+    private static ItemStack getItem(String type, Material name, int amount) {
+        return ChemicalHelper.get(TagPrefix.getPrefix(type), name, amount);
+    }
 }
