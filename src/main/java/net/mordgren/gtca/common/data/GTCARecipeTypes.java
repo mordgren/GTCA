@@ -1,16 +1,13 @@
 package net.mordgren.gtca.common.data;
 
-import com.gregtechceu.gtceu.api.GTValues;
+
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
-import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.register;
-
-import javax.swing.*;
 
 public class GTCARecipeTypes {
 

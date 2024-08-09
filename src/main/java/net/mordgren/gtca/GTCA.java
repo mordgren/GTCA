@@ -7,11 +7,9 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -24,8 +22,6 @@ import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
 import org.slf4j.Logger;
 import net.minecraft.resources.ResourceLocation;
-
-import java.security.Provider;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(GTCA.MOD_ID)
@@ -43,11 +39,6 @@ public class GTCA {
     public GTCA() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
-//        modEventBus.addListener(this::addCreative);
-
-
-//        GTCA.init();
-//        GTCA.init();
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
@@ -66,7 +57,7 @@ public class GTCA {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
+        LOGGER.info("GTCA Setup");
     }
 
     private void addMaterials(MaterialEvent event) {
@@ -99,7 +90,7 @@ public class GTCA {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("GTCA init");
     }
 
 
@@ -107,8 +98,7 @@ public class GTCA {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            LOGGER.info("GTCA init");
         }
     }
 }
