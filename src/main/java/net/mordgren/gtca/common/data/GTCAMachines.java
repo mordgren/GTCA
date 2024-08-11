@@ -21,6 +21,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.mordgren.gtca.common.util.AEBFMod;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -60,10 +61,7 @@ public class GTCAMachines {
             .multiblock("advanced_ebf", CoilWorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTRecipeTypes.BLAST_RECIPES)
-            .recipeModifier(GTRecipeModifiers::ebfOverclock)
-            .recipeModifier(GTRecipeModifiers.PARALLEL_HATCH)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.PERFECT_OVERCLOCK))
-//            .recipeModifier(AEBFMod::aebfModifier)
+            .recipeModifiers(GTRecipeModifiers.SUBTICK_PARALLEL, GTRecipeModifiers.PARALLEL_HATCH, AEBFMod::aebfOverclock)
             .appearanceBlock(CASING_INVAR_HEATPROOF)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
