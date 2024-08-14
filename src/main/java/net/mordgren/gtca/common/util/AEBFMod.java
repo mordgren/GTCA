@@ -5,7 +5,6 @@ import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblo
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.api.recipe.RecipeHelper;
-import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import org.jetbrains.annotations.NotNull;
 
 public class AEBFMod {

@@ -19,21 +19,27 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.util.AEBFMod;
-
+import net.mordgren.gtca.common.util.ChemGenProps;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
-import static com.gregtechceu.gtceu.api.GTValues.MV;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
-import static com.gregtechceu.gtceu.common.data.GTBlocks.CASING_INVAR_HEATPROOF;
+import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static net.mordgren.gtca.GTCA.GTCA_REGISTRATE;
 
 public class GTCAMachines {
 
+
+    /// STEAM PRESSURIZER ///
     public static final MultiblockMachineDefinition steam_pressurizer = GTCA_REGISTRATE.multiblock("steam_pressurizer", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.STEAM_PRESSURIZER)
@@ -57,12 +63,13 @@ public class GTCAMachines {
             )
             .register();
 
+    /// ADVANCED EBF ///
     public static final MultiblockMachineDefinition ADVANCED_EBF = GTCA_REGISTRATE
             .multiblock("advanced_ebf", CoilWorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTRecipeTypes.BLAST_RECIPES)
             .recipeModifiers(GTRecipeModifiers.SUBTICK_PARALLEL, GTRecipeModifiers.PARALLEL_HATCH, AEBFMod::aebfOverclock)
-            .appearanceBlock(CASING_INVAR_HEATPROOF)
+            .appearanceBlock(GTCACasings.CASING_AEBF)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
                     .aisle("XXXXX", "C###C", "C###C", "C###C", "XXXXX")
@@ -70,7 +77,7 @@ public class GTCAMachines {
                     .aisle("XXXXX", "C###C", "C###C", "C###C", "XXXXX")
                     .aisle("XXSXX", "XCCCX", "XCCCX", "XCCCX", "#XMX#")
                     .where('S', controller(blocks(definition.getBlock())))
-                    .where('X', blocks(CASING_INVAR_HEATPROOF.get()).setMinGlobalLimited(9)
+                    .where('X', blocks(GTCACasings.CASING_AEBF.get()).setMinGlobalLimited(9)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(false, false, true)))
                     .where('H', abilities(PartAbility.MUFFLER))
@@ -87,7 +94,7 @@ public class GTCAMachines {
                         .aisle("OXXXD", "C###C", "C###C", "C###C", "XXHXX")
                         .aisle("XXXXX", "C###C", "C###C", "C###C", "XXXXX")
                         .aisle("XXSXX", "XCCCX", "XCCCX", "XCCCX", "#XMX#")
-                        .where('X', CASING_INVAR_HEATPROOF.getDefaultState())
+                        .where('X', GTCACasings.CASING_AEBF.getDefaultState())
                         .where('S', definition, Direction.SOUTH)
                         .where('#', Blocks.AIR.defaultBlockState())
                         .where('E', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.NORTH)
@@ -106,7 +113,7 @@ public class GTCAMachines {
             .recoveryItems(
                     () -> new ItemLike[] { GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
             .workableCasingRenderer(
-                    GTCEu.id("block/casings/solid/machine_casing_heatproof"),
+                    GTCA.id("block/casing_aebf"),
                     GTCEu.id("block/multiblock/electric_blast_furnace"),
                     true
             )
@@ -130,7 +137,66 @@ public class GTCAMachines {
             .compassNodeSelf()
             .register();
 
+    /// CHEMICAL GENERATOR ///
 
+    public static final MultiblockMachineDefinition CHEMICAL_GENERATOR = registerChemicalGenerator(
+            "chemical_generator", EV,
+            CASING_INVAR_HEATPROOF, CASING_STAINLESS_STEEL_GEARBOX,
+            GTCEu.id("block/casings/solid/machine_casing_heatproof"),
+            GTCEu.id("block/multiblock/electric_blast_furnace"));
+
+
+    public static MultiblockMachineDefinition registerChemicalGenerator(String name, int tier,
+                                                                            Supplier<? extends Block> casing,
+                                                                            Supplier<? extends Block> gear,
+                                                                            ResourceLocation casingTexture,
+                                                                            ResourceLocation overlayModel) {
+        return GTCA_REGISTRATE.multiblock(name, holder -> new ChemGenProps(holder, tier))
+                .rotationState(RotationState.NON_Y_AXIS)
+                .recipeType(GTCARecipeTypes.CHEMICAL_GENERATOR)
+                .generator(true)
+                .recipeModifier(ChemGenProps::recipeModifier, true)
+                .appearanceBlock(casing)
+                .pattern(definition -> FactoryBlockPattern.start()
+                        .aisle("III", "PPP", "PPP", "III")
+                        .aisle("III", "P#P", "P#P", "III")
+                        .aisle("III", "PPP", "PPP", "III")
+                        .aisle("III", "CSC", "CSC", "III")
+                        .aisle("III", "FGF", "FGF", "III")
+                        .aisle("IMI", "III", "IDI", "III")
+                        .where('M', controller(blocks(definition.getBlock())))
+                        .where('P', blocks(GTBlocks.CASING_PTFE_INERT.get()))
+                        .where('#', blocks(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))
+                        .where('C', blocks(GTBlocks.COIL_CUPRONICKEL.get()))
+                        .where('S', blocks(GTBlocks.CASING_STEEL_PIPE.get()))
+                        .where('F', blocks(GTBlocks.FIREBOX_STEEL.get()))
+                        .where('G', blocks(gear.get()))
+                        .where('I', blocks(casing.get()).setMinGlobalLimited(3)
+                                .or(autoAbilities(definition.getRecipeTypes(), false, false, true, true, true, true))
+                                .or(autoAbilities(true, true, false)))
+                        .where('D',
+                                ability(PartAbility.OUTPUT_ENERGY,
+                                        Stream.of(ULV, LV, MV, HV, EV, IV, LuV, ZPM, UV, UHV).filter(t -> t >= tier)
+                                                .mapToInt(Integer::intValue).toArray())
+                                        .addTooltips(Component.translatable("gtceu.multiblock.pattern.error.limited.1",
+                                                GTValues.VN[tier])))
+                        .build())
+                .recoveryItems(
+                        () -> new ItemLike[] { GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
+                .workableCasingRenderer(casingTexture, overlayModel)
+                .tooltips(
+                        Component.translatable("gtceu.universal.tooltip.base_production_eut", V[tier]),
+                        tier > EV ?
+                                Component.translatable("gtceu.machine.large_combustion_engine.tooltip.boost_extreme",
+                                        V[tier] * 4) :
+                                Component.translatable("gtceu.machine.large_combustion_engine.tooltip.boost_regular",
+                                        V[tier] * 3))
+                .compassSections(GTCompassSections.TIER[EV])
+                .compassNode("chemical_generator")
+                .register();
+    }
+
+    /// REGISTRATION METHOD ///
     public static void init() {}
 
 }

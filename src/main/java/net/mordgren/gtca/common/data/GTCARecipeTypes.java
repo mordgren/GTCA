@@ -6,8 +6,6 @@ import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
-import net.minecraft.client.gui.Gui;
-
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.register;
 
@@ -20,12 +18,12 @@ public class GTCARecipeTypes {
             .setSound(GTSoundEntries.COOLING)
             .setEUIO(IO.IN);
 
-//    public static final GTRecipeType CHEMICAL_GENERATOR = register("chemical_generator", MULTIBLOCK)
-//            .setMaxIOSize(2,0,2,0)
-//            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
-//            .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-//            .setSound(GTSoundEntries.COOLING)
-//            .setEUIO(IO.OUT);
+    public static final GTRecipeType CHEMICAL_GENERATOR = register("chemical_generator", MULTIBLOCK)
+            .setMaxIOSize(2,0,2,0)
+            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.COOLING)
+            .setEUIO(IO.OUT);
 
     public static void init() {
     }

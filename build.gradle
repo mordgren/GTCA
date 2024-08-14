@@ -116,6 +116,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenCentral()
     maven { url = "https://jitpack.io" }
     maven { url = "https://modmaven.dev" }
     maven { url = "https://maven.architectury.dev" }
@@ -163,7 +164,10 @@ dependencies {
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
     implementation("com.tterrag.registrate:Registrate:MC1.20-1.3.11")
     implementation("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.25.j") { transitive = false }
-    implementation ("curse.maven:gt-985872:5506519")
+    implementation("curse.maven:gt-985872:5506519")
+
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"

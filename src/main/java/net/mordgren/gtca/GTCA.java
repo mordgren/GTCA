@@ -55,6 +55,7 @@ public class GTCA {
 
     }
 
+
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("GTCA Setup");
