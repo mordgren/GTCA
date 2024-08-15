@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.fuels;
+package net.mordgren.gtca.common.data.fuel.recipes;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;

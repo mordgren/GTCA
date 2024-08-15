@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.fuels;
+package net.mordgren.gtca.common.data.fuel.recipes;
 
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;

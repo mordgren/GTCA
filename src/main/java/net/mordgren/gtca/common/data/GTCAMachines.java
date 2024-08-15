@@ -1,9 +1,11 @@
 package net.mordgren.gtca.common.data;
 
+import com.gregtechceu.gtceu.common.data.GCyMBlocks;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.RotationState;
+import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.*;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
@@ -24,6 +26,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.GTCA;
+import net.mordgren.gtca.common.data.blocks.GTCACasings;
 import net.mordgren.gtca.common.util.AEBFMod;
 import net.mordgren.gtca.common.util.ChemGenProps;
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ import java.util.stream.Stream;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Tungsten;
 import static net.mordgren.gtca.GTCA.GTCA_REGISTRATE;
 
 public class GTCAMachines {
@@ -71,17 +75,21 @@ public class GTCAMachines {
             .recipeModifiers(GTRecipeModifiers.SUBTICK_PARALLEL, GTRecipeModifiers.PARALLEL_HATCH, AEBFMod::aebfOverclock)
             .appearanceBlock(GTCACasings.CASING_AEBF)
             .pattern(definition -> FactoryBlockPattern.start()
-                    .aisle("XXXXX", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
-                    .aisle("XXXXX", "C###C", "C###C", "C###C", "XXXXX")
-                    .aisle("XXXXX", "C###C", "C###C", "C###C", "XXHXX")
-                    .aisle("XXXXX", "C###C", "C###C", "C###C", "XXXXX")
-                    .aisle("XXSXX", "XCCCX", "XCCCX", "XCCCX", "#XMX#")
+                    .aisle("XXXXXXX", "FFXXXFF", "F#####F", "F#####F", "F#####F", "FFXXXFF", "XXXVXXX", "##XXX##", "#######")
+                    .aisle("XXXXXXX", "FXCCCXF", "##CCC##", "##III##", "##CCC##", "FXCCCXF", "XXXXXXX", "#XXXXX#", "##XXX##")
+                    .aisle("XXXXXXX", "XCC#CCX", "#CC#CC#", "#I###I#", "#CC#CC#", "XCC#CCX", "XXXXXXX", "XXXHXXX", "#X###X#")
+                    .aisle("XXXXXXX", "XC###CX", "#C###C#", "#I###I#", "#C###C#", "XC###CX", "VXXXXXV", "XXHHHXX", "#X###X#")
+                    .aisle("XXXXXXX", "XCC#CCX", "#CC#CC#", "#I###I#", "#CC#CC#", "XCC#CCX", "XXXXXXX", "XXXHXXX", "#X###X#")
+                    .aisle("XXXXXXX", "FXCCCXF", "##CCC##", "##III##", "##CCC##", "FXCCCXF", "XXXXXXX", "#XXXXX#", "##XXX##")
+                    .aisle("XXXSXXX", "FFXXXFF", "F#####F", "F#####F", "F#####F", "FFXXXFF", "XXXVXXX", "##XXX##", "#######")
                     .where('S', controller(blocks(definition.getBlock())))
+                    .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Tungsten)))
+                    .where('V', blocks(GTBlocks.CASING_EXTREME_ENGINE_INTAKE.get()))
+                    .where('I', blocks(GCyMBlocks.HEAT_VENT.get()))
                     .where('X', blocks(GTCACasings.CASING_AEBF.get()).setMinGlobalLimited(9)
                             .or(autoAbilities(definition.getRecipeTypes()))
-                            .or(autoAbilities(false, false, true)))
+                            .or(autoAbilities(true, false, true)))
                     .where('H', abilities(PartAbility.MUFFLER))
-                    .where('M', abilities(PartAbility.MAINTENANCE))
                     .where('C', heatingCoils())
                     .where('#', air())
                     .build()
@@ -89,18 +97,23 @@ public class GTCAMachines {
             .shapeInfos(definition -> {
                 List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
                 var builder = MultiblockShapeInfo.builder()
-                        .aisle("XXXEX", "XCCCX", "XCCCX", "XCCCX", "#XXX#")
-                        .aisle("IXXXF", "C###C", "C###C", "C###C", "XXXXX")
-                        .aisle("OXXXD", "C###C", "C###C", "C###C", "XXHXX")
-                        .aisle("XXXXX", "C###C", "C###C", "C###C", "XXXXX")
-                        .aisle("XXSXX", "XCCCX", "XCCCX", "XCCCX", "#XMX#")
+                        .aisle("XXXMXEX", "FFXXXFF", "F#####F", "F#####F", "F#####F", "FFXXXFF", "XXXVXXX", "##XXX##", "#######")
+                        .aisle("XXXXXXX", "FXCCCXF", "##CCC##", "##III##", "##CCC##", "FXCCCXF", "XXXXXXX", "#XXXXX#", "##XXX##")
+                        .aisle("PXXXXXG", "XCC#CCX", "#CC#CC#", "#I###I#", "#CC#CC#", "XCC#CCX", "XXXXXXX", "XXXHXXX", "#X###X#")
+                        .aisle("OXXXXXD", "XC###CX", "#C###C#", "#I###I#", "#C###C#", "XC###CX", "VXXXXXV", "XXHHHXX", "#X###X#")
+                        .aisle("XXXXXXX", "XCC#CCX", "#CC#CC#", "#I###I#", "#CC#CC#", "XCC#CCX", "XXXXXXX", "XXXHXXX", "#X###X#")
+                        .aisle("XXXXXXX", "FXCCCXF", "##CCC##", "##III##", "##CCC##", "FXCCCXF", "XXXXXXX", "#XXXXX#", "##XXX##")
+                        .aisle("XXXSXXX", "FFXXXFF", "F#####F", "F#####F", "F#####F", "FFXXXFF", "XXXVXXX", "##XXX##", "#######")
                         .where('X', GTCACasings.CASING_AEBF.getDefaultState())
                         .where('S', definition, Direction.SOUTH)
+                        .where('I', GCyMBlocks.HEAT_VENT)
+                        .where('V', CASING_EXTREME_ENGINE_INTAKE)
+                        .where('F', ChemicalHelper.getBlock(TagPrefix.frameGt, Tungsten))
                         .where('#', Blocks.AIR.defaultBlockState())
                         .where('E', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.NORTH)
-                        .where('I', GTMachines.ITEM_IMPORT_BUS[GTValues.LV], Direction.WEST)
+                        .where('P', GTMachines.ITEM_IMPORT_BUS[GTValues.LV], Direction.WEST)
                         .where('O', GTMachines.ITEM_EXPORT_BUS[GTValues.LV], Direction.WEST)
-                        .where('F', GTMachines.FLUID_IMPORT_HATCH[GTValues.LV], Direction.EAST)
+                        .where('G', GTMachines.FLUID_IMPORT_HATCH[GTValues.LV], Direction.EAST)
                         .where('D', GTMachines.FLUID_EXPORT_HATCH[GTValues.LV], Direction.EAST)
                         .where('H', GTMachines.MUFFLER_HATCH[GTValues.LV], Direction.UP)
                         .where('M', GTMachines.MAINTENANCE_HATCH, Direction.SOUTH);
@@ -113,8 +126,8 @@ public class GTCAMachines {
             .recoveryItems(
                     () -> new ItemLike[] { GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
             .workableCasingRenderer(
-                    GTCA.id("block/casing_aebf"),
-                    GTCEu.id("block/multiblock/electric_blast_furnace"),
+                    GTCA.id("block/casing/casing_aebf"),
+                    GTCA.id("block/multiblock/aebf"),
                     true
             )
             .tooltips(

@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data;
+package net.mordgren.gtca.common.util;
 
 import com.gregtechceu.gtceu.api.block.RendererBlock;
 import com.gregtechceu.gtceu.api.item.RendererBlockItem;
@@ -16,7 +16,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.mordgren.gtca.GTCA;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
@@ -24,12 +23,7 @@ import java.util.function.Supplier;
 
 import static net.mordgren.gtca.GTCA.GTCA_REGISTRATE;
 
-public class GTCACasings {
-
-    public static final BlockEntry<Block> CASING_AEBF = createCasingBlock("casing_aebf",
-            GTCA.id("block/casing_aebf"));
-
-
+public class CasingBuilder {
 
     public static BlockEntry<Block> createCasingBlock(String name, ResourceLocation texture) {
         return createCasingBlock(name, RendererBlock::new, texture, () -> Blocks.IRON_BLOCK,
@@ -47,6 +41,7 @@ public class GTCACasings {
                 properties, type);
     }
 
+    @SuppressWarnings("removal")
     public static BlockEntry<Block> createCasingBlock(String name,
                                                       NonNullFunction<BlockBehaviour.Properties, Block> blockSupplier,
                                                       NonNullSupplier<? extends Block> properties,

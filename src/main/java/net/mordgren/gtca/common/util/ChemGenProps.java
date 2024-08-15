@@ -16,12 +16,14 @@ import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import com.lowdragmc.lowdraglib.side.fluid.FluidHelper;
 import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
-import lombok.Getter;
-import lombok.val;
+import lombok.*;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
@@ -32,11 +34,9 @@ public class ChemGenProps extends WorkableElectricMultiblockMachine implements I
     private static final FluidStack OXYGEN_STACK = GTMaterials.Oxygen.getFluid(20 * FluidHelper.getBucket() / 1000);
     private static final FluidStack LIQUID_OXYGEN_STACK = GTMaterials.Oxygen.getFluid(FluidStorageKeys.LIQUID,
             80 * FluidHelper.getBucket() / 1000);
-//    private static final FluidStack LUBRICANT_STACK = GTMaterials.Lubricant.getFluid(FluidHelper.getBucket() / 1000);
 
     @Getter
     private final int tier;
-    // runtime
     private boolean isOxygenBoosted = false;
 
     public ChemGenProps(IMachineBlockEntity holder, int tier) {
@@ -52,10 +52,6 @@ public class ChemGenProps extends WorkableElectricMultiblockMachine implements I
         return getMaxVoltage() >= GTValues.V[getTier() + 1];
     }
 
-    //////////////////////////////////////
-    // ****** Recipe Logic *******//
-    //////////////////////////////////////
-
     @Override
     public long getOverclockVoltage() {
         if (isOxygenBoosted)
@@ -63,10 +59,6 @@ public class ChemGenProps extends WorkableElectricMultiblockMachine implements I
         else
             return GTValues.V[tier];
     }
-
-//    protected GTRecipe getLubricantRecipe() {
-//        return GTRecipeBuilder.ofRaw().inputFluids(LUBRICANT_STACK).buildRawRecipe();
-//    }
 
     protected GTRecipe getBoostRecipe() {
         return GTRecipeBuilder.ofRaw().inputFluids(isExtreme() ? LIQUID_OXYGEN_STACK : OXYGEN_STACK).buildRawRecipe();
@@ -77,9 +69,9 @@ public class ChemGenProps extends WorkableElectricMultiblockMachine implements I
         if (machine instanceof ChemGenProps engineMachine) {
             var EUt = RecipeHelper.getOutputEUt(recipe);
             if (EUt > 0)  {
-                var maxParallel = (int) (engineMachine.getOverclockVoltage() / EUt); // get maximum parallel
+                var maxParallel = (int) (engineMachine.getOverclockVoltage() / EUt);
                 var parallelResult = GTRecipeModifiers.fastParallel(engineMachine, recipe, maxParallel, false);
-                if (engineMachine.isOxygenBoosted) { // boost production
+                if (engineMachine.isOxygenBoosted) {
                     recipe = parallelResult.getFirst() == recipe ? recipe.copy() : parallelResult.getFirst();
                     long eut = (long) (EUt * parallelResult.getSecond() * (engineMachine.isExtreme() ? 2 : 1.5));
                     recipe.tickOutputs.put(EURecipeCapability.CAP, List.of(new Content(eut, 1.0f, 0.0f, null, null)));
@@ -95,16 +87,7 @@ public class ChemGenProps extends WorkableElectricMultiblockMachine implements I
     @Override
     public boolean onWorking() {
         boolean value = super.onWorking();
-//        // check lubricant
         val totalContinuousRunningTime = recipeLogic.getTotalContinuousRunningTime();
-//        if ((totalContinuousRunningTime == 1 || totalContinuousRunningTime % 72 == 0)) {
-//            // insufficient lubricant
-//            if (!getLubricantRecipe().handleRecipeIO(IO.IN, this)) {
-//                recipeLogic.interruptRecipe();
-//                return false;
-//            }
-//        }
-        // check boost fluid
         if ((totalContinuousRunningTime == 1 || totalContinuousRunningTime % 20 == 0) && isBoostAllowed()) {
             var boosterRecipe = getBoostRecipe();
             this.isOxygenBoosted = boosterRecipe.matchRecipe(this).isSuccess() &&
@@ -117,10 +100,6 @@ public class ChemGenProps extends WorkableElectricMultiblockMachine implements I
     public boolean dampingWhenWaiting() {
         return false;
     }
-
-    //////////////////////////////////////
-    // ******* GUI ********//
-    //////////////////////////////////////
 
     @Override
     public void addDisplayText(List<Component> textList) {
@@ -148,32 +127,4 @@ public class ChemGenProps extends WorkableElectricMultiblockMachine implements I
             }
         }
     }
-
-//    @Override
-//    public void attachTooltips(TooltipsPanel tooltipsPanel) {
-//        super.attachTooltips(tooltipsPanel);
-//        tooltipsPanel.attachTooltips(new IFancyTooltip.Basic(
-//                () -> GuiTextures.INDICATOR_NO_STEAM.get(false),
-//                () -> List.of(Component.translatable("gtceu.multiblock.large_combustion_engine.obstructed")
-//                        .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))),
-//                this::isIntakesObstructed,
-//                () -> null));
-//    }
-    //    private boolean isIntakesObstructed() {
-//        var facing = this.getFrontFacing();
-//        boolean permuteXZ = facing.getAxis() == Direction.Axis.Z;
-//        var centerPos = this.getPos().relative(facing);
-//        for (int x = -1; x < 2; x++) {
-//            for (int y = -1; y < 2; y++) {
-//                // Skip the controller block itself
-//                if (x == 0 && y == 0)
-//                    continue;
-//                var blockPos = centerPos.offset(permuteXZ ? x : 0, y, permuteXZ ? 0 : x);
-//                var blockState = this.getLevel().getBlockState(blockPos);
-//                if (!blockState.isAir())
-//                    return true;
-//            }
-//        }
-//        return false;
-//    }
 }
