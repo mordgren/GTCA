@@ -21,7 +21,7 @@ public class AlloyRecipes {
                 .inputItems(GTCAHelper.getItem("dust", Manganese, 1))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.TM20MnAlloy, 6))
                 .save(provider);
-
+    }
         private static void CNFAlloy(Consumer<FinishedRecipe> provider) {
             MIXER_RECIPES.recipeBuilder("c_n_f_alloy").EUt(GTValues.VA[GTValues.LV]).duration(120)
                     .inputItems(GTCAHelper.getItem("dust", Nickel, 5))
@@ -33,4 +33,3 @@ public class AlloyRecipes {
 
         }
     }
-}
