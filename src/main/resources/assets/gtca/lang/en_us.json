@@ -13,5 +13,6 @@
   "block.gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
   "gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
 
-  "material.gtca.tm_20_mn_alloy": "TM-20-Mn Alloy"
+  "material.gtca.tm_20_mn_alloy": "TM-20-Mn Alloy",
+  "material.gtca.c_n_f_alloy": "CFNi-Alloy"
 }
