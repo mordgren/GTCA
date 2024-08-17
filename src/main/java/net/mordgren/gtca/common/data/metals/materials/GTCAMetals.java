@@ -34,8 +34,10 @@ public class GTCAMetals {
                 .flags(
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_PLATE,
-                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
+                        MaterialFlags.EXCLUDE_PLATE_COMPRESSOR_RECIPE
                 )
+                .ingot()
                 .dust()
                 .fluid()
                 .color(0xf3f3f3)

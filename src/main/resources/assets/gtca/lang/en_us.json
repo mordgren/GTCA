@@ -12,6 +12,7 @@
   "gtca.advanced_ebf":"Advanced EBF",
   "block.gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
   "gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
+  "block.gtca.casing_greenhouse":"Humidity Balanced Casing",
 
   "material.gtca.tm_20_mn_alloy": "TM-20-Mn Alloy",
   "material.gtca.c_n_f_alloy": "CFNi-Alloy"
