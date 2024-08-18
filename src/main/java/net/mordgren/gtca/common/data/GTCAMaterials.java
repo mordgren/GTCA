@@ -17,4 +17,5 @@ public class GTCAMaterials {
 
 
     public static Material TM20MnAlloy;
+    public static Material CNFAlloy;
 }
