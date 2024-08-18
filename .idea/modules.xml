@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GTCA.main.iml" filepath="$PROJECT_DIR$/.idea/modules/GTCA.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/GTCA.test.iml" filepath="$PROJECT_DIR$/.idea/modules/GTCA.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.mordgren.gtca.GTCA.main.iml" filepath="$PROJECT_DIR$/.idea/modules/net.mordgren.gtca.GTCA.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.mordgren.gtca.GTCA.test.iml" filepath="$PROJECT_DIR$/.idea/modules/net.mordgren.gtca.GTCA.test.iml" />
     </modules>
   </component>
