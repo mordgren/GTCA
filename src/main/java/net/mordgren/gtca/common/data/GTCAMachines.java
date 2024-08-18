@@ -208,6 +208,77 @@ public class GTCAMachines {
                 .compassNode("chemical_generator")
                 .register();
     }
+    public static final MultiblockMachineDefinition GREEN_HOUSE = GTCA_REGISTRATE
+            .multiblock("green_house", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.GREEN_HOUSE)
+            .appearanceBlock(GTCACasings.CASING_GREENHOUSE)
+            .pattern(definition -> FactoryBlockPattern.start()
+                            .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                            .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                            .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                            .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                            .aisle("AADAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                            .where('A', blocks(GTCACasings.CASING_GREENHOUSE.get()).setMinGlobalLimited(6)
+                    .or(autoAbilities(definition.getRecipeTypes()))
+                    .or(autoAbilities(true, false, false)))
+                            .where('D', controller(blocks(definition.getBlock())))
+                            .where('#', air())
+                            .where('C', blocks(Blocks.DIRT))
+                            .where('B', blocks(Blocks.GLASS))
+                            .build()
+            )
+                    .shapeInfos(definition -> {
+                                List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+                                var builder = MultiblockShapeInfo.builder()
+                                        .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                                        .aisle("FYDSL", "#AKA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                                        .where('A', GTCACasings.CASING_GREENHOUSE.getDefaultState())
+                                        .where('F', GTMachines.ITEM_IMPORT_BUS[GTValues.ULV], Direction.SOUTH)
+                                        .where('D', definition, Direction.SOUTH)
+                                        .where('Y', GTMachines.FLUID_IMPORT_HATCH[GTValues.ULV], Direction.SOUTH)
+                                        .where('S', GTMachines.ITEM_EXPORT_BUS[GTValues.ULV], Direction.SOUTH)
+                                        .where('L', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.SOUTH)
+                                        .where('K', GTMachines.MAINTENANCE_HATCH, Direction.SOUTH)
+                                        .where('C', Blocks.DIRT.defaultBlockState())
+                                        .where('B', Blocks.GLASS.defaultBlockState());
+
+                                return shapeInfo;
+                            })
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Green House")
+            )
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/casing_greenhouse"),
+                    GTCA.id("block/multiblock/aebf"),
+                    true
+            )
+            .compassSections(GTCompassSections.TIER[MV])
+            .compassNodeSelf()
+            .register();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /// REGISTRATION METHOD ///
     public static void init() {}
