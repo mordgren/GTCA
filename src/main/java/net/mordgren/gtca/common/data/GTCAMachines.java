@@ -41,24 +41,27 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.Tungsten;
 import static net.mordgren.gtca.GTCA.GTCA_REGISTRATE;
 
 public class GTCAMachines {
+    public static void init() {}
+
+
 
 
     /// STEAM PRESSURIZER ///
-    public static final MultiblockMachineDefinition steam_pressurizer = GTCA_REGISTRATE.multiblock("steam_pressurizer", WorkableElectricMultiblockMachine::new)
+    public static final MultiblockMachineDefinition STEAM_PRESSURIZER = GTCA_REGISTRATE.multiblock("steam_pressurizer", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.STEAM_PRESSURIZER)
             .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition ->
-            FactoryBlockPattern.start()
-                    .aisle("BAAAB", "BCCCB")
-                    .aisle("BAEAB", "AGGGA")
-                    .where("E", Predicates.controller(Predicates.blocks(definition.get())))
-                    .where("A", blocks(GTBlocks.CASING_STEEL_SOLID.get()))
-                    .where("G", blocks(GTBlocks.CASING_TEMPERED_GLASS.get()))
-                    .where("C", blocks(GTBlocks.CASING_STEEL_PIPE.get()))
-                    .where("B", blocks(GTBlocks.CASING_STEEL_SOLID.get()).setMinGlobalLimited(2).or(Predicates.autoAbilities(definition.getRecipeTypes())))
-                    .build()
+                    FactoryBlockPattern.start()
+                            .aisle("BAAAB", "BCCCB")
+                            .aisle("BAEAB", "AGGGA")
+                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where("A", blocks(GTBlocks.CASING_STEEL_SOLID.get()))
+                            .where("G", blocks(GTBlocks.CASING_TEMPERED_GLASS.get()))
+                            .where("C", blocks(GTBlocks.CASING_STEEL_PIPE.get()))
+                            .where("B", blocks(GTBlocks.CASING_STEEL_SOLID.get()).setMinGlobalLimited(2).or(Predicates.autoAbilities(definition.getRecipeTypes())))
+                            .build()
             )
             .workableCasingRenderer(
                     GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
@@ -124,7 +127,7 @@ public class GTCAMachines {
                 return shapeInfo;
             })
             .recoveryItems(
-                    () -> new ItemLike[] { GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
+                    () -> new ItemLike[]{GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get()})
             .workableCasingRenderer(
                     GTCA.id("block/casing/casing_aebf"),
                     GTCA.id("block/multiblock/aebf"),
@@ -160,10 +163,10 @@ public class GTCAMachines {
 
 
     public static MultiblockMachineDefinition registerChemicalGenerator(String name, int tier,
-                                                                            Supplier<? extends Block> casing,
-                                                                            Supplier<? extends Block> gear,
-                                                                            ResourceLocation casingTexture,
-                                                                            ResourceLocation overlayModel) {
+                                                                        Supplier<? extends Block> casing,
+                                                                        Supplier<? extends Block> gear,
+                                                                        ResourceLocation casingTexture,
+                                                                        ResourceLocation overlayModel) {
         return GTCA_REGISTRATE.multiblock(name, holder -> new ChemGenProps(holder, tier))
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.CHEMICAL_GENERATOR)
@@ -195,7 +198,7 @@ public class GTCAMachines {
                                                 GTValues.VN[tier])))
                         .build())
                 .recoveryItems(
-                        () -> new ItemLike[] { GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
+                        () -> new ItemLike[]{GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get()})
                 .workableCasingRenderer(casingTexture, overlayModel)
                 .tooltips(
                         Component.translatable("gtceu.universal.tooltip.base_production_eut", V[tier]),
@@ -208,46 +211,47 @@ public class GTCAMachines {
                 .compassNode("chemical_generator")
                 .register();
     }
+
     public static final MultiblockMachineDefinition GREEN_HOUSE = GTCA_REGISTRATE
             .multiblock("green_house", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.GREEN_HOUSE)
             .appearanceBlock(GTCACasings.CASING_GREENHOUSE)
             .pattern(definition -> FactoryBlockPattern.start()
-                            .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
-                            .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                            .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                            .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                            .aisle("AADAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
-                            .where('A', blocks(GTCACasings.CASING_GREENHOUSE.get()).setMinGlobalLimited(6)
-                    .or(autoAbilities(definition.getRecipeTypes()))
-                    .or(autoAbilities(true, false, false)))
-                            .where('D', controller(blocks(definition.getBlock())))
-                            .where('#', air())
-                            .where('C', blocks(Blocks.DIRT))
-                            .where('B', blocks(Blocks.GLASS))
-                            .build()
+                    .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                    .aisle("AADAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                    .where('A', blocks(GTCACasings.CASING_GREENHOUSE.get()).setMinGlobalLimited(6)
+                            .or(autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, false)))
+                    .where('D', controller(blocks(definition.getBlock())))
+                    .where('#', air())
+                    .where('C', blocks(Blocks.DIRT))
+                    .where('B', blocks(CASING_TEMPERED_GLASS.get()))
+                    .build()
             )
-                    .shapeInfos(definition -> {
-                                List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
-                                var builder = MultiblockShapeInfo.builder()
-                                        .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
-                                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                                        .aisle("FYDSL", "#AKA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
-                                        .where('A', GTCACasings.CASING_GREENHOUSE.getDefaultState())
-                                        .where('F', GTMachines.ITEM_IMPORT_BUS[GTValues.ULV], Direction.SOUTH)
-                                        .where('D', definition, Direction.SOUTH)
-                                        .where('Y', GTMachines.FLUID_IMPORT_HATCH[GTValues.ULV], Direction.SOUTH)
-                                        .where('S', GTMachines.ITEM_EXPORT_BUS[GTValues.ULV], Direction.SOUTH)
-                                        .where('L', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.SOUTH)
-                                        .where('K', GTMachines.MAINTENANCE_HATCH, Direction.SOUTH)
-                                        .where('C', Blocks.DIRT.defaultBlockState())
-                                        .where('B', Blocks.GLASS.defaultBlockState());
+            .shapeInfos(definition -> {
+                List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+                var builder = MultiblockShapeInfo.builder()
+                        .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                        .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
+                        .aisle("FYDSL", "#AKA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                        .where('A', GTCACasings.CASING_GREENHOUSE.getDefaultState())
+                        .where('F', GTMachines.ITEM_IMPORT_BUS[GTValues.ULV], Direction.SOUTH)
+                        .where('D', definition, Direction.SOUTH)
+                        .where('Y', GTMachines.FLUID_IMPORT_HATCH[GTValues.ULV], Direction.SOUTH)
+                        .where('S', GTMachines.ITEM_EXPORT_BUS[GTValues.ULV], Direction.SOUTH)
+                        .where('L', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.SOUTH)
+                        .where('K', GTMachines.MAINTENANCE_HATCH, Direction.SOUTH)
+                        .where('C', Blocks.DIRT.defaultBlockState())
+                        .where('B', CASING_TEMPERED_GLASS);
 
-                                return shapeInfo;
-                            })
+                return shapeInfo;
+            })
             .tooltips(
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Green House")
             )
@@ -259,30 +263,6 @@ public class GTCAMachines {
             .compassSections(GTCompassSections.TIER[MV])
             .compassNodeSelf()
             .register();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /// REGISTRATION METHOD ///
-    public static void init() {}
-
 }
 
 

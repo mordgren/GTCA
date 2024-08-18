@@ -2,6 +2,7 @@ package net.mordgren.gtca.common.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.blocks.recipes.casings.CasingRecipes;
+import net.mordgren.gtca.common.data.blocks.recipes.machines.GTCAMachinesRecipes;
 import net.mordgren.gtca.common.data.fuel.recipes.AltFuels;
 import net.mordgren.gtca.common.data.fuel.recipes.ChemGenFuels;
 import net.mordgren.gtca.common.data.fuel.recipes.HighPressureSteam;
@@ -20,6 +21,7 @@ public class GTCARecipeInit {
             GreenHouseRecipes.init(provider);
 
             CasingRecipes.init(provider);
+            GTCAMachinesRecipes.init(provider);
             miscRecipes(provider);
         }
 
