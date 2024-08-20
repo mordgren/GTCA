@@ -2,9 +2,12 @@ pipeline {
     agent { label 'agent1' }
 
     stages {
-        stage('Hello') {
+        stage('build') {
             steps {
-                echo 'Hello World'
+                script {
+                    sh("gradlew clean build")
+                    sh("ls -la ./build/reobfJar")
+                }
             }
         }
     }
