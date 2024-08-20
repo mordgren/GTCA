@@ -163,8 +163,13 @@ dependencies {
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
     implementation("com.tterrag.registrate:Registrate:MC1.20-1.3.11")
-    implementation("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.25.j") { transitive = false }
-    implementation("curse.maven:gt-985872:5506519")
+    implementation("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.26.b") { transitive = false }
+
+    //GTNN
+    implementation fg.deobf("curse.maven:gt-985872:5643932")
+    //implementation("curse.maven:gt-985872:5506519")
+
+//    implementation fg.deobf("curse.maven:applied-energistics-2-223794:4997114")
 
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'

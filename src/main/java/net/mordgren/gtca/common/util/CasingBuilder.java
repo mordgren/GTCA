@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
-
 import static net.mordgren.gtca.GTCA.GTCA_REGISTRATE;
 
 public class CasingBuilder {
