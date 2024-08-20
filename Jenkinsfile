@@ -5,8 +5,7 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    sh("ls -la ./")
-                    sh("whoami")
+                    sh("chmod +x gradlew")
                     sh("./gradlew clean build")
                     sh("ls -la ./build/reobfJar")
                 }
