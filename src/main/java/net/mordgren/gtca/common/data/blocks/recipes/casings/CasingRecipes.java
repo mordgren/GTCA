@@ -13,6 +13,7 @@ public class CasingRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
         casing_aebf(provider);
         casing_greenhouse(provider);
+        dural_casing(provider);
     }
 
     private static void casing_aebf(Consumer<FinishedRecipe> provider) {

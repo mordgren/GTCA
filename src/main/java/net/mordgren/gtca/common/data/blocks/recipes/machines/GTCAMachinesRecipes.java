@@ -32,4 +32,6 @@ public class GTCAMachinesRecipes {
                 'W', new UnificationEntry(TagPrefix.cableGtSingle, Gold),
                 'H', HULL[GTValues.HV].asStack());
     }
+
 }
+
