@@ -26,7 +26,7 @@ public class GTCAMetals {
                 .blastTemp(6100, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.IV], 660)
                 .buildAndRegister();
 
-        // greengreen xdxd
+
 
         GTCAMaterials.CNFAlloy = new Material.Builder(GTCA.id("c_n_f_alloy"))
                 .components(GTMaterials.Nickel, 5, GTMaterials.Chromium, 2, GTMaterials.Iron, 1)
@@ -59,5 +59,37 @@ public class GTCAMetals {
                 .iconSet(MaterialIconSet.METALLIC)
                 .buildAndRegister();
 
+
+
+        GTCAMaterials.Nimonic80A = new Material.Builder(GTCA.id("nimonic80a"))
+                .components(GTMaterials.Nickel, 8, GTMaterials.Chromium, 3, GTMaterials.Cobalt, 2, GTMaterials.Titanium, 1, GTMaterials.Aluminium, 1)
+                .flags(
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                )
+                .dust()
+                .fluid()
+                .blastTemp(3400, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 320)
+                .color(0x9f3f3f)
+                .iconSet(MaterialIconSet.METALLIC)
+                .buildAndRegister();
+
+        GTCAMaterials.Moltech = new Material.Builder(GTCA.id("moltech"))
+                .components(GTMaterials.Molybdenum, 8, GTMaterials.Tungsten, 2, GTMaterials.Titanium, 1)
+                .flags(
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                )
+                .dust()
+                .fluid()
+                .blastTemp(3800, BlastProperty.GasTier.MID, GTValues.VA[GTValues.IV], 280)
+                .color(0x4d315e)
+                .iconSet(MaterialIconSet.METALLIC)
+                .buildAndRegister();
+
     }
+
+
 }

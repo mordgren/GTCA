@@ -19,4 +19,6 @@ public class GTCAMaterials {
     public static Material TM20MnAlloy;
     public static Material CNFAlloy;
     public static Material Dural;
+    public static Material Nimonic80A;
+    public static Material Moltech;
 }
