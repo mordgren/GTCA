@@ -30,6 +30,13 @@ public class CasingRecipes {
                 .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.CNFAlloy, 1))
                 .outputItems(GTCACasings.CASING_GREENHOUSE)
                 .save(provider);
-        }
-
+    }
+    private static void dural_casing(Consumer<FinishedRecipe> provider) {
+        ASSEMBLER_RECIPES.recipeBuilder("dural_casing").EUt(GTValues.VA[GTValues.HV]).duration(100)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Dural, 6))
+                .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.Dural, 1))
+                .outputItems(GTCACasings.DURAL_CASING)
+                .save(provider);
+    }
 }

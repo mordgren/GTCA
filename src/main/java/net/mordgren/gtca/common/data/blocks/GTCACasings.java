@@ -12,6 +12,8 @@ public class GTCACasings {
     public static final BlockEntry<Block> CASING_GREENHOUSE = CasingBuilder.createCasingBlock("casing_greenhouse",
             GTCA.id("block/casing/casing_greenhouse"));
 
+    public static final BlockEntry<Block> DURAL_CASING = CasingBuilder.createCasingBlock("dural_casing",
+            GTCA.id("block/casing/dural_casing"));
 
 
 
