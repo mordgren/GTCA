@@ -12,6 +12,7 @@ public class AlloyRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
         TM20MnAlloy(provider);
         CNFAlloy(provider);
+        Dural(provider);
     }
 
     private static void TM20MnAlloy(Consumer<FinishedRecipe> provider) {
@@ -22,14 +23,27 @@ public class AlloyRecipes {
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.TM20MnAlloy, 6))
                 .save(provider);
     }
-        private static void CNFAlloy(Consumer<FinishedRecipe> provider) {
-            MIXER_RECIPES.recipeBuilder("c_n_f_alloy").EUt(GTValues.VA[GTValues.LV]).duration(120)
-                    .inputItems(GTCAHelper.getItem("dust", Nickel, 5))
-                    .inputItems(GTCAHelper.getItem("dust", Chromium, 2))
-                    .inputItems(GTCAHelper.getItem("dust", Iron, 1))
-                    .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.CNFAlloy, 8))
-                    .save(provider);
+
+    private static void CNFAlloy(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("c_n_f_alloy").EUt(GTValues.VA[GTValues.LV]).duration(120)
+                .inputItems(GTCAHelper.getItem("dust", Nickel, 5))
+                .inputItems(GTCAHelper.getItem("dust", Chromium, 2))
+                .inputItems(GTCAHelper.getItem("dust", Iron, 1))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.CNFAlloy, 8))
+                .save(provider);
 
 
-        }
     }
+
+    private static void Dural(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("dural").EUt(GTValues.VA[GTValues.MV]).duration(120)
+                .inputItems(GTCAHelper.getItem("dust", Aluminium, 9))
+                .inputItems(GTCAHelper.getItem("dust", Copper, 2))
+                .inputItems(GTCAHelper.getItem("dust", Magnesium, 1))
+                .inputItems(GTCAHelper.getItem("dust", Manganese, 1))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Dural, 13))
+                .save(provider);
+
+
+    }
+}

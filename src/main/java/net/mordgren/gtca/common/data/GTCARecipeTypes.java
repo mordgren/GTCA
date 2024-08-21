@@ -10,18 +10,21 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.register;
 
 public class GTCARecipeTypes {
 
+    public static void init() {
+    }
+
     public static final GTRecipeType STEAM_PRESSURIZER = register("steam_pressurizer", MULTIBLOCK)
             .setMaxIOSize(0, 0, 1, 1)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_COMPRESS, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setSound(GTSoundEntries.COOLING)
+            .setSound(GTSoundEntries.COMPRESSOR)
             .setEUIO(IO.IN);
 
     public static final GTRecipeType CHEMICAL_GENERATOR = register("chemical_generator", MULTIBLOCK)
             .setMaxIOSize(2,0,2,0)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_BATH, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setSound(GTSoundEntries.COOLING)
+            .setSound(GTSoundEntries.COMBUSTION)
             .setEUIO(IO.OUT);
 
     public static final GTRecipeType GREEN_HOUSE = register("green_house", MULTIBLOCK)
@@ -31,6 +34,10 @@ public class GTCARecipeTypes {
             .setSound(GTSoundEntries.BATH)
             .setEUIO(IO.IN);
 
-    public static void init() {
-    }
+    public static final GTRecipeType POLYMERIZER = register("polymerizer", MULTIBLOCK)
+            .setMaxIOSize(1,2,3,1)
+            .setSlotOverlay(false,false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.CHEMICAL)
+            .setEUIO(IO.IN);
 }

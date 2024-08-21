@@ -1,20 +1,31 @@
 {
-
-  "material.gtca.high_pressure_steam": "High Pressure Steam",
   "block.gtca.steam_pressurizer":"Steam Pressurizer",
-  "gtca.steam_pressurizer":"Steam Pressurizer",
-
-  "material.gtca.e85_fuel": "E85 Fuel",
-
-  "material.gtca.aluminosilicate_catalyst": "Aluminosilicate Catalyst",
-  "material.gtca.dymethyl_ether": "Dymethyl Ether",
-
+  "gtceu.steam_pressurizer":"\n Steam Pressurizer",
   "block.gtca.advanced_ebf":"Advanced EBF",
-  "gtca.advanced_ebf":"Advanced EBF",
+  "gtceu.advanced_ebf":"\n Advanced EBF",
+  "block.gtca.chemical_generator": "Chemical Combustion Engine",
+  "gtceu.chemical_generator": "\n Chemical Combustion Engine",
+  "block.gtca.green_house":"Green House",
+  "gtceu.green_house":"\n Green House",
+  "block.gtca.polymerizer":"Polymerizer",
+  "gtceu.polymerizer":"\n Polymerizer",
+
+
+
   "block.gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
-  "gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
+  "gtceu.casing_aebf":"Advanced Heat Proof Machine Casing",
   "block.gtca.casing_greenhouse":"Humidity Balanced Casing",
 
+
+
   "material.gtca.tm_20_mn_alloy": "TM-20-Mn Alloy",
-  "material.gtca.c_n_f_alloy": "CFNi-Alloy"
+  "material.gtca.c_n_f_alloy": "CFNi-Alloy",
+  "material.gtca.dural": "Dural",
+
+
+
+  "material.gtca.aluminosilicate_catalyst": "Aluminosilicate Catalyst",
+  "material.gtca.e85_fuel": "E85 Fuel",
+  "material.gtca.high_pressure_steam": "High Pressure Steam",
+  "material.gtca.dymethyl_ether": "Dymethyl Ether"
 }

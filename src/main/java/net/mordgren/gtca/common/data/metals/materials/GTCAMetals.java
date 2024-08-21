@@ -2,7 +2,6 @@ package net.mordgren.gtca.common.data.metals.materials;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
@@ -45,6 +44,20 @@ public class GTCAMetals {
                 .buildAndRegister();
 
 
+
+        GTCAMaterials.Dural = new Material.Builder(GTCA.id("dural"))
+                .components(GTMaterials.Aluminium, 9, GTMaterials.Copper, 2, GTMaterials.Magnesium, 1, GTMaterials.Manganese, 1)
+                .flags(
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                )
+                .dust()
+                .fluid()
+                .blastTemp(2800, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.HV], 360)
+                .color(0xb2b2b2)
+                .iconSet(MaterialIconSet.METALLIC)
+                .buildAndRegister();
 
     }
 }
