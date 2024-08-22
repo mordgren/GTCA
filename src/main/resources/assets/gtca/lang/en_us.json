@@ -25,7 +25,9 @@
   "material.gtca.nimonic80a": "Nimonic 80A",
   "material.gtca.moltech": "MolTech",
 
-
+  "material.gtca.mapp": "MAPP Gas",
+  "material.gtca.propyne": "Propyne",
+  "material.gtca.propadiene": "Propadiene",
 
   "material.gtca.aluminosilicate_catalyst": "Aluminosilicate Catalyst",
   "material.gtca.e85_fuel": "E85 Fuel",
