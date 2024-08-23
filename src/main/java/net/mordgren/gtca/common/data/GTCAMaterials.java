@@ -24,7 +24,7 @@ public class GTCAMaterials {
     public static Material Propadiene;
     public static Material MAPP;
 
-    // Catalist
+    // Catalyst
 
     public static Material AluminosilicateCatalyst;
 

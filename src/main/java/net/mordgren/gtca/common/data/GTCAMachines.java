@@ -217,6 +217,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.GREEN_HOUSE)
             .appearanceBlock(GTCACasings.CASING_GREENHOUSE)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
                     .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
@@ -262,6 +263,36 @@ public class GTCAMachines {
             )
             .compassSections(GTCompassSections.TIER[MV])
             .compassNodeSelf()
+            .register();
+
+
+    public static final MultiblockMachineDefinition POLYMERIZER = GTCA_REGISTRATE
+            .multiblock("polymerizer", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.POLYMERIZER)
+            .appearanceBlock(GTCACasings.DURAL_CASING)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC")
+                    .aisle("CCCCC", "CHCHC", "CPPPC", "CHCHC", "CCCCC")
+                    .aisle("CCXCC", "CGCGC", "CGCGC", "CGCGC", "CCCCC")
+                    .where('X', controller(blocks(definition.getBlock())))
+                    .where('C', blocks(GTCACasings.DURAL_CASING.get()).setMinGlobalLimited(6)
+                            .or(autoAbilities(definition.getRecipeTypes()))
+                            .or(autoAbilities(true, false, false)))
+                    .where('H', blocks(HERMETIC_CASING_HV.get()))
+                    .where('P', blocks(CASING_STEEL_PIPE.get()))
+                    .where('G', blocks(CASING_LAMINATED_GLASS.get()))
+                    .build()
+            )
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Polymerizer")
+            )
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/dural_casing"),
+                    GTCA.id("block/multiblock/aebf"),
+                    true
+            )
             .register();
 }
 
