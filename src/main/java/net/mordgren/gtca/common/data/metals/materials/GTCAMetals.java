@@ -89,6 +89,20 @@ public class GTCAMetals {
                 .iconSet(MaterialIconSet.METALLIC)
                 .buildAndRegister();
 
+        GTCAMaterials.Vitallium = new Material.Builder(GTCA.id("vitallium"))
+                .components(GTMaterials.Cobalt, 6, GTMaterials.Chromium, 3, GTMaterials.Molybdenum, 1)
+                .flags(
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                )
+                .dust()
+                .fluid()
+                .blastTemp(3000, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 240)
+                .color(0xACA6E6).secondaryColor(0xD2D2EB)
+                .iconSet(MaterialIconSet.METALLIC)
+                .buildAndRegister();
+
     }
 
 

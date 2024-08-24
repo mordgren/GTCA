@@ -15,6 +15,7 @@ public class AlloyRecipes {
         Dural(provider);
         Nimonic80A(provider);
         Moltech(provider);
+        Vitallium(provider);
     }
 
     private static void TM20MnAlloy(Consumer<FinishedRecipe> provider) {
@@ -33,8 +34,6 @@ public class AlloyRecipes {
                 .inputItems(GTCAHelper.getItem("dust", Iron, 1))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.CNFAlloy, 8))
                 .save(provider);
-
-
     }
 
     private static void Dural(Consumer<FinishedRecipe> provider) {
@@ -45,8 +44,6 @@ public class AlloyRecipes {
                 .inputItems(GTCAHelper.getItem("dust", Manganese, 1))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Dural, 13))
                 .save(provider);
-
-
     }
 
     private static void Nimonic80A(Consumer<FinishedRecipe> provider) {
@@ -58,8 +55,6 @@ public class AlloyRecipes {
                 .inputItems(GTCAHelper.getItem("dust", Aluminium, 1))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Nimonic80A, 15))
                 .save(provider);
-
-
     }
 
     private static void Moltech(Consumer<FinishedRecipe> provider) {
@@ -69,7 +64,14 @@ public class AlloyRecipes {
                 .inputItems(GTCAHelper.getItem("dust", Titanium, 1))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Moltech, 11))
                 .save(provider);
+    }
 
-
+    private static void Vitallium(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("vitallium").EUt(GTValues.VA[GTValues.EV]).duration(100)
+                .inputItems(GTCAHelper.getItem("dust", Cobalt, 6))
+                .inputItems(GTCAHelper.getItem("dust", Chromium, 3))
+                .inputItems(GTCAHelper.getItem("dust", Molybdenum, 1))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Vitallium, 10))
+                .save(provider);
     }
 }

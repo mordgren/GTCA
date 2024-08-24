@@ -35,4 +35,5 @@ public class GTCAMaterials {
     public static Material Dural;
     public static Material Nimonic80A;
     public static Material Moltech;
+    public static Material Vitallium;
 }

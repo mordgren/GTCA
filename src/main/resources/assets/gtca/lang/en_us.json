@@ -24,12 +24,17 @@
   "material.gtca.dural": "Dural",
   "material.gtca.nimonic80a": "Nimonic 80A",
   "material.gtca.moltech": "MolTech",
+  "material.gtca.vitallium": "Vitallium 2000+",
 
+
+
+  "material.gtca.aluminosilicate_catalyst": "Aluminosilicate Catalyst",
   "material.gtca.mapp": "MAPP Gas",
   "material.gtca.propyne": "Propyne",
   "material.gtca.propadiene": "Propadiene",
 
-  "material.gtca.aluminosilicate_catalyst": "Aluminosilicate Catalyst",
+
+
   "material.gtca.e85_fuel": "E85 Fuel",
   "material.gtca.high_pressure_steam": "High Pressure Steam",
   "material.gtca.dymethyl_ether": "Dymethyl Ether"
