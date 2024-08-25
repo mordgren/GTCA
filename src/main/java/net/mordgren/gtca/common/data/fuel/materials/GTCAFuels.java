@@ -1,7 +1,8 @@
 package net.mordgren.gtca.common.data.fuel.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 
@@ -23,9 +24,11 @@ public class GTCAFuels {
                 .color(0xffe6ff)
                 .buildAndRegister();
 
-        GTCAMaterials.AluminosilicateCatalyst = new Material.Builder(GTCA.id("aluminosilicate_catalyst"))
-                .dust()
-                .color(0x284d8a).iconSet(MaterialIconSet.FLINT)
+        GTCAMaterials.DiisononylPhthalate = new Material.Builder(GTCA.id("diisononyl_phthalate"))
+                .fluid()
+                .components(GTMaterials.Carbon, 26, GTMaterials.Hydrogen, 42, GTMaterials.Oxygen, 4)
+                .color(0x262626)
+                .flags(MaterialFlags.DISABLE_DECOMPOSITION)
                 .buildAndRegister();
 
     }

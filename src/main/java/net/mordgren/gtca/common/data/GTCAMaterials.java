@@ -16,6 +16,8 @@ public class GTCAMaterials {
 
     public static Material HighPressureSteam;
     public static Material E85Fuel;
+    public static Material DiisononylPhthalate;
+
 
     // Chemicals
 
@@ -23,6 +25,10 @@ public class GTCAMaterials {
     public static Material Propyne;
     public static Material Propadiene;
     public static Material MAPP;
+    public static Material IsononylAlcohol;
+    public static Material PhthalicAnhydride;
+    public static Material Oxylene;
+    public static Material Octene;
 
     // Catalyst
 
