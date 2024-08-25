@@ -157,14 +157,16 @@ public class GTCAMachines {
 
     public static final MultiblockMachineDefinition CHEMICAL_GENERATOR = registerChemicalGenerator(
             "chemical_generator", EV,
-            CASING_INVAR_HEATPROOF, CASING_STAINLESS_STEEL_GEARBOX,
-            GTCEu.id("block/casings/solid/machine_casing_heatproof"),
-            GTCEu.id("block/multiblock/electric_blast_furnace"));
+            GTCACasings.VITALIUM_CASING, CASING_TITANIUM_GEARBOX, FIREBOX_TITANIUM, CASING_TITANIUM_PIPE,
+            GTCA.id("block/casing/vitalium_casing"),
+            GTCA.id("block/multiblock/aebf"));
 
 
     public static MultiblockMachineDefinition registerChemicalGenerator(String name, int tier,
                                                                         Supplier<? extends Block> casing,
                                                                         Supplier<? extends Block> gear,
+                                                                        Supplier<? extends Block> firebox,
+                                                                        Supplier<? extends Block> pipe,
                                                                         ResourceLocation casingTexture,
                                                                         ResourceLocation overlayModel) {
         return GTCA_REGISTRATE.multiblock(name, holder -> new ChemGenProps(holder, tier))
@@ -184,8 +186,8 @@ public class GTCAMachines {
                         .where('P', blocks(GTBlocks.CASING_PTFE_INERT.get()))
                         .where('#', blocks(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))
                         .where('C', blocks(GTBlocks.COIL_CUPRONICKEL.get()))
-                        .where('S', blocks(GTBlocks.CASING_STEEL_PIPE.get()))
-                        .where('F', blocks(GTBlocks.FIREBOX_STEEL.get()))
+                        .where('S', blocks(pipe.get()))
+                        .where('F', blocks(firebox.get()))
                         .where('G', blocks(gear.get()))
                         .where('I', blocks(casing.get()).setMinGlobalLimited(3)
                                 .or(autoAbilities(definition.getRecipeTypes(), false, false, true, true, true, true))

@@ -36,6 +36,17 @@ public class ChemGenFuels {
 
         /// recipe name (костыль), fuel, amount, duration
         Fuels.add(new Object[]{"dsa", GTMaterials.DilutedSulfuricAcid, 20, 20});
+        Fuels.add(new Object[]{"aa", GTMaterials.AceticAcid, 8, 30});
+        Fuels.add(new Object[]{"dha", GTMaterials.DilutedHydrochloricAcid, 15, 25});
+        Fuels.add(new Object[]{"sa", GTMaterials.SulfuricAcid, 10, 56});
+        Fuels.add(new Object[]{"na", GTMaterials.NitricAcid, 10, 75});
+        Fuels.add(new Object[]{"ha", GTMaterials.HydrochloricAcid, 8, 76});
+        Fuels.add(new Object[]{"merc", GTMaterials.Mercury, 12, 95});
+        Fuels.add(new Object[]{"pa", GTMaterials.PhosphoricAcid, 9, 52});
+        Fuels.add(new Object[]{"hfa", GTMaterials.HydrofluoricAcid, 8, 112});
+        Fuels.add(new Object[]{"pta", GTMaterials.PhthalicAcid, 6, 90});
+        Fuels.add(new Object[]{"fa", GTMaterials.FormicAcid, 6, 60});
+        Fuels.add(new Object[]{"dino", GTCAMaterials.DiisononylPhthalate, 4, 263});
     }
 
     private static void chemGenRecipes(Consumer<FinishedRecipe> provider) {

@@ -35,8 +35,8 @@ public class GTCARecipeTypes {
             .setEUIO(IO.IN);
 
     public static final GTRecipeType POLYMERIZER = register("polymerizer", MULTIBLOCK)
-            .setMaxIOSize(1,2,3,1)
-            .setSlotOverlay(false,false, GuiTextures.BOX_OVERLAY)
+            .setMaxIOSize(2,2,3,2)
+            .setSlotOverlay(false,false, GuiTextures.MOLECULAR_OVERLAY_1)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.CHEMICAL)
             .setEUIO(IO.IN);

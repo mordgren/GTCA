@@ -9,6 +9,8 @@ import net.mordgren.gtca.common.data.fuel.recipes.ChemGenFuels;
 import net.mordgren.gtca.common.data.fuel.recipes.HighPressureSteam;
 import net.mordgren.gtca.common.data.greenhouse.recipes.GreenHouseRecipes;
 import net.mordgren.gtca.common.data.metals.recipes.AlloyRecipes;
+import net.mordgren.gtca.common.data.polymerizer.recipes.PolymerizerRecipes;
+
 import java.util.function.Consumer;
 
 public class GTCARecipeInit {
@@ -21,6 +23,8 @@ public class GTCARecipeInit {
             AlloyRecipes.init(provider);
 
             GreenHouseRecipes.init(provider);
+
+            PolymerizerRecipes.init(provider);
 
             CasingRecipes.init(provider);
             GTCAMachinesRecipes.init(provider);
