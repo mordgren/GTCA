@@ -103,6 +103,19 @@ public class GTCAMetals {
                 .iconSet(MaterialIconSet.METALLIC)
                 .buildAndRegister();
 
+        GTCAMaterials.Inconel718= new Material.Builder(GTCA.id("inconel718"))
+                .components(GTMaterials.Nickel, 5, GTMaterials.Chromium, 2, GTMaterials.Iron, 2, GTMaterials.Niobium, 2, GTMaterials.Molybdenum, 1, GTMaterials.Titanium, 1, GTMaterials.Aluminium, 1)
+                .flags(
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                )
+                .dust()
+                .fluid()
+                .blastTemp(3800, BlastProperty.GasTier.MID, GTValues.VA[GTValues.IV], 300)
+                .color(0xb5d9a6).secondaryColor(0xD2D2EB)
+                .iconSet(MaterialIconSet.METALLIC)
+                .buildAndRegister();
     }
 
 
