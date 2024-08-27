@@ -21,5 +21,6 @@ public class GTCACasings {
     public static final BlockEntry<Block> NIMONIC_CASING = CasingBuilder.createCasingBlock("nimonic_casing",
             GTCA.id("block/casing/nimonic_casing"));
 
-
+    public static final BlockEntry<Block> SCT_CASING = CasingBuilder.createCasingBlock("heavy_duty_casing",
+            GTCA.id("block/casing/SCT_casing"));
 }
