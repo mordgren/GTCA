@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 public class test {
     public static void init(Consumer<FinishedRecipe> provider){
-        GTCARecipeTypes.HEAT_EXCHANGER.recipeBuilder("test").duration(20)
+        GTCARecipeTypes.EXTREME_HEAT_EXCHANGER.recipeBuilder("test").duration(20)
                 .inputFluids(GTMaterials.Water.getFluid(20000))
                 .outputFluids(GTMaterials.Steam.getFluid(10000))
                 .save(provider);

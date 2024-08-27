@@ -5,8 +5,6 @@ import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
-import net.mordgren.gtca.common.util.GuiOverlay;
-
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.register;
 
@@ -43,9 +41,9 @@ public class GTCARecipeTypes {
             .setSound(GTSoundEntries.CHEMICAL)
             .setEUIO(IO.IN);
 
-    public static final GTRecipeType HEAT_EXCHANGER = register("heat_exchanger", MULTIBLOCK)
+    public static final GTRecipeType EXTREME_HEAT_EXCHANGER = register("extreme_heat_exchanger", MULTIBLOCK)
             .setMaxIOSize(0,0,2,3)
-            .setProgressBar(GuiOverlay.HEAT_EXCHANGER, ProgressTexture.FillDirection.ALWAYS_FULL)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.COOLING)
             .setEUIO(IO.NONE);
 
