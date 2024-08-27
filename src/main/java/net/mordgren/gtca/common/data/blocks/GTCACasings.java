@@ -23,4 +23,7 @@ public class GTCACasings {
 
     public static final BlockEntry<Block> SCT_CASING = CasingBuilder.createCasingBlock("heavy_duty_casing",
             GTCA.id("block/casing/SCT_casing"));
+
+    public static final BlockEntry<Block> INCONEL_CASING = CasingBuilder.createCasingBlock("chemicaly_resistive_casing",
+            GTCA.id("block/casing/inconel_casing"));
 }
