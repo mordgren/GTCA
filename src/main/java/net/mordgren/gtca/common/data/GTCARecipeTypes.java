@@ -5,6 +5,8 @@ import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
+import net.mordgren.gtca.common.util.GuiOverlay;
+
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.register;
 
@@ -40,4 +42,24 @@ public class GTCARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW_MULTIPLE, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.CHEMICAL)
             .setEUIO(IO.IN);
+
+    public static final GTRecipeType HEAT_EXCHANGER = register("heat_exchanger", MULTIBLOCK)
+            .setMaxIOSize(0,0,2,3)
+            .setProgressBar(GuiOverlay.HEAT_EXCHANGER, ProgressTexture.FillDirection.ALWAYS_FULL)
+            .setSound(GTSoundEntries.COOLING)
+            .setEUIO(IO.NONE);
+
+    public static final GTRecipeType SHD_STEAM_TURBINE = register("shd_steam_turbine", MULTIBLOCK)
+            .setMaxIOSize(0,0,1,1)
+            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.TURBINE)
+            .setEUIO(IO.OUT);
+
+    public static final GTRecipeType TEC_GENERATOR = register("tec_generator", MULTIBLOCK)
+            .setMaxIOSize(0,0,1,1)
+            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.COOLING)
+            .setEUIO(IO.OUT);
 }

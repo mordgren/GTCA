@@ -10,7 +10,7 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.Steam;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.STEAM_TURBINE_FUELS;
 import static net.mordgren.gtca.common.data.GTCARecipeTypes.STEAM_PRESSURIZER;
 
-public class HighPressureSteam {
+public class AltSteam {
     public static void init(Consumer<FinishedRecipe> provider) {
         highPressureSteam(provider);
     }

@@ -4,9 +4,7 @@ import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
 import net.mordgren.gtca.common.util.GTCAHelper;
-
 import java.util.function.Consumer;
-
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Salt;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.SodiumSulfide;
 

@@ -30,12 +30,6 @@ public class GTCAChemicals {
                 .flags(MaterialFlags.DISABLE_DECOMPOSITION)
                 .buildAndRegister();
 
-        GTCAMaterials.MAPP = new Material.Builder(GTCA.id("mapp"))
-                .fluid()
-                .color(0x686868)
-                .buildAndRegister()
-                .setFormula("5(C3H4)3(C3H4)2(C3H8)(C4H10)",true);
-
         GTCAMaterials.IsononylAlcohol = new Material.Builder(GTCA.id("isononyl_alcohol"))
                 .fluid()
                 .components(GTMaterials.Carbon, 9, GTMaterials.Hydrogen, 19, GTMaterials.Oxygen, 1, GTMaterials.Hydrogen, 1)
