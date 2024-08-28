@@ -1,5 +1,5 @@
 {
     "ldlib": {
-        "connection": "gtca:block/casing/SCT_casing_ctm"
+        "connection": "gtca:block/casing/shd_casing_ctm"
     }
 }

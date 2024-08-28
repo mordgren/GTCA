@@ -43,4 +43,12 @@ public class GTCAMaterials {
     public static Material Moltech;
     public static Material Vitallium;
     public static Material Inconel718;
+    public static Material Incoloy903;
+    public static Material MAR_M200;
+    public static Material MAR_CE_M200;
+    public static Material Incoloy846;
+
+    // Dusts
+
+    public static Material HeavyMetalMixture;
 }

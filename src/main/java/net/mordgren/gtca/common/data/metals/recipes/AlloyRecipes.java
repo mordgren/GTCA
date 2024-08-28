@@ -6,6 +6,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.BLAST_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MIXER_RECIPES;
 
 public class AlloyRecipes {
@@ -16,6 +17,12 @@ public class AlloyRecipes {
         Nimonic80A(provider);
         Moltech(provider);
         Vitallium(provider);
+        Incoloy903(provider);
+        Incoloy846(provider);
+        HeavyMetalMixture(provider);
+        MAR_M200(provider);
+        MAR_Ce_M200(provider);
+
     }
 
     private static void TM20MnAlloy(Consumer<FinishedRecipe> provider) {
@@ -74,4 +81,57 @@ public class AlloyRecipes {
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Vitallium, 10))
                 .save(provider);
     }
+    private static void Incoloy846(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("incoloy846").EUt(GTValues.VA[GTValues.HV]).duration(120)
+                .inputItems(GTCAHelper.getItem("dust",Iron ,12 ))
+                .inputItems(GTCAHelper.getItem("dust",Nickel , 10 ))
+                .inputItems(GTCAHelper.getItem("dust",Cobalt ,8 ))
+                .inputItems(GTCAHelper.getItem("dust",Titanium ,4 ))
+                .inputItems(GTCAHelper.getItem("dust",Molybdenum ,2 ))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Incoloy846, 36))
+                .save(provider);
+    }
+
+    private static void Incoloy903(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("incoloy903").EUt(GTValues.VA[GTValues.EV]).duration(80)
+                .inputItems(GTCAHelper.getItem("dust",GTCAMaterials.Incoloy846 ,36 ))
+                .inputItems(GTCAHelper.getItem("dust",Aluminium ,1 ))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Incoloy903, 37))
+                .save(provider);
+    }
+
+    private static void HeavyMetalMixture(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("heavy_metal_mixture").EUt(GTValues.VA[GTValues.EV]).duration(220)
+                .inputItems(GTCAHelper.getItem("dust",Niobium , 2))
+                .inputItems(GTCAHelper.getItem("dust",Chromium ,9 ))
+                .inputItems(GTCAHelper.getItem("dust",Titanium ,2 ))
+                .inputItems(GTCAHelper.getItem("dust",Aluminium , 5))
+                .inputItems(GTCAHelper.getItem("dust",Cobalt ,10 ))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.HeavyMetalMixture, 28 ))
+                .save(provider);
+
+    }
+
+    private static void MAR_M200(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("mar_m200").EUt(GTValues.VA[GTValues.EV]).duration(220)
+                .inputItems(GTCAHelper.getItem("dust",GTCAMaterials.HeavyMetalMixture , 28))
+                .inputItems(GTCAHelper.getItem("dust",Nickel ,18 ))
+                .inputItems(GTCAHelper.getItem("dust",Tungsten , 13))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.MAR_M200, 59 ))
+                .save(provider);
+
+    }
+
+    private static void MAR_Ce_M200(Consumer<FinishedRecipe> provider) {
+        BLAST_RECIPES.recipeBuilder("mar_ce_m200").EUt(GTValues.VA[GTValues.LuV]).duration(260)
+                .blastFurnaceTemp(7100)
+                .inputItems(GTCAHelper.getItem("ingot",GTCAMaterials.MAR_M200, 16 ))
+                .inputItems(GTCAHelper.getItem("dust", Cerium,1 ))
+                .inputItems(GTCAHelper.getItem("dust",LithiumChloride ,1 ))
+                .outputItems(GTCAHelper.getItem("hot_ingot", GTCAMaterials.MAR_CE_M200, 17 ))
+                .save(provider);
+    }
+
+
+
 }
