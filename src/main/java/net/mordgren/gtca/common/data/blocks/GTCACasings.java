@@ -30,4 +30,7 @@ public class GTCACasings {
     public static final BlockEntry<Block> PRW_Casing = CasingBuilder.createCasingBlock("pressure_resistant_wall",
             GTCA.id("block/casing/pressure_resistant_wall"));
 
+    public static final BlockEntry<Block> SHD_Gearbox = CasingBuilder.createCasingBlock("shd_gearbox",
+            GTCA.id("block/casing/machine_casing_gearbox_shd"));
+
 }

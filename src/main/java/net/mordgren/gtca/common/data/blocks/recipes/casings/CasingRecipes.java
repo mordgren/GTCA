@@ -17,8 +17,8 @@ public class CasingRecipes {
         dural_casing(provider);
         PRW_casing(provider);
         SHD_casing(provider);
-
-    }
+        SHD_gearbox(provider);
+  }
 
     private static void casing_aebf(Consumer<FinishedRecipe> provider) {
         ASSEMBLER_RECIPES.recipeBuilder("casing_aebf").EUt(GTValues.VA[GTValues.HV]).duration(80)
@@ -64,6 +64,35 @@ public class CasingRecipes {
                 .outputItems(GTCACasings.SHD_CASING, 1)
                 .save(provider);
     }
-
+    private static void SHD_gearbox(Consumer<FinishedRecipe> provider) {
+        ASSEMBLER_RECIPES.recipeBuilder("shd_gearbox").EUt(GTValues.VA[GTValues.HV]).duration(260)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.MAR_CE_M200, 4))
+                .inputItems(GTCAHelper.getItem("gear", GTCAMaterials.Moltech, 2))
+                .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.MAR_CE_M200, 1))
+                .outputItems(GTCACasings.SHD_Gearbox, 1)
+                .save(provider);
 
 }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

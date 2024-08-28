@@ -84,7 +84,8 @@ public class GTCAMetals {
                 .flags(
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_PLATE,
-                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
+                        MaterialFlags.GENERATE_GEAR
                 )
                 .dust()
                 .fluid()
