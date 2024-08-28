@@ -1,5 +1,8 @@
 package net.mordgren.gtca.common.data;
 
+import com.gregtechceu.gtceu.api.machine.feature.multiblock.IRotorHolderMachine;
+import com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
+import com.gregtechceu.gtceu.api.pattern.predicates.SimplePredicate;
 import com.gregtechceu.gtceu.common.data.GCyMBlocks;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
@@ -16,7 +19,9 @@ import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.lowdragmc.lowdraglib.utils.BlockInfo;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -154,9 +159,14 @@ public class GTCAMachines {
             .register();
 
     /// CHEMICAL GENERATOR ///
+    public static final MultiblockMachineDefinition IV_CHEMICAL_GENERATOR = registerChemicalGenerator(
+            "iv_chemical_generator", IV,
+            GTCACasings.INCONEL718_CASING, CASING_TUNGSTENSTEEL_GEARBOX, FIREBOX_TUNGSTENSTEEL, CASING_TUNGSTENSTEEL_PIPE,
+            GTCA.id("block/casing/inconel718_casing"),
+            GTCA.id("block/multiblock/aebf"));
 
-    public static final MultiblockMachineDefinition CHEMICAL_GENERATOR = registerChemicalGenerator(
-            "chemical_generator", EV,
+    public static final MultiblockMachineDefinition EV_CHEMICAL_GENERATOR = registerChemicalGenerator(
+            "ev_chemical_generator", EV,
             GTCACasings.VITALIUM_CASING, CASING_TITANIUM_GEARBOX, FIREBOX_TITANIUM, CASING_TITANIUM_PIPE,
             GTCA.id("block/casing/vitalium_casing"),
             GTCA.id("block/multiblock/aebf"));
@@ -295,6 +305,53 @@ public class GTCAMachines {
                     GTCA.id("block/multiblock/aebf"),
                     true
             )
+            .register();
+
+    public static final MultiblockMachineDefinition SHD_TURBINE = GTCA_REGISTRATE
+            .multiblock("shd_turbbine", holder -> new LargeTurbineMachine(holder, LuV))
+            .rotationState(RotationState.ALL)
+            .recipeType(GTCARecipeTypes.SHD_STEAM_TURBINE)
+            .generator(true)
+            .recipeModifier(LargeTurbineMachine::recipeModifier, true)
+            .appearanceBlock(GTCACasings.SHD_CASING)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("CCCC", "CHHC", "CCCC")
+                    .aisle("CHHC", "RGGR", "CHHC")
+                    .aisle("CCCC", "CSHC", "CCCC")
+                    .where('S', controller(blocks(definition.getBlock())))
+                    .where('G', blocks(CASING_TUNGSTENSTEEL_GEARBOX.get()))
+                    .where('C', blocks(GTCACasings.SHD_CASING.get()))
+                    .where('R',
+                            new TraceabilityPredicate(
+                                    new SimplePredicate(
+                                            state -> MetaMachine.getMachine(state.getWorld(),
+                                                    state.getPos()) instanceof IRotorHolderMachine rotorHolder &&
+                                                    state.getWorld()
+                                                            .getBlockState(state.getPos()
+                                                                    .relative(rotorHolder.self().getFrontFacing()))
+                                                            .isAir(),
+                                            () -> PartAbility.ROTOR_HOLDER.getAllBlocks().stream()
+                                                    .map(BlockInfo::fromBlock).toArray(BlockInfo[]::new)))
+                                    .addTooltips(Component.translatable("gtceu.multiblock.pattern.clear_amount_3"))
+                                    .addTooltips(Component.translatable("gtceu.multiblock.pattern.error.limited.1",
+                                            VN[LuV]))
+                                    .setExactLimit(1)
+                                    .or(abilities(PartAbility.OUTPUT_ENERGY)).setExactLimit(1))
+                    .where('H', blocks(GTCACasings.SHD_CASING.get())
+                            .or(autoAbilities(definition.getRecipeTypes(), false, false, true, true, true, true))
+                            .or(autoAbilities(true, true, false)))
+                    .build())
+            .recoveryItems(
+                    () -> new ItemLike[] { GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/shd_casing"),
+                    GTCA.id("block/multiblock/aebf")
+            )
+            .tooltips(
+                    Component.translatable("gtceu.universal.tooltip.base_production_eut", V[LuV] * 2),
+                    Component.translatable("gtceu.multiblock.turbine.efficiency_tooltip", VNF[LuV]))
+            .compassSections(GTCompassSections.TIER[HV])
+            .compassNodeSelf()
             .register();
 }
 

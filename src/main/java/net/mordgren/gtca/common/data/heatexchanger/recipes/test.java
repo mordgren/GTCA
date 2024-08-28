@@ -12,5 +12,10 @@ public class test {
                 .inputFluids(GTMaterials.Water.getFluid(20000))
                 .outputFluids(GTMaterials.Steam.getFluid(10000))
                 .save(provider);
+
+        GTCARecipeTypes.SHD_STEAM_TURBINE.recipeBuilder("test").duration(100).EUt(-32)
+                .inputFluids(GTMaterials.Water.getFluid(10))
+                .outputFluids(GTMaterials.DistilledWater.getFluid(10))
+                .save(provider);
     }
 }

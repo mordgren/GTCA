@@ -18,12 +18,12 @@ public class GTCACasings {
     public static final BlockEntry<Block> VITALIUM_CASING = CasingBuilder.createCasingBlock("vitalium_casing",
             GTCA.id("block/casing/vitalium_casing"));
 
-    public static final BlockEntry<Block> NIMONIC_CASING = CasingBuilder.createCasingBlock("nimonic_casing",
-            GTCA.id("block/casing/nimonic_casing"));
+    public static final BlockEntry<Block> NIMONIC80A_CASING = CasingBuilder.createCasingBlock("nimonic80a_casing",
+            GTCA.id("block/casing/nimonic80a_casing"));
 
-    public static final BlockEntry<Block> SCT_CASING = CasingBuilder.createCasingBlock("heavy_duty_casing",
-            GTCA.id("block/casing/SCT_casing"));
+    public static final BlockEntry<Block> SHD_CASING = CasingBuilder.createCasingBlock("heavy_duty_casing",
+            GTCA.id("block/casing/shd_casing"));
 
-    public static final BlockEntry<Block> INCONEL_CASING = CasingBuilder.createCasingBlock("chemicaly_resistive_casing",
-            GTCA.id("block/casing/inconel_casing"));
+    public static final BlockEntry<Block> INCONEL718_CASING = CasingBuilder.createCasingBlock("inconel718_casing",
+            GTCA.id("block/casing/inconel718_casing"));
 }
