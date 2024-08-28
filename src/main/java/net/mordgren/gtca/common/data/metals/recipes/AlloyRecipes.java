@@ -125,9 +125,15 @@ public class AlloyRecipes {
         BLAST_RECIPES.recipeBuilder("mar_ce_m200").EUt(GTValues.VA[GTValues.LuV]).duration(260)
                 .blastFurnaceTemp(7100)
                 .inputItems(GTCAHelper.getItem("ingot",GTCAMaterials.MAR_M200, 16 ))
-                .inputItems(GTCAHelper.getItem("dust", Cerium,1 ))
-                .inputItems(GTCAHelper.getItem("dust",LithiumChloride ,1 ))
+                .inputFluids(Cerium.getFluid(144))
+                .inputItems(GTCAHelper.getItem("dust", LithiumChloride ,1 ))
                 .outputItems(GTCAHelper.getItem("hotIngot", GTCAMaterials.MAR_CE_M200, 17 ))
+                .save(provider);
+
+        BLAST_RECIPES.recipeBuilder("mar_ce_m200_dust").EUt(GTValues.VA[GTValues.LuV]).duration(200)
+                .blastFurnaceTemp(7100)
+                .inputItems(GTCAHelper.getItem("dust",GTCAMaterials.MAR_CE_M200, 1 ))
+                .outputItems(GTCAHelper.getItem("hotIngot", GTCAMaterials.MAR_CE_M200, 1 ))
                 .save(provider);
 
         VACUUM_RECIPES.recipeBuilder("mar_ce_m200").EUt(GTValues.VA[GTValues.MV]).duration(175)

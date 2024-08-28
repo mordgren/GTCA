@@ -12,6 +12,10 @@ import net.mordgren.gtca.common.data.GTCAMaterials;
 public class GTCAMetals {
     public static void init(){
 
+        ///MISC
+        GTMaterials.NiobiumTitanium.addFlags(MaterialFlags.GENERATE_FRAME);
+
+        ///ALLOYS
         GTCAMaterials.TM20MnAlloy = new Material.Builder(GTCA.id("tm_20_mn_alloy"))
                 .components(GTMaterials.Tungsten, 4, GTMaterials.Molybdenum, 1, GTMaterials.Manganese, 1)
                 .flags(
@@ -184,8 +188,5 @@ public class GTCAMetals {
                 .color(0x051053)
                 .iconSet(MaterialIconSet.FLINT)
                 .buildAndRegister();
-
     }
-
-
 }
