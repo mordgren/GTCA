@@ -26,4 +26,8 @@ public class GTCACasings {
 
     public static final BlockEntry<Block> INCONEL718_CASING = CasingBuilder.createCasingBlock("inconel718_casing",
             GTCA.id("block/casing/inconel718_casing"));
+
+    public static final BlockEntry<Block> PRW_Casing = CasingBuilder.createCasingBlock("pressure_resistant_wall",
+            GTCA.id("block/casing/pressure_resistant_wall"));
+
 }
