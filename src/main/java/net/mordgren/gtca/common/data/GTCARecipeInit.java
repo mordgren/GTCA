@@ -11,6 +11,7 @@ import net.mordgren.gtca.common.data.greenhouse.recipes.GreenHouseRecipes;
 import net.mordgren.gtca.common.data.heatexchanger.recipes.test;
 import net.mordgren.gtca.common.data.metals.recipes.AlloyRecipes;
 import net.mordgren.gtca.common.data.polymerizer.recipes.PolymerizerRecipes;
+import net.mordgren.gtca.common.util.Misc;
 
 import java.util.function.Consumer;
 
@@ -32,9 +33,7 @@ public class GTCARecipeInit {
 
             test.init(provider);
 
-            miscRecipes(provider);
-        }
-
-        private static void miscRecipes(Consumer<FinishedRecipe> provider) {
+            Misc.init();
+            Misc.miscRecipes(provider);
         }
     }
