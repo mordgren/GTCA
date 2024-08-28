@@ -6,8 +6,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.BLAST_RECIPES;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MIXER_RECIPES;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 
 public class AlloyRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
@@ -128,7 +127,12 @@ public class AlloyRecipes {
                 .inputItems(GTCAHelper.getItem("ingot",GTCAMaterials.MAR_M200, 16 ))
                 .inputItems(GTCAHelper.getItem("dust", Cerium,1 ))
                 .inputItems(GTCAHelper.getItem("dust",LithiumChloride ,1 ))
-                .outputItems(GTCAHelper.getItem("hot_ingot", GTCAMaterials.MAR_CE_M200, 17 ))
+                .outputItems(GTCAHelper.getItem("hotIngot", GTCAMaterials.MAR_CE_M200, 17 ))
+                .save(provider);
+
+        VACUUM_RECIPES.recipeBuilder("mar_ce_m200").EUt(GTValues.VA[GTValues.MV]).duration(175)
+                .inputItems(GTCAHelper.getItem("hotIngot", GTCAMaterials.MAR_CE_M200, 1))
+                .outputItems(GTCAHelper.getItem("ingot", GTCAMaterials.MAR_CE_M200, 1))
                 .save(provider);
     }
 

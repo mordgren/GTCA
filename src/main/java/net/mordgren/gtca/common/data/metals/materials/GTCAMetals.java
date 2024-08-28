@@ -2,7 +2,6 @@ package net.mordgren.gtca.common.data.metals.materials;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
@@ -125,6 +124,8 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
                 )
+                .dust()
+                .fluid()
                 .blastTemp(3700, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 360)
                 .color(0xa7ad81)
                 .iconSet(MaterialIconSet.METALLIC)
@@ -138,6 +139,8 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
                 )
+                .dust()
+                .fluid()
                 .blastTemp(4200, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 380)
                 .color(0x494949)
                 .iconSet(MaterialIconSet.METALLIC)
@@ -145,8 +148,6 @@ public class GTCAMetals {
 
 
         GTCAMaterials.MAR_CE_M200 = new Material.Builder(GTCA.id("mar_ce_m200"))
-                .ingot()
-                .dust()
                 .components(GTMaterials.Niobium, 2, GTMaterials.Chromium, 9, GTMaterials.Titanium, 2, GTMaterials.Aluminium, 5, GTMaterials.Cobalt, 10, GTMaterials.Tungsten, 13, GTMaterials.Nickel, 18, GTMaterials.Cerium, 1)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
@@ -157,7 +158,8 @@ public class GTCAMetals {
 
                 )
                 .color(0x2a2a2a)
-                .blastTemp(5399)
+                .dust()
+                .blastTemp(5399, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 380)
                 .iconSet(MaterialIconSet.METALLIC)
                 .buildAndRegister()
                 .setFormula("(Nb2Cr9Al5Ti2Co10W13Ni18)16Ce",true);
@@ -169,6 +171,8 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
                 )
+                .dust()
+                .fluid()
                 .blastTemp(3400, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 360)
                 .color(0x96bcb3)
                 .iconSet(MaterialIconSet.METALLIC)
