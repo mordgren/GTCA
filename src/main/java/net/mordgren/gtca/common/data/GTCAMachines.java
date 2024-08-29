@@ -346,7 +346,7 @@ public class GTCAMachines {
                     () -> new ItemLike[] { GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
             .workableCasingRenderer(
                     GTCA.id("block/casing/shd_casing"),
-                    GTCA.id("block/multiblock/aebf")
+                    GTCA.id("block/multiblock/shd")
             )
             .tooltips(
                     Component.translatable("gtceu.universal.tooltip.base_production_eut", V[LuV] * 2),
