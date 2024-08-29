@@ -42,6 +42,7 @@ import java.util.stream.Stream;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
+import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Tungsten;
 import static net.mordgren.gtca.GTCA.GTCA_REGISTRATE;
 
@@ -118,8 +119,8 @@ public class GTCAMachines {
                         .where('V', CASING_EXTREME_ENGINE_INTAKE)
                         .where('F', ChemicalHelper.getBlock(TagPrefix.frameGt, Tungsten))
                         .where('#', Blocks.AIR.defaultBlockState())
-                        .where('E', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.NORTH)
-                        .where('P', GTMachines.ITEM_IMPORT_BUS[GTValues.LV], Direction.WEST)
+                        .where('E', ENERGY_INPUT_HATCH[GTValues.LV], Direction.NORTH)
+                        .where('P', ITEM_IMPORT_BUS[GTValues.LV], Direction.WEST)
                         .where('O', GTMachines.ITEM_EXPORT_BUS[GTValues.LV], Direction.WEST)
                         .where('G', GTMachines.FLUID_IMPORT_HATCH[GTValues.LV], Direction.EAST)
                         .where('D', GTMachines.FLUID_EXPORT_HATCH[GTValues.LV], Direction.EAST)
@@ -254,11 +255,11 @@ public class GTCAMachines {
                         .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
                         .aisle("FYDSL", "#AKA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
                         .where('A', GTCACasings.CASING_GREENHOUSE.getDefaultState())
-                        .where('F', GTMachines.ITEM_IMPORT_BUS[GTValues.ULV], Direction.SOUTH)
+                        .where('F', ITEM_IMPORT_BUS[GTValues.ULV], Direction.SOUTH)
                         .where('D', definition, Direction.SOUTH)
                         .where('Y', GTMachines.FLUID_IMPORT_HATCH[GTValues.ULV], Direction.SOUTH)
                         .where('S', GTMachines.ITEM_EXPORT_BUS[GTValues.ULV], Direction.SOUTH)
-                        .where('L', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.SOUTH)
+                        .where('L', ENERGY_INPUT_HATCH[GTValues.LV], Direction.SOUTH)
                         .where('K', GTMachines.MAINTENANCE_HATCH, Direction.SOUTH)
                         .where('C', Blocks.DIRT.defaultBlockState())
                         .where('B', CASING_TEMPERED_GLASS);
@@ -377,7 +378,7 @@ public class GTCAMachines {
                             .where("C", blocks(CASING_TUNGSTENSTEEL_ROBUST.get()).setMinGlobalLimited(115).or(Predicates.autoAbilities(definition.getRecipeTypes())).or(autoAbilities(true, false, false)))
                             .where("P", blocks(CASING_TUNGSTENSTEEL_PIPE.get()))
                             .where("W", blocks(GTCACasings.PRW_Casing.get()))
-                            .where("G", blocks(CASING_LAMINATED_GLASS.get()))
+                            .where("G", blocks(FUSION_GLASS.get()))
                             .where('#', air())
                             .build()
             )
@@ -386,6 +387,77 @@ public class GTCAMachines {
                     GTCEu.id("block/multiblock/implosion_compressor"),
                     true
             )
+            .register();
+
+    public static final MultiblockMachineDefinition MEGA_OIL_CRACKING_UNIT = GTCA_REGISTRATE
+            .multiblock("mega_oil_cracking_unit", CoilWorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.ALL)
+            .recipeType(GTRecipeTypes.CRACKING_RECIPES)
+            .recipeModifiers(GTRecipeModifiers.SUBTICK_PARALLEL, GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers::crackerOverclock)
+            .appearanceBlock(CASING_STAINLESS_CLEAN)
+            .pattern(definition -> FactoryBlockPattern.start()
+                    .aisle("HHHHHHHHHHHHH", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#")
+                    .aisle("HHHHHHHHHHHHH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HHGGGGGGGGGHH")
+                    .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#HGGGGGGGGGH#")
+                    .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#H#C###C###H#", "#H#C#C#C#C#H#", "#H#C###C###H#", "#G#C#C#C#C#G#", "#HGGGHHHGGGH#")
+                    .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#H#C#C#C#C#H#", "#O#C#C#C#C#I#", "#H#C#C#C#C#H#", "#G#C#C#C#C#G#", "#HGGGHAHGGGH#")
+                    .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#H#C###C###H#", "#H#C#C#C#C#H#", "#H#C###C###H#", "#G#C#C#C#C#G#", "#HGGGHHHGGGH#")
+                    .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#HGGGGGGGGGH#")
+                    .aisle("HHHHHHHHHHHHH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HHGGGGGGGGGHH")
+                    .aisle("HHHHHHXHHHHHH", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#")
+                    .where('X', Predicates.controller(blocks(definition.get())))
+                    .where('H', blocks(CASING_STAINLESS_CLEAN.get()).setMinGlobalLimited(12)
+                            .or(Predicates.autoAbilities(definition.getRecipeTypes(), true, false, true, false, false, false))
+                            .or(Predicates.autoAbilities(true, false, true)))
+                    .where('#', Predicates.air())
+                    .where('C', Predicates.heatingCoils())
+                    .where('G', blocks(CASING_LAMINATED_GLASS.get()))
+                    .where('I', abilities(PartAbility.IMPORT_FLUIDS))
+                    .where('A', abilities(PartAbility.IMPORT_FLUIDS))
+                    .where('O', abilities(PartAbility.EXPORT_FLUIDS))
+                    .build())
+            .shapeInfos(definition -> {
+                List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+                var builder = MultiblockShapeInfo.builder()
+                        .aisle("HHHHHHHHHHHHH", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#")
+                        .aisle("HHHHHHHHHHHHH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HHGGGGGGGGGHH")
+                        .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#HGGGGGGGGGH#")
+                        .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#H#C###C###H#", "#H#C#C#C#C#H#", "#H#C###C###H#", "#G#C#C#C#C#G#", "#HGGGHHHGGGH#")
+                        .aisle("EHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#H#C#C#C#C#H#", "#O#C#C#C#C#I#", "#H#C#C#C#C#H#", "#G#C#C#C#C#G#", "#HGGGHAHGGGH#")
+                        .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#H#C###C###H#", "#H#C#C#C#C#H#", "#H#C###C###H#", "#G#C#C#C#C#G#", "#HGGGHHHGGGH#")
+                        .aisle("HHHHHHHHHHHHH", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#G#C#C#C#C#G#", "#HGGGGGGGGGH#")
+                        .aisle("HHHHHHHHHHHHH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HGGGGGGGGGGGH", "HHGGGGGGGGGHH")
+                        .aisle("HHMHTHXHHHHHH", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#")
+                        .where('X', definition, Direction.SOUTH)
+                        .where('H', CASING_STAINLESS_CLEAN.getDefaultState())
+                        .where('E', ENERGY_INPUT_HATCH[GTValues.LV], Direction.WEST)
+                        .where('T', ITEM_IMPORT_BUS[GTValues.LV], Direction.SOUTH)
+                        .where('I', FLUID_IMPORT_HATCH[GTValues.LV], Direction.EAST)
+                        .where('A', FLUID_IMPORT_HATCH[GTValues.LV], Direction.UP)
+                        .where('O', FLUID_EXPORT_HATCH[GTValues.LV], Direction.WEST)
+                        .where('M', MAINTENANCE_HATCH, Direction.SOUTH)
+                        .where('G', CASING_LAMINATED_GLASS.getDefaultState())
+                        .where('#', Blocks.AIR.defaultBlockState());
+                GTCEuAPI.HEATING_COILS.entrySet().stream()
+                        .sorted(Comparator.comparingInt(entry -> entry.getKey().getTier()))
+                        .forEach(
+                                coil -> shapeInfo.add(builder.shallowCopy().where('C', coil.getValue().get()).build()));
+                return shapeInfo;
+            })
+            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
+                    GTCEu.id("block/multiblock/cracking_unit"))
+            .tooltips(
+                    Component.translatable("gtceu.multiblock.parallelizable.tooltip"),
+                    Component.translatable("gtceu.machine.cracker.tooltip.1")
+            )
+            .additionalDisplay((controller, components) -> {
+                if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
+                    components.add(Component.translatable("gtceu.multiblock.cracking_unit.energy",
+                            100 - 10 * coilMachine.getCoilTier()));
+                }
+            })
+            .compassSections(GTCompassSections.TIER[EV])
+            .compassNodeSelf()
             .register();
 }
 
