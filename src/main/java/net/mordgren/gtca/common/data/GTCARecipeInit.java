@@ -8,7 +8,7 @@ import net.mordgren.gtca.common.data.fuel.recipes.AltFuels;
 import net.mordgren.gtca.common.data.fuel.recipes.ChemGenFuels;
 import net.mordgren.gtca.common.data.fuel.recipes.AltSteam;
 import net.mordgren.gtca.common.data.greenhouse.recipes.GreenHouseRecipes;
-import net.mordgren.gtca.common.data.heatexchanger.recipes.test;
+import net.mordgren.gtca.common.data.heatexchanger.recipes.HERecipes;
 import net.mordgren.gtca.common.data.metals.recipes.AlloyRecipes;
 import net.mordgren.gtca.common.data.polymerizer.recipes.PolymerizerRecipes;
 import net.mordgren.gtca.common.util.Misc;
@@ -31,7 +31,7 @@ public class GTCARecipeInit {
             CasingRecipes.init(provider);
             GTCAMachinesRecipes.init(provider);
 
-            test.init(provider);
+            HERecipes.init(provider);
 
             Misc.init();
             Misc.miscRecipes(provider);

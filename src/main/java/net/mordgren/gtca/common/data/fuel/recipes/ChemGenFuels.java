@@ -47,6 +47,7 @@ public class ChemGenFuels {
         Fuels.add(new Object[]{"pta", GTMaterials.PhthalicAcid, 6, 90});
         Fuels.add(new Object[]{"fa", GTMaterials.FormicAcid, 6, 60});
         Fuels.add(new Object[]{"dino", GTCAMaterials.DiisononylPhthalate, 4, 263});
+        Fuels.add(new Object[]{"dino", GTCAMaterials.MAPP, 10, 320});
     }
 
     private static void chemGenRecipes(Consumer<FinishedRecipe> provider) {

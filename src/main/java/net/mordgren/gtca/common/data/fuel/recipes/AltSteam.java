@@ -8,11 +8,13 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.DistilledWater;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Steam;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.STEAM_TURBINE_FUELS;
+import static net.mordgren.gtca.common.data.GTCARecipeTypes.SHD_STEAM_TURBINE;
 import static net.mordgren.gtca.common.data.GTCARecipeTypes.STEAM_PRESSURIZER;
 
 public class AltSteam {
     public static void init(Consumer<FinishedRecipe> provider) {
         highPressureSteam(provider);
+        HESteam(provider);
     }
 
     private static void highPressureSteam (Consumer<FinishedRecipe> provider) {
@@ -23,6 +25,18 @@ public class AltSteam {
 
         STEAM_TURBINE_FUELS.recipeBuilder("hp_steam").EUt(-32).duration(25)
                 .inputFluids(GTCAMaterials.HighPressureSteam.getFluid(64))
+                .outputFluids(DistilledWater.getFluid(2))
+                .save(provider);
+    }
+
+    private static void HESteam (Consumer<FinishedRecipe> provider) {
+        SHD_STEAM_TURBINE.recipeBuilder("sh_steam").EUt(-32).duration(100)
+                .inputFluids(GTCAMaterials.SuperheatedSteam.getFluid(100))
+                .outputFluids(DistilledWater.getFluid(2))
+                .save(provider);
+
+        SHD_STEAM_TURBINE.recipeBuilder("sc_steam").EUt(-32).duration(200)
+                .inputFluids(GTCAMaterials.SuperCriticalSteam.getFluid(1000))
                 .outputFluids(DistilledWater.getFluid(2))
                 .save(provider);
     }

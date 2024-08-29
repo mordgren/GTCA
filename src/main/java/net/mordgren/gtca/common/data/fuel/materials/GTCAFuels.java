@@ -37,5 +37,15 @@ public class GTCAFuels {
                 .buildAndRegister()
                 .setFormula("5(C3H4)3(C3H4)2(C3H8)(C4H10)",true);
 
+        GTCAMaterials.SuperheatedSteam = new Material.Builder(GTCA.id("sh_steam"))
+                .gas(600)
+                .color(0xe6e6e6)
+                .buildAndRegister();
+
+        GTCAMaterials.SuperCriticalSteam = new Material.Builder(GTCA.id("sc_steam"))
+                .gas(648)
+                .color(0x212121)
+                .buildAndRegister();
+
     }
 }

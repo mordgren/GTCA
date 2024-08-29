@@ -94,7 +94,7 @@ public class GTCAMachines {
                     .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Tungsten)))
                     .where('V', blocks(GTBlocks.CASING_EXTREME_ENGINE_INTAKE.get()))
                     .where('I', blocks(GCyMBlocks.HEAT_VENT.get()))
-                    .where('X', blocks(GTCACasings.CASING_AEBF.get()).setMinGlobalLimited(9)
+                    .where('X', blocks(GTCACasings.CASING_AEBF.get()).setMinGlobalLimited(158)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, true)))
                     .where('H', abilities(PartAbility.MUFFLER))
@@ -199,7 +199,7 @@ public class GTCAMachines {
                         .where('S', blocks(pipe.get()))
                         .where('F', blocks(firebox.get()))
                         .where('G', blocks(gear.get()))
-                        .where('I', blocks(casing.get()).setMinGlobalLimited(3)
+                        .where('I', blocks(casing.get()).setMinGlobalLimited(30)
                                 .or(autoAbilities(definition.getRecipeTypes(), false, false, true, true, true, true))
                                 .or(autoAbilities(true, true, false)))
                         .where('D',
@@ -236,7 +236,7 @@ public class GTCAMachines {
                     .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
                     .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
                     .aisle("AADAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
-                    .where('A', blocks(GTCACasings.CASING_GREENHOUSE.get()).setMinGlobalLimited(6)
+                    .where('A', blocks(GTCACasings.CASING_GREENHOUSE.get()).setMinGlobalLimited(42)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, false)))
                     .where('D', controller(blocks(definition.getBlock())))
@@ -289,7 +289,7 @@ public class GTCAMachines {
                     .aisle("CCCCC", "CHCHC", "CPPPC", "CHCHC", "CCCCC")
                     .aisle("CCXCC", "CGCGC", "CGCGC", "CGCGC", "CCCCC")
                     .where('X', controller(blocks(definition.getBlock())))
-                    .where('C', blocks(GTCACasings.DURAL_CASING.get()).setMinGlobalLimited(6)
+                    .where('C', blocks(GTCACasings.DURAL_CASING.get()).setMinGlobalLimited(55)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, false)))
                     .where('H', blocks(HERMETIC_CASING_HV.get()))
@@ -308,7 +308,7 @@ public class GTCAMachines {
             .register();
 
     public static final MultiblockMachineDefinition SHD_TURBINE = GTCA_REGISTRATE
-            .multiblock("shd_turbbine", holder -> new LargeTurbineMachine(holder, LuV))
+            .multiblock("shd_turbine", holder -> new LargeTurbineMachine(holder, LuV))
             .rotationState(RotationState.ALL)
             .recipeType(GTCARecipeTypes.SHD_STEAM_TURBINE)
             .generator(true)
@@ -319,7 +319,7 @@ public class GTCAMachines {
                     .aisle("CHHC", "RGGR", "CHHC")
                     .aisle("CCCC", "CSHC", "CCCC")
                     .where('S', controller(blocks(definition.getBlock())))
-                    .where('G', blocks(CASING_TUNGSTENSTEEL_GEARBOX.get()))
+                    .where('G', blocks(GTCACasings.SHD_Gearbox.get()))
                     .where('C', blocks(GTCACasings.SHD_CASING.get()))
                     .where('R',
                             new TraceabilityPredicate(
@@ -352,6 +352,40 @@ public class GTCAMachines {
                     Component.translatable("gtceu.multiblock.turbine.efficiency_tooltip", VNF[LuV]))
             .compassSections(GTCompassSections.TIER[HV])
             .compassNodeSelf()
+            .register();
+
+
+
+    public static final MultiblockMachineDefinition EXTREME_HEAT_EXCHANGER = GTCA_REGISTRATE.multiblock("extreme_heat_exchanger", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.EXTREME_HEAT_EXCHANGER)
+            .appearanceBlock(CASING_TUNGSTENSTEEL_ROBUST)
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("#CCC#", "#CCC#", "#CCC#", "#CCC#", "#CCC#", "#CCC#")
+                            .aisle("CCCCC", "GPPPG", "GPPPG", "GPPPG", "GPPPG", "CCCCC")
+                            .aisle("CCCCC", "GWWWG", "GWWWG", "GWWWG", "GWWWG", "CCCCC")
+                            .aisle("CCCCC", "GPPPG", "GPPPG", "GPPPG", "GPPPG", "CCCCC")
+                            .aisle("CCCCC", "GWWWG", "GWWWG", "GWWWG", "GWWWG", "CCCCC")
+                            .aisle("CCCCC", "GPPPG", "GPPPG", "GPPPG", "GPPPG", "CCCCC")
+                            .aisle("CCCCC", "GWWWG", "GWWWG", "GWWWG", "GWWWG", "CCCCC")
+                            .aisle("CCCCC", "GPPPG", "GPPPG", "GPPPG", "GPPPG", "CCCCC")
+                            .aisle("CCCCC", "GWWWG", "GWWWG", "GWWWG", "GWWWG", "CCCCC")
+                            .aisle("CCCCC", "GPPPG", "GPPPG", "GPPPG", "GPPPG", "CCCCC")
+                            .aisle("#CEC#", "#CCC#", "#CCC#", "#CCC#", "#CCC#", "#CCC#")
+                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where("C", blocks(CASING_TUNGSTENSTEEL_ROBUST.get()).setMinGlobalLimited(115).or(Predicates.autoAbilities(definition.getRecipeTypes())).or(autoAbilities(true, false, false)))
+                            .where("P", blocks(CASING_TUNGSTENSTEEL_PIPE.get()))
+                            .where("W", blocks(GTCACasings.PRW_Casing.get()))
+                            .where("G", blocks(CASING_LAMINATED_GLASS.get()))
+                            .where('#', air())
+                            .build()
+            )
+            .workableCasingRenderer(
+                    GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
+                    GTCEu.id("block/multiblock/implosion_compressor"),
+                    true
+            )
             .register();
 }
 

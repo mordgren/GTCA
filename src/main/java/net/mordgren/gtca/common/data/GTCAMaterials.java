@@ -17,6 +17,9 @@ public class GTCAMaterials {
     public static Material HighPressureSteam;
     public static Material E85Fuel;
     public static Material DiisononylPhthalate;
+    public static Material SuperCriticalSteam;
+    public static Material SuperheatedSteam;
+
 
 
     // Chemicals

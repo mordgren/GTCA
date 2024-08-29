@@ -47,7 +47,7 @@ public class GTCARecipeTypes {
             .setSound(GTSoundEntries.COOLING)
             .setEUIO(IO.NONE);
 
-    public static final GTRecipeType SHD_STEAM_TURBINE = register("shd_steam_turbine", MULTIBLOCK)
+    public static final GTRecipeType SHD_STEAM_TURBINE = register("shd_turbine", MULTIBLOCK)
             .setMaxIOSize(0,0,1,1)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
