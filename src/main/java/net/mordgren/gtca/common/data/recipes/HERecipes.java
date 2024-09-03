@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.heatexchanger.recipes;
+package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;

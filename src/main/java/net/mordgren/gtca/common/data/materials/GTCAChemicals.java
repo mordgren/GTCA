@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.chemicals.materials;
+package net.mordgren.gtca.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;

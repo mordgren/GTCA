@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.blocks;
+package net.mordgren.gtca.common.data;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.world.level.block.Block;

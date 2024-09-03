@@ -1,10 +1,10 @@
-package net.mordgren.gtca.common.data.blocks.recipes.casings;
+package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;
-import net.mordgren.gtca.common.data.blocks.GTCACasings;
+import net.mordgren.gtca.common.data.GTCACasings;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;

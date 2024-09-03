@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.chemicals.recipes;
+package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;

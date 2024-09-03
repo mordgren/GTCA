@@ -31,7 +31,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.GTCA;
-import net.mordgren.gtca.common.data.blocks.GTCACasings;
 import net.mordgren.gtca.common.util.AEBFMod;
 import net.mordgren.gtca.common.util.ChemGenProps;
 import java.util.ArrayList;

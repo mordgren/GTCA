@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.blocks.recipes.machines;
+package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;

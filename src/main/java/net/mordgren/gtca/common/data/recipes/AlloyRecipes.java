@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.metals.recipes;
+package net.mordgren.gtca.common.data.recipes;
 
 import java.util.function.Consumer;
 import com.gregtechceu.gtceu.api.GTValues;

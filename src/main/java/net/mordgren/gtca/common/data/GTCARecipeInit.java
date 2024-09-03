@@ -1,16 +1,16 @@
 package net.mordgren.gtca.common.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.mordgren.gtca.common.data.blocks.recipes.casings.CasingRecipes;
-import net.mordgren.gtca.common.data.blocks.recipes.machines.GTCAMachinesRecipes;
-import net.mordgren.gtca.common.data.chemicals.recipes.ChemGenChemicals;
-import net.mordgren.gtca.common.data.fuel.recipes.AltFuels;
-import net.mordgren.gtca.common.data.fuel.recipes.ChemGenFuels;
-import net.mordgren.gtca.common.data.fuel.recipes.AltSteam;
-import net.mordgren.gtca.common.data.greenhouse.recipes.GreenHouseRecipes;
-import net.mordgren.gtca.common.data.heatexchanger.recipes.HERecipes;
-import net.mordgren.gtca.common.data.metals.recipes.AlloyRecipes;
-import net.mordgren.gtca.common.data.polymerizer.recipes.PolymerizerRecipes;
+import net.mordgren.gtca.common.data.recipes.CasingRecipes;
+import net.mordgren.gtca.common.data.recipes.GTCAMachinesRecipes;
+import net.mordgren.gtca.common.data.recipes.ChemGenChemicals;
+import net.mordgren.gtca.common.data.recipes.fuel.AltFuels;
+import net.mordgren.gtca.common.data.recipes.fuel.ChemGenFuels;
+import net.mordgren.gtca.common.data.recipes.fuel.AltSteam;
+import net.mordgren.gtca.common.data.recipes.GreenHouseRecipes;
+import net.mordgren.gtca.common.data.recipes.HERecipes;
+import net.mordgren.gtca.common.data.recipes.AlloyRecipes;
+import net.mordgren.gtca.common.data.recipes.PolymerizerRecipes;
 import net.mordgren.gtca.common.util.Misc;
 
 import java.util.function.Consumer;

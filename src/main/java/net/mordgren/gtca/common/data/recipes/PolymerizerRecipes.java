@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.polymerizer.recipes;
+package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;

@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.greenhouse.recipes;
+package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
