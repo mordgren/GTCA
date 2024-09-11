@@ -461,8 +461,39 @@ public class GTCAMachines {
             .compassNodeSelf()
             .register();
 
-
-
+    public static final MultiblockMachineDefinition MEGA_LCR = GTCA_REGISTRATE
+            .multiblock("mega_lcr", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeTypes(GTRecipeTypes.LARGE_CHEMICAL_RECIPES)
+            .appearanceBlock(CASING_PTFE_INERT)
+            .recipeModifiers(GTRecipeModifiers.SUBTICK_PARALLEL, GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC")
+                            .aisle("CCCCC", "G#N#G", "G#P#G", "G#N#G", "CCCCC")
+                            .aisle("CCCCC", "G#N#G", "G#P#G", "G#N#G", "CCCCC")
+                            .aisle("CCCCC", "G#N#G", "G#P#G", "G#N#G", "CCCCC")
+                            .aisle("CCCCC", "G#N#G", "G#P#G", "G#N#G", "CCCCC")
+                            .aisle("CCCCC", "G#N#G", "G#P#G", "G#N#G", "CCCCC")
+                            .aisle("CCCCC", "G#N#G", "G#P#G", "G#N#G", "CCCCC")
+                            .aisle("CCCCC", "G#N#G", "G#P#G", "G#N#G", "CCCCC")
+                            .aisle("CCCCC", "CGCGC", "CGEGC", "CGCGC", "CCCCC")
+                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where("N", blocks(COIL_CUPRONICKEL.get()))
+                            .where("G", blocks(CASING_LAMINATED_GLASS.get()))
+                            .where("P", blocks(CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))
+                            .where('#', Predicates.air())
+                            .where('C', blocks(CASING_PTFE_INERT.get()).setMinGlobalLimited(100)
+                                    .or(autoAbilities(definition.getRecipeTypes()))
+                                    .or(autoAbilities(true, false, true)))
+                            .build()
+            )
+            .workableCasingRenderer(
+                    GTCEu.id("block/casings/solid/machine_casing_inert_ptfe"),
+                    GTCA.id("block/multiblock/shd"),
+                    true
+            )
+            .register();
 }
 
 
