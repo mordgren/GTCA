@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAMaterials;
@@ -169,6 +170,9 @@ public class GTCAMetals {
                 .dust()
                 .blastTemp(5399, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 380)
                 .iconSet(MaterialIconSet.METALLIC)
+                .rotorStats(170, 120, 4.0f, 117230 )
+                .toolStats(ToolProperty.Builder.of(57.0F, 15.0F, 5042, 5)
+                        .attackSpeed(0.3F).enchantability(33).build())
                 .buildAndRegister()
                 .setFormula("(Nb2Cr9Al5Ti2Co10W13Ni18)16Ce",true);
 

@@ -14,7 +14,7 @@ import static net.mordgren.gtca.common.data.GTCARecipeTypes.STEAM_PRESSURIZER;
 public class AltSteam {
     public static void init(Consumer<FinishedRecipe> provider) {
         highPressureSteam(provider);
-        HESteam(provider);
+        SCsteam(provider);
     }
 
     private static void highPressureSteam (Consumer<FinishedRecipe> provider) {
@@ -29,15 +29,18 @@ public class AltSteam {
                 .save(provider);
     }
 
-    private static void HESteam (Consumer<FinishedRecipe> provider) {
+
+    private static void SCsteam (Consumer<FinishedRecipe> provider) {
+
+        /*
         SHD_STEAM_TURBINE.recipeBuilder("sh_steam").EUt(-32).duration(100)
                 .inputFluids(GTCAMaterials.SuperheatedSteam.getFluid(100))
                 .outputFluids(DistilledWater.getFluid(2))
                 .save(provider);
+       */
 
-        SHD_STEAM_TURBINE.recipeBuilder("sc_steam").EUt(-32).duration(200)
-                .inputFluids(GTCAMaterials.SuperCriticalSteam.getFluid(1000))
-                .outputFluids(DistilledWater.getFluid(2))
+        SHD_STEAM_TURBINE.recipeBuilder("sc_steam").EUt(-100).duration(10)
+                .inputFluids(GTCAMaterials.SuperCriticalSteam.getFluid(1))
                 .save(provider);
     }
 }

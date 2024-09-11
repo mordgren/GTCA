@@ -76,6 +76,8 @@ public class GTCAMachines {
             .register();
 
     /// ADVANCED EBF ///
+
+
     public static final MultiblockMachineDefinition ADVANCED_EBF = GTCA_REGISTRATE
             .multiblock("advanced_ebf", CoilWorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
@@ -458,6 +460,12 @@ public class GTCAMachines {
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()
             .register();
+
+
+
 }
+
+
+
 
 
