@@ -493,6 +493,10 @@ public class GTCAMachines {
                     GTCA.id("block/multiblock/shd"),
                     true
             )
+            .tooltips(
+                    Component.translatable("gtceu.multiblock.parallelizable.tooltip"),
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Chemical Reactor / LCR")
+            )
             .register();
 }
 

@@ -4,14 +4,13 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import net.mordgren.gtca.common.data.materials.GTCAChemicals;
 import net.mordgren.gtca.common.data.materials.GTCAFuels;
 import net.mordgren.gtca.common.data.materials.GTCAMetals;
-import net.mordgren.gtca.common.data.materials.MaterialFlagAddition;
 
 public class GTCAMaterials {
     public static void init() {
         GTCAFuels.init();
         GTCAMetals.init();
         GTCAChemicals.init();
-        MaterialFlagAddition.init();
+        //MaterialFlagAddition.init();
     }
 
     // Fuels
@@ -56,6 +55,4 @@ public class GTCAMaterials {
     // Dusts
 
     public static Material HeavyMetalMixture;
-
-    public static Material Neutronite;
 }

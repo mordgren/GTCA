@@ -1,6 +1,5 @@
 package net.mordgren.gtca.common.data.materials;
 
-import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
@@ -10,8 +9,6 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAMaterials;
-
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.DISABLE_DECOMPOSITION;
 
 public class GTCAMetals {
     public static void init(){
@@ -194,14 +191,6 @@ public class GTCAMetals {
                 .dust()
                 .components(GTMaterials.Niobium, 2, GTMaterials.Chromium, 9, GTMaterials.Titanium, 2, GTMaterials.Aluminium, 5, GTMaterials.Cobalt, 10)
                 .color(0x051053)
-                .iconSet(MaterialIconSet.FLINT)
-                .buildAndRegister();
-
-        GTCAMaterials.Neutronite = new Material.Builder(GTCEu.id("neutronite"))
-                .dust(3).ore()
-                .components(GTMaterials.Neutronium, 1, GTMaterials.Sulfur, 2)
-                .flags(DISABLE_DECOMPOSITION)
-                .color(0xe1c0fc)
                 .iconSet(MaterialIconSet.FLINT)
                 .buildAndRegister();
     }

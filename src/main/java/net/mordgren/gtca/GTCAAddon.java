@@ -3,7 +3,6 @@ package net.mordgren.gtca;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.mordgren.gtca.common.data.GTCAOres;
 import net.mordgren.gtca.common.data.GTCARecipeInit;
 
 import java.util.function.Consumer;
@@ -35,8 +34,8 @@ public class GTCAAddon implements IGTAddon {
                 //CustomTagPrefixes.init();
         }
 
-        @Override
-        public void registerOreVeins() {
-                GTCAOres.init();
-        }
+//        @Override
+//        public void registerOreVeins() {
+//                GTCAOres.init();
+//        }
 }
