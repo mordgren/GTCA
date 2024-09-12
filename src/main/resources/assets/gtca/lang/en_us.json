@@ -1,0 +1,69 @@
+{
+  "block.gtca.steam_pressurizer":"Steam Pressurizer",
+  "gtceu.steam_pressurizer":"Steam Pressurizer",
+  "block.gtca.advanced_ebf":"Advanced EBF",
+  "gtceu.advanced_ebf":"Advanced EBF",
+  "block.gtca.ev_chemical_generator": "Chemical Combustion Engine",
+  "gtceu.ev_chemical_generator": "Chemical Combustion Engine",
+  "block.gtca.iv_chemical_generator": "Extreme Chemical Combustion Engine",
+  "gtceu.iv_chemical_generator": "Extreme Chemical Combustion Engine",
+  "block.gtca.green_house":"Green House",
+  "gtceu.green_house":"Green House",
+  "block.gtca.polymerizer":"Polymerizer",
+  "gtceu.polymerizer":"Polymerizer",
+  "block.gtca.shd_turbine":"SC Turbine",
+  "gtceu.shd_turbine":"SC Turbine",
+  "block.gtca.extreme_heat_exchanger":"Extreme Heat Exchanger",
+  "gtceu.extreme_heat_exchanger":"Extreme Heat Exchanger",
+  "block.gtca.mega_oil_cracking_unit":"Mega Oil Cracking Unit",
+  "block.gtca.mega_lcr":"Chemical Reaction Chamber",
+
+
+
+  "block.gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
+  "gtceu.casing_aebf":"Advanced Heat Proof Machine Casing",
+  "block.gtca.casing_greenhouse":"Humidity Balanced Casing",
+  "block.gtca.dural_casing": "Poly-Sustained Casing",
+  "block.gtca.vitalium_casing": "Robust Chemically Inert Casing",
+  "block.gtca.nimonic80a_casing": "Nimonic 80A Casing",
+  "block.gtca.shd_casing": "Super Heavy Duty Casing",
+  "block.gtca.shd_gearbox": "Super Heavy Duty Gearbox",
+  "block.gtca.inconel718_casing": "Heavy Duty Chemically Inert Casing",
+  "block.gtca.pressure_resistant_wall": "Pressure Resistant Wall",
+
+
+
+  "material.gtca.tm_20_mn_alloy": "TM-20-Mn Alloy",
+  "material.gtca.c_n_f_alloy": "CFNi-Alloy",
+  "material.gtca.dural": "Dural",
+  "material.gtca.nimonic80a": "Nimonic 80A",
+  "material.gtca.moltech": "MolTech",
+  "material.gtca.vitallium": "Vitallium 2000+",
+  "material.gtca.inconel718": "Inconel 718",
+  "material.gtca.incoloy903": "Incoloy 903",
+  "material.gtca.mar_m200": "MAR-M200",
+  "material.gtca.mar_ce_m200": "MAR-Ce-M200",
+  "material.gtca.incoloy846": "Incoloy 846",
+  "material.gtca.heavy_metal_mixture": "Heavy Metal Mixture",
+
+
+
+  "material.gtca.aluminosilicate_catalyst": "Aluminosilicate Catalyst",
+  "material.gtca.propyne": "Propyne",
+  "material.gtca.propadiene": "Propadiene",
+  "material.gtca.isononyl_alcohol": "Isononyl Alcohol",
+  "material.gtca.phthalic_anhydride": "Phthalic Anhydride",
+  "material.gtca.oxylene": "Oxylene",
+  "material.gtca.octene": "Octene",
+
+
+
+  "material.gtca.e85_fuel": "E85 Fuel",
+  "material.gtca.high_pressure_steam": "High Pressure Steam",
+  "material.gtca.dymethyl_ether": "Dymethyl Ether",
+  "material.gtca.diisononyl_phthalate": "Diisononyl Phthalate",
+  "material.gtca.mapp": "MAPP Gas",
+  "material.gtca.sh_steam": "Superheated Steam",
+  "material.gtca.sc_steam": "Supercritical Steam"
+
+}
