@@ -166,8 +166,7 @@ dependencies {
     implementation("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.26.b") { transitive = false }
 
     //GTNN
-    implementation fg.deobf("curse.maven:gt-985872:5643932")
-    //implementation("curse.maven:gt-985872:5506519")
+    implementation fg.deobf("curse.maven:gt-985872:5643932") //1.0.9
 
 //    implementation fg.deobf("curse.maven:applied-energistics-2-223794:4997114")
 
