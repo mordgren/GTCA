@@ -169,8 +169,8 @@ public class GTCAMachines {
 
     public static final MultiblockMachineDefinition EV_CHEMICAL_GENERATOR = registerChemicalGenerator(
             "ev_chemical_generator", EV,
-            GTCACasings.VITALIUM_CASING, CASING_TITANIUM_GEARBOX, FIREBOX_TITANIUM, CASING_TITANIUM_PIPE,
-            GTCA.id("block/casing/vitalium_casing"),
+            GTCACasings.VITALLIUM_CASING, CASING_TITANIUM_GEARBOX, FIREBOX_TITANIUM, CASING_TITANIUM_PIPE,
+            GTCA.id("block/casing/vitallium_casing"),
             GTCA.id("block/multiblock/aebf"));
 
 

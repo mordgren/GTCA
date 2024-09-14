@@ -15,8 +15,8 @@ public class GTCACasings {
     public static final BlockEntry<Block> DURAL_CASING = CasingBuilder.createCasingBlock("dural_casing",
             GTCA.id("block/casing/dural_casing"));
 
-    public static final BlockEntry<Block> VITALIUM_CASING = CasingBuilder.createCasingBlock("vitalium_casing",
-            GTCA.id("block/casing/vitalium_casing"));
+    public static final BlockEntry<Block> VITALLIUM_CASING = CasingBuilder.createCasingBlock("vitallium_casing",
+            GTCA.id("block/casing/vitallium_casing"));
 
     public static final BlockEntry<Block> NIMONIC80A_CASING = CasingBuilder.createCasingBlock("nimonic80a_casing",
             GTCA.id("block/casing/nimonic80a_casing"));

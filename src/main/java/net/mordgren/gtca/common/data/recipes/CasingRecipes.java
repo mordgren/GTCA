@@ -19,7 +19,7 @@ public class CasingRecipes {
         SHD_casing(provider);
         SHD_gearbox(provider);
         Vitallium_casing(provider);
-        Inconnel718_casing(provider);
+        Inconel718_casing(provider);
   }
 
     private static void casing_aebf(Consumer<FinishedRecipe> provider) {
@@ -77,16 +77,16 @@ public class CasingRecipes {
 
     }
     private static void Vitallium_casing(Consumer<FinishedRecipe> provider) {
-        ASSEMBLER_RECIPES.recipeBuilder("shd_gearbox").EUt(GTValues.VA[GTValues.HV]).duration(200)
+        ASSEMBLER_RECIPES.recipeBuilder("vitallium_casing").EUt(GTValues.VA[GTValues.HV]).duration(200)
                 .circuitMeta(6)
                 .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Vitallium, 4))
                 .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.Vitallium, 1))
-                .outputItems(GTCACasings.VITALIUM_CASING, 2)
+                .outputItems(GTCACasings.VITALLIUM_CASING, 2)
                 .save(provider);
 
     }
-    private static void Inconnel718_casing(Consumer<FinishedRecipe> provider) {
-        ASSEMBLER_RECIPES.recipeBuilder("shd_gearbox").EUt(GTValues.VA[GTValues.HV]).duration(280)
+    private static void Inconel718_casing(Consumer<FinishedRecipe> provider) {
+        ASSEMBLER_RECIPES.recipeBuilder("inconel718_casing").EUt(GTValues.VA[GTValues.HV]).duration(280)
                 .circuitMeta(6)
                 .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Inconel718, 4))
                 .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.Inconel718, 1))
