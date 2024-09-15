@@ -1,0 +1,179 @@
+[09:00:07] [main/INFO] (Launcher) ModLauncher running: args [--all, --mod, gtca, --output, C:\Users\mordrgen\Desktop\vboxshare\nonwrk\GregTech-Addon-Template\src\generated\resources, --launchTarget, forgedatauserdev, --assetIndex, 1.20.1-5, --assetsDir, C:\Users\mordrgen\.gradle\caches\fabric-loom\assets, --gameDir, ., --fml.forgeVersion, 47.3.7, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --existing=C:\Users\mordrgen\Desktop\vboxshare\nonwrk\GregTech-Addon-Template\src\main\resources]
+[09:00:07] [main/INFO] (Launcher) ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.12 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[09:00:07] [main/INFO] (ImmediateWindowHandler) ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[09:00:07] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/mordrgen/.gradle/caches/modules-2/files-2.1/dev.architectury/mixin-patched/0.8.5.11/dd886ad7af30604cbd9aa0f1eb9fb95b079013ca/mixin-patched-0.8.5.11.jar%23129!/ Service=ModLauncher Env=CLIENT
+[09:00:07] [main/WARN] (ModFileParser) Mod file C:\Users\mordrgen\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.7\5d72a04334eea2494912f0d91216648462bb32c3\javafmllanguage-1.20.1-47.3.7.jar is missing mods.toml file
+[09:00:07] [main/WARN] (ModFileParser) Mod file C:\Users\mordrgen\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.7\74fd0ee16e74766d45d2efe7c74b6d0e121677df\lowcodelanguage-1.20.1-47.3.7.jar is missing mods.toml file
+[09:00:07] [main/WARN] (ModFileParser) Mod file C:\Users\mordrgen\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.7\cf753f5bc19311c127ea07e1ee43d5f9477df22b\mclanguage-1.20.1-47.3.7.jar is missing mods.toml file
+[09:00:07] [main/WARN] (ModFileParser) Mod file C:\Users\mordrgen\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.7\b6a4840dfdc56e2ae2eccdd1bf233959493d11ea\fmlcore-1.20.1-47.3.7.jar is missing mods.toml file
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file javafmllanguage-1.20.1-47.3.7.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@7adbd080
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file lowcodelanguage-1.20.1-47.3.7.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@7adbd080
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file mclanguage-1.20.1-47.3.7.jar of type LANGPROVIDER with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@7adbd080
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file fmlcore-1.20.1-47.3.7.jar of type LIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@7adbd080
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file forge-1.20.1-47.3.7-minecraft-merged-a4b3b1868b-1.20.1-loom.mappings.1_20_1.layered+hash.1413125907-v2-forge-1.20.1-47.3.7.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@7adbd080
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file main of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@7adbd080
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file  of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.MinecraftLocator@7adbd080
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file mixinextras-forge-0.2.0.jar of type GAMELIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file gtceu-1.20.1-1.4.1+patch.2-slim.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file ldlib-forge-1.20.1-1.0.27.b.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file kubejs-forge-2001.6.5-build.14.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file mixinextras-forge-0.2.0-rc.2.jar of type GAMELIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file architectury-forge-9.1.12.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file rhino-forge-2001.2.2-build.17.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file configuration-forge-1.20.1-2.2.0.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file jei-1.20.1-forge-15.19.0.87.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file mixinextras-forge-0.2.0.jar of type GAMELIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file gtceu-1.20.1-1.4.1+patch.2-slim.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file ldlib-forge-1.20.1-1.0.27.b.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file Registrate-MC1.20-1.3.3.jar of type GAMELIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file kubejs-forge-2001.6.5-build.14.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file mixinextras-forge-0.2.0-rc.2.jar of type GAMELIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file architectury-forge-9.1.12.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file rhino-forge-2001.2.2-build.17.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file configuration-forge-1.20.1-2.2.0.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file jei-1.20.1-forge-15.19.0.87.jar of type MOD with provider net.minecraftforge.fml.loading.moddiscovery.ClasspathLocator@6ca320ab
+[09:00:07] [main/INFO] (JarInJarDependencyLocator) Found 1 dependencies adding them to mods collection
+[09:00:07] [main/INFO] (ModDiscoverer) Found mod file MixinExtras-0.2.0.jar of type GAMELIBRARY with provider net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator@6d2260db
+[09:00:09] [main/INFO] (mixin) Compatibility level set to JAVA_17
+[09:00:09] [main/INFO] (LaunchServiceHandler) Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\mordrgen\.gradle\caches\fabric-loom\assets, --all, --mod, gtca, --output, C:\Users\mordrgen\Desktop\vboxshare\nonwrk\GregTech-Addon-Template\src\generated\resources, --assetIndex, 1.20.1-5, --existing=C:\Users\mordrgen\Desktop\vboxshare\nonwrk\GregTech-Addon-Template\src\main\resources]
+[09:00:09] [main/INFO] (unprotect) Found 7429 Minecraft classes
+[09:00:09] [main/INFO] (mixin) Remapping refMap rhino-common-refmap.json using RemapperChain (Architectury Patched)
+[09:00:09] [main/INFO] (mixin) Remapping refMap configuration.refmap.json using RemapperChain (Architectury Patched)
+[09:00:09] [main/INFO] (mixin) Remapping refMap architectury-forge-refmap.json using RemapperChain (Architectury Patched)
+[09:00:09] [main/INFO] (mixin) Remapping refMap architectury-common-refmap.json using RemapperChain (Architectury Patched)
+[09:00:09] [main/INFO] (mixin) Remapping refMap ldlib-common-1.20.1-ldlib-common-refmap.json using RemapperChain (Architectury Patched)
+[09:00:09] [main/INFO] (mixin) Remapping refMap ldlib-forge-1.20.1-ldlib-forge-refmap.json using RemapperChain (Architectury Patched)
+[09:00:09] [main/INFO] (mixin) Remapping refMap kubejs-forge-refmap.json using RemapperChain (Architectury Patched)
+[09:00:09] [main/INFO] (mixin) Remapping refMap kubejs-common-refmap.json using RemapperChain (Architectury Patched)
+[09:00:09] [main/INFO] (mixin) Remapping refMap gtceu.refmap.json using RemapperChain (Architectury Patched)
+[09:00:10] [main/WARN] (mixin) Error loading class: mezz/modnametooltip/TooltipEventHandler (java.lang.ClassNotFoundException: mezz.modnametooltip.TooltipEventHandler)
+[09:00:10] [main/WARN] (mixin) Error loading class: me/shedaniel/rei/impl/client/ClientHelperImpl (java.lang.ClassNotFoundException: me.shedaniel.rei.impl.client.ClientHelperImpl)
+[09:00:10] [main/WARN] (mixin) Error loading class: appeng/helpers/externalstorage/GenericStackInv (java.lang.ClassNotFoundException: appeng.helpers.externalstorage.GenericStackInv)
+[09:00:10] [main/WARN] (mixin) @Mixin target appeng.helpers.externalstorage.GenericStackInv was not found gtceu.mixins.json:ae2.GenericStackInvAccessor
+[15сент.2024 09:00:10.580] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.2.0).
+[15сент.2024 09:00:10.767] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [gtca]
+[15сент.2024 09:00:14.535] [modloading-worker-0/INFO] [LowDragLib/]: LowDragLib is initializing on platform: Forge
+[15сент.2024 09:00:14.535] [modloading-worker-0/INFO] [GregTechCEu/]: GregTechCEu is initializing on platform: Forge
+[15сент.2024 09:00:14.571] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.7, for MC 1.20.1 with MCP 20230612.114412
+[15сент.2024 09:00:14.572] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.7 Initialized
+[15сент.2024 09:00:14.687] [modloading-worker-0/INFO] [KubeJS/]: Loaded common.properties
+[15сент.2024 09:00:14.689] [modloading-worker-0/INFO] [KubeJS/]: Loaded dev.properties
+[15сент.2024 09:00:14.699] [modloading-worker-0/INFO] [KubeJS Startup/]: Capturing errors for startup scripts enabled
+[15сент.2024 09:00:14.701] [modloading-worker-0/INFO] [KubeJS/]: Looking for KubeJS plugins...
+[15сент.2024 09:00:14.707] [modloading-worker-0/INFO] [KubeJS/]: Found plugin source kubejs
+[15сент.2024 09:00:14.732] [modloading-worker-0/INFO] [Configuration/FileWatching]: Registered configuration config for auto-sync function
+[15сент.2024 09:00:14.737] [modloading-worker-0/WARN] [KubeJS/]: Plugin dev.latvian.mods.kubejs.integration.forge.gamestages.GameStagesIntegration does not have required mod gamestages loaded, skipping
+[15сент.2024 09:00:14.737] [modloading-worker-0/INFO] [KubeJS/]: Found plugin source gtceu
+[15сент.2024 09:00:14.741] [modloading-worker-0/INFO] [Configuration/FileWatching]: Registered gtceu config for auto-sync function
+[15сент.2024 09:00:14.751] [modloading-worker-0/INFO] [GregTechCEu/]: High-Tier is Enabled.
+[15сент.2024 09:00:14.754] [modloading-worker-0/INFO] [KubeJS/]: Found plugin source ldlib
+[15сент.2024 09:00:14.757] [modloading-worker-0/INFO] [KubeJS/]: Done in 54.15 ms
+[15сент.2024 09:00:14.992] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id architectury:sync_ids
+[15сент.2024 09:00:14.994] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id architectury:sync_ids
+[15сент.2024 09:00:15.060] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[15сент.2024 09:00:15.065] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 4.066 ms
+[15сент.2024 09:00:15.144] [modloading-worker-0/INFO] [Rhino Script Remapper/]: Loading Rhino Minecraft remapper...
+[15сент.2024 09:00:15.146] [modloading-worker-0/INFO] [dev.latvian.mods.rhino.mod.util.RhinoProperties/]: Rhino properties loaded.
+[15сент.2024 09:00:15.149] [modloading-worker-0/INFO] [Rhino Script Remapper/]: Loading mappings for 1.20.1
+[15сент.2024 09:00:15.189] [modloading-worker-0/INFO] [Rhino Script Remapper/]: Done in 0,044 s
+[15сент.2024 09:00:15.632] [modloading-worker-0/INFO] [KubeJS Startup/]: example.js#5: Hello, World! (Loaded startup scripts)
+[15сент.2024 09:00:15.633] [modloading-worker-0/INFO] [KubeJS Startup/]: Loaded script startup_scripts:example.js in 0.032 s
+[15сент.2024 09:00:15.635] [modloading-worker-0/INFO] [KubeJS Startup/]: Loaded 1/1 KubeJS startup scripts in 0.444 s with 0 errors and 0 warnings
+[15сент.2024 09:00:15.671] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id kubejs:send_data_from_client
+[15сент.2024 09:00:15.671] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:send_data_from_server
+[15сент.2024 09:00:15.673] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:paint
+[15сент.2024 09:00:15.673] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:add_stage
+[15сент.2024 09:00:15.673] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:remove_stage
+[15сент.2024 09:00:15.674] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:sync_stages
+[15сент.2024 09:00:15.674] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id kubejs:first_click
+[15сент.2024 09:00:15.675] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:toast
+[15сент.2024 09:00:15.675] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:reload_startup_scripts
+[15сент.2024 09:00:15.675] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:display_server_errors
+[15сент.2024 09:00:15.675] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering S2C receiver with id kubejs:display_client_errors
+[15сент.2024 09:00:15.684] [main/INFO] [GregTechCEu/]: GTCEu common proxy init!
+[15сент.2024 09:00:15.708] [main/INFO] [GregTechCEu/]: Registering material registries
+[15сент.2024 09:00:15.708] [main/INFO] [GregTechCEu/]: Registering GTCEu Materials
+[15сент.2024 09:00:15.782] [main/INFO] [GregTechCEu/]: Registering addon Materials
+[15сент.2024 09:00:15.785] [main/WARN] [GregTechCEu/]: Material material.gtca.mar_ce_m200 does not have required property fluid for flag disable_alloy_blast!
+[15сент.2024 09:00:15.870] [main/WARN] [GregTechCEu/]: FluidStorageKey{gtceu:liquid} already has an associated fluid for material gtceu:water
+[15сент.2024 09:00:15.909] [main/WARN] [GregTechCEu/]: FluidStorageKey{gtceu:liquid} already has an associated fluid for material gtceu:lava
+[15сент.2024 09:00:16.920] [main/INFO] [GregTechCEu/]: Registering KeyBinds
+[15сент.2024 09:00:16.920] [main/WARN] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Mod 'gtceu' took 1.236 s to run a deferred task.
+[15сент.2024 09:00:16.950] [main/INFO] [KubeJS/]: Skipping minecraft:sound_event registry
+[15сент.2024 09:00:16.959] [main/INFO] [KubeJS/]: Skipping minecraft:fluid registry
+[15сент.2024 09:00:17.035] [main/INFO] [KubeJS/]: Skipping minecraft:block registry
+[15сент.2024 09:00:17.251] [main/INFO] [KubeJS/]: Skipping minecraft:attribute registry
+[15сент.2024 09:00:17.254] [main/INFO] [KubeJS/]: Skipping minecraft:mob_effect registry
+[15сент.2024 09:00:17.259] [main/INFO] [KubeJS/]: Skipping minecraft:particle_type registry
+[15сент.2024 09:00:17.265] [main/INFO] [KubeJS/]: Skipping minecraft:item registry
+[15сент.2024 09:00:17.474] [main/INFO] [KubeJS/]: Skipping minecraft:entity_type registry
+[15сент.2024 09:00:17.477] [main/INFO] [KubeJS/]: Skipping minecraft:sensor_type registry
+[15сент.2024 09:00:17.479] [main/INFO] [KubeJS/]: Skipping minecraft:memory_module_type registry
+[15сент.2024 09:00:17.481] [main/INFO] [KubeJS/]: Skipping minecraft:potion registry
+[15сент.2024 09:00:17.482] [main/INFO] [KubeJS/]: Skipping minecraft:game_event registry
+[15сент.2024 09:00:17.483] [main/INFO] [KubeJS/]: Skipping minecraft:enchantment registry
+[15сент.2024 09:00:17.484] [main/INFO] [KubeJS/]: Skipping minecraft:block_entity_type registry
+[15сент.2024 09:00:17.501] [main/INFO] [KubeJS/]: Skipping minecraft:painting_variant registry
+[15сент.2024 09:00:17.503] [main/INFO] [KubeJS/]: Skipping minecraft:stat_type registry
+[15сент.2024 09:00:17.504] [main/INFO] [KubeJS/]: Skipping minecraft:custom_stat registry
+[15сент.2024 09:00:17.504] [main/INFO] [KubeJS/]: Skipping minecraft:chunk_status registry
+[15сент.2024 09:00:17.506] [main/INFO] [KubeJS/]: Skipping minecraft:rule_test registry
+[15сент.2024 09:00:17.507] [main/INFO] [KubeJS/]: Skipping minecraft:rule_block_entity_modifier registry
+[15сент.2024 09:00:17.507] [main/INFO] [KubeJS/]: Skipping minecraft:pos_rule_test registry
+[15сент.2024 09:00:17.508] [main/INFO] [KubeJS/]: Skipping minecraft:menu registry
+[15сент.2024 09:00:17.510] [main/INFO] [KubeJS/]: Skipping minecraft:recipe_type registry
+[15сент.2024 09:00:17.512] [main/INFO] [KubeJS/]: Skipping minecraft:recipe_serializer registry
+[15сент.2024 09:00:17.521] [main/INFO] [KubeJS/]: Skipping minecraft:position_source_type registry
+[15сент.2024 09:00:17.523] [main/INFO] [KubeJS/]: Skipping minecraft:command_argument_type registry
+[15сент.2024 09:00:17.527] [main/INFO] [KubeJS/]: Skipping minecraft:villager_type registry
+[15сент.2024 09:00:17.529] [main/INFO] [KubeJS/]: Skipping minecraft:villager_profession registry
+[15сент.2024 09:00:17.530] [main/INFO] [KubeJS/]: Skipping minecraft:point_of_interest_type registry
+[15сент.2024 09:00:17.531] [main/INFO] [KubeJS/]: Skipping minecraft:schedule registry
+[15сент.2024 09:00:17.532] [main/INFO] [KubeJS/]: Skipping minecraft:activity registry
+[15сент.2024 09:00:17.533] [main/INFO] [KubeJS/]: Skipping minecraft:loot_pool_entry_type registry
+[15сент.2024 09:00:17.534] [main/INFO] [KubeJS/]: Skipping minecraft:loot_function_type registry
+[15сент.2024 09:00:17.536] [main/INFO] [KubeJS/]: Skipping minecraft:loot_condition_type registry
+[15сент.2024 09:00:17.537] [main/INFO] [KubeJS/]: Skipping minecraft:loot_number_provider_type registry
+[15сент.2024 09:00:17.538] [main/INFO] [KubeJS/]: Skipping minecraft:loot_nbt_provider_type registry
+[15сент.2024 09:00:17.539] [main/INFO] [KubeJS/]: Skipping minecraft:loot_score_provider_type registry
+[15сент.2024 09:00:17.540] [main/INFO] [KubeJS/]: Skipping minecraft:float_provider_type registry
+[15сент.2024 09:00:17.541] [main/INFO] [KubeJS/]: Skipping minecraft:int_provider_type registry
+[15сент.2024 09:00:17.542] [main/INFO] [KubeJS/]: Skipping minecraft:height_provider_type registry
+[15сент.2024 09:00:17.543] [main/INFO] [KubeJS/]: Skipping minecraft:block_predicate_type registry
+[15сент.2024 09:00:17.543] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/carver registry
+[15сент.2024 09:00:17.544] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/feature registry
+[15сент.2024 09:00:17.547] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/structure_processor registry
+[15сент.2024 09:00:17.549] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/structure_placement registry
+[15сент.2024 09:00:17.550] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/structure_piece registry
+[15сент.2024 09:00:17.551] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/structure_type registry
+[15сент.2024 09:00:17.551] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/placement_modifier_type registry
+[15сент.2024 09:00:17.552] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/block_state_provider_type registry
+[15сент.2024 09:00:17.553] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/foliage_placer_type registry
+[15сент.2024 09:00:17.554] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/trunk_placer_type registry
+[15сент.2024 09:00:17.554] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/root_placer_type registry
+[15сент.2024 09:00:17.555] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/tree_decorator_type registry
+[15сент.2024 09:00:17.555] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/feature_size_type registry
+[15сент.2024 09:00:17.556] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/biome_source registry
+[15сент.2024 09:00:17.557] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/chunk_generator registry
+[15сент.2024 09:00:17.557] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/material_condition registry
+[15сент.2024 09:00:17.559] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/material_rule registry
+[15сент.2024 09:00:17.559] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/density_function_type registry
+[15сент.2024 09:00:17.560] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/structure_pool_element registry
+[15сент.2024 09:00:17.560] [main/INFO] [KubeJS/]: Skipping minecraft:cat_variant registry
+[15сент.2024 09:00:17.561] [main/INFO] [KubeJS/]: Skipping minecraft:frog_variant registry
+[15сент.2024 09:00:17.562] [main/INFO] [KubeJS/]: Skipping minecraft:banner_pattern registry
+[15сент.2024 09:00:17.562] [main/INFO] [KubeJS/]: Skipping minecraft:instrument registry
+[15сент.2024 09:00:17.563] [main/INFO] [KubeJS/]: Skipping minecraft:decorated_pot_patterns registry
+[15сент.2024 09:00:17.564] [main/INFO] [KubeJS/]: Skipping minecraft:creative_mode_tab registry
+[15сент.2024 09:00:17.568] [main/INFO] [KubeJS/]: Skipping forge:biome_modifier_serializers registry
+[15сент.2024 09:00:17.574] [main/INFO] [KubeJS/]: Skipping forge:display_contexts registry
+[15сент.2024 09:00:17.576] [main/INFO] [KubeJS/]: Skipping forge:entity_data_serializers registry
+[15сент.2024 09:00:17.578] [main/INFO] [KubeJS/]: Skipping forge:fluid_type registry
+[15сент.2024 09:00:17.587] [main/INFO] [KubeJS/]: Skipping forge:global_loot_modifier_serializers registry
+[15сент.2024 09:00:17.590] [main/INFO] [KubeJS/]: Skipping forge:holder_set_type registry
+[15сент.2024 09:00:17.595] [main/INFO] [KubeJS/]: Skipping forge:structure_modifier_serializers registry
+[15сент.2024 09:00:17.598] [main/INFO] [KubeJS/]: Skipping minecraft:worldgen/biome registry
+[15сент.2024 09:00:17.695] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/mordrgen/Desktop/vboxshare/nonwrk/GregTech-Addon-Template/.gradle/loom-cache/minecraftMaven/net/minecraft/forge-1.20.1-47.3.7-minecraft-merged-a4b3b1868b/1.20.1-loom.mappings.1_20_1.layered+hash.1413125907-v2-forge-1.20.1-47.3.7/forge-1.20.1-47.3.7-minecraft-merged-a4b3b1868b-1.20.1-loom.mappings.1_20_1.layered+hash.1413125907-v2-forge-1.20.1-47.3.7.jar%23199!/assets/.mcassetsroot' uses unexpected schema
+[15сент.2024 09:00:17.695] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/mordrgen/Desktop/vboxshare/nonwrk/GregTech-Addon-Template/.gradle/loom-cache/minecraftMaven/net/minecraft/forge-1.20.1-47.3.7-minecraft-merged-a4b3b1868b/1.20.1-loom.mappings.1_20_1.layered+hash.1413125907-v2-forge-1.20.1-47.3.7/forge-1.20.1-47.3.7-minecraft-merged-a4b3b1868b-1.20.1-loom.mappings.1_20_1.layered+hash.1413125907-v2-forge-1.20.1-47.3.7.jar%23199!/data/.mcassetsroot' uses unexpected schema
+[15сент.2024 09:00:17.818] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 0 ms
+[15сент.2024 09:00:17.820] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 0, old count: 0, new count: 1, removed stale: 0, written: 0
