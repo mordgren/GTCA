@@ -152,6 +152,19 @@ public class GTCAMachinesRecipes {
                 'H', GTMachines.HULL[GTValues.EV].asStack(),
                 'P', new UnificationEntry(TagPrefix.plate, GTCAMaterials.Tantalloy61),
                 'C', CustomTags.EV_CIRCUITS);
+
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "thermal_reactor",
+                /// Output
+                GTCAMachines.THERMAL_REACTOR.asStack(),
+                /// Pattern
+                "RHR", "PSP", "CXC",
+                /// Ingredients definition
+                'X', GTMachines.CHEMICAL_REACTOR[GTValues.EV].asStack(),
+                'H', new UnificationEntry(TagPrefix.pipeHugeFluid, Titanium),
+                'C', CustomTags.EV_CIRCUITS,
+                'R', new UnificationEntry(TagPrefix.rotor, TungstenSteel),
+                'P', ELECTRIC_PUMP_EV.asStack(),
+                'S', new UnificationEntry(TagPrefix.spring, TungstenSteel));
     }
 
 }

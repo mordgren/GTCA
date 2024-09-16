@@ -21,6 +21,7 @@ public class CasingRecipes {
         Vitallium_casing(provider);
         Inconel718_casing(provider);
         Tantalloy61_casing(provider);
+        nimonic80a_casing(provider);
 
   }
 
@@ -103,6 +104,15 @@ public class CasingRecipes {
                 .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Tantalloy61, 6))
                 .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.Tantalloy61, 1))
                 .outputItems(GTCACasings.TANTALLOY61_CASING, 2)
+                .save(provider);
+    }
+
+    private static void nimonic80a_casing(Consumer<FinishedRecipe> provider) {
+        ASSEMBLER_RECIPES.recipeBuilder("nimonic80a_casing").EUt(GTValues.VA[GTValues.EV]).duration(140)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Nimonic80A, 6))
+                .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.Nimonic80A, 1))
+                .outputItems(GTCACasings.NIMONIC80A_CASING, 2)
                 .save(provider);
     }
 
