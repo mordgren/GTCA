@@ -5,6 +5,7 @@ import dev.arbor.gtnn.data.GTNNRecipeTypes;
 import dev.arbor.gtnn.data.GTNNRecipes;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;
+import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
 
@@ -19,6 +20,13 @@ public class AltFuelsGTNN {
                 .inputFluids(LightFuel.getFluid(3000))
                 .inputFluids(EthylTertButylEther.getFluid(50))
                 .outputFluids(GTCAMaterials.E85Fuel.getFluid(20000))
+                .save(provider);
+
+        GTNNRecipeTypes.INSTANCE.getDEHYDRATOR_RECIPES().recipeBuilder("dymethyl_ether").EUt(1280).duration(240)
+                .inputFluids(Methanol.getFluid(4000))
+                .chancedInput((GTCAHelper.getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1)), 7400, 0)
+                .chancedOutput((GTCAHelper.getItem("dust", Zeolite, 1)),2000,0)
+                .outputFluids(GTCAMaterials.DymethylEther.getFluid(12000))
                 .save(provider);
     }
 }
