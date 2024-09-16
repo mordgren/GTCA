@@ -9,7 +9,7 @@ license = "${mod_license}"
 
 [[mods]]
     modId = "gtca"
-    version = "1.0.1a"
+    version = "1.0.2a"
     displayName = "${mod_name}"
     displayURL = "${mod_url}"
     # This will be displayed as your mod's logo in the Mods panel.
@@ -18,10 +18,7 @@ license = "${mod_license}"
     # credits="Thanks to Mojang for making this great game" #optional
     # Some more fluff displayed in the Mods panel. Plug your stuff here!
     authors="${mod_author}"
-    description = '''
-Example Description
-...ain is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,... (Lorem Ipsum translated to english.)
-'''
+    description = "GTCEu Modern Addon. New multiblocks, materials, etc"
 
     [[dependencies.gtca]]
         modId = "forge"
