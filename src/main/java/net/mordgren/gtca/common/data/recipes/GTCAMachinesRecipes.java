@@ -141,6 +141,17 @@ public class GTCAMachinesRecipes {
                 'H', GTMachines.HULL[GTValues.IV].asStack(),
                 'P', new UnificationEntry(TagPrefix.plate, GTCAMaterials.MAR_M200),
                 'L', new UnificationEntry(TagPrefix.pipeLargeFluid, TungstenSteel));
+
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "industrial_coke_oven",
+                /// Output
+                GTCAMachines.INDUSTRIAL_COKE_OVEN.asStack(),
+                /// Pattern
+                "PCP", "HBH", "PCP",
+                /// Ingredients definition
+                'B', GTMachines.COKE_OVEN.asStack(),
+                'H', GTMachines.HULL[GTValues.EV].asStack(),
+                'P', new UnificationEntry(TagPrefix.plate, GTCAMaterials.Tantalloy61),
+                'C', CustomTags.EV_CIRCUITS);
     }
 
 }

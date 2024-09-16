@@ -54,10 +54,10 @@ public class GTCARecipeTypes {
             .setSound(GTSoundEntries.TURBINE)
             .setEUIO(IO.OUT);
 
-    public static final GTRecipeType TEC_GENERATOR = register("tec_generator", MULTIBLOCK)
-            .setMaxIOSize(0,0,1,1)
+    public static final GTRecipeType INDUSTRIAL_COKE_OVEN = register("industrial_coke_oven", MULTIBLOCK)
+            .setMaxIOSize(2,9,1,1)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_GAS_COLLECTOR, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setSound(GTSoundEntries.COOLING)
-            .setEUIO(IO.OUT);
+            .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressTexture.FillDirection.DOWN_TO_UP)
+            .setSound(GTSoundEntries.FURNACE)
+            .setEUIO(IO.IN);
 }

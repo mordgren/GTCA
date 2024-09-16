@@ -12,6 +12,7 @@ public class AltFuels {
         e85Fuel(provider);
         dymethylEther(provider);
     }
+
     private static void e85Fuel(Consumer<FinishedRecipe> provider) {
         LARGE_CHEMICAL_RECIPES.recipeBuilder("e85fuel").EUt(480).duration(80)
                 .inputFluids(Ethanol.getFluid(17000))
@@ -19,14 +20,6 @@ public class AltFuels {
                 .inputFluids(EthylTertButylEther.getFluid(100))
                 .outputFluids(GTCAMaterials.E85Fuel.getFluid(20000))
                 .save(provider);
-
-//        INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("e85fuel").EUt(480).duration(60)
-//                .addCondition(GTNNRecipes.INSTANCE.setPlantCasing(PlantCasingCondition.STEEL))
-//                .inputFluids(Ethanol.getFluid(17050))
-//                .inputFluids(LightFuel.getFluid(3000))
-//                .inputFluids(EthylTertButylEther.getFluid(50))
-//                .outputFluids(GTCAMaterials.E85Fuel.getFluid(20000))
-//                .save(provider);
 
         COMBUSTION_GENERATOR_FUELS.recipeBuilder("e85fuel").EUt(-32).duration(90)
                 .inputFluids(GTCAMaterials.E85Fuel.getFluid(2))
@@ -57,11 +50,12 @@ public class AltFuels {
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1))
                 .save(provider);
 
-//        INSTANCE.getDEHYDRATOR_RECIPES().recipeBuilder("dymethyl_ether").EUt(1280).duration(240)
-//                .inputFluids(Methanol.getFluid(4000))
-//                .chancedInput((GTCAHelper.getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1)), 7400, 0)
-//                .chancedOutput((GTCAHelper.getItem("dust", Zeolite, 1)),2000,0)
-//                .outputFluids(GTCAMaterials.DymethylEther.getFluid(12000))
-//                .save(provider);
+        BLAST_RECIPES.recipeBuilder("dymethyl_ether").EUt(1280).duration(240)
+                .inputFluids(Methanol.getFluid(4000))
+                .blastFurnaceTemp(2700)
+                .chancedInput((GTCAHelper.getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1)), 7400, 0)
+                .chancedOutput((GTCAHelper.getItem("dust", Zeolite, 1)),2000,0)
+                .outputFluids(GTCAMaterials.DymethylEther.getFluid(12000))
+                .save(provider);
     }
 }

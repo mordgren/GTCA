@@ -10,11 +10,16 @@ base {
 version = project.mod_version
 group = project.maven_group
 
+tasks.withType(Copy) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+tasks.withType(Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 java {
     sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 }
-
-def generatedResources = file("src/generated")
 
 sourceSets {
     main {

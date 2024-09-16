@@ -193,5 +193,35 @@ public class GTCAMetals {
                 .color(0x051053)
                 .iconSet(MaterialIconSet.FLINT)
                 .buildAndRegister();
+
+        GTCAMaterials.Tantalloy60 = new Material.Builder(GTCA.id("tantalloy60"))
+                .components(GTMaterials.Tungsten, 2,GTMaterials.Tantalum, 23)
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                )
+                .dust()
+                .fluid()
+                .blastTemp(3300, BlastProperty.GasTier.MID, GTValues.VA[GTValues.HV], 750)
+                .color(0xcfe2e8)
+                .iconSet(MaterialIconSet.METALLIC)
+                .buildAndRegister();
+
+        GTCAMaterials.Tantalloy61 = new Material.Builder(GTCA.id("tantalloy61"))
+                .components(GTCAMaterials.Tantalloy60, 1, GTMaterials.Titanium, 6, GTMaterials.Yttrium, 4)
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
+                )
+                .dust()
+                .fluid()
+                .blastTemp(3305, BlastProperty.GasTier.MID, GTValues.VA[GTValues.HV], 750)
+                .color(0xc1d3d9)
+                .iconSet(MaterialIconSet.METALLIC)
+                .buildAndRegister()
+                .setFormula("(W2Ta23)Ti6Y4",true);
+
     }
 }

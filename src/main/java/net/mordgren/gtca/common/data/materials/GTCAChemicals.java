@@ -37,7 +37,7 @@ public class GTCAChemicals {
                 .flags(MaterialFlags.DISABLE_DECOMPOSITION)
                 .buildAndRegister();
 
-        GTCAMaterials.PhthalicAnhydride = new Material.Builder(GTCA.id("phthalic_anhydride"))
+        GTCAMaterials.PhthalicAnhydride = new Material.Builder(GTCA.id("phthalic_anhydride_gtca"))
                 .fluid()
                 .components(GTMaterials.Carbon, 8,GTMaterials.Hydrogen, 4, GTMaterials.Oxygen, 3)
                 .color(0x558000)

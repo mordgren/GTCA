@@ -18,6 +18,10 @@ public class CasingRecipes {
         PRW_casing(provider);
         SHD_casing(provider);
         SHD_gearbox(provider);
+        Vitallium_casing(provider);
+        Inconel718_casing(provider);
+        Tantalloy61_casing(provider);
+
   }
 
     private static void casing_aebf(Consumer<FinishedRecipe> provider) {
@@ -64,6 +68,7 @@ public class CasingRecipes {
                 .outputItems(GTCACasings.SHD_CASING, 1)
                 .save(provider);
     }
+
     private static void SHD_gearbox(Consumer<FinishedRecipe> provider) {
         ASSEMBLER_RECIPES.recipeBuilder("shd_gearbox").EUt(GTValues.VA[GTValues.HV]).duration(260)
                 .circuitMeta(6)
@@ -72,8 +77,34 @@ public class CasingRecipes {
                 .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.MAR_CE_M200, 1))
                 .outputItems(GTCACasings.SHD_Gearbox, 1)
                 .save(provider);
+    }
 
-}
+    private static void Vitallium_casing(Consumer<FinishedRecipe> provider) {
+        ASSEMBLER_RECIPES.recipeBuilder("vitallium_casing").EUt(GTValues.VA[GTValues.HV]).duration(100)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Vitallium, 6))
+                .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.Vitallium, 1))
+                .outputItems(GTCACasings.VITALLIUM_CASING, 2)
+                .save(provider);
+    }
+
+    private static void Inconel718_casing(Consumer<FinishedRecipe> provider) {
+        ASSEMBLER_RECIPES.recipeBuilder("inconel718_casing").EUt(GTValues.VA[GTValues.EV]).duration(140)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Inconel718, 6))
+                .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.Inconel718, 1))
+                .outputItems(GTCACasings.INCONEL718_CASING, 2)
+                .save(provider);
+    }
+
+    private static void Tantalloy61_casing(Consumer<FinishedRecipe> provider) {
+        ASSEMBLER_RECIPES.recipeBuilder("tantalloy61_casing").EUt(GTValues.VA[GTValues.HV]).duration(120)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Tantalloy61, 6))
+                .inputItems(GTCAHelper.getItem("frame", GTCAMaterials.Tantalloy61, 1))
+                .outputItems(GTCACasings.TANTALLOY61_CASING, 2)
+                .save(provider);
+    }
 
 }
 

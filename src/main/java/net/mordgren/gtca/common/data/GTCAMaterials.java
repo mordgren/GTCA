@@ -51,6 +51,8 @@ public class GTCAMaterials {
     public static Material MAR_M200;
     public static Material MAR_CE_M200;
     public static Material Incoloy846;
+    public static Material Tantalloy60;
+    public static Material Tantalloy61;
 
     // Dusts
 

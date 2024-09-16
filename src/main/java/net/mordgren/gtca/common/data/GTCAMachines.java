@@ -43,7 +43,7 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Tungsten;
-import static net.mordgren.gtca.GTCA.REGISTRATE;
+import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 
 public class GTCAMachines {
     public static void init() {}
@@ -170,8 +170,8 @@ public class GTCAMachines {
 
     public static final MultiblockMachineDefinition EV_CHEMICAL_GENERATOR = registerChemicalGenerator(
             "ev_chemical_generator", EV,
-            GTCACasings.VITALIUM_CASING, CASING_TITANIUM_GEARBOX, FIREBOX_TITANIUM, CASING_TITANIUM_PIPE,
-            GTCA.id("block/casing/vitalium_casing"),
+            GTCACasings.VITALLIUM_CASING, CASING_TITANIUM_GEARBOX, FIREBOX_TITANIUM, CASING_TITANIUM_PIPE,
+            GTCA.id("block/casing/vitallium_casing"),
             GTCA.id("block/multiblock/aebf"));
 
 
@@ -499,6 +499,32 @@ public class GTCAMachines {
             .tooltips(
                     Component.translatable("gtceu.multiblock.parallelizable.tooltip"),
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Chemical Reactor / LCR")
+            )
+            .register();
+
+    public static final MultiblockMachineDefinition INDUSTRIAL_COKE_OVEN = REGISTRATE.multiblock("industrial_coke_oven", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.INDUSTRIAL_COKE_OVEN)
+            .appearanceBlock(GTCACasings.TANTALLOY61_CASING)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("CCC", "FFF", "CCC")
+                            .aisle("CCC", "F#F", "CMC")
+                            .aisle("CEC", "FFF", "CCC")
+                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where("F", blocks(FIREBOX_TUNGSTENSTEEL.get()))
+                            .where('M', abilities(PartAbility.MUFFLER))
+                            .where('#', Predicates.air())
+                            .where("C", blocks(GTCACasings.TANTALLOY61_CASING.get()).setMinGlobalLimited(11)
+                                  .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                  .or(autoAbilities(true, false, false)))
+                            .build()
+            )
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/tantalloy61_casing"),
+                    GTCEu.id("block/multiblock/implosion_compressor"),
+                    true
             )
             .register();
 }

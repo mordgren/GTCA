@@ -17,6 +17,8 @@
   "gtceu.extreme_heat_exchanger":"Extreme Heat Exchanger",
   "block.gtca.mega_oil_cracking_unit":"Mega Oil Cracking Unit",
   "block.gtca.mega_lcr":"Chemical Reaction Chamber",
+  "block.gtca.industrial_coke_oven":"Industrial Coke Oven",
+  "gtceu.industrial_coke_oven":"Industrial Coke Oven",
 
 
 
@@ -24,12 +26,13 @@
   "gtceu.casing_aebf":"Advanced Heat Proof Machine Casing",
   "block.gtca.casing_greenhouse":"Humidity Balanced Casing",
   "block.gtca.dural_casing": "Poly-Sustained Casing",
-  "block.gtca.vitalium_casing": "Robust Chemically Inert Casing",
+  "block.gtca.vitallium_casing": "Robust Chemically Inert Casing",
   "block.gtca.nimonic80a_casing": "Nimonic 80A Casing",
   "block.gtca.shd_casing": "Super Heavy Duty Casing",
   "block.gtca.shd_gearbox": "Super Heavy Duty Gearbox",
   "block.gtca.inconel718_casing": "Heavy Duty Chemically Inert Casing",
   "block.gtca.pressure_resistant_wall": "Pressure Resistant Wall",
+  "block.gtca.tantalloy61_casing": "Structural Coke Oven Casing",
 
 
 
@@ -45,6 +48,8 @@
   "material.gtca.mar_ce_m200": "MAR-Ce-M200",
   "material.gtca.incoloy846": "Incoloy 846",
   "material.gtca.heavy_metal_mixture": "Heavy Metal Mixture",
+  "material.gtca.tantalloy60": "Tantalloy 60",
+  "material.gtca.tantalloy61": "Tantalloy 61",
 
 
 
@@ -52,7 +57,7 @@
   "material.gtca.propyne": "Propyne",
   "material.gtca.propadiene": "Propadiene",
   "material.gtca.isononyl_alcohol": "Isononyl Alcohol",
-  "material.gtca.phthalic_anhydride": "Phthalic Anhydride",
+  "material.gtca.phthalic_anhydride_gtca": "Phthalic Anhydride",
   "material.gtca.oxylene": "Oxylene",
   "material.gtca.octene": "Octene",
 
