@@ -1,8 +1,14 @@
 package net.mordgren.gtca.common.data.recipes.fuel;
 
+import dev.arbor.gtnn.api.recipe.PlantCasingCondition;
+import dev.arbor.gtnn.data.GTNNRecipeTypes;
+import dev.arbor.gtnn.data.GTNNRecipes;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;
+import net.mordgren.gtca.common.data.GTCARecipeTypes;
 import net.mordgren.gtca.common.util.GTCAHelper;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
@@ -14,7 +20,7 @@ public class AltFuels {
     }
 
     private static void e85Fuel(Consumer<FinishedRecipe> provider) {
-        LARGE_CHEMICAL_RECIPES.recipeBuilder("e85fuel").EUt(480).duration(80)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder("e85fuel").EUt(480).duration(100)
                 .inputFluids(Ethanol.getFluid(17000))
                 .inputFluids(LightFuel.getFluid(3000))
                 .inputFluids(EthylTertButylEther.getFluid(100))
@@ -50,9 +56,8 @@ public class AltFuels {
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1))
                 .save(provider);
 
-        BLAST_RECIPES.recipeBuilder("dymethyl_ether").EUt(1280).duration(240)
+        GTCARecipeTypes.THERMAL_REACTOR.recipeBuilder("dymethyl_ether").EUt(1280).duration(240)
                 .inputFluids(Methanol.getFluid(4000))
-                .blastFurnaceTemp(2700)
                 .chancedInput((GTCAHelper.getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1)), 7400, 0)
                 .chancedOutput((GTCAHelper.getItem("dust", Zeolite, 1)),2000,0)
                 .outputFluids(GTCAMaterials.DymethylEther.getFluid(12000))

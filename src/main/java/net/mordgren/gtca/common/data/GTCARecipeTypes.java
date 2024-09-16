@@ -60,4 +60,11 @@ public class GTCARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressTexture.FillDirection.DOWN_TO_UP)
             .setSound(GTSoundEntries.FURNACE)
             .setEUIO(IO.IN);
+
+    public static final GTRecipeType THERMAL_REACTOR = register("thermal_reactor", MULTIBLOCK)
+            .setMaxIOSize(4,6,4,4)
+            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARC_FURNACE, ProgressTexture.FillDirection.DOWN_TO_UP)
+            .setSound(GTSoundEntries.BOILER)
+            .setEUIO(IO.IN);
 }

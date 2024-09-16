@@ -23,7 +23,7 @@ public class GTCAAddon implements IGTAddon {
 
         @Override
         public void initializeAddon() {
-                GTCA.LOGGER.info("CosmicCoreGTAddon has loaded!");
+                GTCA.LOGGER.info("GT Community Additions addon has loaded!");
         }
 
         @Override

@@ -8,8 +8,10 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.mordgren.gtca.common.data.GTCAItems;
 import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
@@ -23,10 +25,12 @@ public class GTCA {
     public static final String MOD_ID = "gtca", NAME = "GTCommunityAdditions";
     public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
     public static MaterialRegistry MATERIAL_REGISTRY;
+    public static boolean GTNNINT = ModList.get().isLoaded("gtnn");
 
     //Init Everything
     public GTCA() {
         GTCA.init();
+        //GTCAItems.init();
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);

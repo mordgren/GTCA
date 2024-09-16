@@ -1,7 +1,9 @@
 package net.mordgren.gtca.common.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.recipes.*;
+import net.mordgren.gtca.common.data.GTNNIntegration.GTNNIntProxy;
 import net.mordgren.gtca.common.data.recipes.fuel.AltFuels;
 import net.mordgren.gtca.common.data.recipes.fuel.ChemGenFuels;
 import net.mordgren.gtca.common.data.recipes.fuel.AltSteam;
@@ -31,5 +33,11 @@ public class GTCARecipeInit {
 
             Misc.init();
             Misc.miscRecipes(provider);
+
+            if (GTCA.GTNNINT) {
+                GTNNIntProxy.init(provider);
+            } else {
+                GTCA.LOGGER.info("GT-- not found, some recipes are not loaded.");
+            }
         }
     }

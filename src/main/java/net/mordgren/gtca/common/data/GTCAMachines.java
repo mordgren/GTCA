@@ -43,6 +43,7 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Tungsten;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.TungstenCarbide;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 
 public class GTCAMachines {
@@ -524,6 +525,36 @@ public class GTCAMachines {
             .workableCasingRenderer(
                     GTCA.id("block/casing/tantalloy61_casing"),
                     GTCEu.id("block/multiblock/implosion_compressor"),
+                    true
+            )
+            .register();
+
+    public static final MultiblockMachineDefinition THERMAL_REACTOR = REGISTRATE.multiblock("thermal_reactor", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.THERMAL_REACTOR)
+            .appearanceBlock(GTCACasings.NIMONIC80A_CASING)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("#CCC#", "#NNN#", "#CCC#", "#####", "#####","#####","#####","#####","#####","#####")
+                            .aisle("CCCCC", "N###N", "CCCCC", "#FDF#", "#F#F#","#FDF#","#F#F#","#FDF#","#F#F#","#FDF#")
+                            .aisle("CCCCC", "N###N", "CCPCC", "#DPD#", "##P##","#DPD#","##P##","#DPD#","##P##","#DDD#")
+                            .aisle("CCCCC", "N###N", "CCCCC", "#FDF#", "#F#F#","#FDF#","#F#F#","#FDF#","#F#F#","#FDF#")
+                            .aisle("#CEC#", "#NNN#", "#CCC#", "#####", "#####","#####","#####","#####","#####","#####")
+                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, TungstenCarbide)))
+                            .where('#', Predicates.air())
+                            .where('D', blocks(GTCACasings.NIMONIC80A_CASING.get()))
+                            .where('P', blocks(CASING_TITANIUM_PIPE.get()))
+                            .where('N', blocks(COIL_CUPRONICKEL.get()))
+                            .where("C", blocks(GTCACasings.NIMONIC80A_CASING.get()).setMinGlobalLimited(11)
+                                    .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                    .or(autoAbilities(true, false, false)))
+                            .build()
+            )
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/nimonic80a_casing"),
+                    GTCA.id("block/multiblock/aebf"),
                     true
             )
             .register();
