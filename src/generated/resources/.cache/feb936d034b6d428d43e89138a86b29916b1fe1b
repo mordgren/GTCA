@@ -1,4 +1,5 @@
-// 1.20.1	2024-09-16T23:39:38.7032661	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2024-09-17T15:55:09.9268924	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+6ab814a1724684d8ca5e3d3ce46435a3ebcc76ba assets/gtca/blockstates/borsilicate_yttrium_thorium_glass.json
 cd3f826ed2eb68cb7e6da340f85dace7965516b9 assets/gtca/blockstates/casing_aebf.json
 30d06aaad6d66e2bbed82d3560a207be45bd185b assets/gtca/blockstates/casing_greenhouse.json
 0873a89eb75bb28b4d2145b13712d33b3e413e76 assets/gtca/blockstates/comet_casing.json
@@ -6,12 +7,14 @@ cd3f826ed2eb68cb7e6da340f85dace7965516b9 assets/gtca/blockstates/casing_aebf.jso
 2f2a48f0a41055bc238b2be4363f80f95291c416 assets/gtca/blockstates/inconel718_casing.json
 65d850af27f77ac072a8c56f8b864cd76b90522b assets/gtca/blockstates/nimonic80a_casing.json
 93ed529925f20a894f54bf2126f66ba8009ded06 assets/gtca/blockstates/pressure_resistant_wall.json
+c7d16122d51142ac64a659c61e6ae7902795b676 assets/gtca/blockstates/reinforced_glass.json
 9d117c8b932996c6133fe16f6782c03bde73fa58 assets/gtca/blockstates/shd_casing.json
 0da2e605795134e26111ef3ee1f06a77cc829bbd assets/gtca/blockstates/shd_gearbox.json
 fe3140ea2850e50c907a740117e67257dbad9603 assets/gtca/blockstates/tantalloy61_casing.json
 fe947fa7f00fa4956c5fffbe6a6fc3c0543c486c assets/gtca/blockstates/vitallium_casing.json
-738349c8ff2b4329e165de0c2436c57418386972 assets/gtca/lang/en_ud.json
-fcf3d8f74b4e40ee9dae62c43d2fdb5fc22d002a assets/gtca/lang/en_us.json
+f34833a2a93b2fb4ec676409e78a7ed0b5a483c4 assets/gtca/lang/en_ud.json
+cb1f5e10ff2fed857c98ecf80e6e7da30b5dedfb assets/gtca/lang/en_us.json
+75ea7d2b2a9ef61294a1a5b4d89eb13970dfcaec assets/gtca/models/block/borsilicate_yttrium_thorium_glass.json
 db22753399866af29c217d0e308fa216d8fca09b assets/gtca/models/block/casing_aebf.json
 9528a1f95eabcd08b41443e4791e18abe195b582 assets/gtca/models/block/casing_greenhouse.json
 84bf2179f7b55c89661c269f361a6545b0e0b066 assets/gtca/models/block/comet_casing.json
@@ -19,10 +22,12 @@ d805a46e38170c568d4b6a2f212ef9c61c9f9c40 assets/gtca/models/block/dural_casing.j
 b0b0ec01382b50ca4d0bffb140e0ff47590d9a8b assets/gtca/models/block/inconel718_casing.json
 68a101e40ed51ec137117f537590f7616d73f808 assets/gtca/models/block/nimonic80a_casing.json
 edc64bb465ef0d3eda09310b1ebbe463ca126ce1 assets/gtca/models/block/pressure_resistant_wall.json
+8400d8a1de2fb69fd8e57c2819b56417e06fb1dc assets/gtca/models/block/reinforced_glass.json
 4e580e9e93d80fe6a28827aff7fbfbf6599cdd05 assets/gtca/models/block/shd_casing.json
 d4062ba42d76580e29286314dd79100e6ef8302a assets/gtca/models/block/shd_gearbox.json
 da7e48f96c707bfe2e3b41dd41c79dd5c0cd90e3 assets/gtca/models/block/tantalloy61_casing.json
 6f6b427acb4719cf9422136c8ec6b95a9e9416a9 assets/gtca/models/block/vitallium_casing.json
+893b5b0994e8b8a308c2c50073277b45f68d6ab9 assets/gtca/models/item/borsilicate_yttrium_thorium_glass.json
 65b34867ddf7757f5d8b3472b6812c603d11bca5 assets/gtca/models/item/casing_aebf.json
 3de4bcc8d5a37125b86987e32299e9797f0fd730 assets/gtca/models/item/casing_greenhouse.json
 087a2b9613590691eaaccd3f72aa83b3fcfccd75 assets/gtca/models/item/comet_casing.json
@@ -30,13 +35,14 @@ da7e48f96c707bfe2e3b41dd41c79dd5c0cd90e3 assets/gtca/models/block/tantalloy61_ca
 1a2eb743130577cb0f380802ae7b961e40c4b205 assets/gtca/models/item/inconel718_casing.json
 0dfbe61db3b782c4e5335ddc15feb62ff3bcd22b assets/gtca/models/item/nimonic80a_casing.json
 2fbee597cff6a70d69204bb1762c77426f6d9890 assets/gtca/models/item/pressure_resistant_wall.json
+9360deda4e1a632c414ea22439d46f07435bfc32 assets/gtca/models/item/reinforced_glass.json
 c2f23d8f343ad4ff46500ddff00e0be3ea4194f1 assets/gtca/models/item/shd_casing.json
 6ce9b982b3898603e44d55f3b0437d80d2a5111e assets/gtca/models/item/shd_gearbox.json
 a30a1c0aa5b0cc7bc39f17fd00d8aa32f65354df assets/gtca/models/item/tantalloy61_casing.json
-fa7fe0c9bf78c2fe82ce186f561772b73c8690ab assets/gtca/models/item/test.json
 816d43cbb1b412f1d098ce5c25b820b1e8c7774f assets/gtca/models/item/vitallium_casing.json
-95566cc8cbe11bd36efb858c59d9577b412273f1 data/ae2/tags/items/p2p_attunements/fluid_p2p_tunnel.json
-9becc182c3b45cf779480f773843aa7003b3cbf8 data/forge/tags/blocks/mineable/wrench.json
+fd8b94227c1fb6dcaa448d16ee1292dfb1bcf17e data/ae2/tags/items/p2p_attunements/fluid_p2p_tunnel.json
+17eebde79de54b0746bbe9731983a59346de6a3f data/forge/tags/blocks/mineable/wrench.json
+af8c682a3b20aff0f710929812a35ccc7bd48532 data/gtca/loot_tables/blocks/borsilicate_yttrium_thorium_glass.json
 e83cc4472c4c28ae82a40ea1f04422ab0f1a2426 data/gtca/loot_tables/blocks/casing_aebf.json
 b9588647460e9b066b819faabcce7dbc7ff56657 data/gtca/loot_tables/blocks/casing_greenhouse.json
 4e5a12f9d0ae0149391c9e5b57b87ca9155dd1f4 data/gtca/loot_tables/blocks/comet_casing.json
@@ -44,8 +50,9 @@ b9588647460e9b066b819faabcce7dbc7ff56657 data/gtca/loot_tables/blocks/casing_gre
 df6828bd3c139ba09e76e7ae5fe53752440d4958 data/gtca/loot_tables/blocks/inconel718_casing.json
 807ef9f9013211f60527eee62bc80371a9551dba data/gtca/loot_tables/blocks/nimonic80a_casing.json
 5966e3c7ca572509702e5f68944c55c7b958f484 data/gtca/loot_tables/blocks/pressure_resistant_wall.json
+4b7f144508faf7cd8a9626b35c202647928f8659 data/gtca/loot_tables/blocks/reinforced_glass.json
 83d22a2f07eb6f98413c7173af30376929839267 data/gtca/loot_tables/blocks/shd_casing.json
 5e60d9a8969c47f170b98fcfe16089366c801b62 data/gtca/loot_tables/blocks/shd_gearbox.json
 b502bc97e2968412ac42fb46cc68f4acf5816c12 data/gtca/loot_tables/blocks/tantalloy61_casing.json
 dbb55d7b7cb19938866514499a06bd573c64c617 data/gtca/loot_tables/blocks/vitallium_casing.json
-9becc182c3b45cf779480f773843aa7003b3cbf8 data/minecraft/tags/blocks/mineable/pickaxe.json
+17eebde79de54b0746bbe9731983a59346de6a3f data/minecraft/tags/blocks/mineable/pickaxe.json

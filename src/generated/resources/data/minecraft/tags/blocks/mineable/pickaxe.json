@@ -10,6 +10,8 @@
     "gtca:pressure_resistant_wall",
     "gtca:shd_gearbox",
     "gtca:tantalloy61_casing",
-    "gtca:comet_casing"
+    "gtca:comet_casing",
+    "gtca:borsilicate_yttrium_thorium_glass",
+    "gtca:reinforced_glass"
   ]
 }

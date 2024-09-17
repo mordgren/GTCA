@@ -1,5 +1,6 @@
 package net.mordgren.gtca.common.data;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.item.tool.GTToolType;
 import com.gregtechceu.gtceu.common.data.GTModels;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -11,12 +12,14 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.mordgren.gtca.GTCA;
 
 import java.util.function.Supplier;
 
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
+
 
 public class GTCACasings {
     public static final BlockEntry<Block> CASING_AEBF = createCasingBlock("casing_aebf",
@@ -52,11 +55,22 @@ public class GTCACasings {
     public static final BlockEntry<Block> COMET_CASING = createCasingBlock("comet_casing",
             GTCA.id("block/casing/comet_casing"));
 
+    public static final BlockEntry<Block> BORSILICATE_YTTRIUM_GLASS = createGlassCasingBlock("borsilicate_yttrium_thorium_glass",
+            GTCA.id("block/casing/transparent/thorium_yttrium_glass_block"));
+
+    public static final BlockEntry<Block> REINFORCED_GLASS = createGlassCasingBlock("reinforced_glass",
+            GTCA.id("block/casing/transparent/reinforced_glass"));
+
+    public static BlockEntry<Block> createGlassCasingBlock(String name, ResourceLocation texture) {
+        return createCasingBlock(name, GlassBlock::new, texture, () -> Blocks.GLASS,
+                () -> RenderType::translucent);
+    }
 
     public static BlockEntry<Block> createCasingBlock(String name, ResourceLocation texture) {
         return createCasingBlock(name, Block::new, texture, () -> Blocks.IRON_BLOCK,
                 () -> RenderType::cutoutMipped);
     }
+
 
     @SuppressWarnings("removal")
     public static BlockEntry<Block> createCasingBlock(String name,
