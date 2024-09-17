@@ -4,13 +4,14 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import net.mordgren.gtca.common.data.materials.GTCAChemicals;
 import net.mordgren.gtca.common.data.materials.GTCAFuels;
 import net.mordgren.gtca.common.data.materials.GTCAMetals;
+import net.mordgren.gtca.common.data.materials.MaterialFlagAddition;
 
 public class GTCAMaterials {
     public static void init() {
         GTCAFuels.init();
         GTCAMetals.init();
         GTCAChemicals.init();
-        //MaterialFlagAddition.init();
+        MaterialFlagAddition.init();
     }
 
     // Fuels
@@ -53,8 +54,27 @@ public class GTCAMaterials {
     public static Material Incoloy846;
     public static Material Tantalloy60;
     public static Material Tantalloy61;
+    public static Material Incoloy020;
+    public static Material IncoloyMA956;
+    public static Material HG1223;
+    public static Material IncoloyDS;
+    public static Material Inconel690;;
+    public static Material EglinSteel;
+    public static Material ZirconiumCarbide;
+    public static Material HastealloyN;
 
     // Dusts
 
     public static Material HeavyMetalMixture;
+    public static Material EglinSteelCompound;
+
+    // Ores
+
+    public static Material RedZircon;
+    public static Material GreenFuchsite;
+    public static Material Fayalite;
+    public static Material RedFuchsite;
+
+
+
 }
