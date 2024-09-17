@@ -19,7 +19,7 @@ public class GTCAOres {
     public static void init(){}
 
    public static final GTOreDefinition ZIRCONIUM_VEIN = create("zirconium_vein", vein -> vein
-           .clusterSize(UniformInt.of(35, 45)).density(0.4f).weight(7)
+           .clusterSize(UniformInt.of(35, 45)).density(0.4f).weight(20)
            .layer(WorldGenLayers.ENDSTONE)
            .heightRangeUniform(20, 60)
           .biomes(BiomeTags.IS_END)

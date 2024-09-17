@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.addon.events.KJSRecipeKeyEvent;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.mordgren.gtca.common.data.GTCAOres;
 import net.mordgren.gtca.common.data.GTCARecipeInit;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
 
@@ -47,5 +48,10 @@ public class GTCAAddon implements IGTAddon {
 
         @Override
         public void registerRecipeKeys(KJSRecipeKeyEvent event) {
+        }
+
+        @Override
+        public void registerOreVeins() {
+                GTCAOres.init();
         }
 }

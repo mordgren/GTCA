@@ -30,7 +30,7 @@ public class GTCA {
     //Init Everything
     public GTCA() {
         GTCA.init();
-        //GTCAItems.init();
+        GTCAItems.init();
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);

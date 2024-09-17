@@ -12,15 +12,15 @@ public class MaterialFlagAddition {
         oreProp.setOreByProducts(Zirconium);
         oreProp.setWashedIn(SodiumPersulfate);
 
-        oreProp = (OreProperty) GTCAMaterials.RedFuchsite.getProperty(PropertyKey.ORE);
+        oreProp = GTCAMaterials.RedFuchsite.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(Chromium);
         oreProp.setWashedIn(SodiumPersulfate);
 
-        oreProp = (OreProperty) GTCAMaterials.GreenFuchsite.getProperty(PropertyKey.ORE);
+        oreProp = GTCAMaterials.GreenFuchsite.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(Aluminium);
         oreProp.setWashedIn(SodiumPersulfate);
 
-        oreProp = (OreProperty) GTCAMaterials.Fayalite.getProperty(PropertyKey.ORE);
+        oreProp = GTCAMaterials.Fayalite.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(Iron);
         oreProp.setWashedIn(SodiumPersulfate);
 
