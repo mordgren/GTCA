@@ -22,8 +22,8 @@ public class GTCAOres {
            .clusterSize(UniformInt.of(35, 45)).density(0.4f).weight(7)
            .layer(WorldGenLayers.ENDSTONE)
            .heightRangeUniform(20, 60)
-           .biomes(BiomeTags.IS_END)
-           .cuboidVeinGenerator(generator -> generator
+          .biomes(BiomeTags.IS_END)
+          .dikeVeinGenerator(generator -> generator
                   .withBlock(new DikeVeinGenerator.DikeBlockDefinition(GTCAMaterials.RedFuchsite, 2, 20, 15))
                   .withBlock(new DikeVeinGenerator.DikeBlockDefinition(GTCAMaterials.RedZircon, 3, 20, 25))
                   .withBlock(new DikeVeinGenerator.DikeBlockDefinition(GTCAMaterials.Fayalite, 1, 5, 10))
