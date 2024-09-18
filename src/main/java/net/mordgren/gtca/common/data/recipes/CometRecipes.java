@@ -31,7 +31,7 @@ public class CometRecipes {
                     .inputItems(GTCAHelper.getItem("gear", GTCAMaterials.Tantalloy61, 2))
                     .inputItems(GTCAHelper.getItem("screw", GTCAMaterials.IncoloyMA956, 16))
                     .inputItems(CustomTags.IV_CIRCUITS, 16)
-                    .inputItems(GTMachines.HULL[GTValues.IV].asStack())
+                    .inputItems(GTMachines.HULL[GTValues.IV],2)
                     .inputItems(GTCACasings.CYCLOTRON_COIL, 2)
                     .inputFluids(GTCAMaterials.Incoloy020.getFluid(1296))
                     .outputItems(GTCAMachines.COMET_CYCLOTRON.asStack())
@@ -39,7 +39,8 @@ public class CometRecipes {
 
              ASSEMBLER_RECIPES.recipeBuilder("cyclotron_coil").EUt(7680).duration(2400)
                      .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.IncoloyMA956, 8))
-                     .inputItems(GTCAHelper.getItem("screw", GTCAMaterials.Tantalloy61, 16))
+                     .inputItems(GTCAHelper.getItem("bolt", GTCAMaterials.Tantalloy61, 16))
+                     .inputItems(GTCAHelper.getItem("screw",  GTCAMaterials.Incoloy020, 32))
                      .inputItems(GTBlocks.COIL_NICHROME, 1)
                      .inputItems(GTItems.VOLTAGE_COIL_IV,8)
                      .inputItems(GTItems.FIELD_GENERATOR_EV, 1)

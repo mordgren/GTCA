@@ -427,6 +427,12 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("KCr3Si3O10(OH)2",true);
 
+        GTCAMaterials.CelestialPlasma = new Material.Builder(GTCA.id("celestial_plasma"))
+                .plasma()
+                .color(0xffffff)
+                .buildAndRegister()
+                .setFormula("✦✧✦",true);
+
 
     }
 }

@@ -75,6 +75,10 @@ public class GTCAMaterials {
     public static Material Fayalite;
     public static Material RedFuchsite;
 
+    // Plasma
+
+    public static Material CelestialPlasma;
+
 
 
 }
