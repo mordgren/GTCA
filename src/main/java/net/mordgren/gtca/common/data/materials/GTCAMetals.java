@@ -225,7 +225,8 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
-                        MaterialFlags.GENERATE_BOLT_SCREW
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_GEAR
                 )
                 .dust()
                 .fluid()

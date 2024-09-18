@@ -13,9 +13,9 @@ import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.gregtechceu.gtceu.common.data.GTMachines.ELECTRIC_BLAST_FURNACE;
-import static com.gregtechceu.gtceu.common.data.GTMachines.HULL;
+import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static net.mordgren.gtca.common.data.GTCARecipeTypes.COMET_CYCLOTRON;
 
 public class GTCAMachinesRecipes {
     public static void init(Consumer<FinishedRecipe> provider){
@@ -165,7 +165,11 @@ public class GTCAMachinesRecipes {
                 'R', new UnificationEntry(TagPrefix.rotor, TungstenSteel),
                 'P', ELECTRIC_PUMP_EV.asStack(),
                 'S', new UnificationEntry(TagPrefix.spring, TungstenSteel));
-    }
 
+
+
+
+
+    }
 }
 
