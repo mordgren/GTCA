@@ -29,6 +29,7 @@ public class GTCARecipeInit {
 
             HERecipes.init(provider);
 
+            CometRecipes.init(provider);
             ICORecipes.init(provider);
 
             Misc.init();

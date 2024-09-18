@@ -67,4 +67,14 @@ public class GTCARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARC_FURNACE, ProgressTexture.FillDirection.DOWN_TO_UP)
             .setSound(GTSoundEntries.BOILER)
             .setEUIO(IO.IN);
+
+    public static final GTRecipeType COMET_CYCLOTRON = register("comet", MULTIBLOCK)
+            .setMaxIOSize(6,6,2,2)
+            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.COOLING)
+            .setEUIO(IO.IN);
+
+
+
 }

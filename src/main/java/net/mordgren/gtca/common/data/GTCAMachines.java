@@ -558,6 +558,56 @@ public class GTCAMachines {
                     true
             )
             .register();
+
+    public static final MultiblockMachineDefinition COMET_CYCLOTRON = REGISTRATE.multiblock("comet", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.COMET_CYCLOTRON)
+            .appearanceBlock(GTCACasings.COMET_CASING)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("###############", "######BBB######", "###############")
+                            .aisle("######BBB######", "####BBCCCBB####", "######BBB######")
+                            .aisle("####BB###BB####", "###BCCBBBCCB###", "####BB###BB####")
+                            .aisle("###B#######B###", "##BCBB###BBCB##", "###B#######B###")
+                            .aisle("##B#########B##", "#BCB#######BCB#", "##B#########B##")
+                            .aisle("##B#########B##", "#BCB#######BCB#", "##B#########B##")
+                            .aisle("#B###########B#", "BCB#########BCB", "#B###########B#")
+                            .aisle("#B###########B#", "BCB#########BCB", "#B###########B#")
+                            .aisle("#B###########B#", "BCB#########BCB", "#B###########B#")
+                            .aisle("##B#########B##", "#BCB#######BCB#", "##B#########B##")
+                            .aisle("##B#########B##", "#BCB#######BCB#", "##B#########B##")
+                            .aisle("###B#######B###", "##BCBB###BBCB##", "###B#######B###")
+                            .aisle("####BB###BB####", "###BCCBBBCCB###", "####BB###BB####")
+                            .aisle("######BBB######", "####BBCCCBB####", "######BBB######")
+                            .aisle("###############", "######BAB######", "###############")
+                            .where('#', Predicates.air())
+                            .where('C', blocks(GTCACasings.CYCLOTRON_COIL.get()))
+                            .where("A", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where("B", blocks(GTCACasings.COMET_CASING.get()).setMinGlobalLimited(112)
+                                    .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                    .or(autoAbilities(false, false, false))
+                                )
+                            .build()
+            )
+                            .workableCasingRenderer(
+                                    GTCA.id("block/casing/comet_casing"),
+                                    GTCA.id("block/multiblock/comet"),
+                                    true
+                            )
+                            .register();
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

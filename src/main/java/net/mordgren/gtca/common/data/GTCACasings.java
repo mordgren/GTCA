@@ -55,6 +55,10 @@ public class GTCACasings {
     public static final BlockEntry<Block> COMET_CASING = createCasingBlock("comet_casing",
             GTCA.id("block/casing/comet_casing"));
 
+    public static final BlockEntry<Block> CYCLOTRON_COIL = createCasingBlock("cyclotron_coil",
+            GTCA.id("block/casing/cyclotron_coil"));
+
+
     public static final BlockEntry<Block> BORSILICATE_YTTRIUM_GLASS = createGlassCasingBlock("borsilicate_yttrium_thorium_glass",
             GTCA.id("block/casing/transparent/thorium_yttrium_glass_block"));
 
