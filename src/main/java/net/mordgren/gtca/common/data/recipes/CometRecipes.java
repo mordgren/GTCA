@@ -40,22 +40,22 @@ public class CometRecipes {
              ASSEMBLER_RECIPES.recipeBuilder("cyclotron_coil").EUt(7680).duration(2400)
                      .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.IncoloyMA956, 8))
                      .inputItems(GTCAHelper.getItem("screw", GTCAMaterials.Tantalloy61, 16))
-                     .inputItems(GTBlocks.COIL_NICHROME.asStack())
+                     .inputItems(GTBlocks.COIL_NICHROME, 1)
                      .inputItems(GTItems.VOLTAGE_COIL_IV,8)
-                     .inputItems(GTItems.FIELD_GENERATOR_EV.asStack())
+                     .inputItems(GTItems.FIELD_GENERATOR_EV, 1)
                      .inputFluids(GTCAMaterials.HG1223.getFluid(720))
-                     .outputItems(GTCACasings.CYCLOTRON_COIL.asStack())
+                     .outputItems(GTCACasings.CYCLOTRON_COIL, 1)
                      .save(provider);
 
             ASSEMBLER_RECIPES.recipeBuilder("comet_casing").EUt(1920).duration(1200)
-                    .inputItems(GTBlocks.CASING_ALUMINIUM_FROSTPROOF.asStack())
+                    .inputItems(GTBlocks.CASING_ALUMINIUM_FROSTPROOF, 1)
                     .inputItems(GTItems.VOLTAGE_COIL_EV,4)
                     .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.IncoloyDS, 8))
                     .inputItems(GTCAHelper.getItem("screw", GTCAMaterials.Inconel690, 16))
-                    .inputItems(GTCAHelper.getItem("rodLong", GTCAMaterials.EglinSteel, 4))
+                    .inputItems(GTCAHelper.getItem("longRod", GTCAMaterials.EglinSteel, 4))
                     .inputItems(GTItems.ELECTRIC_PISTON_HV,2)
                     .inputFluids(GTCAMaterials.ZirconiumCarbide.getFluid(1152))
-                    .outputItems(GTCACasings.COMET_CASING.asStack())
+                    .outputItems(GTCACasings.COMET_CASING, 1)
                     .save(provider);
 
 
