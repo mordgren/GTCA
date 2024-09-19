@@ -13,6 +13,7 @@ public class GTCAItems {
     public static ItemEntry<Item> Neutron = REGISTRATE.item("neutron", Item::new).register();
     public static ItemEntry<Item> Proton = REGISTRATE.item("proton", Item::new).register();
     public static ItemEntry<Item> UnknownParticle = REGISTRATE.item("unknown_particle", Item::new).register();
+    public static ItemEntry<Item> QuantumAnomaly = REGISTRATE.item("quantum_anomaly", Item::new).register();
 
 
 

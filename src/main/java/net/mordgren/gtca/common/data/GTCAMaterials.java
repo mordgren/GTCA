@@ -1,10 +1,8 @@
 package net.mordgren.gtca.common.data;
 
+import com.gregtechceu.gtceu.api.data.chemical.Element;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import net.mordgren.gtca.common.data.materials.GTCAChemicals;
-import net.mordgren.gtca.common.data.materials.GTCAFuels;
-import net.mordgren.gtca.common.data.materials.GTCAMetals;
-import net.mordgren.gtca.common.data.materials.MaterialFlagAddition;
+import net.mordgren.gtca.common.data.materials.*;
 
 public class GTCAMaterials {
     public static void init() {
@@ -78,6 +76,8 @@ public class GTCAMaterials {
     // Plasma
 
     public static Material CelestialPlasma;
+
+    public static Material EnderFluid;
 
 
 

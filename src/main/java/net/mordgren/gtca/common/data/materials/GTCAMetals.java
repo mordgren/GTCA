@@ -433,6 +433,17 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("✦✧✦",true);
 
+        GTCAMaterials.EnderFluid = new Material.Builder(GTCA.id("ender_fluid"))
+                .fluid()
+                .components(GTMaterials.EnderPearl, 1)
+                .flags(
+                        MaterialFlags.DISABLE_DECOMPOSITION
+                )
+                .color(0x074852)
+                .buildAndRegister();
+
+
+
 
     }
 }
