@@ -21,17 +21,22 @@
   "gtceu.industrial_coke_oven":"Industrial Coke Oven",
   "block.gtca.thermal_reactor":"Thermal Reaction Chamber",
   "gtceu.thermal_reactor":"Thermal Reaction Chamber",
+  "block.gtca.comet":"COMET Cyclotron",
+  "gtceu.comet":"Comet",
 
 
-
+  "block.gtca.comet_casing":"Comet Outer Casing",
+  "block.gtca.cyclotron_coil":"Cyclotron Coil",
+  "block.gtca.borsilicate_yttrium_thorium_glass":"Borosilicate Yttrium Thorium Glass",
+  "block.gtca.reinforced_glass":"Reinforced Glass",
   "block.gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
   "gtceu.casing_aebf":"Advanced Heat Proof Machine Casing",
   "block.gtca.casing_greenhouse":"Humidity Balanced Casing",
   "block.gtca.dural_casing": "Poly-Sustained Casing",
   "block.gtca.vitallium_casing": "Robust Chemically Inert Casing",
   "block.gtca.nimonic80a_casing": "Nimonic 80A Casing",
-  "block.gtca.shd_casing": "Super Heavy Duty Casing",
-  "block.gtca.shd_gearbox": "Super Heavy Duty Gearbox",
+  "block.gtca.shd_casing": "SC Casing",
+  "block.gtca.shd_gearbox": "SC Gearbox",
   "block.gtca.inconel718_casing": "Heavy Duty Chemically Inert Casing",
   "block.gtca.pressure_resistant_wall": "Pressure Resistant Wall",
   "block.gtca.tantalloy61_casing": "Structural Coke Oven Casing",
@@ -44,14 +49,48 @@
   "material.gtca.nimonic80a": "Nimonic 80A",
   "material.gtca.moltech": "MolTech",
   "material.gtca.vitallium": "Vitallium 2000+",
-  "material.gtca.inconel718": "Inconel 718",
-  "material.gtca.incoloy903": "Incoloy 903",
+  "material.gtca.inconel718": "Inconel-718",
+  "material.gtca.incoloy903": "Incoloy-903",
   "material.gtca.mar_m200": "MAR-M200",
   "material.gtca.mar_ce_m200": "MAR-Ce-M200",
-  "material.gtca.incoloy846": "Incoloy 846",
+  "material.gtca.incoloy846": "Incoloy-846",
   "material.gtca.heavy_metal_mixture": "Heavy Metal Mixture",
-  "material.gtca.tantalloy60": "Tantalloy 60",
-  "material.gtca.tantalloy61": "Tantalloy 61",
+  "material.gtca.tantalloy60": "Tantalloy-60",
+  "material.gtca.tantalloy61": "Tantalloy-61",
+  "material.gtca.incoloy_020" : "Incoloy-020",
+  "material.gtca.incoloy_ma956" : "Incoloy-MA956",
+  "material.gtca.hg_1223" : "HG 1223",
+  "material.gtca.incoloy_ds" : "Incoloy DS",
+  "material.gtca.inconel_690" : "Inconel 690",
+  "material.gtca.eglin_steel" : "Eglin Steel",
+  "material.gtca.zirconium_carbide" : "Zirconium Carbide",
+
+  "material.gtca.fayalite" : "Fayalite",
+  "material.gtca.red_zircon" : "Red Zircon",
+  "material.gtca.green_fuchsite" : "Green Fuchsite",
+  "material.gtca.red_fuchsite" : "Red Fuchsite",
+
+  "item.gtca.electron" : "Electron",
+  "item.gtca.graviton" : "Graviton",
+  "item.gtca.helium_ion" : "Helium Ion",
+  "item.gtca.hydrogen_ion" : "Hydrogen Ion",
+  "item.gtca.neutron" : "Neutron",
+  "item.gtca.proton" : "Proton",
+  "item.gtca.unknown_particle" : "Unknown Particle",
+  "item.gtca.quantum_anomaly" : "Quantum Anomaly",
+
+
+  "item.gtca.milled_sphalerite" : "Milled Sphalerite",
+  "item.gtca.milled_chalcopyrite" : "Milled Chalcopyrite",
+  "item.gtca.milled_nickel" : "Milled Nickel",
+  "item.gtca.milled_platinum" : "Milled Platinum",
+  "item.gtca.milled_pentlandite" : "Milled Pentlandite",
+  "item.gtca.milled_redstone" : "Milled Redstone",
+  "item.gtca.milled_spessartine" : "Milled Spessartine",
+  "item.gtca.milled_grossular" : "Milled Grossular",
+  "item.gtca.milled_almandine" : "Milled Almandine",
+  "item.gtca.milled_pyrone" : "Milled Pyrone",
+  "item.gtca.milled_monazite" : "Milled Monazite",
 
 
 
@@ -63,14 +102,14 @@
   "material.gtca.oxylene": "Oxylene",
   "material.gtca.octene": "Octene",
 
-
-
   "material.gtca.e85_fuel": "E85 Fuel",
   "material.gtca.high_pressure_steam": "High Pressure Steam",
   "material.gtca.dymethyl_ether": "Dymethyl Ether",
   "material.gtca.diisononyl_phthalate": "Diisononyl Phthalate",
   "material.gtca.mapp": "MAPP Gas",
   "material.gtca.sh_steam": "Superheated Steam",
-  "material.gtca.sc_steam": "Supercritical Steam"
+  "material.gtca.sc_steam": "Supercritical Steam",
+  "material.gtca.celestial_plasma":"Celestial",
+  "material.gtca.ender_fluid":"Ender Fluid"
 
 }
