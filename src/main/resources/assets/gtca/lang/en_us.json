@@ -89,7 +89,7 @@
   "item.gtca.milled_spessartine" : "Milled Spessartine",
   "item.gtca.milled_grossular" : "Milled Grossular",
   "item.gtca.milled_almandine" : "Milled Almandine",
-  "item.gtca.milled_pyrone" : "Milled Pyrone",
+  "item.gtca.milled_pyrope" : "Milled Pyrope",
   "item.gtca.milled_monazite" : "Milled Monazite",
 
 
@@ -110,6 +110,14 @@
   "material.gtca.sh_steam": "Superheated Steam",
   "material.gtca.sc_steam": "Supercritical Steam",
   "material.gtca.celestial_plasma":"Celestial",
-  "material.gtca.ender_fluid":"Ender Fluid"
+  "material.gtca.ender_fluid":"Ender Fluid",
 
+  "gtca.machine.SC_desc.tooltip":"Needs a turbine, place inside rotor holder. Uses Supercritical steam to generate power.",
+  "gtca.machine.SC_desc.tooltip2":"1L SuperCritical steam = 100 EU",
+
+  "gtca.machine.EHE_desc.tooltip":"Accept hot fluid like lava, or plasma.",
+  "gtca.machine.EHE_desc.tooltip2":"Output: SC Steam/SH Steam/Steam. Check EMI/REI/JEI for more info.",
+
+  "gtca.machine.comet_desc.tooltip": "Super Magnetic Speed Shooter",
+  "gtca.machine.comet_desc.tooltip2": "Consist of the same layout as a Fusion Reactor. Any external casing can be a Hatch/bus. Comet Machine Casing around Cyclotron Coils."
 }

@@ -353,7 +353,12 @@ public class GTCAMachines {
             )
             .tooltips(
                     Component.translatable("gtceu.universal.tooltip.base_production_eut", V[LuV] * 2),
-                    Component.translatable("gtceu.multiblock.turbine.efficiency_tooltip", VNF[LuV]))
+                    Component.translatable("gtceu.multiblock.turbine.efficiency_tooltip", VNF[LuV]),
+                    Component.translatable("gtca.machine.SC_desc.tooltip"),
+                    Component.translatable("gtca.machine.SC_desc.tooltip2")
+            )
+
+
             .compassSections(GTCompassSections.TIER[HV])
             .compassNodeSelf()
             .register();
@@ -381,7 +386,7 @@ public class GTCAMachines {
                             .where("C", blocks(CASING_TUNGSTENSTEEL_ROBUST.get()).setMinGlobalLimited(115).or(Predicates.autoAbilities(definition.getRecipeTypes())).or(autoAbilities(true, false, false)))
                             .where("P", blocks(CASING_TUNGSTENSTEEL_PIPE.get()))
                             .where("W", blocks(GTCACasings.PRW_Casing.get()))
-                            .where("G", blocks(FUSION_GLASS.get()))
+                            .where("G", blocks(GTCACasings.REINFORCED_GLASS.get()))
                             .where('#', air())
                             .build()
             )
@@ -389,6 +394,11 @@ public class GTCAMachines {
                     GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
                     GTCEu.id("block/multiblock/implosion_compressor"),
                     true
+            )
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Heat Exchanger"),
+                    Component.translatable("gtca.machine.EHE_desc.tooltip"),
+                    Component.translatable("gtca.machine.EHE_desc.tooltip2")
             )
             .register();
 
@@ -460,6 +470,9 @@ public class GTCAMachines {
                             100 - 10 * coilMachine.getCoilTier()));
                 }
             })
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Oil Cracker")
+            )
             .compassSections(GTCompassSections.TIER[EV])
             .compassNodeSelf()
             .register();
@@ -557,6 +570,9 @@ public class GTCAMachines {
                     GTCA.id("block/multiblock/aebf"),
                     true
             )
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Thermal Catalyst Reactor")
+            )
             .register();
 
     public static final MultiblockMachineDefinition COMET_CYCLOTRON = REGISTRATE.multiblock("comet", WorkableElectricMultiblockMachine::new)
@@ -595,6 +611,11 @@ public class GTCAMachines {
                                     GTCA.id("block/multiblock/comet"),
                                     true
                             )
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Particle Accelerator"),
+                                Component.translatable("gtca.machine.comet_desc.tooltip"),
+                                Component.translatable("gtca.machine.comet_desc.tooltip2")
+            )
                             .register();
 
 
