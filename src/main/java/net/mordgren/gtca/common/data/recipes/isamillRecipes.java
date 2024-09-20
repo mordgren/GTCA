@@ -14,8 +14,6 @@ import net.mordgren.gtca.common.util.GTCAHelper;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
@@ -48,9 +46,44 @@ public class isamillRecipes {
                         .researchStack(GTMachines.MACERATOR[GTValues.LuV].asStack())
                         .duration(2100)
                         .EUt(VA[LuV]))
-                .duration(4000).EUt(6000).save(provider);
+                .duration(4000).EUt(32720)
+                .save(provider);
 
+        ASSEMBLER_RECIPES.recipeBuilder("isamill_airtake")
+                .inputItems(GTMachines.HULL[GTValues.IV].asStack(2))
+                .inputItems(GTCAHelper.getItem("plate", Inconel625, 16))
+                .inputItems(GTCAHelper.getItem("ring",GTCAMaterials.IncoloyMA323, 8))
+                .inputItems(GTCAHelper.getItem("screw", GTCAMaterials.IncoloyMA323, 8))
+                .inputItems(GTCAHelper.getItem("plate", HSSE, 8))
+                .inputFluids(Aluminium.getFluid(1152))
+                .duration(2000).EUt(1920)
+                .circuitMeta(7)
+                .outputItems(GTCACasings.ISAMILL_AIR_INTAKE.asStack(2))
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("isamill_casing")
+                .inputItems(GTMachines.HULL[GTValues.IV].asStack(1))
+                .inputItems(GTCAHelper.getItem("plate", Inconel625, 8))
+                .inputItems(GTCAHelper.getItem("rod", Zeron182, 4))
+                .inputItems(GTCAHelper.getItem("gear", HSSG, 4))
+                .inputItems(GTCAHelper.getItem("screw", Zeron182, 8))
+                .inputFluids(Titanium.getFluid(576))
+                .duration(1800).EUt(32720)
+                .circuitMeta(7)
+                .outputItems(GTCACasings.ISAMILL_CASING.asStack(2))
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("isamill_gearbox")
+                .inputItems(GTBlocks.CASING_TITANIUM_GEARBOX.asStack(2))
+                .inputItems(GTCAHelper.getItem("gear", Inconel625, 4))
+                .inputItems(GTCAHelper.getItem("plate", Inconel625, 8))
+                .inputItems(GTCAHelper.getItem("gear", HSSG, 4))
+                .inputItems(GTCAHelper.getItem("bolt", Zeron182, 16))
+                .inputFluids(TungstenSteel.getFluid(1152))
+                .duration(200).EUt(32720)
+                .circuitMeta(7)
+                .outputItems(GTCACasings.ISAMILL_GEARBOX.asStack(1))
+                .save(provider);
                     }
-
             }
 

@@ -252,12 +252,13 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("Fe10CuCr5Ni9",true);
 
-        GTCAMaterials.IncoloyMA956 = new Material.Builder(GTCA.id("incoloy_ma956"))
+        GTCAMaterials.IncoloyMA323 = new Material.Builder(GTCA.id("incoloy_ma323"))
                 .components(GTMaterials.Iron, 16, GTMaterials.Aluminium, 3, GTMaterials.Chromium, 5, GTMaterials.Yttrium, 1)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
-                        MaterialFlags.GENERATE_BOLT_SCREW
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_RING
                 )
                 .dust()
                 .color(0x979aad)
@@ -413,7 +414,7 @@ public class GTCAMetals {
                 )
                 .color(0x6d6abc)
                 .fluid()
-                .blastTemp(6300, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 4300)
+                .blastTemp(6300, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 1000)
                 .iconSet(METALLIC)
                 .buildAndRegister()
                 .setFormula("(Y2Mo4Cr2Ti2Ni25)Nq2SmW2AgAl3Ni4C",true);
@@ -428,7 +429,7 @@ public class GTCAMetals {
                 )
                 .color(0x606060)
                 .fluid()
-                .blastTemp(6100, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 1200)
+                .blastTemp(6100, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 900)
                 .iconSet(METALLIC)
                 .buildAndRegister()
                 .setFormula("Ke5Nq9",true);
@@ -444,7 +445,7 @@ public class GTCAMetals {
                 )
                 .color(0x654949)
                 .fluid()
-                .blastTemp(6100, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 2100)
+                .blastTemp(6100, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 300)
                 .iconSet(METALLIC)
                 .buildAndRegister()
                 .setFormula("(Ke5Nq9)9C",true);

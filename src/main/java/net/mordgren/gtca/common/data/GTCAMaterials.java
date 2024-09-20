@@ -1,6 +1,5 @@
 package net.mordgren.gtca.common.data;
 
-import com.gregtechceu.gtceu.api.data.chemical.Element;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import net.mordgren.gtca.common.data.materials.*;
 
@@ -55,7 +54,7 @@ public class GTCAMaterials {
     public static Material Tantalloy60;
     public static Material Tantalloy61;
     public static Material Incoloy020;
-    public static Material IncoloyMA956;
+    public static Material IncoloyMA323;
     public static Material HG1223;
     public static Material IncoloyDS;
     public static Material Inconel690;;
