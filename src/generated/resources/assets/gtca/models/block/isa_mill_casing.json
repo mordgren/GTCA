@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gtca:block/casing/isa_mill_casing"
+  }
+}
