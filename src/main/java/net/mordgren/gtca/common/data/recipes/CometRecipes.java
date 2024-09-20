@@ -28,6 +28,7 @@ public class CometRecipes {
 
 
     private static void common(Consumer<FinishedRecipe> provider) {
+
             ASSEMBLER_RECIPES.recipeBuilder("comet_controller").EUt(7680).duration(6000)
                     .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Incoloy020, 8))
                     .inputItems(GTCAHelper.getItem("gear", GTCAMaterials.Tantalloy61, 2))

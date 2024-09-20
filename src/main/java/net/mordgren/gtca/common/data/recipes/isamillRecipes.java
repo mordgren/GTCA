@@ -7,6 +7,9 @@ import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCACasings;
+import net.mordgren.gtca.common.data.GTCAMachines;
+import net.mordgren.gtca.common.data.GTCAMaterials;
+import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
 
@@ -27,22 +30,25 @@ public class isamillRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder("isamill_controller")
                 .inputItems(GTCACasings.ISAMILL_GEARBOX,4)
-                .inputItems(GTMachines.HULL[GTValues.LuV], 4)
+                .inputItems(GTMachines.HULL[GTValues.LuV].asStack(4))
                 .inputItems(GTItems.COMPONENT_GRINDER_TUNGSTEN,16)
                 .inputItems(CustomTags.LuV_CIRCUITS, 8)
-                .inputItems(gear, Inconel625, 8)
-                .inputItems(plate, Inconel625, 32)
-                .inputItems(plate, Zeron182, 32)
-                .inputItems(screw, Zeron182, 64)
-                .inputItems(wireFine, NiobiumTitanium, 64)
-                .inputItems(wireFine, NiobiumTitanium, 32)
-                .inputItems(foil, Titanium, 32)
-                .outputItems(GTBlocks.DARK_CONCRETE.asStack())
+                .inputItems(GTCAHelper.getItem("gear", Inconel625, 8))
+                .inputItems(GTCAHelper.getItem("plate", Inconel625, 32))
+                .inputItems(GTCAHelper.getItem("plate", Zeron182, 32))
+                .inputItems(GTCAHelper.getItem("screw", Zeron182, 64))
+                .inputItems(GTCAHelper.getItem("fineWire", NiobiumTitanium, 64))
+                .inputItems(GTCAHelper.getItem("fineWire", NiobiumTitanium, 64))
+                .inputItems(GTCAHelper.getItem("foil", Titanium, 32))
+                .inputFluids(GTCAMaterials.Zeron182.getFluid(2304))
+                .inputFluids(GTCAMaterials.LafiumCompound.getFluid(4608))
+                .inputFluids(GTCAMaterials.TrunuimNaquadahCarbonite.getFluid(4608))
+                .outputItems(GTCAMachines.ISAMILL.asStack())
                 .scannerResearch(b -> b
                         .researchStack(GTMachines.MACERATOR[GTValues.LuV].asStack())
                         .duration(2100)
                         .EUt(VA[LuV]))
-                .duration(1200).EUt(6000).save(provider);
+                .duration(4000).EUt(6000).save(provider);
 
                     }
 
