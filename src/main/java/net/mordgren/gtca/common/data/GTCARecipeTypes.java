@@ -83,9 +83,9 @@ public class GTCARecipeTypes {
             .setEUIO(IO.IN);
 
     public static final GTRecipeType FLCR = register("flotation_cell_regulator", MULTIBLOCK)
-            .setMaxIOSize(3,1,0,0)
+            .setMaxIOSize(6,0,1,1)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setSound(GTSoundEntries.MACERATOR)
+            .setSound(GTSoundEntries.CHEMICAL)
             .setEUIO(IO.IN);
 }
