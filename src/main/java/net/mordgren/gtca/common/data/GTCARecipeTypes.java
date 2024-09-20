@@ -75,6 +75,17 @@ public class GTCARecipeTypes {
             .setSound(GTSoundEntries.COOLING)
             .setEUIO(IO.IN);
 
+    public static final GTRecipeType ISAMILL = register("isamill", MULTIBLOCK)
+            .setMaxIOSize(3,1,0,0)
+            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.MACERATOR)
+            .setEUIO(IO.IN);
 
-
+    public static final GTRecipeType FLCR = register("flotation_cell_regulator", MULTIBLOCK)
+            .setMaxIOSize(3,1,0,0)
+            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.MACERATOR)
+            .setEUIO(IO.IN);
 }

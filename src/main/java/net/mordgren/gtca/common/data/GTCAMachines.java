@@ -618,17 +618,61 @@ public class GTCAMachines {
             )
                             .register();
 
+    public static final MultiblockMachineDefinition ISAMILL = REGISTRATE.multiblock("isamill", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.ISAMILL)
+            .appearanceBlock(GTCACasings.ISAMILL_CASING)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("ACCCCCC", "ACCCCCC", "ACCCCCC")
+                            .aisle("ACCCCCC", "AGGGGGC", "ACCCCCC")
+                            .aisle("ACCCCCC", "ACECCCC", "ACCCCCC")
+                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where("G", blocks(GTCACasings.ISAMILL_GEARBOX.get()))
+                            .where("A", blocks(GTCACasings.ISAMILL_AIR_INTAKE.get()))
+                            .where("C", blocks(GTCACasings.ISAMILL_CASING.get()).setMinGlobalLimited(44)
+                                    .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                    .or(autoAbilities(true, true, false))
+                            )
+                            .build()
+            )
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/isa_mill_casing"),
+                    GTCA.id("block/multiblock/aebf"),
+                    true
+            )
+            .register();
 
-
-
-
-
-
-
-
-
-
-
+    public static final MultiblockMachineDefinition FLCR = REGISTRATE.multiblock("flotation_cell_regulator", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.FLCR)
+            .appearanceBlock(GTCACasings.ISAMILL_CASING)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("##CCC##", "##CCC##", "#######")
+                            .aisle("#CCCCC#", "#CCCCC#", "#CCCCC#")
+                            .aisle("CCCCCCC", "CCCCCCC", "#CCCCC#")
+                            .aisle("CCCCCCC", "CCCCCCC", "#CCCCC#")
+                            .aisle("CCCCCCC", "CCCCCCC", "#CCCCC#")
+                            .aisle("#CCCCC#", "#CCCCC#", "#CCCCC#")
+                            .aisle("##CCC##", "##CCC##", "#######")
+                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where("G", blocks(GTCACasings.ISAMILL_GEARBOX.get()))
+                            .where("A", blocks(GTCACasings.ISAMILL_AIR_INTAKE.get()))
+                            .where("C", blocks(GTCACasings.ISAMILL_CASING.get()).setMinGlobalLimited(44)
+                                    .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                    .or(autoAbilities(true, true, false))
+                            )
+                            .build()
+            )
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/isa_mill_casing"),
+                    GTCA.id("block/multiblock/aebf"),
+                    true
+            )
+            .register();
 }
 
 
