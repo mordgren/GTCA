@@ -62,6 +62,11 @@ public class GTCAMaterials {
     public static Material EglinSteel;
     public static Material ZirconiumCarbide;
     public static Material HastealloyN;
+    public static Material Inconel625;
+    public static Material Zeron182;
+    public static Material LafiumCompound;
+    public static Material TrunuimNaquadah;
+    public static Material TrunuimNaquadahCarbonite;
 
     // Dusts
 

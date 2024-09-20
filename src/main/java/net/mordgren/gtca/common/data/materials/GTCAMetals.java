@@ -19,6 +19,7 @@ public class GTCAMetals {
 
         ///MISC
         GTMaterials.NiobiumTitanium.addFlags(MaterialFlags.GENERATE_FRAME);
+        GTMaterials.Titanium.addFlags(MaterialFlags.GENERATE_FOIL);
 
         GTMaterials.Zirconium = new Material.Builder(GTCEu.id("zirconium_gtca"))
                 .dust()
@@ -345,10 +346,109 @@ public class GTCAMetals {
                 )
                 .color(0xb89b7a)
                 .fluid()
-                .blastTemp(4100)
+                .blastTemp(3300, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 1100)
                 .iconSet(METALLIC)
                 .buildAndRegister()
                 .setFormula("ZrC",true);
+
+        GTCAMaterials.HastealloyN = new Material.Builder(GTCA.id("hastealloy_n"))
+                .components(GTMaterials.Yttrium, 2, GTMaterials.Molybdenum, 4, GTMaterials.Chromium, 2, GTMaterials.Titanium, 2, GTMaterials.Nickel, 25)
+                .flags(
+                       MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_BOLT_SCREW
+
+                )
+                .color(0x5c838b)
+                .fluid()
+                .blastTemp(5300, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 1100)
+                .iconSet(METALLIC)
+                .buildAndRegister()
+                .setFormula("Y2Mo4Cr2Ti2Ni25",true);
+
+
+        GTCAMaterials.Inconel625 = new Material.Builder(GTCA.id("inconel_625"))
+                .components(GTMaterials.Nickel, 3, GTMaterials.Chromium, 7, GTMaterials.Molybdenum, 10, GTMaterials.Invar, 10, GTMaterials.Nichrome, 13)
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_GEAR
+
+                )
+                .color(0xb4eeb4)
+                .fluid()
+                .blastTemp(4900, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 1670)
+                .iconSet(METALLIC)
+                .buildAndRegister()
+                .setFormula("Ni3Cr7Mo10(Fe2Ni)10(Ni4Cr)13",true);
+
+
+        GTCAMaterials.Zeron182 = new Material.Builder(GTCA.id("zeron_182"))
+                .components(GTMaterials.Chromium, 13, GTMaterials.Nickel, 3, GTMaterials.Molybdenum, 2, GTMaterials.Copper, 10, GTMaterials.Tungsten, 2, GTMaterials.Steel, 20)
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_BOLT_SCREW
+
+                )
+                .color(0xe1b325)
+                .fluid()
+                .blastTemp(6100, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 2100)
+                .iconSet(METALLIC)
+                .buildAndRegister()
+                .setFormula("Cr13Ni3Mo2Cu10W2Fe20",true);
+
+        GTCAMaterials.LafiumCompound = new Material.Builder(GTCA.id("lafium_compound"))
+                .components(GTCAMaterials.HastealloyN, 4, GTMaterials.Naquadah, 2, GTMaterials.Samarium, 1, GTMaterials.Tungsten, 2, GTMaterials.Silver, 1, GTMaterials.Aluminium, 3, GTMaterials.Nickel, 4, GTMaterials.Carbon, 1)
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_BOLT_SCREW
+
+                )
+                .color(0x6d6abc)
+                .fluid()
+                .blastTemp(6300, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 4300)
+                .iconSet(METALLIC)
+                .buildAndRegister()
+                .setFormula("(Y2Mo4Cr2Ti2Ni25)Nq2SmW2AgAl3Ni4C",true);
+
+        GTCAMaterials.TrunuimNaquadah = new Material.Builder(GTCA.id("trinium_naquadah"))
+                .components(GTMaterials.Trinium, 5, GTMaterials.Naquadah,9)
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_BOLT_SCREW
+                )
+                .color(0x606060)
+                .fluid()
+                .blastTemp(6100, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 1200)
+                .iconSet(METALLIC)
+                .buildAndRegister()
+                .setFormula("Ke5Nq9",true);
+
+        GTCAMaterials.TrunuimNaquadahCarbonite = new Material.Builder(GTCA.id("trinium_naquadah_carbonite"))
+                .components(GTMaterials.Trinium, 5, GTMaterials.Naquadah,9, GTMaterials.Carbon, 1)
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_BOLT_SCREW
+
+                )
+                .color(0x654949)
+                .fluid()
+                .blastTemp(6100, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 2100)
+                .iconSet(METALLIC)
+                .buildAndRegister()
+                .setFormula("(Ke5Nq9)9C",true);
+
 
 
 

@@ -19,21 +19,18 @@ public class GTCARecipeInit {
             ChemGenChemicals.init(provider);
 
             AlloyRecipes.init(provider);
-
             GreenHouseRecipes.init(provider);
-
             PolymerizerRecipes.init(provider);
-
             CasingRecipes.init(provider);
             GTCAMachinesRecipes.init(provider);
-
             HERecipes.init(provider);
-
             CometRecipes.init(provider);
             ICORecipes.init(provider);
-
             Misc.init();
             Misc.miscRecipes(provider);
+            isamillRecipes.init(provider);
+
+
 
             if (GTCA.GTNNINT) {
                 GTNNIntProxy.init(provider);
