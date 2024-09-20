@@ -12,7 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.mordgren.gtca.common.data.GTCAItems;
+import net.mordgren.gtca.common.data.materials.GTCAItems;
 import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;

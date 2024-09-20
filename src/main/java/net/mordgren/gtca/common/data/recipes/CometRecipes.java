@@ -8,7 +8,7 @@ import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCACasings;
-import net.mordgren.gtca.common.data.GTCAItems;
+import net.mordgren.gtca.common.data.materials.GTCAItems;
 import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
@@ -17,7 +17,6 @@ import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLER_RECIPES;
-import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 import static net.mordgren.gtca.common.data.GTCARecipeTypes.COMET_CYCLOTRON;
 
 public class CometRecipes {

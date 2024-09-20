@@ -270,8 +270,7 @@ public class GTCAMetals {
                 .components(GTMaterials.Mercury, 1, GTMaterials.Barium, 2, GTMaterials.Calcium, 2, GTMaterials.Copper, 3, GTMaterials.Oxygen, 8)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
-                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
-                        MaterialFlags.DISABLE_ALLOY_BLAST
+                        MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
                 )
                 .dust()
                 .color(0x445bea)
@@ -352,8 +351,12 @@ public class GTCAMetals {
                 .setFormula("ZrC",true);
 
 
-        // Ores
 
+
+
+
+
+        // Ores
 
         GTCAMaterials.RedZircon = new Material.Builder(GTCA.id("red_zircon"))
                 .dust(3)
@@ -426,22 +429,6 @@ public class GTCAMetals {
                 .components(GTMaterials.Potassium, 1, GTMaterials.Chromium, 3,GTMaterials.Silicon, 3, GTMaterials.Oxygen, 12, GTMaterials.Hydrogen, 2)
                 .buildAndRegister()
                 .setFormula("KCr3Si3O10(OH)2",true);
-
-        GTCAMaterials.CelestialPlasma = new Material.Builder(GTCA.id("celestial_plasma"))
-                .plasma()
-                .color(0xffffff)
-                .buildAndRegister()
-                .setFormula("✦✧✦",true);
-
-        GTCAMaterials.EnderFluid = new Material.Builder(GTCA.id("ender_fluid"))
-                .fluid()
-                .components(GTMaterials.EnderPearl, 1)
-                .flags(
-                        MaterialFlags.DISABLE_DECOMPOSITION
-                )
-                .color(0x074852)
-                .buildAndRegister();
-
 
 
 

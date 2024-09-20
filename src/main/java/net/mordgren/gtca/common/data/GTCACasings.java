@@ -61,6 +61,14 @@ public class GTCACasings {
     public static final BlockEntry<Block> ISAMILL_CASING = createCasingBlock("isa_mill_casing",
             GTCA.id("block/casing/isa_mill_casing"));
 
+    public static final BlockEntry<Block> ISAMILL_AIR_INTAKE = createCasingBlock("isa_mill_airintake",
+            GTCA.id("block/casing/isa_mill_air_intake_2"));
+
+    public static final BlockEntry<Block> ISAMILL_GEARBOX = createCasingBlock("isa_mill_gearbox",
+            GTCA.id("block/casing/isa_mill_gearbox"));
+
+
+    // Glass
 
 
     public static final BlockEntry<Block> BORSILICATE_YTTRIUM_GLASS = createGlassCasingBlock("borsilicate_yttrium_thorium_glass",

@@ -13,7 +13,8 @@
     "gtca:comet_casing",
     "gtca:cyclotron_coil",
     "gtca:isa_mill_casing",
-    "gtca:isamill_test_front",
+    "gtca:isa_mill_airintake",
+    "gtca:isa_mill_gearbox",
     "gtca:borsilicate_yttrium_thorium_glass",
     "gtca:reinforced_glass"
   ]

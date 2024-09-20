@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data;
+package net.mordgren.gtca.common.data.materials;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;

@@ -10,6 +10,8 @@ public class GTCAMaterials {
         GTCAMetals.init();
         GTCAChemicals.init();
         MaterialFlagAddition.init();
+        GTCAFluids.init();
+        GTCAPlasmas.init();
     }
 
     // Fuels
@@ -76,6 +78,8 @@ public class GTCAMaterials {
     // Plasma
 
     public static Material CelestialPlasma;
+
+    // Other Fluids
 
     public static Material EnderFluid;
 

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gtca:isamill_test_front"
+          "name": "gtca:isa_mill_airintake"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "gtca:blocks/isamill_test_front"
+  "random_sequence": "gtca:blocks/isa_mill_airintake"
 }
