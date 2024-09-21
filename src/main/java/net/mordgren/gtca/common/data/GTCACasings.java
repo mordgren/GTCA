@@ -67,6 +67,8 @@ public class GTCACasings {
     public static final BlockEntry<Block> ISAMILL_GEARBOX = createCasingBlock("isa_mill_gearbox",
             GTCA.id("block/casing/isa_mill_gearbox"));
 
+    public static final BlockEntry<Block> FLCR_CASING_TYPE_I = createCasingBlock("flcr_casing_type_i",
+            GTCA.id("block/casing/rc_casing_type1"));
 
     // Glass
 

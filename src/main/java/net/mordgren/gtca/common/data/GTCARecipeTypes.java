@@ -121,6 +121,8 @@ public class GTCARecipeTypes {
             .setSound(GTSoundEntries.CHEMICAL)
             .setEUIO(IO.IN);
 
+    // eto pizdec ↓
+
     public static final GTRecipeType WOOD_SQUEEZER = register("wood_squeezer", MULTIBLOCK)
             .setMaxIOSize(3,3,1,1)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)

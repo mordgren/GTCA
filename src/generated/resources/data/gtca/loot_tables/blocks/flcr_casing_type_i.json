@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "gtca:flcr_casing_type_i"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "gtca:blocks/flcr_casing_type_i"
+}
