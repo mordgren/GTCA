@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gtca:item/grinding_ball_nq_raw"
+  }
+}

@@ -42,8 +42,7 @@ import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Tungsten;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.TungstenCarbide;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 
 public class GTCAMachines {
@@ -542,11 +541,11 @@ public class GTCAMachines {
             )
             .register();
 
-    public static final MultiblockMachineDefinition THERMAL_REACTOR = REGISTRATE.multiblock("thermal_reactor", WorkableElectricMultiblockMachine::new)
+    public static final MultiblockMachineDefinition THERMAL_REACTOR = REGISTRATE.multiblock("thermal_reactor", CoilWorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.THERMAL_REACTOR)
             .appearanceBlock(GTCACasings.NIMONIC80A_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(GTRecipeModifiers::ebfOverclock)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("#CCC#", "#NNN#", "#CCC#", "#####", "#####","#####","#####","#####","#####","#####")
@@ -559,12 +558,37 @@ public class GTCAMachines {
                             .where('#', Predicates.air())
                             .where('D', blocks(GTCACasings.NIMONIC80A_CASING.get()))
                             .where('P', blocks(CASING_TITANIUM_PIPE.get()))
-                            .where('N', blocks(COIL_CUPRONICKEL.get()))
+                            .where('N', heatingCoils())
                             .where("C", blocks(GTCACasings.NIMONIC80A_CASING.get()).setMinGlobalLimited(11)
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                                     .or(autoAbilities(true, false, false)))
                             .build()
-            )
+            ).shapeInfos(definition -> {
+                List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
+                var builder = MultiblockShapeInfo.builder()
+                        .aisle("#MCE#", "#NNN#", "#CCC#", "#####", "#####","#####","#####","#####","#####","#####")
+                        .aisle("ICCCK", "N###N", "CCCCC", "#FDF#", "#F#F#","#FDF#","#F#F#","#FDF#","#F#F#","#FDF#")
+                        .aisle("OCCCL", "N###N", "CCPCC", "#DPD#", "##P##","#DPD#","##P##","#DPD#","##P##","#DDD#")
+                        .aisle("CCCCC", "N###N", "CCCCC", "#FDF#", "#F#F#","#FDF#","#F#F#","#FDF#","#F#F#","#FDF#")
+                        .aisle("#CSC#", "#NNN#", "#CCC#", "#####", "#####","#####","#####","#####","#####","#####")
+                        .where('C', GTCACasings.NIMONIC80A_CASING.getDefaultState())
+                        .where('D', GTCACasings.NIMONIC80A_CASING.getDefaultState())
+                        .where('F', ChemicalHelper.getBlock(TagPrefix.frameGt, TungstenCarbide))
+                        .where('P', CASING_TITANIUM_PIPE.getDefaultState())
+                        .where('S', definition, Direction.SOUTH)
+                        .where('#', Blocks.AIR.defaultBlockState())
+                        .where('E', ENERGY_INPUT_HATCH[GTValues.LV], Direction.NORTH)
+                        .where('I', ITEM_IMPORT_BUS[GTValues.LV], Direction.WEST)
+                        .where('O', ITEM_EXPORT_BUS[GTValues.LV], Direction.WEST)
+                        .where('K', FLUID_IMPORT_HATCH[GTValues.LV], Direction.EAST)
+                        .where('L', FLUID_EXPORT_HATCH[GTValues.LV], Direction.EAST)
+                        .where('M', MAINTENANCE_HATCH, Direction.NORTH);
+                GTCEuAPI.HEATING_COILS.entrySet().stream()
+                        .sorted(Comparator.comparingInt(entry -> entry.getKey().getTier()))
+                        .forEach(
+                                coil -> shapeInfo.add(builder.shallowCopy().where('N', coil.getValue().get()).build()));
+                return shapeInfo;
+            })
             .workableCasingRenderer(
                     GTCA.id("block/casing/nimonic80a_casing"),
                     GTCA.id("block/multiblock/aebf"),
@@ -573,6 +597,20 @@ public class GTCAMachines {
             .tooltips(
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Thermal Catalyst Reactor")
             )
+            .additionalDisplay((controller, components) -> {
+                if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
+                    components.add(Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",
+                            Component
+                                    .translatable(
+                                            FormattingUtil
+                                                    .formatNumbers(coilMachine.getCoilType().getCoilTemperature() +
+                                                            100L * Math.max(0, coilMachine.getTier() - GTValues.MV)) +
+                                                    "K")
+                                    .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
+                }
+            })
+            .compassSections(GTCompassSections.TIER[MV])
+            .compassNodeSelf()
             .register();
 
     public static final MultiblockMachineDefinition COMET_CYCLOTRON = REGISTRATE.multiblock("comet", WorkableElectricMultiblockMachine::new)
@@ -670,6 +708,40 @@ public class GTCAMachines {
             .workableCasingRenderer(
                     GTCA.id("block/casing/dural_casing"),
                     GTCA.id("block/multiblock/aebf"),
+                    true
+            )
+            .register();
+
+
+    public static final MultiblockMachineDefinition WOOD_SQUEEZER = REGISTRATE.multiblock("wood_squeezer", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.WOOD_SQUEEZER)
+            .appearanceBlock(GCyMBlocks.CASING_STRESS_PROOF)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("FCFACCC", "CCC#CCC", "CCCACCC")
+                            .aisle("#C#ACCC", "CBPPPGC", "CCCACCC")
+                            .aisle("#C#ACCC", "CBC#CRC", "CCCACCC")
+                            .aisle("#C#AAAA", "CBCAAAA", "CCCAAAA")
+                            .aisle("#C#AAAA", "CBCAAAA", "CCCAAAA")
+                            .aisle("FCFAAAA", "CECAAAA", "CCCAAAA")
+                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
+                            .where("A", Predicates.any())
+                            .where("#", Predicates.air())
+                            .where("B", blocks(CASING_TUNGSTENSTEEL_GEARBOX.get()))
+                            .where("P", blocks(CASING_TUNGSTENSTEEL_PIPE.get()))
+                            .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, TungstenSteel)))
+                            .where("G", blocks(GTBlocks.CASING_TEMPERED_GLASS.get()))
+                            .where("R", blocks(GTCACasings.REINFORCED_GLASS.get()))
+                            .where("C", blocks(GCyMBlocks.CASING_STRESS_PROOF.get())
+                                    .setMinGlobalLimited(52).or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                    .or(autoAbilities(true, false, false)))
+                            .build()
+            )
+            .workableCasingRenderer(
+                    GTCEu.id("block/casings/gcym/stress_proof_casing"),
+                    GTCEu.id("block/multiblock/gcym/large_maceration_tower"),
                     true
             )
             .register();

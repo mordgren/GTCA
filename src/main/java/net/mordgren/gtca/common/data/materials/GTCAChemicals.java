@@ -57,5 +57,26 @@ public class GTCAChemicals {
                 .color(0xff9f80)
                 .flags(MaterialFlags.DISABLE_DECOMPOSITION)
                 .buildAndRegister();
+
+        GTCAMaterials.SodiumEthylXanthate = new Material.Builder(GTCA.id("sodium_ethyl_xanthate"))
+                .dust()
+                .color(0xf9ff77).secondaryColor(0xe2ef59).iconSet(MaterialIconSet.DULL)
+                .buildAndRegister();
+
+        GTCAMaterials.SodiumEthoxide = new Material.Builder(GTCA.id("sodium_ethoxide"))
+                .dust()
+                .color(0xcbc9b1).secondaryColor(0xb3b198).iconSet(MaterialIconSet.DULL)
+                .buildAndRegister();
+
+        GTCAMaterials.PotassiumEthylXanthate = new Material.Builder(GTCA.id("potassium_ethyl_xanthate"))
+                .dust()
+                .color(0xfdf47e).secondaryColor(0xe3db60).iconSet(MaterialIconSet.DULL)
+                .buildAndRegister();
+
+        GTCAMaterials.CarbonDisulfide = new Material.Builder(GTCA.id("carbon_disulfide"))
+                .fluid()
+                .color(0x979797)
+                .buildAndRegister()
+                .setFormula("CS2",true);
     }
 }

@@ -22,7 +22,7 @@ public class AltFuelsGTNN {
                 .outputFluids(GTCAMaterials.E85Fuel.getFluid(20000))
                 .save(provider);
 
-        GTNNRecipeTypes.INSTANCE.getDEHYDRATOR_RECIPES().recipeBuilder("dymethyl_ether").EUt(1280).duration(240)
+        GTNNRecipeTypes.INSTANCE.getDEHYDRATOR_RECIPES().recipeBuilder("dymethyl_ether").EUt(1920).duration(360)
                 .inputFluids(Methanol.getFluid(4000))
                 .chancedInput((GTCAHelper.getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1)), 7400, 0)
                 .chancedOutput((GTCAHelper.getItem("dust", Zeolite, 1)),2000,0)

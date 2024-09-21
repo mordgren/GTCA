@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.materials;
+package net.mordgren.gtca.common.data;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
@@ -28,6 +28,10 @@ public class GTCAItems {
 
 
 
+    public static ItemEntry<Item> TungstenCarbideGrindBall = REGISTRATE.item("grinding_ball_tungsten_carbide", Item::new).properties(p -> p.stacksTo(1)).register();
+    public static ItemEntry<Item> NqGrindBall = REGISTRATE.item("grinding_ball_nq", Item::new).properties(p -> p.stacksTo(1)).register();
+    public static ItemEntry<Item> TungstenCarbideGrindballRaw = REGISTRATE.item("grinding_ball_tungsten_carbide_raw", Item::new).register();
+    public static ItemEntry<Item> NqGrindBallRaw = REGISTRATE.item("grinding_ball_nq_raw", Item::new).register();
 
     public static ItemEntry<Item> MilledSphalerite = REGISTRATE.item("milled_sphalerite", Item::new).register();
     public static ItemEntry<Item> MilledChalcopyrite = REGISTRATE.item("milled_chalcopyrite", Item::new).register();

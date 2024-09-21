@@ -2,6 +2,7 @@ package net.mordgren.gtca.common.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.GTCA;
+import net.mordgren.gtca.common.data.GTNNIntegration.GTNNIntFallbackProxy;
 import net.mordgren.gtca.common.data.recipes.*;
 import net.mordgren.gtca.common.data.GTNNIntegration.GTNNIntProxy;
 import net.mordgren.gtca.common.data.recipes.fuel.AltFuels;
@@ -17,25 +18,27 @@ public class GTCARecipeInit {
             AltFuels.init(provider);
             ChemGenFuels.init(provider);
             ChemGenChemicals.init(provider);
-
+            ChemicalRecipes.init(provider);
             AlloyRecipes.init(provider);
+
             GreenHouseRecipes.init(provider);
             PolymerizerRecipes.init(provider);
-            CasingRecipes.init(provider);
-            GTCAMachinesRecipes.init(provider);
             HERecipes.init(provider);
             CometRecipes.init(provider);
             ICORecipes.init(provider);
-            Misc.init();
-            Misc.miscRecipes(provider);
-            isamillRecipes.init(provider);
+            IsamillRecipes.init(provider);
+            FLCRRecipes.init(provider);
 
+            CasingRecipes.init(provider);
+            GTCAMachinesRecipes.init(provider);
 
+            Misc.init(provider);
 
             if (GTCA.GTNNINT) {
                 GTNNIntProxy.init(provider);
             } else {
-                GTCA.LOGGER.info("GT-- not found, some recipes are not loaded.");
+                GTNNIntFallbackProxy.init(provider);
+                GTCA.LOGGER.info("GT-- not found, some recipes are not loaded, or replaced.");
             }
         }
     }

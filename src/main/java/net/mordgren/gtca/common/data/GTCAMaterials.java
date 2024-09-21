@@ -33,6 +33,19 @@ public class GTCAMaterials {
     public static Material PhthalicAnhydride;
     public static Material Oxylene;
     public static Material Octene;
+    public static Material CarbonDisulfide;
+    public static Material SphaleriteFroth;
+    public static Material ChalcopyriteFroth;
+    public static Material NickelFroth;
+    public static Material PlatinumFroth;
+    public static Material PentlanditeFroth;
+    public static Material RedstoneFroth;
+    public static Material SpessartineFroth;
+    public static Material GrossularFroth;
+    public static Material AlmandineFroth;
+    public static Material PyropeFroth;
+    public static Material MonaziteFroth;
+    public static Material SpruceOil;
 
     // Catalyst
 
@@ -71,6 +84,9 @@ public class GTCAMaterials {
 
     public static Material HeavyMetalMixture;
     public static Material EglinSteelCompound;
+    public static Material SodiumEthylXanthate;
+    public static Material SodiumEthoxide;
+    public static Material PotassiumEthylXanthate;
 
     // Ores
 
@@ -82,6 +98,12 @@ public class GTCAMaterials {
     // Plasma
 
     public static Material CelestialPlasma;
+    public static Material HydrogenPlasma;
+    public static Material SulfurPlasma;
+    public static Material CalciumPlasma;
+    public static Material TitaniumPlasma;
+    public static Material ZincPlasma;
+
 
     // Other Fluids
 

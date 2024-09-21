@@ -20,13 +20,6 @@ public class AltFuels {
     }
 
     private static void e85Fuel(Consumer<FinishedRecipe> provider) {
-        LARGE_CHEMICAL_RECIPES.recipeBuilder("e85fuel").EUt(480).duration(100)
-                .inputFluids(Ethanol.getFluid(17000))
-                .inputFluids(LightFuel.getFluid(3000))
-                .inputFluids(EthylTertButylEther.getFluid(100))
-                .outputFluids(GTCAMaterials.E85Fuel.getFluid(20000))
-                .save(provider);
-
         COMBUSTION_GENERATOR_FUELS.recipeBuilder("e85fuel").EUt(-32).duration(90)
                 .inputFluids(GTCAMaterials.E85Fuel.getFluid(2))
                 .save(provider);
@@ -57,6 +50,7 @@ public class AltFuels {
                 .save(provider);
 
         GTCARecipeTypes.THERMAL_REACTOR.recipeBuilder("dymethyl_ether").EUt(1280).duration(240)
+                .blastFurnaceTemp(3000)
                 .inputFluids(Methanol.getFluid(4000))
                 .chancedInput((GTCAHelper.getItem("dust", GTCAMaterials.AluminosilicateCatalyst, 1)), 7400, 0)
                 .chancedOutput((GTCAHelper.getItem("dust", Zeolite, 1)),2000,0)

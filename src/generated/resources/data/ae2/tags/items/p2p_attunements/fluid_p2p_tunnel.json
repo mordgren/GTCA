@@ -32,8 +32,8 @@
     "gtca:molten_tantalloy61_bucket",
     "gtca:incoloy_020_bucket",
     "gtca:molten_incoloy_020_bucket",
-    "gtca:incoloy_ma956_bucket",
-    "gtca:molten_incoloy_ma956_bucket",
+    "gtca:incoloy_ma323_bucket",
+    "gtca:molten_incoloy_ma323_bucket",
     "gtca:hg_1223_bucket",
     "gtca:molten_hg_1223_bucket",
     "gtca:incoloy_ds_bucket",
@@ -63,6 +63,11 @@
     "gtca:oxylene_bucket",
     "gtca:octene_bucket",
     "gtca:ender_fluid_bucket",
-    "gtca:celestial_plasma_plasma_bucket"
+    "gtca:celestial_plasma_plasma_bucket",
+    "gtca:hydrogen_plasma_plasma_bucket",
+    "gtca:sulfur_plasma_plasma_bucket",
+    "gtca:calcium_plasma_plasma_bucket",
+    "gtca:titanium_plasma_plasma_bucket",
+    "gtca:zinc_plasma_plasma_bucket"
   ]
 }
