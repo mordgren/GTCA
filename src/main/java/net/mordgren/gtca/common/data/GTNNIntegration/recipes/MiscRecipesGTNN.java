@@ -43,7 +43,7 @@ public class MiscRecipesGTNN {
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("crushed_log").duration(200).EUt(120)
                 .circuitMeta(14)
                 .addCondition(GTNNRecipes.INSTANCE.setPlantCasing(PlantCasingCondition.STAINLESS_STEEL))
-                .inputItems(Items.SPRUCE_SAPLING, 1)
+                .inputItems(Items.SPRUCE_LOG, 1)
                 .outputItems(GTCAItems.CrushedSpruce, 16)
                 .chancedOutput(GTCAItems.CrushedSpruce.asStack(16),7500,0)
                 .chancedOutput(GTCAItems.CrushedSpruce.asStack(16),5000,0)
