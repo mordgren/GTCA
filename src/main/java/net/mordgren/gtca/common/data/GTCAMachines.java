@@ -697,7 +697,7 @@ public class GTCAMachines {
                             .aisle("#CCCCC#", "#CCCCC#", "###F###", "###F###", "###F###", "###F###", "###F###", "###F###", "#######")
                             .aisle("##CCC##", "##CCC##", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
                             .where("E", Predicates.controller(Predicates.blocks(definition.get())))
-                            .where("F", blocks(CASING_STEEL_PIPE.get()))
+                            .where("F", blocks(GTCACasings.FLCR_CASING_TYPE_I.get()))
                             .where('#', Predicates.air())
                             .where("C", blocks(GTCACasings.DURAL_CASING.get()).setMinGlobalLimited(44)
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes()))
@@ -708,40 +708,6 @@ public class GTCAMachines {
             .workableCasingRenderer(
                     GTCA.id("block/casing/dural_casing"),
                     GTCA.id("block/multiblock/aebf"),
-                    true
-            )
-            .register();
-
-
-    public static final MultiblockMachineDefinition WOOD_SQUEEZER = REGISTRATE.multiblock("wood_squeezer", WorkableElectricMultiblockMachine::new)
-            .rotationState(RotationState.NON_Y_AXIS)
-            .recipeType(GTCARecipeTypes.WOOD_SQUEEZER)
-            .appearanceBlock(GCyMBlocks.CASING_STRESS_PROOF)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-            .pattern(definition ->
-                    FactoryBlockPattern.start()
-                            .aisle("FCFACCC", "CCC#CCC", "CCCACCC")
-                            .aisle("#C#ACCC", "CBPPPGC", "CCCACCC")
-                            .aisle("#C#ACCC", "CBC#CRC", "CCCACCC")
-                            .aisle("#C#AAAA", "CBCAAAA", "CCCAAAA")
-                            .aisle("#C#AAAA", "CBCAAAA", "CCCAAAA")
-                            .aisle("FCFAAAA", "CECAAAA", "CCCAAAA")
-                            .where("E", Predicates.controller(Predicates.blocks(definition.get())))
-                            .where("A", Predicates.any())
-                            .where("#", Predicates.air())
-                            .where("B", blocks(CASING_TUNGSTENSTEEL_GEARBOX.get()))
-                            .where("P", blocks(CASING_TUNGSTENSTEEL_PIPE.get()))
-                            .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, TungstenSteel)))
-                            .where("G", blocks(GTBlocks.CASING_TEMPERED_GLASS.get()))
-                            .where("R", blocks(GTCACasings.REINFORCED_GLASS.get()))
-                            .where("C", blocks(GCyMBlocks.CASING_STRESS_PROOF.get())
-                                    .setMinGlobalLimited(52).or(Predicates.autoAbilities(definition.getRecipeTypes()))
-                                    .or(autoAbilities(true, false, false)))
-                            .build()
-            )
-            .workableCasingRenderer(
-                    GTCEu.id("block/casings/gcym/stress_proof_casing"),
-                    GTCEu.id("block/multiblock/gcym/large_maceration_tower"),
                     true
             )
             .register();

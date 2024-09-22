@@ -120,14 +120,4 @@ public class GTCARecipeTypes {
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.CHEMICAL)
             .setEUIO(IO.IN);
-
-    // eto pizdec ↓
-
-    public static final GTRecipeType WOOD_SQUEEZER = register("wood_squeezer", MULTIBLOCK)
-            .setMaxIOSize(3,3,1,1)
-            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_WIREMILL, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setSound(GTSoundEntries.COMPRESSOR)
-            .setEUIO(IO.IN);
-
 }

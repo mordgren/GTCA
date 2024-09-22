@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-21T13:53:43.0683546	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2024-09-22T13:03:37.1333309	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 6ab814a1724684d8ca5e3d3ce46435a3ebcc76ba assets/gtca/blockstates/borsilicate_yttrium_thorium_glass.json
 cd3f826ed2eb68cb7e6da340f85dace7965516b9 assets/gtca/blockstates/casing_aebf.json
 30d06aaad6d66e2bbed82d3560a207be45bd185b assets/gtca/blockstates/casing_greenhouse.json
@@ -17,8 +17,8 @@ c7d16122d51142ac64a659c61e6ae7902795b676 assets/gtca/blockstates/reinforced_glas
 0da2e605795134e26111ef3ee1f06a77cc829bbd assets/gtca/blockstates/shd_gearbox.json
 fe3140ea2850e50c907a740117e67257dbad9603 assets/gtca/blockstates/tantalloy61_casing.json
 fe947fa7f00fa4956c5fffbe6a6fc3c0543c486c assets/gtca/blockstates/vitallium_casing.json
-34c7c857063a23fd184df5eb94cf8e993bc9b56c assets/gtca/lang/en_ud.json
-777e4853dd9f000bf8af2312c42337c3b54cc94c assets/gtca/lang/en_us.json
+4c12dbb4c7f9e63fac5158331f3588462e530314 assets/gtca/lang/en_ud.json
+5eee444de24c94acbf7322d678568fbfa0498525 assets/gtca/lang/en_us.json
 75ea7d2b2a9ef61294a1a5b4d89eb13970dfcaec assets/gtca/models/block/borsilicate_yttrium_thorium_glass.json
 db22753399866af29c217d0e308fa216d8fca09b assets/gtca/models/block/casing_aebf.json
 9528a1f95eabcd08b41443e4791e18abe195b582 assets/gtca/models/block/casing_greenhouse.json
@@ -41,6 +41,7 @@ da7e48f96c707bfe2e3b41dd41c79dd5c0cd90e3 assets/gtca/models/block/tantalloy61_ca
 65b34867ddf7757f5d8b3472b6812c603d11bca5 assets/gtca/models/item/casing_aebf.json
 3de4bcc8d5a37125b86987e32299e9797f0fd730 assets/gtca/models/item/casing_greenhouse.json
 087a2b9613590691eaaccd3f72aa83b3fcfccd75 assets/gtca/models/item/comet_casing.json
+cb88504d3db75c6ed626790d300a4105b9008887 assets/gtca/models/item/crushed_spruce.json
 8241a8a7518fb8dc6e87d2cf894272ca671f7144 assets/gtca/models/item/cyclotron_coil.json
 143128c32fe3b1bde585fae8300c2d0f70c09f90 assets/gtca/models/item/dural_casing.json
 a25572b0daf3215a95683982188337aec0b46302 assets/gtca/models/item/electron.json

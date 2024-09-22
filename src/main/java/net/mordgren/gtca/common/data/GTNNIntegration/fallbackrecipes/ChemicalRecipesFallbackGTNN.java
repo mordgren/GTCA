@@ -17,8 +17,8 @@ public class ChemicalRecipesFallbackGTNN {
     private static void carbonDisulfide(Consumer<FinishedRecipe> provider){
         GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder("carbon_disulfide").duration(6000).EUt(30)
                 .circuitMeta(20)
-                .inputItems(GTCAHelper.getItem("tinyDust", GTMaterials.Aluminium, 1))
-                .inputItems(GTCAHelper.getItem("tinyDust", GTMaterials.Nickel, 1))
+                .chancedInput(GTCAHelper.getItem("tinyDust", GTMaterials.Aluminium, 1), 1000,0)
+                .chancedInput(GTCAHelper.getItem("tinyDust", GTMaterials.Nickel, 1), 1000,0)
                 .inputItems(GTCAHelper.getItem("dust", GTMaterials.Sulfur, 4))
                 .inputFluids(GTMaterials.CoalGas.getFluid(1000))
                 .outputFluids(GTCAMaterials.CarbonDisulfide.getFluid(2000))

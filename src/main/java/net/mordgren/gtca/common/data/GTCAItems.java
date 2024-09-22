@@ -45,6 +45,8 @@ public class GTCAItems {
     public static ItemEntry<Item> MilledPyrope = REGISTRATE.item("milled_pyrope", Item::new).register();
     public static ItemEntry<Item> MilledMonazite = REGISTRATE.item("milled_monazite", Item::new).register();
 
+    public static ItemEntry<Item> CrushedSpruce = REGISTRATE.item("crushed_spruce", Item::new).register();
+
     public static void init(){
 
     }

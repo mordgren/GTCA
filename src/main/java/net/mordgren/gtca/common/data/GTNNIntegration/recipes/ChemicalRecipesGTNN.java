@@ -1,7 +1,6 @@
 package net.mordgren.gtca.common.data.GTNNIntegration.recipes;
 
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import dev.arbor.gtnn.api.recipe.PlantCasingCondition;
 import dev.arbor.gtnn.data.GTNNRecipeTypes;
 import dev.arbor.gtnn.data.GTNNRecipes;
@@ -21,8 +20,8 @@ public class ChemicalRecipesGTNN {
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("carbon_disulfide").duration(6000).EUt(30)
                 .circuitMeta(20)
                 .addCondition(GTNNRecipes.INSTANCE.setPlantCasing(PlantCasingCondition.ALUMINIUM))
-                .inputItems(GTCAHelper.getItem("tinyDust", GTMaterials.Aluminium, 1))
-                .inputItems(GTCAHelper.getItem("tinyDust", GTMaterials.Nickel, 1))
+                .chancedInput(GTCAHelper.getItem("tinyDust", GTMaterials.Aluminium, 1), 1000,0)
+                .chancedInput(GTCAHelper.getItem("tinyDust", GTMaterials.Nickel, 1), 1000,0)
                 .inputItems(GTCAHelper.getItem("dust", GTMaterials.Sulfur, 4))
                 .inputFluids(GTMaterials.CoalGas.getFluid(1000))
                 .outputFluids(GTCAMaterials.CarbonDisulfide.getFluid(2000))
