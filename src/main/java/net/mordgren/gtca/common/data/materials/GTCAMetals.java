@@ -267,7 +267,7 @@ public class GTCAMetals {
                 .blastTemp(3600, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 700)
                 .iconSet(METALLIC)
                 .buildAndRegister()
-                .setFormula("Fe16Al3Cr5Y1",true);
+                .setFormula("Fe16Al3Cr5Y",true);
 
         GTCAMaterials.HG1223 = new Material.Builder(GTCA.id("hg_1223"))
                 .components(GTMaterials.Mercury, 1, GTMaterials.Barium, 2, GTMaterials.Calcium, 2, GTMaterials.Copper, 3, GTMaterials.Oxygen, 8)

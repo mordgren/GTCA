@@ -3,15 +3,20 @@ package net.mordgren.gtca.common.data.recipes;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.mordgren.gtca.GTCA;
+import net.mordgren.gtca.common.data.GTCAItems;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
 
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
+
 public class ChemicalRecipes {
     public static void init(Consumer<FinishedRecipe> provider){
         carbonDisulfide(provider);
         chemGenChemicals(provider);
+        mappline(provider);
     }
 
     private static void carbonDisulfide(Consumer<FinishedRecipe> provider){
@@ -70,5 +75,36 @@ public class ChemicalRecipes {
                 .outputFluids(GTCAMaterials.PhthalicAnhydride.getFluid(1000))
                 .outputFluids(GTMaterials.Water.getFluid(2000))
                 .save(provider);
+    }
+
+    private static void mappline(Consumer<FinishedRecipe> provider) {
+
+        GTRecipeTypes.DISTILLERY_RECIPES.recipeBuilder("propyne").EUt(64).duration(120)
+                .circuitMeta(1)
+                .inputFluids(GTMaterials.Propane.getFluid(100))
+                .outputFluids(GTCAMaterials.Propyne.getFluid(80))
+                .outputItems(GTMaterials.Carbon, 2)
+                .save(provider);
+
+        GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder("propadiene").EUt(480).duration(220)
+                .inputFluids(GTMaterials.Propane.getFluid(1000))
+                .inputFluids(GTMaterials.Butene.getFluid(1000))
+                .notConsumable(GTCAHelper.getItem("dust", GTMaterials.Nickel, 1))
+                .outputFluids(GTCAMaterials.Propadiene.getFluid(800))
+                .outputFluids(GTMaterials.Cyclohexane.getFluid(1200))
+                .save(provider);
+
+
+        GTRecipeTypes.LARGE_CHEMICAL_RECIPES.recipeBuilder("mapp_lcr").EUt(480).duration(210)
+                .circuitMeta(24)
+                .inputFluids(GTCAMaterials.Propyne.getFluid(5000))
+                .inputFluids(GTCAMaterials.Propadiene.getFluid(3000))
+                .inputFluids(GTMaterials.Propane.getFluid(2000))
+                .inputFluids(GTMaterials.Butane.getFluid(1000))
+                .outputFluids(GTCAMaterials.MAPP.getFluid(12000))
+                .save(provider);
+
+
+
     }
 }
