@@ -121,5 +121,7 @@
   "gtca.machine.EHE_desc.tooltip2":"Output: SC Steam/SH Steam/Steam. Check EMI/REI/JEI for more info.",
 
   "gtca.machine.comet_desc.tooltip": "Super Magnetic Speed Shooter",
-  "gtca.machine.comet_desc.tooltip2": "Consist of the same layout as a Fusion Reactor. Any external casing can be a Hatch/bus. Comet Machine Casing around Cyclotron Coils."
+  "gtca.machine.comet_desc.tooltip2": "Consist of the same layout as a Fusion Reactor. Any external casing can be a Hatch/bus. Comet Machine Casing around Cyclotron Coils.",
+
+  "itemGroup.gtca.main": "GT Community Additions"
 }

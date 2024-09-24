@@ -16,6 +16,7 @@ import net.mordgren.gtca.common.data.GTCAItems;
 import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
+import net.mordgren.gtca.common.util.GTCACreativeModTab;
 import org.slf4j.Logger;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.LoggerFactory;

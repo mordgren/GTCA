@@ -1,6 +1,5 @@
 package net.mordgren.gtca.common.data;
 
-import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.item.tool.GTToolType;
 import com.gregtechceu.gtceu.common.data.GTModels;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -15,6 +14,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.mordgren.gtca.GTCA;
+import net.mordgren.gtca.GTCARegistration;
+import net.mordgren.gtca.common.util.GTCACreativeModTab;
 
 import java.util.function.Supplier;
 
@@ -107,5 +108,7 @@ public class GTCACasings {
                 .register();
     }
 
-    public static void init(){}
+    public static void init(){
+        GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);
+    }
 }

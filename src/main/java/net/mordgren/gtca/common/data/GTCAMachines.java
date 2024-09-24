@@ -31,8 +31,11 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.GTCA;
+import net.mordgren.gtca.GTCARegistration;
 import net.mordgren.gtca.common.util.AEBFMod;
 import net.mordgren.gtca.common.util.ChemGenProps;
+import net.mordgren.gtca.common.util.GTCACreativeModTab;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -46,7 +49,9 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 
 public class GTCAMachines {
-    public static void init() {}
+    public static void init() {
+        GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);
+    }
 
 
 

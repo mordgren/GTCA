@@ -2,10 +2,13 @@ package net.mordgren.gtca.common.data;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
+import net.mordgren.gtca.GTCARegistration;
+import net.mordgren.gtca.common.util.GTCACreativeModTab;
 
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 
 public class GTCAItems {
+    static{GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);}
 
     public static ItemEntry<Item> Electron = REGISTRATE.item("electron", Item::new).register();
 
@@ -48,6 +51,5 @@ public class GTCAItems {
     public static ItemEntry<Item> CrushedSpruce = REGISTRATE.item("crushed_spruce", Item::new).register();
 
     public static void init(){
-
     }
 }
