@@ -21,8 +21,7 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLER_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLY_LINE_RECIPES;
-import static net.mordgren.gtca.common.data.GTCAMaterials.Inconel625;
-import static net.mordgren.gtca.common.data.GTCAMaterials.Zeron182;
+import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
 public class GTCAMachinesRecipes {
     public static void init(Consumer<FinishedRecipe> provider){
@@ -198,13 +197,38 @@ public class GTCAMachinesRecipes {
                 .inputItems(GTCAHelper.getItem("foil", Titanium, 32))
                 .inputFluids(GTCAMaterials.Zeron182.getFluid(2304))
                 .inputFluids(GTCAMaterials.LafiumCompound.getFluid(4608))
-                .inputFluids(GTCAMaterials.TrunuimNaquadahCarbonite.getFluid(4608))
+                .inputFluids(GTCAMaterials.TriniumNaquadahCarbonite.getFluid(4608))
                 .outputItems(GTCAMachines.ISAMILL.asStack())
                 .scannerResearch(b -> b
                         .researchStack(GTMachines.MACERATOR[GTValues.LuV].asStack())
                         .duration(2100)
                         .EUt(VA[LuV]))
-                .duration(4000).EUt(32720)
+                .duration(12000).EUt(30720)
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("flcr_controller")
+                .inputItems(GTCACasings.FLCR_CASING_TYPE_I,4)
+                .inputItems(GTMachines.HULL[GTValues.IV].asStack(4))
+                .inputItems(DISTILLERY[GTValues.IV].asStack(4))
+                .inputItems(CustomTags.LuV_CIRCUITS, 8)
+                .inputItems(GTCAHelper.getItem("gear", Stellite100, 8))
+                .inputItems(GTCAHelper.getItem("plate", Stellite100, 32))
+                .inputItems(GTCAHelper.getItem("doublePlate", HastelloyN, 8))
+                .inputItems(GTCAHelper.getItem("doublePlate", HastelloyN, 8))
+                .inputItems(GTCAHelper.getItem("screw", HastelloyN, 64))
+                .inputItems(GTCAHelper.getItem("fineWire", YttriumBariumCuprate, 64))
+                .inputItems(GTCAHelper.getItem("fineWire", YttriumBariumCuprate, 64))
+                .inputItems(GTCAHelper.getItem("foil", Platinum, 32))
+                .inputItems(GTCAHelper.getItem("foil", Platinum, 32))
+                .inputFluids(Nitinol60.getFluid(2304))
+                .inputFluids(Inconel792.getFluid(4608))
+                .inputFluids(HastelloyN.getFluid(4608))
+                .outputItems(GTCAMachines.FLCR.asStack())
+                .scannerResearch(b -> b
+                        .researchStack(DISTILLATION_TOWER.asStack())
+                        .duration(2100)
+                        .EUt(VA[LuV]))
+                .duration(12000).EUt(30720)
                 .save(provider);
 
     }

@@ -14,8 +14,7 @@ import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLER_RECIPES;
-import static net.mordgren.gtca.common.data.GTCAMaterials.Inconel625;
-import static net.mordgren.gtca.common.data.GTCAMaterials.Zeron182;
+import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
 public class CasingRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
@@ -152,6 +151,17 @@ public class CasingRecipes {
                 .inputItems(GTItems.ELECTRIC_PISTON_HV,2)
                 .inputFluids(GTCAMaterials.ZirconiumCarbide.getFluid(1152))
                 .outputItems(GTCACasings.COMET_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("flcri_casing").EUt(30720).duration(2400)
+                .circuitMeta(7)
+                .inputItems(GTMachines.HULL[GTValues.IV].asStack())
+                .inputItems(GTCAHelper.getItem("plate", WatertightSteel, 8))
+                .inputItems(GTCAHelper.getItem("ring", Stellite100, 8))
+                .inputItems(GTCAHelper.getItem("doublePlate", HSSG, 4))
+                .inputItems(GTCAHelper.getItem("screw", HastelloyN, 8))
+                .inputFluids(StainlessSteel.getFluid(1152))
+                .outputItems(GTCACasings.FLCR_CASING_TYPE_I, 1)
                 .save(provider);
     }
 }

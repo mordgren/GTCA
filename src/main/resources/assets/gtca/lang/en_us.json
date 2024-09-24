@@ -112,10 +112,12 @@
   "material.gtca.celestial_plasma":"Celestial",
   "material.gtca.ender_fluid":"Ender Fluid",
 
-  "gtca.machine.SC_desc.tooltip":"Needs a turbine, place inside rotor holder. Uses Supercritical steam to generate power.",
+  "gtca.machine.AEBF_desc.tooltip1":"All recipes are 50% faster!",
+
+  "gtca.machine.SC_desc.tooltip":"Needs a rotor. Uses Supercritical steam to generate power.",
   "gtca.machine.SC_desc.tooltip2":"1L SuperCritical steam = 100 EU",
 
-  "gtca.machine.EHE_desc.tooltip":"Accept hot fluid like lava, or plasma.",
+  "gtca.machine.EHE_desc.tooltip":"Accepts hot fluid like lava, or plasma.",
   "gtca.machine.EHE_desc.tooltip2":"Output: SC Steam/SH Steam/Steam. Check EMI/REI/JEI for more info.",
 
   "gtca.machine.comet_desc.tooltip": "Super Magnetic Speed Shooter",

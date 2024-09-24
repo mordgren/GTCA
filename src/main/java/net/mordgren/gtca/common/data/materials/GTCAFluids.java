@@ -30,5 +30,6 @@ public class GTCAFluids {
         GTCAMaterials.PyropeFroth = new Material.Builder(GTCA.id("pyrope_froth")).fluid().color(0x672e56).buildAndRegister();
         GTCAMaterials.MonaziteFroth = new Material.Builder(GTCA.id("monazite_froth")).fluid().color(0x2f402f).buildAndRegister();
         GTCAMaterials.SpruceOil = new Material.Builder(GTCA.id("spruce_oil")).fluid().color(0x552d0b).buildAndRegister();
+        GTCAMaterials.RedMudSlurry = new Material.Builder(GTCA.id("red_mud_slurry")).fluid().color(0xff0000).buildAndRegister();
     }
 }

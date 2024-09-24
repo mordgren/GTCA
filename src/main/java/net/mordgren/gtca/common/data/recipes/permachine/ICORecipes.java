@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.recipes;
+package net.mordgren.gtca.common.data.recipes.permachine;
 
 import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.data.GTMaterials;

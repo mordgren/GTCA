@@ -1,8 +1,10 @@
-package net.mordgren.gtca.common.data.recipes;
+package net.mordgren.gtca.common.data.recipes.permachine;
 
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAItems;
+import net.mordgren.gtca.common.data.GTCAMaterials;
+
 import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static net.mordgren.gtca.common.data.GTCARecipeTypes.COMET_CYCLOTRON;
@@ -74,6 +76,19 @@ public class CometRecipes {
                 .inputFluids(Duranium.getFluid(40))
                 .inputItems(GTCAItems.UnknownParticle,1)
                 .chancedOutput(GTCAItems.QuantumAnomaly.asStack(1), 100, 0)
+                .save(provider);
+
+        COMET_CYCLOTRON.recipeBuilder("hydrogen_plasma").EUt(30720).duration(2400)
+                .circuitMeta(21)
+                .inputFluids(Hydrogen.getFluid(1000))
+                .inputItems(GTCAItems.HydrogenIon,1)
+                .chancedOutput(GTCAItems.Proton.asStack(1), 1250, 0)
+                .chancedOutput(GTCAItems.Neutron.asStack(1), 1250, 0)
+                .chancedOutput(GTCAItems.Electron.asStack(1), 1250, 0)
+                .chancedOutput(GTCAItems.UnknownParticle.asStack(1), 750, 0)
+                .chancedOutput(GTCAItems.UnknownParticle.asStack(1), 750, 0)
+                .chancedOutput(GTCAItems.UnknownParticle.asStack(1), 750, 0)
+                .outputFluids(GTCAMaterials.HydrogenPlasma.getFluid(100))
                 .save(provider);
     }
 }

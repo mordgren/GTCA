@@ -45,6 +45,7 @@ public class GTCAMaterials {
     public static Material AlmandineFroth;
     public static Material PyropeFroth;
     public static Material MonaziteFroth;
+    public static Material RedMudSlurry;
     public static Material SpruceOil;
 
     // Catalyst
@@ -70,15 +71,17 @@ public class GTCAMaterials {
     public static Material IncoloyMA323;
     public static Material HG1223;
     public static Material IncoloyDS;
-    public static Material Inconel690;;
+    public static Material Inconel690;
     public static Material EglinSteel;
     public static Material ZirconiumCarbide;
-    public static Material HastealloyN;
+    public static Material HastelloyN;
     public static Material Inconel625;
     public static Material Zeron182;
     public static Material LafiumCompound;
-    public static Material TrunuimNaquadah;
-    public static Material TrunuimNaquadahCarbonite;
+    public static Material TriniumNaquadah;
+    public static Material TriniumNaquadahCarbonite;
+    public static Material Nitinol60;
+    public static Material Inconel792;
 
     // Dusts
 

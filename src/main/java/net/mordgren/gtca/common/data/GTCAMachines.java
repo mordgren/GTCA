@@ -143,7 +143,8 @@ public class GTCAMachines {
             )
             .tooltips(
                     Component.translatable("gtceu.multiblock.parallelizable.tooltip"),
-                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Electric Blast Furnace")
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Electric Blast Furnace"),
+                    Component.translatable("gtca.machine.AEBF_desc.tooltip1")
             )
             .additionalDisplay((controller, components) -> {
                 if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {

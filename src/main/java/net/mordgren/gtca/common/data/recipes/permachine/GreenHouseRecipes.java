@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data.recipes;
+package net.mordgren.gtca.common.data.recipes.permachine;
 
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
@@ -23,7 +23,7 @@ public class GreenHouseRecipes {
 
 
     private static void treesArrayInit() {
-        Trees = new ArrayList<Item[]>();
+        Trees = new ArrayList<>();
 
         Trees.add(new Item[]{Items.OAK_SAPLING, Items.OAK_LOG});
         Trees.add(new Item[]{Items.SPRUCE_SAPLING, Items.SPRUCE_LOG});
@@ -36,7 +36,7 @@ public class GreenHouseRecipes {
     }
 
     private static void plantsArrayInit() {
-        Plants = new ArrayList<Object[]>();
+        Plants = new ArrayList<>();
 
         Plants.add(new Object[]{Items.PUMPKIN_SEEDS, Items.PUMPKIN, 6});
         Plants.add(new Object[]{Items.BEETROOT_SEEDS, Items.BEETROOT, 16});
