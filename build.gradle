@@ -154,7 +154,8 @@ dependencies {
     modCompileOnly("mezz.jei:jei-$project.minecraft_version-forge-api:$project.jei_version") { transitive = false }
     modCompileOnly("mezz.jei:jei-$project.minecraft_version-common-api:$project.jei_version") { transitive = false }
 
-    modCompileOnly("curse.maven:gt-985872:5721533")
+    modCompileOnly("curse.maven:gt-985872:5755108")
+    //modCompileOnly("curse.maven:gt-985872:5721533")
 
     modImplementation("com.gregtechceu.gtceu:gtceu-$project.minecraft_version:$project.gtceu_version") { transitive = false }
     modImplementation("com.lowdragmc.ldlib:ldlib-forge-$project.minecraft_version:$project.ldlib_version") { transitive = false }

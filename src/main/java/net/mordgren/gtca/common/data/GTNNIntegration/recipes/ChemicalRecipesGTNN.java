@@ -19,7 +19,7 @@ public class ChemicalRecipesGTNN {
     private static void carbonDisulfide(Consumer<FinishedRecipe> provider){
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("carbon_disulfide").duration(6000).EUt(30)
                 .circuitMeta(20)
-                .addCondition(GTNNRecipes.INSTANCE.setPlantCasing(PlantCasingCondition.ALUMINIUM))
+                .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.ALUMINIUM))
                 .chancedInput(GTCAHelper.getItem("tinyDust", GTMaterials.Aluminium, 1), 1000,0)
                 .chancedInput(GTCAHelper.getItem("tinyDust", GTMaterials.Nickel, 1), 1000,0)
                 .inputItems(GTCAHelper.getItem("dust", GTMaterials.Sulfur, 4))
@@ -31,7 +31,7 @@ public class ChemicalRecipesGTNN {
     private static void SPEX(Consumer<FinishedRecipe> provider) {
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("sex").duration(1200).EUt(120)
                 .circuitMeta(17)
-                .addCondition(GTNNRecipes.INSTANCE.setPlantCasing(PlantCasingCondition.TITANIUM))
+                .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.TITANIUM))
                 .inputFluids(GTCAMaterials.CarbonDisulfide.getFluid(1000))
                 .inputItems(GTCAHelper.getItem("dust", GTCAMaterials.SodiumEthoxide, 9))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.SodiumEthylXanthate, 12))
@@ -39,7 +39,7 @@ public class ChemicalRecipesGTNN {
 
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("pex").duration(1200).EUt(120)
                 .circuitMeta(17)
-                .addCondition(GTNNRecipes.INSTANCE.setPlantCasing(PlantCasingCondition.TITANIUM))
+                .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.TITANIUM))
                 .inputFluids(GTCAMaterials.CarbonDisulfide.getFluid(1000))
                 .inputFluids(GTMaterials.Ethanol.getFluid(1000))
                 .inputItems(GTCAHelper.getItem("dust", GTMaterials.PotassiumHydroxide, 3))
@@ -49,7 +49,7 @@ public class ChemicalRecipesGTNN {
 
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("se").duration(400).EUt(120)
                 .circuitMeta(16)
-                .addCondition(GTNNRecipes.INSTANCE.setPlantCasing(PlantCasingCondition.ALUMINIUM))
+                .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.ALUMINIUM))
                 .inputFluids(GTMaterials.Ethanol.getFluid(1000))
                 .inputItems(GTCAHelper.getItem("dust", GTMaterials.Sodium, 1))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.SodiumEthoxide, 9))

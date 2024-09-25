@@ -15,7 +15,7 @@ public class AltFuelsGTNN {
     public static void init(Consumer<FinishedRecipe> provider) {
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("e85fuel_cp").EUt(480).duration(60)
                 .circuitMeta(20)
-                .addCondition(GTNNRecipes.INSTANCE.setPlantCasing(PlantCasingCondition.STAINLESS_STEEL))
+                .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.STAINLESS_STEEL))
                 .inputFluids(Ethanol.getFluid(17050))
                 .inputFluids(LightFuel.getFluid(3000))
                 .inputFluids(EthylTertButylEther.getFluid(50))

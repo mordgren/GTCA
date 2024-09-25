@@ -163,7 +163,7 @@ public class AlloyRecipes {
     }
 
     private static void zirconiumCarbide(Consumer<FinishedRecipe> provider) {
-        GCyMRecipeTypes.ALLOY_BLAST_RECIPES.recipeBuilder("zirconium_carbide").duration(200)
+        GCyMRecipeTypes.ALLOY_BLAST_RECIPES.recipeBuilder("zirconium_carbide").EUt(GTValues.VA[GTValues.EV]).duration(200)
                 .blastFurnaceTemp(4700)
                 .inputItems(GTCAHelper.getItem("dust", Zirconium, 1))
                 .inputItems(GTCAHelper.getItem("dust", Carbon, 1))
