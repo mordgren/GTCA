@@ -88,7 +88,9 @@
   "material.gtca.trinium_naquadah" : "Trinium Naquadah",
   "material.gtca.trinium_naquadah_carbonite" : "Trinium Naquadah Carbonite",
   "material.gtca.nitinol60" : "Nitinol 60",
-  "material.gtca.inconel792" : "Inconel-792",
+  "material.gtca.inconel792" : "Inconel 792",
+  "material.gtceu.zirconium_gtca" : "Zirconium",
+
 
   "material.gtca.fayalite" : "Fayalite",
   "material.gtca.red_zircon" : "Red Zircon",
@@ -187,6 +189,11 @@
 
   "gtca.machine.comet_desc.tooltip": "Super Magnetic Speed Shooter",
   "gtca.machine.comet_desc.tooltip2": "Consist of the same layout as a Fusion Reactor. Any external casing can be a Hatch/Bus.",
+
+  "gtca.machine.flcr_desc.tooltip": "Process that milled ore!",
+
+  "gtca.machine.isamill_desc.tooltip": "Controller Block of Large Grinding Machine. Grind ores. ",
+
 
   "itemGroup.gtca.main": "GT Community Additions"
 }

@@ -32,14 +32,7 @@ public class AltSteam {
 
     private static void SCsteam (Consumer<FinishedRecipe> provider) {
 
-        /*
-        SHD_STEAM_TURBINE.recipeBuilder("sh_steam").EUt(-32).duration(100)
-                .inputFluids(GTCAMaterials.SuperheatedSteam.getFluid(100))
-                .outputFluids(DistilledWater.getFluid(2))
-                .save(provider);
-       */
-
-        SHD_STEAM_TURBINE.recipeBuilder("sc_steam").EUt(-100).duration(10)
+        SHD_STEAM_TURBINE.recipeBuilder("sc_steam").EUt(-100).duration(20)
                 .inputFluids(GTCAMaterials.SuperCriticalSteam.getFluid(1))
                 .save(provider);
     }

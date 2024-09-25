@@ -681,6 +681,11 @@ public class GTCAMachines {
                             )
                             .build()
             )
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Grinding Machine"),
+                    Component.translatable("gtca.machine.isamill_desc.tooltip")
+            )
+
             .workableCasingRenderer(
                     GTCA.id("block/casing/isa_mill_casing"),
                     GTCA.id("block/multiblock/aebf"),
@@ -710,6 +715,10 @@ public class GTCAMachines {
                                     .or(autoAbilities(true, true, false))
                             )
                             .build()
+            )
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
+                    Component.translatable("gtca.machine.flcr_desc.tooltip")
             )
             .workableCasingRenderer(
                     GTCA.id("block/casing/flcr_2"),
