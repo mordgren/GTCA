@@ -136,6 +136,9 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+    maven {
+        url = "https://maven.gtceu.com"
+    }
 }
 
 dependencies {

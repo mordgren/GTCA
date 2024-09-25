@@ -16,7 +16,12 @@
     "gtca:isa_mill_airintake",
     "gtca:isa_mill_gearbox",
     "gtca:flcr_casing_type_i",
+    "gtca:flcr_casing_type_ii",
     "gtca:borsilicate_yttrium_thorium_glass",
-    "gtca:reinforced_glass"
+    "gtca:reinforced_glass",
+    "gtca:proton_cell_battery",
+    "gtca:electron_cell_battery",
+    "gtca:quark_entanglement_battery",
+    "gtca:graviton_anomaly_battery"
   ]
 }

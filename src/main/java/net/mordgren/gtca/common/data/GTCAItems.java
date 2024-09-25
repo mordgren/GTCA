@@ -1,6 +1,13 @@
 package net.mordgren.gtca.common.data;
 
+import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.item.ComponentItem;
+import com.gregtechceu.gtceu.api.item.IComponentItem;
+import com.gregtechceu.gtceu.api.item.component.ElectricStats;
+import com.gregtechceu.gtceu.api.item.component.IItemComponent;
+import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import net.minecraft.world.item.Item;
 import net.mordgren.gtca.GTCARegistration;
 import net.mordgren.gtca.common.util.GTCACreativeModTab;
@@ -49,6 +56,41 @@ public class GTCAItems {
     public static ItemEntry<Item> MilledMonazite = REGISTRATE.item("milled_monazite", Item::new).register();
 
     public static ItemEntry<Item> CrushedSpruce = REGISTRATE.item("crushed_spruce", Item::new).register();
+
+    public static ItemEntry<ComponentItem> PROTON_CELL = REGISTRATE
+            .item("proton_cell", ComponentItem::create)
+            .onRegister(attach(ElectricStats.createRechargeableBattery(4_915_200_000L, GTValues.LuV)))
+            .tag(CustomTags.LuV_BATTERIES)
+            .register();
+
+    public static ItemEntry<ComponentItem> ELECTRON_CELL = REGISTRATE
+            .item("electron_cell", ComponentItem::create)
+            .onRegister(attach(ElectricStats.createRechargeableBattery(19_660_800_000L, GTValues.ZPM)))
+            .tag(CustomTags.ZPM_BATTERIES)
+            .register();
+
+    public static ItemEntry<ComponentItem> QUARK_ENTANGLEMENT = REGISTRATE
+            .item("quark_entanglement", ComponentItem::create)
+            .onRegister(attach(ElectricStats.createRechargeableBattery(78_643_200_000L, GTValues.UV)))
+            .tag(CustomTags.UV_BATTERIES)
+            .register();
+
+    public static ItemEntry<ComponentItem> GRAVITON_ANOMALY = REGISTRATE
+            .item("graviton_anomaly", ComponentItem::create)
+            .onRegister(attach(ElectricStats.createRechargeableBattery(1_024_000_000_000_000L, GTValues.UHV)))
+            .tag(CustomTags.UHV_BATTERIES)
+            .register();
+
+    public static ItemEntry<Item> PROTON_CELL_EMPTY = REGISTRATE.item("proton_cell_empty", Item::new).register();
+    public static ItemEntry<Item> ELECTRON_CELL_EMPTY = REGISTRATE.item("electron_cell_empty", Item::new).register();
+    public static ItemEntry<Item> QUARK_ENTANGLEMENT_EMPTY = REGISTRATE.item("quark_entanglement_empty", Item::new).register();
+    public static ItemEntry<Item> GRAVITON_ANOMALY_EMPTY = REGISTRATE.item("graviton_anomaly_empty", Item::new).register();
+
+
+    private static <T extends IComponentItem> NonNullConsumer<T> attach(IItemComponent components) {
+        return item -> item.attachComponents(components);
+    }
+
 
     public static void init(){
     }

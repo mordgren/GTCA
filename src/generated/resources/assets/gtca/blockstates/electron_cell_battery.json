@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gtca:block/electron_cell_battery"
+    }
+  }
+}

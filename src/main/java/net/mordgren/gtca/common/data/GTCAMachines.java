@@ -89,7 +89,7 @@ public class GTCAMachines {
             .recipeType(GTRecipeTypes.BLAST_RECIPES)
             .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH,
                     GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK_SUBTICK), AEBFMod::aebfOverclock)
-            .appearanceBlock(GTCACasings.CASING_AEBF)
+            .appearanceBlock(GTCABlocks.CASING_AEBF)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXXXXXX", "FFXXXFF", "F#####F", "F#####F", "F#####F", "FFXXXFF", "XXXVXXX", "##XXX##", "#######")
                     .aisle("XXXXXXX", "FXCCCXF", "##CCC##", "##III##", "##CCC##", "FXCCCXF", "XXXXXXX", "#XXXXX#", "##XXX##")
@@ -102,7 +102,7 @@ public class GTCAMachines {
                     .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Tungsten)))
                     .where('V', blocks(GTBlocks.CASING_EXTREME_ENGINE_INTAKE.get()))
                     .where('I', blocks(GCyMBlocks.HEAT_VENT.get()))
-                    .where('X', blocks(GTCACasings.CASING_AEBF.get()).setMinGlobalLimited(158)
+                    .where('X', blocks(GTCABlocks.CASING_AEBF.get()).setMinGlobalLimited(158)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, true)))
                     .where('H', abilities(PartAbility.MUFFLER))
@@ -120,7 +120,7 @@ public class GTCAMachines {
                         .aisle("XXXXXXX", "XCC#CCX", "#CC#CC#", "#I###I#", "#CC#CC#", "XCC#CCX", "XXXXXXX", "XXXHXXX", "#X###X#")
                         .aisle("XXXXXXX", "FXCCCXF", "##CCC##", "##III##", "##CCC##", "FXCCCXF", "XXXXXXX", "#XXXXX#", "##XXX##")
                         .aisle("XXXSXXX", "FFXXXFF", "F#####F", "F#####F", "F#####F", "FFXXXFF", "XXXVXXX", "##XXX##", "#######")
-                        .where('X', GTCACasings.CASING_AEBF.getDefaultState())
+                        .where('X', GTCABlocks.CASING_AEBF.getDefaultState())
                         .where('S', definition, Direction.SOUTH)
                         .where('I', GCyMBlocks.HEAT_VENT)
                         .where('V', CASING_EXTREME_ENGINE_INTAKE)
@@ -170,13 +170,13 @@ public class GTCAMachines {
     /// CHEMICAL GENERATOR ///
     public static final MultiblockMachineDefinition IV_CHEMICAL_GENERATOR = registerChemicalGenerator(
             "iv_chemical_generator", IV,
-            GTCACasings.INCONEL718_CASING, CASING_TUNGSTENSTEEL_GEARBOX, FIREBOX_TUNGSTENSTEEL, CASING_TUNGSTENSTEEL_PIPE,
+            GTCABlocks.INCONEL718_CASING, CASING_TUNGSTENSTEEL_GEARBOX, FIREBOX_TUNGSTENSTEEL, CASING_TUNGSTENSTEEL_PIPE,
             GTCA.id("block/casing/inconel718_casing"),
             GTCA.id("block/multiblock/aebf"));
 
     public static final MultiblockMachineDefinition EV_CHEMICAL_GENERATOR = registerChemicalGenerator(
             "ev_chemical_generator", EV,
-            GTCACasings.VITALLIUM_CASING, CASING_TITANIUM_GEARBOX, FIREBOX_TITANIUM, CASING_TITANIUM_PIPE,
+            GTCABlocks.VITALLIUM_CASING, CASING_TITANIUM_GEARBOX, FIREBOX_TITANIUM, CASING_TITANIUM_PIPE,
             GTCA.id("block/casing/vitallium_casing"),
             GTCA.id("block/multiblock/aebf"));
 
@@ -237,7 +237,7 @@ public class GTCAMachines {
             .multiblock("green_house", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.GREEN_HOUSE)
-            .appearanceBlock(GTCACasings.CASING_GREENHOUSE)
+            .appearanceBlock(GTCABlocks.CASING_GREENHOUSE)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
@@ -245,7 +245,7 @@ public class GTCAMachines {
                     .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
                     .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
                     .aisle("AADAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
-                    .where('A', blocks(GTCACasings.CASING_GREENHOUSE.get()).setMinGlobalLimited(42)
+                    .where('A', blocks(GTCABlocks.CASING_GREENHOUSE.get()).setMinGlobalLimited(42)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, false)))
                     .where('D', controller(blocks(definition.getBlock())))
@@ -262,7 +262,7 @@ public class GTCAMachines {
                         .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
                         .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
                         .aisle("FYDSL", "#AKA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
-                        .where('A', GTCACasings.CASING_GREENHOUSE.getDefaultState())
+                        .where('A', GTCABlocks.CASING_GREENHOUSE.getDefaultState())
                         .where('F', ITEM_IMPORT_BUS[GTValues.ULV], Direction.SOUTH)
                         .where('D', definition, Direction.SOUTH)
                         .where('Y', GTMachines.FLUID_IMPORT_HATCH[GTValues.ULV], Direction.SOUTH)
@@ -291,14 +291,14 @@ public class GTCAMachines {
             .multiblock("polymerizer", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.POLYMERIZER)
-            .appearanceBlock(GTCACasings.DURAL_CASING)
+            .appearanceBlock(GTCABlocks.DURAL_CASING)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC")
                     .aisle("CCCCC", "CHCHC", "CPPPC", "CHCHC", "CCCCC")
                     .aisle("CCXCC", "CGCGC", "CGCGC", "CGCGC", "CCCCC")
                     .where('X', controller(blocks(definition.getBlock())))
-                    .where('C', blocks(GTCACasings.DURAL_CASING.get()).setMinGlobalLimited(55)
+                    .where('C', blocks(GTCABlocks.DURAL_CASING.get()).setMinGlobalLimited(55)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, false)))
                     .where('H', blocks(HERMETIC_CASING_HV.get()))
@@ -322,14 +322,14 @@ public class GTCAMachines {
             .recipeType(GTCARecipeTypes.SHD_STEAM_TURBINE)
             .generator(true)
             .recipeModifier(LargeTurbineMachine::recipeModifier, true)
-            .appearanceBlock(GTCACasings.SHD_CASING)
+            .appearanceBlock(GTCABlocks.SHD_CASING)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("CCCC", "CHHC", "CCCC")
                     .aisle("CHHC", "RGGR", "CHHC")
                     .aisle("CCCC", "CSHC", "CCCC")
                     .where('S', controller(blocks(definition.getBlock())))
-                    .where('G', blocks(GTCACasings.SHD_Gearbox.get()))
-                    .where('C', blocks(GTCACasings.SHD_CASING.get()))
+                    .where('G', blocks(GTCABlocks.SHD_Gearbox.get()))
+                    .where('C', blocks(GTCABlocks.SHD_CASING.get()))
                     .where('R',
                             new TraceabilityPredicate(
                                     new SimplePredicate(
@@ -346,7 +346,7 @@ public class GTCAMachines {
                                             VN[LuV]))
                                     .setExactLimit(1)
                                     .or(abilities(PartAbility.OUTPUT_ENERGY)).setExactLimit(1))
-                    .where('H', blocks(GTCACasings.SHD_CASING.get())
+                    .where('H', blocks(GTCABlocks.SHD_CASING.get())
                             .or(autoAbilities(definition.getRecipeTypes(), false, false, true, true, true, true))
                             .or(autoAbilities(true, true, false)))
                     .build())
@@ -390,8 +390,8 @@ public class GTCAMachines {
                             .where("E", Predicates.controller(Predicates.blocks(definition.get())))
                             .where("C", blocks(CASING_TUNGSTENSTEEL_ROBUST.get()).setMinGlobalLimited(115).or(Predicates.autoAbilities(definition.getRecipeTypes())).or(autoAbilities(true, false, false)))
                             .where("P", blocks(CASING_TUNGSTENSTEEL_PIPE.get()))
-                            .where("W", blocks(GTCACasings.PRW_Casing.get()))
-                            .where("G", blocks(GTCACasings.REINFORCED_GLASS.get()))
+                            .where("W", blocks(GTCABlocks.PRW_Casing.get()))
+                            .where("G", blocks(GTCABlocks.REINFORCED_GLASS.get()))
                             .where('#', air())
                             .build()
             )
@@ -524,7 +524,7 @@ public class GTCAMachines {
     public static final MultiblockMachineDefinition INDUSTRIAL_COKE_OVEN = REGISTRATE.multiblock("industrial_coke_oven", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.INDUSTRIAL_COKE_OVEN)
-            .appearanceBlock(GTCACasings.TANTALLOY61_CASING)
+            .appearanceBlock(GTCABlocks.TANTALLOY61_CASING)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition ->
                     FactoryBlockPattern.start()
@@ -535,7 +535,7 @@ public class GTCAMachines {
                             .where("F", blocks(FIREBOX_TUNGSTENSTEEL.get()))
                             .where('M', abilities(PartAbility.MUFFLER))
                             .where('#', Predicates.air())
-                            .where("C", blocks(GTCACasings.TANTALLOY61_CASING.get()).setMinGlobalLimited(11)
+                            .where("C", blocks(GTCABlocks.TANTALLOY61_CASING.get()).setMinGlobalLimited(11)
                                   .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                                   .or(autoAbilities(true, false, false)))
                             .build()
@@ -550,7 +550,7 @@ public class GTCAMachines {
     public static final MultiblockMachineDefinition THERMAL_REACTOR = REGISTRATE.multiblock("thermal_reactor", CoilWorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.THERMAL_REACTOR)
-            .appearanceBlock(GTCACasings.NIMONIC80A_CASING)
+            .appearanceBlock(GTCABlocks.NIMONIC80A_CASING)
             .recipeModifier(GTRecipeModifiers::ebfOverclock)
             .pattern(definition ->
                     FactoryBlockPattern.start()
@@ -562,10 +562,10 @@ public class GTCAMachines {
                             .where("E", Predicates.controller(Predicates.blocks(definition.get())))
                             .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, TungstenCarbide)))
                             .where('#', Predicates.air())
-                            .where('D', blocks(GTCACasings.NIMONIC80A_CASING.get()))
+                            .where('D', blocks(GTCABlocks.NIMONIC80A_CASING.get()))
                             .where('P', blocks(CASING_TITANIUM_PIPE.get()))
                             .where('N', heatingCoils())
-                            .where("C", blocks(GTCACasings.NIMONIC80A_CASING.get()).setMinGlobalLimited(11)
+                            .where("C", blocks(GTCABlocks.NIMONIC80A_CASING.get()).setMinGlobalLimited(11)
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                                     .or(autoAbilities(true, false, false)))
                             .build()
@@ -577,8 +577,8 @@ public class GTCAMachines {
                         .aisle("OCCCL", "N###N", "CCPCC", "#DPD#", "##P##","#DPD#","##P##","#DPD#","##P##","#DDD#")
                         .aisle("CCCCC", "N###N", "CCCCC", "#FDF#", "#F#F#","#FDF#","#F#F#","#FDF#","#F#F#","#FDF#")
                         .aisle("#CSC#", "#NNN#", "#CCC#", "#####", "#####","#####","#####","#####","#####","#####")
-                        .where('C', GTCACasings.NIMONIC80A_CASING.getDefaultState())
-                        .where('D', GTCACasings.NIMONIC80A_CASING.getDefaultState())
+                        .where('C', GTCABlocks.NIMONIC80A_CASING.getDefaultState())
+                        .where('D', GTCABlocks.NIMONIC80A_CASING.getDefaultState())
                         .where('F', ChemicalHelper.getBlock(TagPrefix.frameGt, TungstenCarbide))
                         .where('P', CASING_TITANIUM_PIPE.getDefaultState())
                         .where('S', definition, Direction.SOUTH)
@@ -622,7 +622,7 @@ public class GTCAMachines {
     public static final MultiblockMachineDefinition COMET_CYCLOTRON = REGISTRATE.multiblock("comet", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.COMET_CYCLOTRON)
-            .appearanceBlock(GTCACasings.COMET_CASING)
+            .appearanceBlock(GTCABlocks.COMET_CASING)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition ->
                     FactoryBlockPattern.start()
@@ -642,9 +642,9 @@ public class GTCAMachines {
                             .aisle("######BBB######", "####BBCCCBB####", "######BBB######")
                             .aisle("###############", "######BBB######", "###############")
                             .where('#', Predicates.air())
-                            .where('C', blocks(GTCACasings.CYCLOTRON_COIL.get()))
+                            .where('C', blocks(GTCABlocks.CYCLOTRON_COIL.get()))
                             .where("A", Predicates.controller(Predicates.blocks(definition.get())))
-                            .where("B", blocks(GTCACasings.COMET_CASING.get()).setMinGlobalLimited(112)
+                            .where("B", blocks(GTCABlocks.COMET_CASING.get()).setMinGlobalLimited(112)
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                                     .or(autoAbilities(true, true, false))
                                 )
@@ -665,7 +665,7 @@ public class GTCAMachines {
     public static final MultiblockMachineDefinition ISAMILL = REGISTRATE.multiblock("isamill", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.ISAMILL)
-            .appearanceBlock(GTCACasings.ISAMILL_CASING)
+            .appearanceBlock(GTCABlocks.ISAMILL_CASING)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition ->
                     FactoryBlockPattern.start()
@@ -673,9 +673,9 @@ public class GTCAMachines {
                             .aisle("ACCCCCC", "AGGGGGC", "ACCCCCC")
                             .aisle("ACCCCCC", "ACECCCC", "ACCCCCC")
                             .where("E", Predicates.controller(Predicates.blocks(definition.get())))
-                            .where("G", blocks(GTCACasings.ISAMILL_GEARBOX.get()))
-                            .where("A", blocks(GTCACasings.ISAMILL_AIR_INTAKE.get()))
-                            .where("C", blocks(GTCACasings.ISAMILL_CASING.get()).setMinGlobalLimited(44)
+                            .where("G", blocks(GTCABlocks.ISAMILL_GEARBOX.get()))
+                            .where("A", blocks(GTCABlocks.ISAMILL_AIR_INTAKE.get()))
+                            .where("C", blocks(GTCABlocks.ISAMILL_CASING.get()).setMinGlobalLimited(44)
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                                     .or(autoAbilities(true, true, false))
                             )
@@ -691,7 +691,7 @@ public class GTCAMachines {
     public static final MultiblockMachineDefinition FLCR = REGISTRATE.multiblock("flotation_cell_regulator", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.FLCR)
-            .appearanceBlock(GTCACasings.DURAL_CASING)
+            .appearanceBlock(GTCABlocks.FLCR_CASING_TYPE_II)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition ->
                     FactoryBlockPattern.start()
@@ -703,16 +703,16 @@ public class GTCAMachines {
                             .aisle("#CCCCC#", "#CCCCC#", "###F###", "###F###", "###F###", "###F###", "###F###", "###F###", "#######")
                             .aisle("##CCC##", "##CCC##", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
                             .where("E", Predicates.controller(Predicates.blocks(definition.get())))
-                            .where("F", blocks(GTCACasings.FLCR_CASING_TYPE_I.get()))
+                            .where("F", blocks(GTCABlocks.FLCR_CASING_TYPE_I.get()))
                             .where('#', Predicates.air())
-                            .where("C", blocks(GTCACasings.DURAL_CASING.get()).setMinGlobalLimited(44)
+                            .where("C", blocks(GTCABlocks.FLCR_CASING_TYPE_II.get()).setMinGlobalLimited(44)
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                                     .or(autoAbilities(true, true, false))
                             )
                             .build()
             )
             .workableCasingRenderer(
-                    GTCA.id("block/casing/dural_casing"),
+                    GTCA.id("block/casing/flcr_2"),
                     GTCA.id("block/multiblock/aebf"),
                     true
             )

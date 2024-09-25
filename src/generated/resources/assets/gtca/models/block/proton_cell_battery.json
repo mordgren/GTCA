@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "gtca:block/casing/battery/proton_cell/top",
+    "side": "gtca:block/casing/battery/proton_cell/top",
+    "top": "gtca:block/casing/battery/proton_cell/side"
+  }
+}

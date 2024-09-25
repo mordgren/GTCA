@@ -1,8 +1,15 @@
 package net.mordgren.gtca.common.data;
 
+import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.item.tool.GTToolType;
+import com.gregtechceu.gtceu.api.machine.multiblock.IBatteryData;
+import com.gregtechceu.gtceu.common.block.BatteryBlock;
+import com.gregtechceu.gtceu.common.data.GTCompassSections;
 import com.gregtechceu.gtceu.common.data.GTModels;
+import com.tterrag.registrate.providers.DataGenContext;
+import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.client.renderer.RenderType;
@@ -16,13 +23,15 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.GTCARegistration;
 import net.mordgren.gtca.common.util.GTCACreativeModTab;
+import net.mordgren.gtca.common.util.battery.GTCABatteryBlock;
 
 import java.util.function.Supplier;
 
+import static com.gregtechceu.gtceu.common.data.GTBlocks.compassNodeExist;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 
 
-public class GTCACasings {
+public class GTCABlocks {
     public static final BlockEntry<Block> CASING_AEBF = createCasingBlock("casing_aebf",
             GTCA.id("block/casing/casing_aebf"));
 
@@ -69,7 +78,10 @@ public class GTCACasings {
             GTCA.id("block/casing/isa_mill_gearbox"));
 
     public static final BlockEntry<Block> FLCR_CASING_TYPE_I = createCasingBlock("flcr_casing_type_i",
-            GTCA.id("block/casing/rc_casing_type1"));
+            GTCA.id("block/casing/flcr_1"));
+
+    public static final BlockEntry<Block> FLCR_CASING_TYPE_II = createCasingBlock("flcr_casing_type_ii",
+            GTCA.id("block/casing/flcr_2"));
 
     // Glass
 
@@ -79,6 +91,44 @@ public class GTCACasings {
 
     public static final BlockEntry<Block> REINFORCED_GLASS = createGlassCasingBlock("reinforced_glass",
             GTCA.id("block/casing/transparent/reinforced_glass"));
+
+
+    public static final BlockEntry<BatteryBlock> BATTERY_PROTON_CELL = createBatteryBlock(
+            GTCABatteryBlock.BatteryPartType.PROTON_CELL);
+
+    public static final BlockEntry<BatteryBlock> BATTERY_ELECTRON_CELL = createBatteryBlock(
+            GTCABatteryBlock.BatteryPartType.ELECTRON_CELL);
+
+    public static final BlockEntry<BatteryBlock> BATTERY_QUARK_CELL = createBatteryBlock(
+            GTCABatteryBlock.BatteryPartType.QUARK_ENTANGLEMENT);
+
+    public static final BlockEntry<BatteryBlock> BATTERY_GRAVITON_CELL = createBatteryBlock(
+            GTCABatteryBlock.BatteryPartType.GRAVITON_ANOMALY);
+
+    @SuppressWarnings("removal")
+    private static BlockEntry<BatteryBlock> createBatteryBlock(IBatteryData batteryData) {
+        BlockEntry<BatteryBlock> batteryBlock = REGISTRATE.block("%s_battery".formatted(batteryData.getBatteryName()),
+                        p -> new BatteryBlock(p, batteryData))
+                .initialProperties(() -> Blocks.IRON_BLOCK)
+                .properties(p -> p.isValidSpawn((state, level, pos, entityType) -> false))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .blockstate(
+                        GTCABlocks.createBatteryBlockModel("%s_battery".formatted(batteryData.getBatteryName()),batteryData)
+                        )
+                .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
+                .item(BlockItem::new)
+                .onRegister(compassNodeExist(GTCompassSections.BLOCKS, "pss_battery"))
+                .build()
+                .register();
+        GTCEuAPI.PSS_BATTERIES.put(batteryData, batteryBlock);
+        return batteryBlock;
+    }
+
+    private static NonNullBiConsumer<DataGenContext<Block, BatteryBlock>, RegistrateBlockstateProvider> createBatteryBlockModel(String name, IBatteryData batteryData) {
+        return (ctx, prov) -> {
+            prov.simpleBlock((Block)ctx.getEntry(), prov.models().cubeBottomTop(name, GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/top"), GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/top"), GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/side")));
+        };
+    }
 
     public static BlockEntry<Block> createGlassCasingBlock(String name, ResourceLocation texture) {
         return createCasingBlock(name, GlassBlock::new, texture, () -> Blocks.GLASS,

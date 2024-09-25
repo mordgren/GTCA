@@ -23,7 +23,14 @@ public class AlloyRecipes {
         HeavyMetalMixture(provider);
         MAR_M200(provider);
         MAR_Ce_M200(provider);
-        test(provider);
+        zirconiumCarbide(provider);
+        tantalloy60(provider);
+        tantalloy61(provider);
+        incoloy020(provider);
+        incoloyMA323(provider);
+        incoloyds(provider);
+        inconel690(provider);
+        eglinSteelCompound(provider);
     }
 
     private static void TM20MnAlloy(Consumer<FinishedRecipe> provider) {
@@ -37,7 +44,7 @@ public class AlloyRecipes {
 
     private static void CNFAlloy(Consumer<FinishedRecipe> provider) {
         MIXER_RECIPES.recipeBuilder("c_n_f_alloy").EUt(GTValues.VA[GTValues.LV]).duration(240)
-                .circuitMeta(2)
+                .circuitMeta(4)
                 .inputItems(GTCAHelper.getItem("dust", Nickel, 5))
                 .inputItems(GTCAHelper.getItem("dust", Chromium, 2))
                 .inputItems(GTCAHelper.getItem("dust", Iron, 1))
@@ -155,7 +162,7 @@ public class AlloyRecipes {
                 .save(provider);
     }
 
-    private static void test(Consumer<FinishedRecipe> provider) {
+    private static void zirconiumCarbide(Consumer<FinishedRecipe> provider) {
         GCyMRecipeTypes.ALLOY_BLAST_RECIPES.recipeBuilder("zirconium_carbide").duration(200)
                 .blastFurnaceTemp(3000)
                 .inputItems(GTCAHelper.getItem("dust", Zirconium, 1))
@@ -164,6 +171,72 @@ public class AlloyRecipes {
                 .save(provider);
     }
 
+    private static void tantalloy60(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("tantalloy60").EUt(GTValues.VA[GTValues.HV]).duration(360)
+                .circuitMeta(12)
+                .inputItems(GTCAHelper.getItem("dust",Tungsten ,2 ))
+                .inputItems(GTCAHelper.getItem("dust",Tantalum , 23))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Tantalloy60, 25 ))
+                .save(provider);
+    }
 
+    private static void tantalloy61(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("tantalloy61").EUt(GTValues.VA[GTValues.HV]).duration(210)
+                .circuitMeta(13)
+                .inputItems(GTCAHelper.getItem("dust",GTCAMaterials.Tantalloy60 ,1 ))
+                .inputItems(GTCAHelper.getItem("dust",Titanium , 6))
+                .inputItems(GTCAHelper.getItem("dust",Yttrium , 4))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Tantalloy61, 11 ))
+                .save(provider);
+    }
 
+    private static void incoloy020(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("incoloy020").EUt(GTValues.VA[GTValues.HV]).duration(50)
+                .inputItems(GTCAHelper.getItem("dust",Iron ,10))
+                .inputItems(GTCAHelper.getItem("dust",Copper , 1))
+                .inputItems(GTCAHelper.getItem("dust",Chromium , 5))
+                .inputItems(GTCAHelper.getItem("dust",Nickel , 9))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Incoloy020, 25 ))
+                .save(provider);
+    }
+
+    private static void incoloyMA323(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("incoloyMA323").EUt(GTValues.VA[GTValues.EV]).duration(48)
+                .inputItems(GTCAHelper.getItem("dust",Aluminium ,3))
+                .inputItems(GTCAHelper.getItem("dust",Chromium , 5))
+                .inputItems(GTCAHelper.getItem("dust",Iron , 16))
+                .inputItems(GTCAHelper.getItem("dust",Yttrium , 1))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.IncoloyMA323, 25 ))
+                .save(provider);
+    }
+
+    private static void incoloyds(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("incoloyds").EUt(GTValues.VA[GTValues.HV]).duration(50)
+                .inputItems(GTCAHelper.getItem("dust",Iron ,23))
+                .inputItems(GTCAHelper.getItem("dust",Cobalt , 9))
+                .inputItems(GTCAHelper.getItem("dust",Chromium , 9))
+                .inputItems(GTCAHelper.getItem("dust",Nickel , 9))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.IncoloyDS, 50 ))
+                .save(provider);
+    }
+
+    private static void inconel690(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("inconel690").EUt(GTValues.VA[GTValues.HV]).duration(64)
+                .inputItems(GTCAHelper.getItem("dust",Chromium ,1))
+                .inputItems(GTCAHelper.getItem("dust",Niobium , 2))
+                .inputItems(GTCAHelper.getItem("dust",Molybdenum , 2))
+                .inputItems(GTCAHelper.getItem("dust",Nichrome , 3))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Inconel690, 8 ))
+                .save(provider);
+    }
+
+    private static void eglinSteelCompound(Consumer<FinishedRecipe> provider) {
+        MIXER_RECIPES.recipeBuilder("eglin_steel_compound").EUt(GTValues.VA[GTValues.LV]).duration(102)
+                .circuitMeta(20)
+                .inputItems(GTCAHelper.getItem("dust",Iron ,1))
+                .inputItems(GTCAHelper.getItem("dust",Kanthal , 2))
+                .inputItems(GTCAHelper.getItem("dust",Invar , 2))
+                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.EglinSteelCompound, 10))
+                .save(provider);
+    }
 }

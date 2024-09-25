@@ -23,12 +23,13 @@
   "gtceu.thermal_reactor":"Thermal Reaction Chamber",
   "block.gtca.comet":"COMET Cyclotron",
   "gtceu.comet":"Comet",
+  "block.gtca.isamill":"IsaMill Grinding Machine",
+  "gtceu.isamill":"IsaMill",
+  "block.gtca.flotation_cell_regulator":"Flotation Cell Regulator",
+  "gtceu.flotation_cell_regulator":"Flotation Cell Regulator",
 
 
-  "block.gtca.comet_casing":"Comet Outer Casing",
-  "block.gtca.cyclotron_coil":"Cyclotron Coil",
-  "block.gtca.borsilicate_yttrium_thorium_glass":"Borosilicate Yttrium Thorium Glass",
-  "block.gtca.reinforced_glass":"Reinforced Glass",
+
   "block.gtca.casing_aebf":"Advanced Heat Proof Machine Casing",
   "gtceu.casing_aebf":"Advanced Heat Proof Machine Casing",
   "block.gtca.casing_greenhouse":"Humidity Balanced Casing",
@@ -40,6 +41,20 @@
   "block.gtca.inconel718_casing": "Heavy Duty Chemically Inert Casing",
   "block.gtca.pressure_resistant_wall": "Pressure Resistant Wall",
   "block.gtca.tantalloy61_casing": "Structural Coke Oven Casing",
+  "block.gtca.comet_casing":"Comet Outer Casing",
+  "block.gtca.cyclotron_coil":"Cyclotron Coil",
+  "block.gtca.borsilicate_yttrium_thorium_glass":"Borosilicate Yttrium Thorium Glass",
+  "block.gtca.reinforced_glass":"Reinforced Glass",
+  "block.gtca.isa_mill_casing":"IsaMill Exterior Casing",
+  "block.gtca.isa_mill_airintake":"IsaMill Air Intake",
+  "block.gtca.isa_mill_gearbox":"IsaMill Gearbox",
+  "block.gtca.flcr_casing_type_i":"Flotation Cell Casings",
+  "block.gtca.flcr_casing_type_ii":"Inconel Reinforced Casings",
+
+  "block.gtca.proton_cell_battery":"LuV Proton Capacitor",
+  "block.gtca.electron_cell_battery":"ZPM Electron Capacitor",
+  "block.gtca.quark_entanglement_battery":"UV Quark Capacitor",
+  "block.gtca.graviton_anomaly_battery":"UHV Graviton Capacitor",
 
 
 
@@ -64,11 +79,23 @@
   "material.gtca.inconel_690" : "Inconel 690",
   "material.gtca.eglin_steel" : "Eglin Steel",
   "material.gtca.zirconium_carbide" : "Zirconium Carbide",
+  "material.gtca.incoloy_ma323" : "Incoloy-MA323",
+  "material.gtca.eglin_steel_compound" : "Eglin Steel Compound",
+  "material.gtca.hastelloy_n" : "Hastelloy-N",
+  "material.gtca.inconel_625" : "Inconel-625",
+  "material.gtca.zeron_182" : "Zeron-182",
+  "material.gtca.lafium_compound" : "Lafium Compound",
+  "material.gtca.trinium_naquadah" : "Trinium Naquadah",
+  "material.gtca.trinium_naquadah_carbonite" : "Trinium Naquadah Carbonite",
+  "material.gtca.nitinol60" : "Nitinol 60",
+  "material.gtca.inconel792" : "Inconel-792",
 
   "material.gtca.fayalite" : "Fayalite",
   "material.gtca.red_zircon" : "Red Zircon",
   "material.gtca.green_fuchsite" : "Green Fuchsite",
   "material.gtca.red_fuchsite" : "Red Fuchsite",
+
+
 
   "item.gtca.electron" : "Electron",
   "item.gtca.graviton" : "Graviton",
@@ -79,7 +106,21 @@
   "item.gtca.unknown_particle" : "Unknown Particle",
   "item.gtca.quantum_anomaly" : "Quantum Anomaly",
 
+  "item.gtca.proton_cell" : "Proton Cell",
+  "item.gtca.electron_cell" : "Electron Cell",
+  "item.gtca.quark_entanglement" : "Quark Entaglement",
+  "item.gtca.graviton_anomaly" : "Graviton Anomaly",
 
+  "item.gtca.proton_cell_empty" : "Containment Unit I",
+  "item.gtca.electron_cell_empty" : "Containment Unit II",
+  "item.gtca.quark_entanglement_empty" : "Advanced Containment Unit",
+  "item.gtca.graviton_anomaly_empty" : "Exotic Containment Unit",
+
+  "item.gtca.grinding_ball_tungsten_carbide" : "Tungsten Carbide Grinding Ball",
+  "item.gtca.grinding_ball_nq" : "Enriched Naquadah Grinding Ball",
+  "item.gtca.grinding_ball_tungsten_carbide_raw" : "Raw Tungsten Carbide Ball",
+  "item.gtca.grinding_ball_nq_raw" : "Raw Enriched Naquadah Ball",
+  "item.gtca.crushed_spruce" : "Crushed Spruce Materials",
   "item.gtca.milled_sphalerite" : "Milled Sphalerite",
   "item.gtca.milled_chalcopyrite" : "Milled Chalcopyrite",
   "item.gtca.milled_nickel" : "Milled Nickel",
@@ -91,6 +132,19 @@
   "item.gtca.milled_almandine" : "Milled Almandine",
   "item.gtca.milled_pyrope" : "Milled Pyrope",
   "item.gtca.milled_monazite" : "Milled Monazite",
+  "material.gtca.sphalerite_froth" : "Sphalerite Froth",
+  "material.gtca.chalcopyrite_froth" : "Chalcopyrite Froth",
+  "material.gtca.nickel_froth" : "Nickel Froth",
+  "material.gtca.platinum_froth" : "Platinum Froth",
+  "material.gtca.pentlandite_froth" : "Pentlandite Froth",
+  "material.gtca.redstone_froth" : "Redstone Froth",
+  "material.gtca.spessartine_froth" : "Spessartine Froth",
+  "material.gtca.grossular_froth" : "Grossular Froth",
+  "material.gtca.almandine_froth" : "Almandine Froth",
+  "material.gtca.pyrope_froth" : "Pyrope Froth",
+  "material.gtca.monazite_froth" : "Monazite Froth",
+  "material.gtca.spruce_oil" : "Spruce Oil",
+  "material.gtca.red_mud_slurry" : "Red Mud Slurry",
 
 
 
@@ -101,6 +155,10 @@
   "material.gtca.phthalic_anhydride_gtca": "Phthalic Anhydride",
   "material.gtca.oxylene": "Oxylene",
   "material.gtca.octene": "Octene",
+  "material.gtca.sodium_ethyl_xanthate": "Sodium Ethyl Xanthate",
+  "material.gtca.sodium_ethoxide": "Sodium Ethoxide",
+  "material.gtca.potassium_ethyl_xanthate": "Potassium Ethyl Xanthate",
+  "material.gtca.carbon_disulfide": "Carbon Disulfide",
 
   "material.gtca.e85_fuel": "E85 Fuel",
   "material.gtca.high_pressure_steam": "High Pressure Steam",
@@ -110,7 +168,14 @@
   "material.gtca.sh_steam": "Superheated Steam",
   "material.gtca.sc_steam": "Supercritical Steam",
   "material.gtca.celestial_plasma":"Celestial",
+  "material.gtca.hydrogen_plasma":"Hydrogen",
+  "material.gtca.sulfur_plasma":"Sulfur",
+  "material.gtca.calcium_plasma":"Calcium",
+  "material.gtca.titanium_plasma":"Titanium",
+  "material.gtca.zinc_plasma":"Zinc",
   "material.gtca.ender_fluid":"Ender Fluid",
+
+
 
   "gtca.machine.AEBF_desc.tooltip1":"All recipes are 50% faster!",
 
@@ -121,7 +186,7 @@
   "gtca.machine.EHE_desc.tooltip2":"Output: SC Steam/SH Steam/Steam. Check EMI/REI/JEI for more info.",
 
   "gtca.machine.comet_desc.tooltip": "Super Magnetic Speed Shooter",
-  "gtca.machine.comet_desc.tooltip2": "Consist of the same layout as a Fusion Reactor. Any external casing can be a Hatch/bus. Comet Machine Casing around Cyclotron Coils.",
+  "gtca.machine.comet_desc.tooltip2": "Consist of the same layout as a Fusion Reactor. Any external casing can be a Hatch/Bus.",
 
   "itemGroup.gtca.main": "GT Community Additions"
 }

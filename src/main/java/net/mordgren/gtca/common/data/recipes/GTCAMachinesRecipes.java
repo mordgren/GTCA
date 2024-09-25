@@ -7,7 +7,7 @@ import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.mordgren.gtca.common.data.GTCACasings;
+import net.mordgren.gtca.common.data.GTCABlocks;
 import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
@@ -178,13 +178,13 @@ public class GTCAMachinesRecipes {
                 .inputItems(GTCAHelper.getItem("screw", GTCAMaterials.IncoloyMA323, 16))
                 .inputItems(CustomTags.IV_CIRCUITS, 16)
                 .inputItems(GTMachines.HULL[GTValues.IV],2)
-                .inputItems(GTCACasings.CYCLOTRON_COIL, 2)
+                .inputItems(GTCABlocks.CYCLOTRON_COIL, 2)
                 .inputFluids(GTCAMaterials.Incoloy020.getFluid(1296))
                 .outputItems(GTCAMachines.COMET_CYCLOTRON.asStack())
                 .save(provider);
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder("isamill_controller")
-                .inputItems(GTCACasings.ISAMILL_GEARBOX,4)
+                .inputItems(GTCABlocks.ISAMILL_GEARBOX,4)
                 .inputItems(GTMachines.HULL[GTValues.LuV].asStack(4))
                 .inputItems(GTItems.COMPONENT_GRINDER_TUNGSTEN,16)
                 .inputItems(CustomTags.LuV_CIRCUITS, 8)
@@ -207,7 +207,7 @@ public class GTCAMachinesRecipes {
                 .save(provider);
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder("flcr_controller")
-                .inputItems(GTCACasings.FLCR_CASING_TYPE_I,4)
+                .inputItems(GTCABlocks.FLCR_CASING_TYPE_I,4)
                 .inputItems(GTMachines.HULL[GTValues.IV].asStack(4))
                 .inputItems(DISTILLERY[GTValues.IV].asStack(4))
                 .inputItems(CustomTags.LuV_CIRCUITS, 8)

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gtca:block/casing/rc_casing_type1"
+    "all": "gtca:block/casing/flcr_1"
   }
 }

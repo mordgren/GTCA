@@ -5,6 +5,7 @@ import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
 
@@ -35,9 +36,12 @@ public class HERecipes {
         inpHot.add(new Object[]{GTMaterials.Oxygen, 1000, 2457600, 3932160, "oxygen"});
 
         inpHotCustom.add(new Object[]{GTCAMaterials.HydrogenPlasma, 500, 192000, 307200, GTMaterials.Hydrogen,"hydrogen"});
-        inpHotCustom.add(new Object[]{GTCAMaterials.CalciumPlasma, 1000, 3532800, 5652480, GTMaterials.Calcium,"calcium"});
         inpHotCustom.add(new Object[]{GTCAMaterials.TitaniumPlasma, 1000, 3686400, 5898240, GTMaterials.Titanium,"titanium"});
         inpHotCustom.add(new Object[]{GTCAMaterials.ZincPlasma, 1500, 6364800, 10183680, GTMaterials.Zinc,"zinc"});
+
+        if(GTCA.GTNNINT) {
+            inpHotCustom.add(new Object[]{GTCAMaterials.CalciumPlasma, 1000, 3532800, 5652480, GTMaterials.Calcium,"calcium"});
+        }
     }
 
     private static void heRecipes(Consumer<FinishedRecipe> provider) {
