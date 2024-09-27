@@ -9,7 +9,7 @@ import net.mordgren.gtca.common.data.recipes.fuel.AltFuels;
 import net.mordgren.gtca.common.data.recipes.fuel.ChemGenFuels;
 import net.mordgren.gtca.common.data.recipes.fuel.AltSteam;
 import net.mordgren.gtca.common.data.recipes.permachine.*;
-import net.mordgren.gtca.common.util.Misc;
+import net.mordgren.gtca.common.data.recipes.MiscRecipes;
 
 import java.util.function.Consumer;
 
@@ -34,7 +34,7 @@ public class GTCARecipeInit {
             CasingRecipes.init(provider);
             GTCAMachinesRecipes.init(provider);
 
-            Misc.init(provider);
+            MiscRecipes.init(provider);
 
             if (GTCA.GTNNINT) {
                 GTNNIntProxy.init(provider);

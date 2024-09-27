@@ -82,6 +82,8 @@ public class GTCAMaterials {
     public static Material TriniumNaquadahCarbonite;
     public static Material Nitinol60;
     public static Material Inconel792;
+    public static Material CinobiteA241;
+    public static Material Pikyonium64Y;
 
     // Dusts
 

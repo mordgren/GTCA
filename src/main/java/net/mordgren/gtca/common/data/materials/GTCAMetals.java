@@ -394,7 +394,8 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
                         MaterialFlags.GENERATE_ROD,
-                        MaterialFlags.GENERATE_BOLT_SCREW
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_GEAR
 
                 )
                 .color(0xe1b325)
@@ -536,6 +537,12 @@ public class GTCAMetals {
         GTCAMaterials.Nitinol60 = new Material.Builder(GTCA.id("nitinol60"))
                 .color(0x9f8ab8).secondaryColor(0xb69dd2)
                 .components(GTMaterials.Titanium, 3, GTMaterials.Nickel, 2)
+                .flags
+                        (
+                                MaterialFlags.GENERATE_PLATE,
+                                MaterialFlags.GENERATE_BOLT_SCREW,
+                                MaterialFlags.GENERATE_GEAR
+                        )
                 .fluid()
                 .blastTemp(5925, BlastProperty.GasTier.MID, GTValues.VA[GTValues.IV], 6250)
                 .buildAndRegister();
@@ -545,6 +552,24 @@ public class GTCAMetals {
                 .components(GTMaterials.Nickel, 2, GTMaterials.Niobium, 1, GTMaterials.Aluminium, 2, GTMaterials.Nichrome, 1)
                 .fluid()
                 .blastTemp(3700, BlastProperty.GasTier.MID, GTValues.VA[GTValues.HV], 750)
+                .buildAndRegister();
+
+        GTCAMaterials.CinobiteA241 = new Material.Builder(GTCA.id("cinobite_a241"))
+                .color(0x6e6945).secondaryColor(0xc7bd79)
+                .components(GTCAMaterials.Zeron182, 16, GTMaterials.Naquadria, 7, GTMaterials.Samarium, 5, GTMaterials.Aluminium, 3, GTMaterials.Tin, 2, GTMaterials.Titanium, 12, GTMaterials.Osmiridium, 6, GTMaterials.Mercury, 2)
+                .fluid()
+                .blastTemp(7625, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
+                .buildAndRegister();
+
+        GTCAMaterials.Pikyonium64Y = new Material.Builder(GTCA.id("pikyonium64Y"))
+                .color(0x4900d1)
+                .components(GTCAMaterials.Inconel792, 8, GTCAMaterials.EglinSteel, 5, GTMaterials.NaquadahEnriched, 4, GTMaterials.Cerium, 3, GTMaterials.Antimony, 2, GTMaterials.Platinum, 2, GTMaterials.Yttrium, 1, GTMaterials.TungstenSteel, 4)
+                .fluid()
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_GEAR
+                )
+                .blastTemp(7125, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
                 .buildAndRegister();
     }
 }
