@@ -270,7 +270,7 @@ public class GTCAMetals {
                 .setFormula("Fe16Al3Cr5Y",true);
 
         GTCAMaterials.HG1223 = new Material.Builder(GTCA.id("hg_1223"))
-                .components(GTMaterials.Mercury, 1, GTMaterials.Barium, 2, GTMaterials.Calcium, 2, GTMaterials.Copper, 3, GTMaterials.Oxygen, 8)
+                .components(GTMaterials.Mercury, 3, GTMaterials.Barium, 2, GTMaterials.Calcium, 5, GTMaterials.Copper, 12, GTMaterials.Bismuth, 6 ,GTMaterials.Oxygen, 14)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
@@ -281,7 +281,7 @@ public class GTCAMetals {
                 .blastTemp(4900, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 690)
                 .iconSet(METALLIC)
                 .buildAndRegister()
-                .setFormula("HgBa2Ca2Cu3O8",true);
+                .setFormula("Hg3Ba2Ca5Cu12Bi6O14",true);
 
         GTCAMaterials.IncoloyDS = new Material.Builder(GTCA.id("incoloy_ds"))
                 .components(GTMaterials.Iron, 23, GTMaterials.Cobalt, 9, GTMaterials.Chromium, 9, GTMaterials.Nickel, 9)

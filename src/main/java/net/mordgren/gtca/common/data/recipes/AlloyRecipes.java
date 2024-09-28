@@ -173,7 +173,7 @@ public class AlloyRecipes {
 
     private static void tantalloy60(Consumer<FinishedRecipe> provider) {
         MIXER_RECIPES.recipeBuilder("tantalloy60").EUt(GTValues.VA[GTValues.HV]).duration(360)
-                .circuitMeta(12)
+                .circuitMeta(4)
                 .inputItems(GTCAHelper.getItem("dust",Tungsten ,2 ))
                 .inputItems(GTCAHelper.getItem("dust",Tantalum , 23))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.Tantalloy60, 25 ))
@@ -182,7 +182,7 @@ public class AlloyRecipes {
 
     private static void tantalloy61(Consumer<FinishedRecipe> provider) {
         MIXER_RECIPES.recipeBuilder("tantalloy61").EUt(GTValues.VA[GTValues.HV]).duration(210)
-                .circuitMeta(13)
+                .circuitMeta(4)
                 .inputItems(GTCAHelper.getItem("dust",GTCAMaterials.Tantalloy60 ,1 ))
                 .inputItems(GTCAHelper.getItem("dust",Titanium , 6))
                 .inputItems(GTCAHelper.getItem("dust",Yttrium , 4))

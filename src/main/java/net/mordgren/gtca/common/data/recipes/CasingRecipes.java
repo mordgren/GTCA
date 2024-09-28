@@ -168,21 +168,23 @@ public class CasingRecipes {
 
         ASSEMBLER_RECIPES.recipeBuilder("flcrii_casing").EUt(30720).duration(1200)
                 .circuitMeta(6)
-                .inputItems(GTCAHelper.getItem("plate", Inconel690, 4))
-                .inputItems(GTCAHelper.getItem("plate", Ultimet, 2))
-                .inputItems(GTCAHelper.getItem("frame", Moltech, 1))
+                .inputItems(GTMachines.HULL[GTValues.IV].asStack())
+                .inputItems(GTCAHelper.getItem("plate", Inconel690, 6))
+                .inputItems(GTCAHelper.getItem("plate", Ultimet, 6))
+                .inputItems(GTCAHelper.getItem("frame", Moltech, 2))
+                .inputItems(GTCAHelper.getItem("screw", HastelloyN, 12))
                 .outputItems(GTCABlocks.FLCR_CASING_TYPE_II, 1)
                 .save(provider);
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder("reinforced_glass").EUt(4).duration(400)
-                .inputItems(GTItems.CARBON_FIBER_PLATE.asStack())
-                .inputItems(Blocks.GLASS.asItem(), 3)
+        ALLOY_SMELTER_RECIPES.recipeBuilder("reinforced_glass").EUt(60).duration(400)
+                .inputItems(GTItems.CARBON_FIBER_PLATE, 3)
+                .inputItems(Blocks.GLASS.asItem(), 4)
                 .outputItems(GTCABlocks.REINFORCED_GLASS, 4)
                 .save(provider);
 
         ALLOY_SMELTER_RECIPES.recipeBuilder("reinforced_glass_dust").EUt(4).duration(400)
-                .inputItems(GTItems.CARBON_FIBER_PLATE.asStack())
-                .inputItems(GTCAHelper.getItem("dust", Glass,3))
+                .inputItems(GTItems.CARBON_FIBER_PLATE, 3)
+                .inputItems(GTCAHelper.getItem("dust", Glass,4))
                 .outputItems(GTCABlocks.REINFORCED_GLASS, 4)
                 .save(provider);
     }

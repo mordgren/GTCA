@@ -8,6 +8,8 @@ import net.minecraft.world.item.Items;
 import net.mordgren.gtca.common.util.GTCAHelper;
 import java.util.function.Consumer;
 
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static net.mordgren.gtca.common.data.GTCARecipeTypes.INDUSTRIAL_COKE_OVEN;
 
 public class ICORecipes {
@@ -28,8 +30,8 @@ public class ICORecipes {
                     .circuitMeta(20)
                     .inputFluids(GTMaterials.Steam.getFluid(250))
                     .inputItems(ItemTags.LOGS, 5)
-                    .outputItems(Items.CHARCOAL, 6)
-                    .outputFluids(GTMaterials.CoalGas.getFluid(360))
+                    .outputItems(Items.CHARCOAL, 12)
+                    .outputFluids(GTMaterials.CoalGas.getFluid(1200))
                     .save(provider);
 
             INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_creosote")
@@ -37,8 +39,8 @@ public class ICORecipes {
                     .duration(128)
                     .circuitMeta(1)
                     .inputItems(ItemTags.LOGS, 4)
-                    .outputItems(Items.CHARCOAL, 5)
-                    .outputFluids(GTMaterials.Creosote.getFluid(1000))
+                    .outputItems(Items.CHARCOAL, 12)
+                    .outputFluids(GTMaterials.Creosote.getFluid(1700))
                     .save(provider);
 
             INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_byproducts")
@@ -46,8 +48,8 @@ public class ICORecipes {
                     .duration(128)
                     .circuitMeta(3)
                     .inputItems(ItemTags.LOGS, 4)
-                    .outputItems(Items.CHARCOAL, 5)
-                    .outputFluids(GTMaterials.CharcoalByproducts.getFluid(1000))
+                    .outputItems(Items.CHARCOAL, 12)
+                    .outputFluids(GTMaterials.CharcoalByproducts.getFluid(1900))
                     .save(provider);
 
             INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_woodgas")
@@ -55,8 +57,8 @@ public class ICORecipes {
                     .duration(128)
                     .circuitMeta(5)
                     .inputItems(ItemTags.LOGS, 4)
-                    .outputItems(Items.CHARCOAL, 5)
-                    .outputFluids(GTMaterials.WoodGas.getFluid(375))
+                    .outputItems(Items.CHARCOAL, 12)
+                    .outputFluids(GTMaterials.WoodGas.getFluid(900))
                     .save(provider);
 
             INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_woodvinegar")
@@ -64,8 +66,8 @@ public class ICORecipes {
                     .duration(128)
                     .circuitMeta(7)
                     .inputItems(ItemTags.LOGS, 4)
-                    .outputItems(Items.CHARCOAL, 5)
-                    .outputFluids(GTMaterials.WoodVinegar.getFluid(750))
+                    .outputItems(Items.CHARCOAL, 6)
+                    .outputFluids(GTMaterials.WoodVinegar.getFluid(2900))
                     .save(provider);
 
             INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_woodtar")
@@ -73,8 +75,8 @@ public class ICORecipes {
                     .duration(128)
                     .circuitMeta(9)
                     .inputItems(ItemTags.LOGS, 4)
-                    .outputItems(Items.CHARCOAL, 5)
-                    .outputFluids(GTMaterials.WoodTar.getFluid(375))
+                    .outputItems(Items.CHARCOAL, 12)
+                    .outputFluids(GTMaterials.WoodTar.getFluid(900))
                     .save(provider);
 
             INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_heavyoil")
@@ -82,8 +84,8 @@ public class ICORecipes {
                     .duration(64)
                     .circuitMeta(11)
                     .inputItems(ItemTags.LOGS, 4)
-                    .outputItems(GTCAHelper.getItem("dust", GTMaterials.Ash, 1))
-                    .outputFluids(GTMaterials.OilHeavy.getFluid(50))
+                    .chancedOutput(dust, Ash, 111, 0)
+                    .outputFluids(GTMaterials.OilHeavy.getFluid(150))
                     .save(provider);
     }
 
@@ -94,8 +96,8 @@ public class ICORecipes {
                 .circuitMeta(2)
                 .inputItems(ItemTags.LOGS, 4)
                 .inputFluids(GTMaterials.Nitrogen.getFluid(250))
-                .outputItems(Items.CHARCOAL, 5)
-                .outputFluids(GTMaterials.Creosote.getFluid(1000))
+                .outputItems(Items.CHARCOAL, 12)
+                .outputFluids(GTMaterials.Creosote.getFluid(1600))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_nitrogen_byproducts")
@@ -104,8 +106,8 @@ public class ICORecipes {
                 .circuitMeta(4)
                 .inputItems(ItemTags.LOGS, 4)
                 .inputFluids(GTMaterials.Nitrogen.getFluid(250))
-                .outputItems(Items.CHARCOAL, 5)
-                .outputFluids(GTMaterials.CharcoalByproducts.getFluid(1000))
+                .outputItems(Items.CHARCOAL, 12)
+                .outputFluids(GTMaterials.CharcoalByproducts.getFluid(1900))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_nitrogen_woodgas")
@@ -114,28 +116,28 @@ public class ICORecipes {
                 .circuitMeta(6)
                 .inputItems(ItemTags.LOGS, 4)
                 .inputFluids(GTMaterials.Nitrogen.getFluid(250))
-                .outputItems(Items.CHARCOAL, 5)
-                .outputFluids(GTMaterials.WoodGas.getFluid(375))
+                .outputItems(Items.CHARCOAL, 12)
+                .outputFluids(GTMaterials.WoodGas.getFluid(900))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_nitrogen_woodvinegar")
                 .EUt(96)
                 .duration(64)
                 .circuitMeta(8)
-                .inputItems(ItemTags.LOGS, 4)
+                .inputItems(ItemTags.LOGS, 12)
                 .inputFluids(GTMaterials.Nitrogen.getFluid(250))
                 .outputItems(Items.CHARCOAL, 5)
-                .outputFluids(GTMaterials.WoodVinegar.getFluid(750))
+                .outputFluids(GTMaterials.WoodVinegar.getFluid(2900))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("logs_nitrogen_woodtar")
                 .EUt(96)
                 .duration(64)
                 .circuitMeta(10)
-                .inputItems(ItemTags.LOGS, 4)
+                .inputItems(ItemTags.LOGS, 12)
                 .inputFluids(GTMaterials.Nitrogen.getFluid(250))
                 .outputItems(Items.CHARCOAL, 5)
-                .outputFluids(GTMaterials.WoodTar.getFluid(375))
+                .outputFluids(GTMaterials.WoodTar.getFluid(900))
                 .save(provider);
     }
 
@@ -146,7 +148,7 @@ public class ICORecipes {
                 .circuitMeta(1)
                 .inputItems(Items.COAL, 1)
                 .outputItems(GTCAHelper.getItem("gem", GTMaterials.Coke, 1))
-                .outputFluids(GTMaterials.Creosote.getFluid(500))
+                .outputFluids(GTMaterials.Creosote.getFluid(1700))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("coke_creosote_nitrogen")
@@ -156,27 +158,27 @@ public class ICORecipes {
                 .inputItems(Items.COAL, 2)
                 .inputFluids(GTMaterials.Nitrogen.getFluid(125))
                 .outputItems(GTCAHelper.getItem("gem", GTMaterials.Coke, 2))
-                .outputFluids(GTMaterials.Creosote.getFluid(1000))
+                .outputFluids(GTMaterials.Creosote.getFluid(1750))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("coke_coalgas")
                 .EUt(120)
                 .duration(288)
                 .circuitMeta(22)
-                .inputItems(Items.COAL, 8)
+                .inputItems(Items.COAL, 6)
                 .inputFluids(GTMaterials.Steam.getFluid(500))
-                .outputItems(GTCAHelper.getItem("gem", GTMaterials.Coke, 5))
-                .outputFluids(GTMaterials.CoalGas.getFluid(1440))
+                .outputItems(GTCAHelper.getItem("gem", GTMaterials.Coke, 12))
+                .outputFluids(GTMaterials.CoalGas.getFluid(2520))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("coke_coalgasx2")
                 .EUt(240)
                 .duration(600)
-                .inputItems(Items.COAL, 6)
+                .inputItems(Items.COAL, 8)
                 .inputItems(GTCAHelper.getItem("gem", GTMaterials.Coke, 3))
                 .inputFluids(GTMaterials.Steam.getFluid(1000))
-                .outputItems(GTCAHelper.getItem("gem", GTMaterials.Coke, 7))
-                .outputFluids(GTMaterials.CoalGas.getFluid(2520))
+                .outputItems(GTCAHelper.getItem("gem", GTMaterials.Coke, 17))
+                .outputFluids(GTMaterials.CoalGas.getFluid(5040))
                 .save(provider);
     }
 
@@ -185,17 +187,17 @@ public class ICORecipes {
                 .EUt(10)
                 .duration(16)
                 .circuitMeta(2)
-                .inputFluids(GTMaterials.Biomass.getFluid(200))
-                .outputFluids(GTMaterials.FermentedBiomass.getFluid(200))
+                .inputFluids(GTMaterials.Biomass.getFluid(3000))
+                .outputFluids(GTMaterials.FermentedBiomass.getFluid(3000))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("biochaff")
                 .EUt(10)
                 .duration(160)
                 .circuitMeta(2)
-                .inputItems(GTItems.BIO_CHAFF, 1)
-                .inputFluids(GTMaterials.Water.getFluid(1500))
-                .outputFluids(GTMaterials.FermentedBiomass.getFluid(1500))
+                .inputItems(GTItems.BIO_CHAFF, 2)
+                .inputFluids(GTMaterials.Water.getFluid(3250))
+                .outputFluids(GTMaterials.FermentedBiomass.getFluid(3250))
                 .save(provider);
     }
 
@@ -206,7 +208,7 @@ public class ICORecipes {
                 .circuitMeta(1)
                 .inputItems(Items.COAL_BLOCK, 1)
                 .outputItems(GTCAHelper.getItem("block", GTMaterials.Coke, 1))
-                .outputFluids(GTMaterials.Creosote.getFluid(4000))
+                .outputFluids(GTMaterials.Creosote.getFluid(4500))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("charcoal_dust")
@@ -225,7 +227,7 @@ public class ICORecipes {
                 .inputItems(Items.COAL_BLOCK, 1)
                 .inputFluids(GTMaterials.Nitrogen.getFluid(125))
                 .outputItems(GTCAHelper.getItem("block", GTMaterials.Coke, 1))
-                .outputFluids(GTMaterials.Creosote.getFluid(4000))
+                .outputFluids(GTMaterials.Creosote.getFluid(4500))
                 .save(provider);
 
         INDUSTRIAL_COKE_OVEN.recipeBuilder("charcoal_dust_nitrogen")
@@ -244,7 +246,7 @@ public class ICORecipes {
                 .circuitMeta(8)
                 .inputItems(Items.COAL, 6)
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.DarkAsh, 1))
-                .outputFluids(GTMaterials.CoalTar.getFluid(1100))
+                .outputFluids(GTMaterials.CoalTar.getFluid(2200))
                 .save(provider);
     }
 }
