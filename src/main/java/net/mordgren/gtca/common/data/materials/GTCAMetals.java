@@ -561,7 +561,7 @@ public class GTCAMetals {
                 .blastTemp(7625, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
                 .buildAndRegister();
 
-        GTCAMaterials.Pikyonium64Y = new Material.Builder(GTCA.id("pikyonium64Y"))
+        GTCAMaterials.Pikyonium64Y = new Material.Builder(GTCA.id("pikyonium64_y"))
                 .color(0x4900d1)
                 .components(GTCAMaterials.Inconel792, 8, GTCAMaterials.EglinSteel, 5, GTMaterials.NaquadahEnriched, 4, GTMaterials.Cerium, 3, GTMaterials.Antimony, 2, GTMaterials.Platinum, 2, GTMaterials.Yttrium, 1, GTMaterials.TungstenSteel, 4)
                 .fluid()

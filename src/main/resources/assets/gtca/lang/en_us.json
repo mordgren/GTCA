@@ -90,6 +90,8 @@
   "material.gtca.nitinol60" : "Nitinol 60",
   "material.gtca.inconel792" : "Inconel 792",
   "material.gtceu.zirconium_gtca" : "Zirconium",
+  "material.gtca.cinobite_a241" : "Cinobite A241",
+  "material.gtca.pikyonium64_y" : "Pikyonium 64Y",
 
 
   "material.gtca.fayalite" : "Fayalite",
@@ -182,7 +184,7 @@
   "gtca.machine.AEBF_desc.tooltip1":"All recipes are 50% faster!",
 
   "gtca.machine.SC_desc.tooltip":"Needs a rotor. Uses Supercritical steam to generate power.",
-  "gtca.machine.SC_desc.tooltip2":"1L SuperCritical steam = 100 EU",
+  "gtca.machine.SC_desc.tooltip2":"1mB SuperCritical steam = 96 EU",
 
   "gtca.machine.EHE_desc.tooltip":"Accepts hot fluid like lava, or plasma.",
   "gtca.machine.EHE_desc.tooltip2":"Output: SC Steam/SH Steam/Steam. Check EMI/REI/JEI for more info.",
