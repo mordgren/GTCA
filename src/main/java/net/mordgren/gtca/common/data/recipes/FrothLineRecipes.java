@@ -196,7 +196,7 @@ public class FrothLineRecipes {
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Iron, 64))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Iron, 56))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Cadmium, 50))
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Indium, 10))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Indium, 25))
                 .save(provider);
 
         GTCARecipeTypes.THERMAL_REACTOR.recipeBuilder("nickel_froth").EUt(VA[IV]).duration(2400)
@@ -210,8 +210,8 @@ public class FrothLineRecipes {
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Nickel, 22))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Cobalt, 64))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Cobalt, 56))
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Rhodium, 32))
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Ruthenium, 16))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Rhodium, 58))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Ruthenium, 28))
                 .save(provider);
 
         //Missing firestone(gtnh), dysprosium(registered in gtceu)
@@ -240,8 +240,8 @@ public class FrothLineRecipes {
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Zinc, 64))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Zinc, 52))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Iron, 64))
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Iron, 56))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Indium, 64))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Indium, 16))
                 .save(provider);
 
         //Missing selenium(registered in gtceu), tellurium(registered in gtceu)
@@ -253,7 +253,8 @@ public class FrothLineRecipes {
                 .circuitMeta(4)
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.PlatinumRaw, 64))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.PlatinumRaw, 64))
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Rhodium, 60))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Rhodium, 64))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Rhodium, 12))
                 .save(provider);
 
         //Missing hafnium(registered in gtceu), promethium(registered in gtceu)
@@ -282,7 +283,7 @@ public class FrothLineRecipes {
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Manganese, 22))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Aluminium, 64))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Aluminium, 26))
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.RarestMetalMixture, 30))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.RarestMetalMixture, 48))
                 .save(provider);
 
         //Missing thallium(gtnh)
