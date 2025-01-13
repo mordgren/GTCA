@@ -3,7 +3,8 @@ package net.mordgren.gtca.common.data.recipes.permachine;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
+//import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAMaterials;
@@ -47,9 +48,9 @@ public class HERecipes {
     private static void heRecipes(Consumer<FinishedRecipe> provider) {
         inpHotInit();
         for(Object[] plasmaType : inpHot){
-            long amountPlasma = parseInt(plasmaType[1].toString());
-            long amountDistill = parseInt(plasmaType[2].toString());
-            long amountSteam = parseInt(plasmaType[3].toString());
+            int amountPlasma = parseInt(plasmaType[1].toString());
+            int amountDistill = parseInt(plasmaType[2].toString());
+            int amountSteam = parseInt(plasmaType[3].toString());
             FluidStack PlasmaIn = ((Material)plasmaType[0]).getFluid(FluidStorageKeys.PLASMA, amountPlasma);
             FluidStack PlasmaOut = ((Material)plasmaType[0]).getFluid(amountPlasma);
             FluidStack DistilledWater = (GTMaterials.DistilledWater.getFluid(amountDistill));
@@ -65,9 +66,9 @@ public class HERecipes {
         }
 
         for(Object[] plasmaType : inpHotCustom){
-            long amountPlasma = parseInt(plasmaType[1].toString());
-            long amountDistill = parseInt(plasmaType[2].toString());
-            long amountSteam = parseInt(plasmaType[3].toString());
+            int amountPlasma = parseInt(plasmaType[1].toString());
+            int amountDistill = parseInt(plasmaType[2].toString());
+            int amountSteam = parseInt(plasmaType[3].toString());
             FluidStack PlasmaIn = ((Material)plasmaType[0]).getFluid(amountPlasma);
             FluidStack PlasmaOut = ((Material)plasmaType[4]).getFluid(amountPlasma);
             FluidStack DistilledWater = (GTMaterials.DistilledWater.getFluid(amountDistill));

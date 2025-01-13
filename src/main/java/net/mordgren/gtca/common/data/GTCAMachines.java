@@ -3,7 +3,7 @@ package net.mordgren.gtca.common.data;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IRotorHolderMachine;
 import com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
 import com.gregtechceu.gtceu.api.pattern.predicates.SimplePredicate;
-import com.gregtechceu.gtceu.common.data.GCyMBlocks;
+import com.gregtechceu.gtceu.common.data.GCYMBlocks;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
@@ -101,7 +101,7 @@ public class GTCAMachines {
                     .where('S', controller(blocks(definition.getBlock())))
                     .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Tungsten)))
                     .where('V', blocks(GTBlocks.CASING_EXTREME_ENGINE_INTAKE.get()))
-                    .where('I', blocks(GCyMBlocks.HEAT_VENT.get()))
+                    .where('I', blocks(GCYMBlocks.HEAT_VENT.get()))
                     .where('X', blocks(GTCABlocks.CASING_AEBF.get()).setMinGlobalLimited(158)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, true)))
@@ -122,7 +122,7 @@ public class GTCAMachines {
                         .aisle("XXXSXXX", "FFXXXFF", "F#####F", "F#####F", "F#####F", "FFXXXFF", "XXXVXXX", "##XXX##", "#######")
                         .where('X', GTCABlocks.CASING_AEBF.getDefaultState())
                         .where('S', definition, Direction.SOUTH)
-                        .where('I', GCyMBlocks.HEAT_VENT)
+                        .where('I', GCYMBlocks.HEAT_VENT)
                         .where('V', CASING_EXTREME_ENGINE_INTAKE)
                         .where('F', ChemicalHelper.getBlock(TagPrefix.frameGt, Tungsten))
                         .where('#', Blocks.AIR.defaultBlockState())
@@ -140,7 +140,8 @@ public class GTCAMachines {
                 return shapeInfo;
             })
             .recoveryItems(
-                    () -> new ItemLike[]{GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get()})
+                    () -> new ItemLike[] {
+                            GTMaterialItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
             .workableCasingRenderer(
                     GTCA.id("block/casing/casing_aebf"),
                     GTCA.id("block/multiblock/aebf"),
@@ -163,8 +164,8 @@ public class GTCAMachines {
                                     .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
                 }
             })
-            .compassSections(GTCompassSections.TIER[MV])
-            .compassNodeSelf()
+//            .compassSections(GTCompassSections.TIER[MV])
+//            .compassNodeSelf()
             .register();
 
     /// CHEMICAL GENERATOR ///
@@ -219,7 +220,8 @@ public class GTCAMachines {
                                                 GTValues.VN[tier])))
                         .build())
                 .recoveryItems(
-                        () -> new ItemLike[]{GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get()})
+                        () -> new ItemLike[] {
+                                GTMaterialItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
                 .workableCasingRenderer(casingTexture, overlayModel)
                 .tooltips(
                         Component.translatable("gtceu.universal.tooltip.base_production_eut", V[tier]),
@@ -228,8 +230,8 @@ public class GTCAMachines {
                                         V[tier] * 4) :
                                 Component.translatable("gtceu.machine.large_combustion_engine.tooltip.boost_regular",
                                         V[tier] * 3))
-                .compassSections(GTCompassSections.TIER[EV])
-                .compassNode("chemical_generator")
+//                .compassSections(GTCompassSections.TIER[EV])
+//                .compassNode("chemical_generator")
                 .register();
     }
 
@@ -282,8 +284,8 @@ public class GTCAMachines {
                     GTCA.id("block/multiblock/aebf"),
                     true
             )
-            .compassSections(GTCompassSections.TIER[MV])
-            .compassNodeSelf()
+//            .compassSections(GTCompassSections.TIER[MV])
+//            .compassNodeSelf()
             .register();
 
 
@@ -351,7 +353,8 @@ public class GTCAMachines {
                             .or(autoAbilities(true, true, false)))
                     .build())
             .recoveryItems(
-                    () -> new ItemLike[] { GTItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
+                    () -> new ItemLike[] {
+                            GTMaterialItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
             .workableCasingRenderer(
                     GTCA.id("block/casing/shd_casing"),
                     GTCA.id("block/multiblock/shd")
@@ -364,8 +367,8 @@ public class GTCAMachines {
             )
 
 
-            .compassSections(GTCompassSections.TIER[HV])
-            .compassNodeSelf()
+//            .compassSections(GTCompassSections.TIER[HV])
+//            .compassNodeSelf()
             .register();
 
 
@@ -478,8 +481,8 @@ public class GTCAMachines {
             .tooltips(
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Oil Cracker")
             )
-            .compassSections(GTCompassSections.TIER[EV])
-            .compassNodeSelf()
+//            .compassSections(GTCompassSections.TIER[EV])
+//            .compassNodeSelf()
             .register();
 
     public static final MultiblockMachineDefinition MEGA_LCR = REGISTRATE
@@ -615,8 +618,8 @@ public class GTCAMachines {
                                     .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
                 }
             })
-            .compassSections(GTCompassSections.TIER[MV])
-            .compassNodeSelf()
+//            .compassSections(GTCompassSections.TIER[MV])
+//            .compassNodeSelf()
             .register();
 
     public static final MultiblockMachineDefinition COMET_CYCLOTRON = REGISTRATE.multiblock("comet", WorkableElectricMultiblockMachine::new)

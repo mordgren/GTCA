@@ -1,13 +1,9 @@
 package net.mordgren.gtca.common.data.recipes.fuel;
 
-import dev.arbor.gtnn.api.recipe.PlantCasingCondition;
-import dev.arbor.gtnn.data.GTNNRecipeTypes;
-import dev.arbor.gtnn.data.GTNNRecipes;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
 import net.mordgren.gtca.common.util.GTCAHelper;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;

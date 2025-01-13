@@ -2,7 +2,7 @@ package net.mordgren.gtca.common.data.recipes;
 
 import java.util.function.Consumer;
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.common.data.GCyMRecipeTypes;
+import com.gregtechceu.gtceu.common.data.GCYMRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;
@@ -163,7 +163,7 @@ public class AlloyRecipes {
     }
 
     private static void zirconiumCarbide(Consumer<FinishedRecipe> provider) {
-        GCyMRecipeTypes.ALLOY_BLAST_RECIPES.recipeBuilder("zirconium_carbide").EUt(GTValues.VA[GTValues.EV]).duration(200)
+        GCYMRecipeTypes.ALLOY_BLAST_RECIPES.recipeBuilder("zirconium_carbide").EUt(GTValues.VA[GTValues.EV]).duration(200)
                 .blastFurnaceTemp(4700)
                 .inputItems(GTCAHelper.getItem("dust", Zirconium, 1))
                 .inputItems(GTCAHelper.getItem("dust", Carbon, 1))

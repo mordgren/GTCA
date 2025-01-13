@@ -4,7 +4,6 @@ import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.item.tool.GTToolType;
 import com.gregtechceu.gtceu.api.machine.multiblock.IBatteryData;
 import com.gregtechceu.gtceu.common.block.BatteryBlock;
-import com.gregtechceu.gtceu.common.data.GTCompassSections;
 import com.gregtechceu.gtceu.common.data.GTModels;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
@@ -27,7 +26,7 @@ import net.mordgren.gtca.common.util.battery.GTCABatteryBlock;
 
 import java.util.function.Supplier;
 
-import static com.gregtechceu.gtceu.common.data.GTBlocks.compassNodeExist;
+
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 
 
@@ -117,7 +116,7 @@ public class GTCABlocks {
                         )
                 .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
                 .item(BlockItem::new)
-                .onRegister(compassNodeExist(GTCompassSections.BLOCKS, "pss_battery"))
+//                .onRegister(compassNodeExist(GTCompassSections.BLOCKS, "pss_battery"))
                 .build()
                 .register();
         GTCEuAPI.PSS_BATTERIES.put(batteryData, batteryBlock);

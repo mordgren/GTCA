@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.data.machines.GTMultiMachines;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -21,6 +22,8 @@ import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLER_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLY_LINE_RECIPES;
+import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.DISTILLATION_TOWER;
+import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.ELECTRIC_BLAST_FURNACE;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
 public class GTCAMachinesRecipes {
@@ -104,14 +107,14 @@ public class GTCAMachinesRecipes {
 
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder("mega_lcr").EUt(480).duration(72000)
                 .circuitMeta(17)
-                .inputItems(GTMachines.LARGE_CHEMICAL_REACTOR.asStack(64))
+                .inputItems(GTMultiMachines.LARGE_CHEMICAL_REACTOR.asStack(64))
                 .inputFluids(SolderingAlloy.getFluid(9216))
                 .outputItems(GTCAMachines.MEGA_LCR.asStack())
                 .save(provider);
 
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder("mega_cracker").EUt(480).duration(72000)
                 .circuitMeta(17)
-                .inputItems(GTMachines.CRACKER.asStack(64))
+                .inputItems(GTMultiMachines.CRACKER.asStack(64))
                 .inputFluids(SolderingAlloy.getFluid(9216))
                 .outputItems(GTCAMachines.MEGA_OIL_CRACKING_UNIT.asStack())
                 .save(provider);
@@ -143,7 +146,7 @@ public class GTCAMachinesRecipes {
                 /// Pattern
                 "VLV", "LHL", "PLP",
                 /// Ingredients definition
-                'V', GCyMBlocks.HEAT_VENT.asStack(),
+                'V', GCYMBlocks.HEAT_VENT.asStack(),
                 'H', GTMachines.HULL[GTValues.IV].asStack(),
                 'P', new UnificationEntry(TagPrefix.plate, GTCAMaterials.MAR_M200),
                 'L', new UnificationEntry(TagPrefix.pipeLargeFluid, TungstenSteel));
@@ -154,7 +157,7 @@ public class GTCAMachinesRecipes {
                 /// Pattern
                 "PCP", "HBH", "PCP",
                 /// Ingredients definition
-                'B', GTMachines.COKE_OVEN.asStack(),
+                'B', GTMultiMachines.COKE_OVEN.asStack(),
                 'H', GTMachines.HULL[GTValues.EV].asStack(),
                 'P', new UnificationEntry(TagPrefix.plate, GTCAMaterials.Tantalloy61),
                 'C', CustomTags.EV_CIRCUITS);

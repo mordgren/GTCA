@@ -3,7 +3,8 @@ package net.mordgren.gtca.common.data.recipes.fuel;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
-import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
+//import com.lowdragmc.lowdraglib.side.fluid.FluidStack;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
@@ -54,7 +55,7 @@ public class ChemGenFuels {
         fuelsArrayInit();
         for(Object[] fuelType : Fuels){
             int duration = parseInt(fuelType[3].toString());
-            long amount = parseInt(fuelType[2].toString());
+            int amount = parseInt(fuelType[2].toString());
             FluidStack Fuel = ((Material)fuelType[1]).getFluid(amount);
             GTCARecipeTypes.CHEMICAL_GENERATOR.recipeBuilder(fuelType[0].toString())
                     .EUt(-32)
