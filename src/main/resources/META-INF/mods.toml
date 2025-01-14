@@ -23,7 +23,7 @@ license = "${mod_license}"
     [[dependencies.gtca]]
         modId = "forge"
         mandatory = true
-        versionRange = "[47.3.7,)"
+        versionRange = "[47.3.0,)"
         ordering = "NONE"
         side = "BOTH"
     [[dependencies.gtca]]

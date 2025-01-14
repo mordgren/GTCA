@@ -79,9 +79,9 @@ public class CometRecipes {
                 .save(provider);
 
         COMET_CYCLOTRON.recipeBuilder("hydrogen_plasma").EUt(30720).duration(2400)
-                .circuitMeta(21)
+                .circuitMeta(22)
                 .inputFluids(Hydrogen.getFluid(1000))
-                .inputItems(GTCAItems.HydrogenIon,1)
+                .inputItems(GTCAItems.HydrogenIon.asStack(1))
                 .chancedOutput(GTCAItems.Proton.asStack(1), 1250, 0)
                 .chancedOutput(GTCAItems.Neutron.asStack(1), 1250, 0)
                 .chancedOutput(GTCAItems.Electron.asStack(1), 1250, 0)

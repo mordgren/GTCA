@@ -1,1 +1,1 @@
-GTCEu Modern 1.4.1 Addon
+GTCEu Modern Addon

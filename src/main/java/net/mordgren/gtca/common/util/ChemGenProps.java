@@ -40,8 +40,8 @@ public class ChemGenProps extends WorkableElectricMultiblockMachine implements I
     protected static final ManagedFieldHolder MANAGED_FIELD_HOLDER = new ManagedFieldHolder(
             ChemGenProps.class, WorkableMultiblockMachine.MANAGED_FIELD_HOLDER);
 
-    private static final FluidStack OXYGEN_STACK = GTMaterials.Oxygen.getFluid(1);
-    private static final FluidStack LIQUID_OXYGEN_STACK = GTMaterials.Oxygen.getFluid(FluidStorageKeys.LIQUID, 2);
+    private static final FluidStack OXYGEN_STACK = GTMaterials.Oxygen.getFluid(20);
+    private static final FluidStack LIQUID_OXYGEN_STACK = GTMaterials.Oxygen.getFluid(FluidStorageKeys.LIQUID, 80);
 
     @Getter
     private final int tier;
