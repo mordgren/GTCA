@@ -1,4 +1,4 @@
-// 1.20.1	2024-10-22T05:23:58.6617705	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2025-01-23T21:01:17.926804	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 6ab814a1724684d8ca5e3d3ce46435a3ebcc76ba assets/gtca/blockstates/borsilicate_yttrium_thorium_glass.json
 cd3f826ed2eb68cb7e6da340f85dace7965516b9 assets/gtca/blockstates/casing_aebf.json
 30d06aaad6d66e2bbed82d3560a207be45bd185b assets/gtca/blockstates/casing_greenhouse.json
@@ -30,18 +30,18 @@ db22753399866af29c217d0e308fa216d8fca09b assets/gtca/models/block/casing_aebf.js
 84bf2179f7b55c89661c269f361a6545b0e0b066 assets/gtca/models/block/comet_casing.json
 fe96d7d7036074f05bbe71def24ff875a0486e16 assets/gtca/models/block/cyclotron_coil.json
 d805a46e38170c568d4b6a2f212ef9c61c9f9c40 assets/gtca/models/block/dural_casing.json
-cac6598ad89731740413d1e2214c1dbe55f1c33c assets/gtca/models/block/electron_cell_battery.json
+480f0443ed691d47e71b8d76001db0190eabe8c1 assets/gtca/models/block/electron_cell_battery.json
 5867fd16c7be40f3b9c7a9f60302921a4b2c566a assets/gtca/models/block/flcr_casing_type_i.json
 af5f0b660b729c883d83f312032003d48328ae65 assets/gtca/models/block/flcr_casing_type_ii.json
-24735997507d81731dd8b37b88ad397b213282ca assets/gtca/models/block/graviton_anomaly_battery.json
+0e3452b8e621a7d6762414683fb6b50b73896918 assets/gtca/models/block/graviton_anomaly_battery.json
 b0b0ec01382b50ca4d0bffb140e0ff47590d9a8b assets/gtca/models/block/inconel718_casing.json
 ba66ea8500fc55be28d495fbfc9e097e43890786 assets/gtca/models/block/isa_mill_airintake.json
 c2c94657265de73c84fc3e068771cc032af294a0 assets/gtca/models/block/isa_mill_casing.json
 c52e143d3d755f8499cc2d190658413d404dd338 assets/gtca/models/block/isa_mill_gearbox.json
 68a101e40ed51ec137117f537590f7616d73f808 assets/gtca/models/block/nimonic80a_casing.json
 edc64bb465ef0d3eda09310b1ebbe463ca126ce1 assets/gtca/models/block/pressure_resistant_wall.json
-81967a734d6ee7a1794aeb71933cf8f8b8158cb5 assets/gtca/models/block/proton_cell_battery.json
-80757d071f5f5127ed6c657cde2a3707b2c38cb9 assets/gtca/models/block/quark_entanglement_battery.json
+2c7f07b99f304bad51e49d34c3e5815f1ed25017 assets/gtca/models/block/proton_cell_battery.json
+86b5b3f66fba8b96764658f4b68d7a73fda2627b assets/gtca/models/block/quark_entanglement_battery.json
 8400d8a1de2fb69fd8e57c2819b56417e06fb1dc assets/gtca/models/block/reinforced_glass.json
 4e580e9e93d80fe6a28827aff7fbfbf6599cdd05 assets/gtca/models/block/shd_casing.json
 d4062ba42d76580e29286314dd79100e6ef8302a assets/gtca/models/block/shd_gearbox.json

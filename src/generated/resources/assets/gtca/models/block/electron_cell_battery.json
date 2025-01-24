@@ -2,7 +2,7 @@
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
     "bottom": "gtca:block/casing/battery/electron_cell/top",
-    "side": "gtca:block/casing/battery/electron_cell/top",
-    "top": "gtca:block/casing/battery/electron_cell/side"
+    "side": "gtca:block/casing/battery/electron_cell/side",
+    "top": "gtca:block/casing/battery/electron_cell/top"
   }
 }

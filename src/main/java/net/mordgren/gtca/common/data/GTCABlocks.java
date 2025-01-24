@@ -125,7 +125,10 @@ public class GTCABlocks {
 
     private static NonNullBiConsumer<DataGenContext<Block, BatteryBlock>, RegistrateBlockstateProvider> createBatteryBlockModel(String name, IBatteryData batteryData) {
         return (ctx, prov) -> {
-            prov.simpleBlock((Block)ctx.getEntry(), prov.models().cubeBottomTop(name, GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/top"), GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/top"), GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/side")));
+            prov.simpleBlock((Block)ctx.getEntry(), prov.models().cubeBottomTop(name,
+                    GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/side"),
+                    GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/top"),
+                    GTCA.id("block/casing/battery/" + batteryData.getBatteryName() + "/top")));
         };
     }
 

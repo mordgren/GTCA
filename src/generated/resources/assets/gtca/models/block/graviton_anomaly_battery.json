@@ -2,7 +2,7 @@
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
     "bottom": "gtca:block/casing/battery/graviton_anomaly/top",
-    "side": "gtca:block/casing/battery/graviton_anomaly/top",
-    "top": "gtca:block/casing/battery/graviton_anomaly/side"
+    "side": "gtca:block/casing/battery/graviton_anomaly/side",
+    "top": "gtca:block/casing/battery/graviton_anomaly/top"
   }
 }
