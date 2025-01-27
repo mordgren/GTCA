@@ -252,8 +252,8 @@ public class FrothLineRecipes {
                 .inputFluids(GTCAMaterials.PlatinumFroth.getFluid(4000))
                 .blastFurnaceTemp(5500)
                 .circuitMeta(4)
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.PlatinumRaw, 64))
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.PlatinumRaw, 64))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Platinum, 64))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Platinum, 64))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Rhodium, 64))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Rhodium, 12))
                 .save(provider);
