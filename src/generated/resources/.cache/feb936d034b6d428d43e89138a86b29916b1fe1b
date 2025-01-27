@@ -1,4 +1,4 @@
-// 1.20.1	2025-01-23T21:01:17.926804	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2025-01-28T04:02:28.9149829	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 6ab814a1724684d8ca5e3d3ce46435a3ebcc76ba assets/gtca/blockstates/borsilicate_yttrium_thorium_glass.json
 cd3f826ed2eb68cb7e6da340f85dace7965516b9 assets/gtca/blockstates/casing_aebf.json
 30d06aaad6d66e2bbed82d3560a207be45bd185b assets/gtca/blockstates/casing_greenhouse.json
@@ -55,13 +55,23 @@ cb88504d3db75c6ed626790d300a4105b9008887 assets/gtca/models/item/crushed_spruce.
 8241a8a7518fb8dc6e87d2cf894272ca671f7144 assets/gtca/models/item/cyclotron_coil.json
 143128c32fe3b1bde585fae8300c2d0f70c09f90 assets/gtca/models/item/dural_casing.json
 a25572b0daf3215a95683982188337aec0b46302 assets/gtca/models/item/electron.json
-257d1fe2a0033d6fe9a541523a792c59a4e953d2 assets/gtca/models/item/electron_cell.json
+df080d7c6c78be93f59d8fd4d27673af539de741 assets/gtca/models/item/electron_cell.json
+9af80316056ac0596e6ddb227e91eebbcb9eb5c2 assets/gtca/models/item/electron_cell/0.json
+1b0a0190c20bd47ff84fcee6117257cdcd0b6c9f assets/gtca/models/item/electron_cell/1.json
+9c552448ba512b26b5f4085f40b48a2f8e30de1b assets/gtca/models/item/electron_cell/2.json
+184892813022e4fb67ff80c455d9b8ede2886328 assets/gtca/models/item/electron_cell/3.json
+6a9c22e03f618d87ccd2e9f0a58a003bb0b8897b assets/gtca/models/item/electron_cell/4.json
 39ff997d3bca711197b331fa8801d44d28a2781d assets/gtca/models/item/electron_cell_battery.json
 1a65d1fc94628041b53d272273036249a82600ca assets/gtca/models/item/electron_cell_empty.json
 65174df2fe1c81a1f642c65327b08c498986d96a assets/gtca/models/item/flcr_casing_type_i.json
 8ddb0aedac11469f726e66579652ab28c15078a3 assets/gtca/models/item/flcr_casing_type_ii.json
 926d20386b226929000b6ced8a9ce0ac71d35c02 assets/gtca/models/item/graviton.json
-7fbc87a37b28a1e8895255ee0e449bf5282a6ed9 assets/gtca/models/item/graviton_anomaly.json
+beffc94f8eb17406e7d2fa90b66a0e049b2d691c assets/gtca/models/item/graviton_anomaly.json
+e6250ce344389a548dc216f7dacc90ff80207941 assets/gtca/models/item/graviton_anomaly/0.json
+bad5d7ae53750d9e322a889c2d1d3e8371897397 assets/gtca/models/item/graviton_anomaly/1.json
+d04bd6d019e28f74948bd8e5f4f6fe1551f69172 assets/gtca/models/item/graviton_anomaly/2.json
+cdf85f88be9fd94101d1685d79bce0524b4a252d assets/gtca/models/item/graviton_anomaly/3.json
+414624e8b946014fb62a6027b99fba1f8524d801 assets/gtca/models/item/graviton_anomaly/4.json
 d05de7a85763a59a48fbe841edfe9c821dc9a0e1 assets/gtca/models/item/graviton_anomaly_battery.json
 2b0dccb309f01b1114f9c03d164e99ff6191b293 assets/gtca/models/item/graviton_anomaly_empty.json
 fd107e18833791d4ccafcbf8a2263567b2d1dcf5 assets/gtca/models/item/grinding_ball_nq.json
@@ -89,11 +99,21 @@ b87ad2c35b2dc6b0c82f259d8ca931e8abd62aa7 assets/gtca/models/item/milled_sphaleri
 0dfbe61db3b782c4e5335ddc15feb62ff3bcd22b assets/gtca/models/item/nimonic80a_casing.json
 2fbee597cff6a70d69204bb1762c77426f6d9890 assets/gtca/models/item/pressure_resistant_wall.json
 241af16e74ae8703e7ec70311ad05d2974c43bbc assets/gtca/models/item/proton.json
-ee3380222030d42039091fbfb6f2b68a0f61410d assets/gtca/models/item/proton_cell.json
+6ed9eb840e5b0b0768f915d72400e74724f804a5 assets/gtca/models/item/proton_cell.json
+9796592bebd63962e37b86d6963ff4e3108a9e49 assets/gtca/models/item/proton_cell/0.json
+7f6cae9e16b5fd28d5fd9a1d4de2899a6b8fa3be assets/gtca/models/item/proton_cell/1.json
+51aeadafc3e85c61f95f3549da8c9b1788db1563 assets/gtca/models/item/proton_cell/2.json
+3168f8509b6c363d6b2b49caa959d5ae95f6002d assets/gtca/models/item/proton_cell/3.json
+740495fd395d98469d6f652bae1b3ec51a1cbcf8 assets/gtca/models/item/proton_cell/4.json
 5ae4ed88cf7868d5c429eeb1a533d25bc19d0466 assets/gtca/models/item/proton_cell_battery.json
 8140e7cc12b845c5aa6cab361fb3cfb40ae9350a assets/gtca/models/item/proton_cell_empty.json
 d5a6d7d9e6872cec5bcfc1ef9feb3f2256f948c3 assets/gtca/models/item/quantum_anomaly.json
-4a6a0bcfd42bea6c6f146810d4bcff8bf4b018a5 assets/gtca/models/item/quark_entanglement.json
+b2450f2d515f6f057fb9faf9c82f408c8e9f8547 assets/gtca/models/item/quark_entanglement.json
+c372877cdabda9c46da4fdbeef011f892edda27b assets/gtca/models/item/quark_entanglement/0.json
+d8aae4e1da536abf4760555693df50e7d015df1d assets/gtca/models/item/quark_entanglement/1.json
+ac55eeaf8cd0e9a9b6f6defb9a8a290d17273267 assets/gtca/models/item/quark_entanglement/2.json
+da1835eeccbddf9d6af6611a2ba7144c45b1f254 assets/gtca/models/item/quark_entanglement/3.json
+8c62b50ee99aa531306554f3c6197246781d2395 assets/gtca/models/item/quark_entanglement/4.json
 e1d5b4a66968e2e7a8c35537e00317e9a217ae6c assets/gtca/models/item/quark_entanglement_battery.json
 af4d36ea5e29a540343317d239cfaacc13bc29e9 assets/gtca/models/item/quark_entanglement_empty.json
 9360deda4e1a632c414ea22439d46f07435bfc32 assets/gtca/models/item/reinforced_glass.json

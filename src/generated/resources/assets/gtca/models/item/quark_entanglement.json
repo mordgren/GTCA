@@ -1,6 +1,38 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "gtca:item/quark_entanglement/0",
+      "predicate": {
+        "gtca:battery": 0.0
+      }
+    },
+    {
+      "model": "gtca:item/quark_entanglement/1",
+      "predicate": {
+        "gtca:battery": 0.01
+      }
+    },
+    {
+      "model": "gtca:item/quark_entanglement/2",
+      "predicate": {
+        "gtca:battery": 0.02
+      }
+    },
+    {
+      "model": "gtca:item/quark_entanglement/3",
+      "predicate": {
+        "gtca:battery": 0.03
+      }
+    },
+    {
+      "model": "gtca:item/quark_entanglement/4",
+      "predicate": {
+        "gtca:battery": 0.04
+      }
+    }
+  ],
   "textures": {
-    "layer0": "gtca:item/quark_entanglement"
+    "layer0": "gtca:item/quark_entanglement/1"
   }
 }
