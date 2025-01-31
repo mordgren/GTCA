@@ -16,7 +16,8 @@ public class GTCAFluids {
                         MaterialFlags.DISABLE_DECOMPOSITION
                 )
                 .color(0x074852)
-                .buildAndRegister();
+                .buildAndRegister()
+                .setFormula("BeK4N5",true);
 
         GTCAMaterials.SphaleriteFroth = new Material.Builder(GTCA.id("sphalerite_froth")).fluid().color(0xdadada).buildAndRegister();
         GTCAMaterials.ChalcopyriteFroth = new Material.Builder(GTCA.id("chalcopyrite_froth")).fluid().color(0x896726).buildAndRegister();

@@ -7,12 +7,13 @@
   "gtceu.ev_chemical_generator": "Chemical Combustion Engine",
   "block.gtca.iv_chemical_generator": "Extreme Chemical Combustion Engine",
   "gtceu.iv_chemical_generator": "Extreme Chemical Combustion Engine",
+  "gtceu.chemical_generator": "Chemical Combustion Engine",
   "block.gtca.green_house":"Green House",
   "gtceu.green_house":"Green House",
   "block.gtca.polymerizer":"Polymerizer",
   "gtceu.polymerizer":"Polymerizer",
-  "block.gtca.shd_turbine":"SC Steam Turbine",
-  "gtceu.shd_turbine":"SC Steam Turbine",
+  "block.gtca.shd_turbine":"Super Critical Steam Turbine",
+  "gtceu.shd_turbine":"Super Critical Turbine",
   "block.gtca.extreme_heat_exchanger":"Extreme Heat Exchanger",
   "gtceu.extreme_heat_exchanger":"Extreme Heat Exchanger",
   "block.gtca.mega_oil_cracking_unit":"Mega Oil Cracking Unit",
@@ -27,6 +28,7 @@
   "gtceu.isamill":"IsaMill",
   "block.gtca.flotation_cell_regulator":"Flotation Cell Regulator",
   "gtceu.flotation_cell_regulator":"Flotation Cell Regulator",
+
 
 
 
@@ -98,7 +100,6 @@
   "material.gtca.red_zircon" : "Red Zircon",
   "material.gtca.green_fuchsite" : "Green Fuchsite",
   "material.gtca.red_fuchsite" : "Red Fuchsite",
-
 
 
   "item.gtca.electron" : "Electron",
@@ -196,6 +197,11 @@
 
   "gtca.machine.isamill_desc.tooltip": "Controller Block of Large Grinding Machine. Grind ores. ",
 
+  "itemGroup.gtca.main": "GT Community Additions",
 
-  "itemGroup.gtca.main": "GT Community Additions"
+  "gtceu.jei.ore_vein.zirconium_vein": "Zirconium Vein"
+
+
+
+
 }
