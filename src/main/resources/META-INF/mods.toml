@@ -9,7 +9,7 @@ license = "${mod_license}"
 
 [[mods]]
     modId = "gtca"
-    version = "1.2.1"
+    version = "${version}"
     displayName = "${mod_name}"
     displayURL = "${mod_url}"
     # This will be displayed as your mod's logo in the Mods panel.
