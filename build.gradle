@@ -154,7 +154,8 @@ dependencies {
     modCompileOnly("mezz.jei:jei-$project.minecraft_version-forge-api:$project.jei_version") { transitive = false }
     modCompileOnly("mezz.jei:jei-$project.minecraft_version-common-api:$project.jei_version") { transitive = false }
 
-    modCompileOnly("curse.maven:gt-985872:6013264")
+    modCompileOnly("curse.maven:gt-985872:6325816")
+    //modCompileOnly("curse.maven:gt-985872:6013264")
 //    modCompileOnly("curse.maven:gt-985872:5823705")
     //modCompileOnly("curse.maven:gt-985872:5755108")
     //modCompileOnly("curse.maven:gt-985872:5721533")

@@ -84,6 +84,7 @@ public class AlloyRecipes {
 
     private static void Vitallium(Consumer<FinishedRecipe> provider) {
         MIXER_RECIPES.recipeBuilder("vitallium").EUt(GTValues.VA[GTValues.EV]).duration(200)
+                .circuitMeta(20)
                 .inputItems(GTCAHelper.getItem("dust", Cobalt, 6))
                 .inputItems(GTCAHelper.getItem("dust", Chromium, 3))
                 .inputItems(GTCAHelper.getItem("dust", Molybdenum, 1))
