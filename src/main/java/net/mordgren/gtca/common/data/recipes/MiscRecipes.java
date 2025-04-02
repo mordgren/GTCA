@@ -2,10 +2,12 @@ package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCABlocks;
 import net.mordgren.gtca.common.data.GTCAItems;
+import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
@@ -19,6 +21,7 @@ import static net.mordgren.gtca.common.data.GTCAMaterials.HastelloyN;
 public class MiscRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
         cellRecipes(provider);
+        pahoehoeRecipes(provider);
     }
 
     public static void cellRecipes(Consumer<FinishedRecipe> provider) {
@@ -113,5 +116,29 @@ public class MiscRecipes {
                 .inputItems(GTCABlocks.BATTERY_ELECTRON_CELL)
                 .outputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
                 .outputItems(GTCAItems.ELECTRON_CELL.asStack()).save(provider);
+    }
+
+    public static void pahoehoeRecipes(Consumer<FinishedRecipe> provider) {
+        CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_nugget").duration(40).EUt(VA[EV])
+                .inputFluids(PahoehoeLava.getFluid(100))
+                .circuitMeta(10)
+                .chancedOutput(GTCAHelper.getItem("nugget", Copper, 1), 2000, 0)
+                .chancedOutput(GTCAHelper.getItem("nugget", Tin, 1), 1000, 0)
+                .chancedOutput(GTCAHelper.getItem("nugget", Silver, 1), 250, 0)
+                .chancedOutput(GTCAHelper.getItem("smallDust", Phosphorus, 1), 50, 0)
+                .chancedOutput(GTCAHelper.getItem("smallDust", Scheelite, 1), 250, 0)
+                .chancedOutput(GTCAHelper.getItem("smallDust", Bauxite, 1), 500, 0)
+                .save(provider);
+
+        CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_ingot").duration(328).EUt(VA[EV])
+                .inputFluids(PahoehoeLava.getFluid(3600))
+                .circuitMeta(20)
+                .chancedOutput(GTCAHelper.getItem("ingot", Copper, 1), 8000, 0)
+                .chancedOutput(GTCAHelper.getItem("ingot", Tin, 1), 4000, 0)
+                .chancedOutput(GTCAHelper.getItem("ingot", Silver, 1), 1000, 0)
+                .chancedOutput(GTCAHelper.getItem("dust", Phosphorus, 1), 450, 0)
+                .chancedOutput(GTCAHelper.getItem("dust", Scheelite, 1), 2250, 0)
+                .chancedOutput(GTCAHelper.getItem("dust", Bauxite, 1), 4500, 0)
+                .save(provider);
     }
 }

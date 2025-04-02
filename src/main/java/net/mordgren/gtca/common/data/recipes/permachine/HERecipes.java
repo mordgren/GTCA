@@ -83,5 +83,14 @@ public class HERecipes {
                     .save(provider);
 
         }
+
+        GTCARecipeTypes.EXTREME_HEAT_EXCHANGER.recipeBuilder("pahoehoe")
+                .duration(20)
+                .inputFluids(GTMaterials.Lava.getFluid(160000))
+                .inputFluids(GTMaterials.DistilledWater.getFluid(80000))
+                .outputFluids(GTCAMaterials.SuperheatedSteam.getFluid(12800000))
+                .outputFluids(GTCAMaterials.SuperCriticalSteam.getFluid(12800000))
+                .outputFluids(GTCAMaterials.PahoehoeLava.getFluid(160000))
+                .save(provider);
     }
 }

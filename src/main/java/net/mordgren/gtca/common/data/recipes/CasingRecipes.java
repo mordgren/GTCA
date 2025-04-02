@@ -182,7 +182,7 @@ public class CasingRecipes {
                 .outputItems(GTCABlocks.REINFORCED_GLASS, 4)
                 .save(provider);
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder("reinforced_glass_dust").EUt(4).duration(400)
+        ALLOY_SMELTER_RECIPES.recipeBuilder("reinforced_glass_dust").EUt(40).duration(400)
                 .inputItems(GTItems.CARBON_FIBER_PLATE, 3)
                 .inputItems(GTCAHelper.getItem("dust", Glass,4))
                 .outputItems(GTCABlocks.REINFORCED_GLASS, 4)

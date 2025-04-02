@@ -113,7 +113,7 @@ public class GTCAMaterials {
     // Other Fluids
 
     public static Material EnderFluid;
-
+    public static Material PahoehoeLava;
 
 
 }
