@@ -115,5 +115,6 @@ public class GTCAMaterials {
     public static Material EnderFluid;
     public static Material PahoehoeLava;
 
-
+    // Elements
+    public static Material Adamantium;
 }

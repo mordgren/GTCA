@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
+import com.gregtechceu.gtceu.utils.ResearchManager;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
 import com.lowdragmc.lowdraglib.gui.widget.SlotWidget;
 import com.lowdragmc.lowdraglib.utils.CycleItemStackHandler;
@@ -119,5 +120,14 @@ public class GTCARecipeTypes {
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setSound(GTSoundEntries.CHEMICAL)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType TEGMARK_FORGE = register("tegmark_forge", MULTIBLOCK)
+            .setMaxIOSize(8,1,3,0)
+            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.FORGE_HAMMER)
+            .setHasResearchSlot(true)
+            .onRecipeBuild(ResearchManager::createDefaultResearchRecipe)
             .setEUIO(IO.IN);
 }
