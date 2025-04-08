@@ -82,6 +82,11 @@ public class GTCABlocks {
     public static final BlockEntry<Block> FLCR_CASING_TYPE_II = createCasingBlock("flcr_casing_type_ii",
             GTCA.id("block/casing/flcr_2"));
 
+    public static BlockEntry<Block> ULTRA_INDUCTIVE_CASING = createCasingBlock("u_i_casing",
+            GTCA.id("block/casing/u_i_casing"));
+
+
+
     // Glass
 
 

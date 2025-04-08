@@ -577,6 +577,9 @@ public class GTCAMetals {
                 .blastTemp(7125, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
                 .buildAndRegister();
 
+
+        // gad daymmm
+
         GTCAMaterials.Adamantium = new Material.Builder(GTCA.id("adamantium"))
                 .color(0x8fa5c9)
                 .ingot(6)

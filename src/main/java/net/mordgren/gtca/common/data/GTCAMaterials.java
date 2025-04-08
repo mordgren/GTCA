@@ -84,6 +84,9 @@ public class GTCAMaterials {
     public static Material Inconel792;
     public static Material CinobiteA241;
     public static Material Pikyonium64Y;
+    public static Material Naquadriairidium;
+    public static Material Nucleanitite_4;
+    public static Material Beriliwulfanite;
 
     // Dusts
 
