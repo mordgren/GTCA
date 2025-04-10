@@ -1,0 +1,11 @@
+{
+  "tg_forge": {
+    "sounds": [
+      {
+        "type": "file",
+        "name": "gtca:tg_forge"
+      }
+    ],
+    "subtitle": "gtca.subtitle.tg_forge"
+  }
+}

@@ -13,6 +13,7 @@ import com.lowdragmc.lowdraglib.utils.CycleItemStackHandler;
 import com.lowdragmc.lowdraglib.utils.LocalizationUtils;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.world.item.ItemStack;
+import net.mordgren.gtca.common.util.GTCASounds;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,7 +127,7 @@ public class GTCARecipeTypes {
             .setMaxIOSize(8,1,3,0)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setSound(GTSoundEntries.FORGE_HAMMER)
+            .setSound(GTCASounds.TG_FORGE)
             .setHasResearchSlot(true)
             .onRecipeBuild(ResearchManager::createDefaultResearchRecipe)
             .setEUIO(IO.IN);
