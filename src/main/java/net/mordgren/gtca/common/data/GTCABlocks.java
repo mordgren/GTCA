@@ -91,9 +91,7 @@ public class GTCABlocks {
     public static BlockEntry<Block> P_N_PROTECTIVE_CASING = createCasingBlock("p_n_casing",
             GTCA.id("block/casing/p_n_casing"));
 
-
     // Glass
-
 
     public static final BlockEntry<Block> BORSILICATE_YTTRIUM_GLASS = createGlassCasingBlock("borsilicate_yttrium_thorium_glass",
             GTCA.id("block/casing/transparent/thorium_yttrium_glass_block"));
@@ -101,6 +99,10 @@ public class GTCABlocks {
     public static final BlockEntry<Block> REINFORCED_GLASS = createGlassCasingBlock("reinforced_glass",
             GTCA.id("block/casing/transparent/reinforced_glass"));
 
+    public static final BlockEntry<Block> BORSILICATE_REINFORCED_IRIDIUM_GLASS = createGlassCasingBlock("borsilicate_reinforced_iridium_glass",
+            GTCA.id("block/casing/transparent/borsilicate_reinforced_iridium_glass"));
+
+    // Battery
 
     public static final BlockEntry<BatteryBlock> BATTERY_PROTON_CELL = createBatteryBlock(
             GTCABatteryBlock.BatteryPartType.PROTON_CELL);
