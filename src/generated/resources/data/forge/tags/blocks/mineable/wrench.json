@@ -18,6 +18,8 @@
     "gtca:flcr_casing_type_i",
     "gtca:flcr_casing_type_ii",
     "gtca:u_i_casing",
+    "gtca:stabilized_transmutation_core",
+    "gtca:p_n_casing",
     "gtca:borsilicate_yttrium_thorium_glass",
     "gtca:reinforced_glass",
     "gtca:proton_cell_battery",

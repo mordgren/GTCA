@@ -85,6 +85,11 @@ public class GTCABlocks {
     public static BlockEntry<Block> ULTRA_INDUCTIVE_CASING = createCasingBlock("u_i_casing",
             GTCA.id("block/casing/u_i_casing"));
 
+    public static BlockEntry<Block> STABILIZED_TRANSMUTATION_CORE= createCasingBlock("stabilized_transmutation_core",
+            GTCA.id("block/casing/stabilized_transmutation_core"));
+
+    public static BlockEntry<Block> P_N_PROTECTIVE_CASING = createCasingBlock("p_n_casing",
+            GTCA.id("block/casing/p_n_casing"));
 
 
     // Glass

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gtca:block/stabilized_transmutation_core"
+    }
+  }
+}
