@@ -1,4 +1,4 @@
-// 1.20.1	2025-04-10T18:23:07.2375718	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2025-04-11T03:36:42.389587	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 000048b7230edf2266d15e26a233ef35d10fea39 assets/gtca/blockstates/borsilicate_reinforced_iridium_glass.json
 6ab814a1724684d8ca5e3d3ce46435a3ebcc76ba assets/gtca/blockstates/borsilicate_yttrium_thorium_glass.json
 cd3f826ed2eb68cb7e6da340f85dace7965516b9 assets/gtca/blockstates/casing_aebf.json
@@ -18,6 +18,8 @@ cfc48dfa30371e73354fbe8f05c2352baa8d9384 assets/gtca/blockstates/isa_mill_gearbo
 93ed529925f20a894f54bf2126f66ba8009ded06 assets/gtca/blockstates/pressure_resistant_wall.json
 a6fd8a737c616e7db80181249804a53435b96eaf assets/gtca/blockstates/proton_cell_battery.json
 515c11d2b1720f229f15c8d071ac58cedcb0d7f0 assets/gtca/blockstates/p_n_casing.json
+98a7e9c98c636f8e2982ac86e18068b25740954f assets/gtca/blockstates/p_n_e_capacitor.json
+0f8cb9747e1cbece626396809594c2f05f0014ab assets/gtca/blockstates/p_n_e_laser_activator.json
 910142e3fe2bf775fa64039ebf86d83a555ac929 assets/gtca/blockstates/quark_entanglement_battery.json
 c7d16122d51142ac64a659c61e6ae7902795b676 assets/gtca/blockstates/reinforced_glass.json
 9d117c8b932996c6133fe16f6782c03bde73fa58 assets/gtca/blockstates/shd_casing.json
@@ -26,8 +28,8 @@ c7d16122d51142ac64a659c61e6ae7902795b676 assets/gtca/blockstates/reinforced_glas
 fe3140ea2850e50c907a740117e67257dbad9603 assets/gtca/blockstates/tantalloy61_casing.json
 02ba24f94f7cddd7d827cdf461e8404969fb93ab assets/gtca/blockstates/u_i_casing.json
 fe947fa7f00fa4956c5fffbe6a6fc3c0543c486c assets/gtca/blockstates/vitallium_casing.json
-7d750b2de889cd20efd0a2f5c16fc8a77ab9a1d8 assets/gtca/lang/en_ud.json
-94ff68afae05a033a2cddc8f420666d013d0089d assets/gtca/lang/en_us.json
+6701d145bcaa6cdd8f68c3f3c7d9b207a72fc263 assets/gtca/lang/en_ud.json
+dd5e2fa4dcb2381a1194c48feefac6861e6a2bac assets/gtca/lang/en_us.json
 9e4468f69243fb51aaaf9ca156a37519262c91e8 assets/gtca/models/block/borsilicate_reinforced_iridium_glass.json
 75ea7d2b2a9ef61294a1a5b4d89eb13970dfcaec assets/gtca/models/block/borsilicate_yttrium_thorium_glass.json
 db22753399866af29c217d0e308fa216d8fca09b assets/gtca/models/block/casing_aebf.json
@@ -47,6 +49,8 @@ c52e143d3d755f8499cc2d190658413d404dd338 assets/gtca/models/block/isa_mill_gearb
 edc64bb465ef0d3eda09310b1ebbe463ca126ce1 assets/gtca/models/block/pressure_resistant_wall.json
 2c7f07b99f304bad51e49d34c3e5815f1ed25017 assets/gtca/models/block/proton_cell_battery.json
 df4d6cbd5267ef6bbfa769256a3573f420398776 assets/gtca/models/block/p_n_casing.json
+a3ccd232d620e6dee35a53e45efe446bf2cf5b19 assets/gtca/models/block/p_n_e_capacitor.json
+a48792188481f99d9c2a32ceb0938294614126a2 assets/gtca/models/block/p_n_e_laser_activator.json
 86b5b3f66fba8b96764658f4b68d7a73fda2627b assets/gtca/models/block/quark_entanglement_battery.json
 8400d8a1de2fb69fd8e57c2819b56417e06fb1dc assets/gtca/models/block/reinforced_glass.json
 4e580e9e93d80fe6a28827aff7fbfbf6599cdd05 assets/gtca/models/block/shd_casing.json
@@ -117,6 +121,8 @@ b87ad2c35b2dc6b0c82f259d8ca931e8abd62aa7 assets/gtca/models/item/milled_sphaleri
 5ae4ed88cf7868d5c429eeb1a533d25bc19d0466 assets/gtca/models/item/proton_cell_battery.json
 8140e7cc12b845c5aa6cab361fb3cfb40ae9350a assets/gtca/models/item/proton_cell_empty.json
 5ff8e95d9f915ef11c018adbad31ccc250b228c3 assets/gtca/models/item/p_n_casing.json
+0b907b9061b66f54aee606bd64a0054b8fb6f039 assets/gtca/models/item/p_n_e_capacitor.json
+59af6418a82f08058f96dffdf29b338c5ddbb09f assets/gtca/models/item/p_n_e_laser_activator.json
 d5a6d7d9e6872cec5bcfc1ef9feb3f2256f948c3 assets/gtca/models/item/quantum_anomaly.json
 b2450f2d515f6f057fb9faf9c82f408c8e9f8547 assets/gtca/models/item/quark_entanglement.json
 c372877cdabda9c46da4fdbeef011f892edda27b assets/gtca/models/item/quark_entanglement/0.json
@@ -135,7 +141,7 @@ c1a7a737a73fc2eb2a0bac405e413d89ecbf38ab assets/gtca/models/item/unknown_particl
 d88fabb9d96f01fd0e5027499e1b980e240e7df7 assets/gtca/models/item/u_i_casing.json
 816d43cbb1b412f1d098ce5c25b820b1e8c7774f assets/gtca/models/item/vitallium_casing.json
 10d706dd1aab512d8586e03df303db03297d234e data/ae2/tags/items/p2p_attunements/fluid_p2p_tunnel.json
-cf097e9beb7eae2e664f024991624a9d19cbdee6 data/forge/tags/blocks/mineable/wrench.json
+48b575dd8d942366b58b8b4ffcb389d6b3382ef2 data/forge/tags/blocks/mineable/wrench.json
 2fa4ee45b6de0a742f5279b7fb5438551419d863 data/gtca/loot_tables/blocks/borsilicate_reinforced_iridium_glass.json
 af8c682a3b20aff0f710929812a35ccc7bd48532 data/gtca/loot_tables/blocks/borsilicate_yttrium_thorium_glass.json
 e83cc4472c4c28ae82a40ea1f04422ab0f1a2426 data/gtca/loot_tables/blocks/casing_aebf.json
@@ -155,6 +161,8 @@ e070f55f31c5bbd4364d31700fbefe09cc6085e3 data/gtca/loot_tables/blocks/isa_mill_c
 5966e3c7ca572509702e5f68944c55c7b958f484 data/gtca/loot_tables/blocks/pressure_resistant_wall.json
 4ef227031b8f2c8b3f7e6319e631a9cbe0123cb4 data/gtca/loot_tables/blocks/proton_cell_battery.json
 e56c486b3e71b8f34bec85d8e14287dd09f2e14e data/gtca/loot_tables/blocks/p_n_casing.json
+0b231c33faf100953473800731bb46c783200d31 data/gtca/loot_tables/blocks/p_n_e_capacitor.json
+38a918ce4581fc31368623b18e0f224b5e82ef70 data/gtca/loot_tables/blocks/p_n_e_laser_activator.json
 b3a535d03e21698603448da7e7b3d952f9ade9ab data/gtca/loot_tables/blocks/quark_entanglement_battery.json
 4b7f144508faf7cd8a9626b35c202647928f8659 data/gtca/loot_tables/blocks/reinforced_glass.json
 83d22a2f07eb6f98413c7173af30376929839267 data/gtca/loot_tables/blocks/shd_casing.json
@@ -167,4 +175,4 @@ dbb55d7b7cb19938866514499a06bd573c64c617 data/gtca/loot_tables/blocks/vitallium_
 fc00a25a1ff99eec464105ca37b2244e69853609 data/gtceu/tags/items/batteries/uhv.json
 ef69621b66696892712e3f074657936b237bdf42 data/gtceu/tags/items/batteries/uv.json
 c34880d1ee44f2a42054af93f8d7b24c2b07ab9b data/gtceu/tags/items/batteries/zpm.json
-cf097e9beb7eae2e664f024991624a9d19cbdee6 data/minecraft/tags/blocks/mineable/pickaxe.json
+48b575dd8d942366b58b8b4ffcb389d6b3382ef2 data/minecraft/tags/blocks/mineable/pickaxe.json

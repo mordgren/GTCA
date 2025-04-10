@@ -116,6 +116,20 @@ public class GTCABlocks {
     public static final BlockEntry<BatteryBlock> BATTERY_GRAVITON_CELL = createBatteryBlock(
             GTCABatteryBlock.BatteryPartType.GRAVITON_ANOMALY);
 
+    // Electric Casing
+
+    public static BlockEntry<Block> P_N_E_CAPACITOR = createElectricCasingBlock(
+            "p_n_e_capacitor",
+            GTCA.id("block/electric_casing/p_n_e_capacitor_side"),
+            GTCA.id("block/electric_casing/p_n_e_capacitor_top")
+    );
+
+    public static BlockEntry<Block> P_N_E_LASER_ACTIVATOR = createElectricCasingBlock(
+            "p_n_e_laser_activator",
+            GTCA.id("block/electric_casing/p_n_e_laser_activator_side"),
+            GTCA.id("block/electric_casing/p_n_e_laser_activator_top")
+    );
+
     @SuppressWarnings("removal")
     private static BlockEntry<BatteryBlock> createBatteryBlock(IBatteryData batteryData) {
         BlockEntry<BatteryBlock> batteryBlock = REGISTRATE.block("%s_battery".formatted(batteryData.getBatteryName()),
@@ -166,6 +180,32 @@ public class GTCABlocks {
                 .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
                 .addLayer(type)
                 .blockstate(GTModels.cubeAllModel(name, texture))
+                .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
+                .item(BlockItem::new)
+                .build()
+                .register();
+    }
+
+
+    public static BlockEntry<Block> createElectricCasingBlock(String name, ResourceLocation sideTexture, ResourceLocation topTexture) {
+        return createElectricCasingBlock(name, Block::new, sideTexture, topTexture,
+                () -> Blocks.IRON_BLOCK,
+                () -> RenderType::cutoutMipped);
+    }
+
+    @SuppressWarnings("removal")
+    public static BlockEntry<Block> createElectricCasingBlock(String name,
+                                                              NonNullFunction<BlockBehaviour.Properties, Block> blockSupplier,
+                                                              ResourceLocation sideTexture,
+                                                              ResourceLocation topTexture,
+                                                              NonNullSupplier<? extends Block> properties,
+                                                              Supplier<Supplier<RenderType>> type) {
+        return REGISTRATE.block(name, blockSupplier)
+                .initialProperties(properties)
+                .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
+                .addLayer(type)
+                .blockstate((ctx, prov) -> prov.simpleBlock(ctx.get(), prov.models()
+                        .cubeBottomTop(name, sideTexture, topTexture, topTexture)))
                 .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
                 .item(BlockItem::new)
                 .build()
