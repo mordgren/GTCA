@@ -1,6 +1,7 @@
 package net.mordgren.gtca.common.data;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.block.ActiveBlock;
 import com.gregtechceu.gtceu.api.item.tool.GTToolType;
 import com.gregtechceu.gtceu.api.machine.multiblock.IBatteryData;
 import com.gregtechceu.gtceu.common.block.BatteryBlock;
@@ -85,8 +86,8 @@ public class GTCABlocks {
     public static BlockEntry<Block> ULTRA_INDUCTIVE_CASING = createCasingBlock("u_i_casing",
             GTCA.id("block/casing/u_i_casing"));
 
-    public static BlockEntry<Block> STABILIZED_TRANSMUTATION_CORE= createCasingBlock("stabilized_transmutation_core",
-            GTCA.id("block/casing/stabilized_transmutation_core"));
+    public static BlockEntry<ActiveBlock> STABILIZED_TRANSMUTATION_CORE= createActiveCasing("stabilized_transmutation_core",
+            "block/variant/stabilized_transmutation_core");
 
     public static BlockEntry<Block> P_N_PROTECTIVE_CASING = createCasingBlock("p_n_casing",
             GTCA.id("block/casing/p_n_casing"));
@@ -118,13 +119,13 @@ public class GTCABlocks {
 
     // Electric Casing
 
-    public static BlockEntry<Block> P_N_E_CAPACITOR = createElectricCasingBlock(
+    public static BlockEntry<Block> P_N_E_CAPACITOR = createSidedCasingBlock(
             "p_n_e_capacitor",
             GTCA.id("block/electric_casing/p_n_e_capacitor_side"),
             GTCA.id("block/electric_casing/p_n_e_capacitor_top")
     );
 
-    public static BlockEntry<Block> P_N_E_LASER_ACTIVATOR = createElectricCasingBlock(
+    public static BlockEntry<Block> P_N_E_LASER_ACTIVATOR = createSidedCasingBlock(
             "p_n_e_laser_activator",
             GTCA.id("block/electric_casing/p_n_e_laser_activator_side"),
             GTCA.id("block/electric_casing/p_n_e_laser_activator_top")
@@ -187,19 +188,19 @@ public class GTCABlocks {
     }
 
 
-    public static BlockEntry<Block> createElectricCasingBlock(String name, ResourceLocation sideTexture, ResourceLocation topTexture) {
-        return createElectricCasingBlock(name, Block::new, sideTexture, topTexture,
+    public static BlockEntry<Block> createSidedCasingBlock(String name, ResourceLocation sideTexture, ResourceLocation topTexture) {
+        return createSidedCasingBlock(name, Block::new, sideTexture, topTexture,
                 () -> Blocks.IRON_BLOCK,
                 () -> RenderType::cutoutMipped);
     }
 
     @SuppressWarnings("removal")
-    public static BlockEntry<Block> createElectricCasingBlock(String name,
-                                                              NonNullFunction<BlockBehaviour.Properties, Block> blockSupplier,
-                                                              ResourceLocation sideTexture,
-                                                              ResourceLocation topTexture,
-                                                              NonNullSupplier<? extends Block> properties,
-                                                              Supplier<Supplier<RenderType>> type) {
+    public static BlockEntry<Block> createSidedCasingBlock(String name,
+                                                           NonNullFunction<BlockBehaviour.Properties, Block> blockSupplier,
+                                                           ResourceLocation sideTexture,
+                                                           ResourceLocation topTexture,
+                                                           NonNullSupplier<? extends Block> properties,
+                                                           Supplier<Supplier<RenderType>> type) {
         return REGISTRATE.block(name, blockSupplier)
                 .initialProperties(properties)
                 .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
@@ -208,6 +209,19 @@ public class GTCABlocks {
                         .cubeBottomTop(name, sideTexture, topTexture, topTexture)))
                 .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
                 .item(BlockItem::new)
+                .build()
+                .register();
+    }
+
+    @SuppressWarnings("removal")
+    public static BlockEntry<ActiveBlock> createActiveCasing(String name, String baseModelPath) {
+        return REGISTRATE.block(name, ActiveBlock::new)
+                .initialProperties(() -> Blocks.IRON_BLOCK)
+                .addLayer(() -> RenderType::cutoutMipped)
+                .blockstate(GTModels.createActiveModel(GTCA.id(baseModelPath)))
+                .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
+                .item(BlockItem::new)
+                .model((ctx, prov) -> prov.withExistingParent(prov.name(ctx), GTCA.id(baseModelPath)))
                 .build()
                 .register();
     }

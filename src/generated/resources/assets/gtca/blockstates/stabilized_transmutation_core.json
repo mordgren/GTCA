@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
-      "model": "gtca:block/stabilized_transmutation_core"
+    "active=false": {
+      "model": "gtca:block/variant/stabilized_transmutation_core"
+    },
+    "active=true": {
+      "model": "gtca:block/variant/stabilized_transmutation_core_active"
     }
   }
 }
