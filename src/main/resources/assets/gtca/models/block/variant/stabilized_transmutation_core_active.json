@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:block/cube_2_layer/all",
+  "textures": {
+    "bot_all": "gtca:block/casing/active/stabilized_transmutation_core",
+    "top_all": "gtca:block/casing/active/stabilized_transmutation_core_bloom"
+  }
+}
