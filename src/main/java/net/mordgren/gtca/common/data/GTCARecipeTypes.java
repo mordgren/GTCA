@@ -124,7 +124,7 @@ public class GTCARecipeTypes {
             .setEUIO(IO.IN);
 
     public static final GTRecipeType TEGMARK_FORGE = register("tegmark_forge", MULTIBLOCK)
-            .setMaxIOSize(8,1,3,0)
+            .setMaxIOSize(8,1,2,0)
             .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setSound(GTCASounds.TG_FORGE)

@@ -117,7 +117,7 @@ public class GTCABlocks {
     public static final BlockEntry<BatteryBlock> BATTERY_GRAVITON_CELL = createBatteryBlock(
             GTCABatteryBlock.BatteryPartType.GRAVITON_ANOMALY);
 
-    // Electric Casing
+    // Sided casing
 
     public static BlockEntry<Block> P_N_E_CAPACITOR = createSidedCasingBlock(
             "p_n_e_capacitor",
