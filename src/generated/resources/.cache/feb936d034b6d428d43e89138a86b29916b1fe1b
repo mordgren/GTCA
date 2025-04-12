@@ -1,4 +1,4 @@
-// 1.20.1	2025-04-11T03:53:38.8294481	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2025-04-13T00:08:41.590609	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 000048b7230edf2266d15e26a233ef35d10fea39 assets/gtca/blockstates/borsilicate_reinforced_iridium_glass.json
 6ab814a1724684d8ca5e3d3ce46435a3ebcc76ba assets/gtca/blockstates/borsilicate_yttrium_thorium_glass.json
 cd3f826ed2eb68cb7e6da340f85dace7965516b9 assets/gtca/blockstates/casing_aebf.json
@@ -28,8 +28,8 @@ c7d16122d51142ac64a659c61e6ae7902795b676 assets/gtca/blockstates/reinforced_glas
 fe3140ea2850e50c907a740117e67257dbad9603 assets/gtca/blockstates/tantalloy61_casing.json
 02ba24f94f7cddd7d827cdf461e8404969fb93ab assets/gtca/blockstates/u_i_casing.json
 fe947fa7f00fa4956c5fffbe6a6fc3c0543c486c assets/gtca/blockstates/vitallium_casing.json
-6701d145bcaa6cdd8f68c3f3c7d9b207a72fc263 assets/gtca/lang/en_ud.json
-dd5e2fa4dcb2381a1194c48feefac6861e6a2bac assets/gtca/lang/en_us.json
+a33fee5e1977c7be62e6a4e9b03533f137329bd5 assets/gtca/lang/en_ud.json
+5dcede877de626ffee9054e1e9c0f60cdaa96f0e assets/gtca/lang/en_us.json
 9e4468f69243fb51aaaf9ca156a37519262c91e8 assets/gtca/models/block/borsilicate_reinforced_iridium_glass.json
 75ea7d2b2a9ef61294a1a5b4d89eb13970dfcaec assets/gtca/models/block/borsilicate_yttrium_thorium_glass.json
 db22753399866af29c217d0e308fa216d8fca09b assets/gtca/models/block/casing_aebf.json
