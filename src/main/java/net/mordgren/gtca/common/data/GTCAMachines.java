@@ -35,6 +35,7 @@ import net.mordgren.gtca.GTCARegistration;
 import net.mordgren.gtca.common.util.AEBFMod;
 import net.mordgren.gtca.common.util.ChemGenProps;
 import net.mordgren.gtca.common.util.GTCACreativeModTab;
+import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -47,6 +48,7 @@ import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
+import static net.mordgren.gtca.common.data.GTCAMaterials.MAR_CE_M200;
 
 public class GTCAMachines {
     public static void init() {
@@ -729,6 +731,75 @@ public class GTCAMachines {
                     true
             )
             .register();
+
+    public static final MultiblockMachineDefinition TEGMARK_FORGE = REGISTRATE.multiblock("tegmark_forge", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.TEGMARK_FORGE)
+            .appearanceBlock(GTCABlocks.P_N_PROTECTIVE_CASING)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                    FactoryBlockPattern.start()
+                            .aisle("#############################", "#############################", "#############BB##############", "############B##B#############", "############B##B#############", "#############BB##############", "#############################")
+                            .aisle("#############################", "#############################", "############BBBB#############", "############BCCB#############", "############BCCB#############", "############BBBB#############", "#############################")
+                            .aisle("###########D####D############", "###########DBBBBD############", "###########DBEEBD############", "###########DEFFED############", "###########DEFFED############", "###########DBFFBD############", "###########DBCCBD############")
+                            .aisle("#############################", "#############BB##############", "############BEEB#############", "############EFFE#############", "############EFFE#############", "############BFFB#############", "###########DBCCBD############")
+                            .aisle("#############################", "#############BB##############", "############BEEB#############", "############EFFE#############", "############EFFE#############", "############BFFB#############", "###########DBCCBD############")
+                            .aisle("###########D####D############", "###########DBBBBD############", "###########DBEEBD############", "###########DEFFED############", "###########DEFFED############", "###########DBFFBD############", "###########DBCCBD############")
+                            .aisle("#############################", "#############################", "############BBBB#############", "############BGGB#############", "############BGGB#############", "############BBBB#############", "#############################")
+                            .aisle("#############################", "#############################", "#############################", "############EGGE#############", "############EGGE#############", "#############CC##############", "#############################")
+                            .aisle("#############################", "#############################", "#############################", "############EGGE#############", "############EGGE#############", "#############CC##############", "#############################")
+                            .aisle("####D##D############D##D#####", "####D##D############D##D#####", "####DHHD#####BB#####D##D#####", "####DHHD####BGGB####D##D#####", "####DHHD####BGGB####D##D#####", "####DHHD#####CC#####D##D#####", "####DDDD############DDDD#####")
+                            .aisle("#############################", "####B##B#####BB#####B##B#####", "###BBBBBB###BEEB###BBBBBB####", "##BBEEEEBEEBBIIBBEEBEEEEBB###", "##BBEEEEBEEBBIIBBEEBEEEEBB###", "###BBBBBB###BCCB###BBBBBB####", "####BBBB############BBBB#####")
+                            .aisle("#############################", "####PBBB####BEEB####BBBB#####", "##BBEEEEBBBBEIIEBBBBEEEEBB###", "###CFFFFGGGGIIIIGGGGFFFFC####", "###CFFFFGGGGIIIIGGGGFFFFC####", "##BBFFFFBCCCCIICCCCBFFFFBB###", "####CCCC#####CC#####CCCC#####")
+                            .aisle("#############################", "####PBBB####BEEB####BBBB#####", "##BBEEEEBBBBEIIEBBBBEEEEBB###", "###CFFFFGGGGIIIIGGGGFFFFC####", "###CFFFFGGGGIIIIGGGGFFFFC####", "##BBFFFFBCCCCIICCCCBFFFFBB###", "####CCCC#####CC#####CCCC#####")
+                            .aisle("#############################", "####B##B#####BB#####B##B#####", "###BBBBBB###BEEB###BBBBBB####", "##BBEEEEBEEBBIIBBEEBEEEEBB###", "##BBEEEEBEEBBIIBBEEBEEEEBB###", "###BBBBBB###BCCB###BBBBBB####", "####BBBB############BBBB#####")
+                            .aisle("####D##D############D##D#####", "####D##D############D##D#####", "####DBBD#####BB#####D##D#####", "####DJBD####BGGB####D##D#####", "####DOKD####BGGB####D##D#####", "####DBBD#####CC#####D##D#####", "####DDDD############DDDD#####")
+                            .aisle("#############################", "#############################", "#############################", "############EGGE#############", "############EGGE#############", "#############CC##############", "#############################")
+                            .aisle("#############################", "#############################", "#############################", "############EGGE#############", "############EGGE#############", "#############CC##############", "#############################")
+                            .aisle("#############################", "#############################", "############BBBB#############", "############BGGB#############", "############BGGB#############", "############BBBB#############", "#############################")
+                            .aisle("###########D####D############", "###########DBBBBD############", "###########DBEEBD############", "###########DEFFED############", "###########DEFFED############", "###########DBFFBD############", "###########DBCCBD############")
+                            .aisle("#############################", "#############BB##############", "###########BBEEB#############", "###########LEFFE#############", "###########MEFFE#############", "###########BBFFB#############", "###########DBCCBD############")
+                            .aisle("#############################", "#############BB##############", "###########BBEEB#############", "###########BEFFE#############", "###########MEFFE#############", "###########BBFFB#############", "###########DBCCBD############")
+                            .aisle("###########D####D############", "###########DBBBBD############", "###########DBEEBD############", "###########DEFFED############", "###########DEFFED############", "###########DBFFBD############", "###########DBCCBD############")
+                            .aisle("#############################", "#############################", "############BBBB#############", "############BCCB#############", "############BCCB#############", "############BBBB#############", "#############################")
+                            .aisle("#############################", "#############################", "#############BB##############", "############B##B#############", "############B##B#############", "#############BB##############", "#############################")
+                            .where('#', Predicates.any())
+                            .where('B', blocks(GTCABlocks.P_N_PROTECTIVE_CASING.get()))
+                            .where('G', blocks(GTCABlocks.BORSILICATE_REINFORCED_IRIDIUM_GLASS.get()))
+                            .where('D', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, MAR_CE_M200)))
+                            .where('O', abilities(PartAbility.MAINTENANCE))
+                            .where('E', blocks(GTCABlocks.ULTRA_INDUCTIVE_CASING.get()))
+                            .where('F', blocks(GTCABlocks.P_N_E_CAPACITOR.get()))
+                            .where('G', blocks(GTCABlocks.P_N_E_LASER_ACTIVATOR.get()))
+                            .where('H', blocks(ITEM_IMPORT_BUS[ULV].getBlock()))
+                            .where('I', blocks(GTCABlocks.STABILIZED_TRANSMUTATION_CORE.get()))
+                            .where('J', Predicates.controller(Predicates.blocks(definition.get())))
+                            .where('K', abilities(PartAbility.EXPORT_ITEMS))
+                            .where('L', abilities(PartAbility.DATA_ACCESS))
+                            .where('M', abilities(PartAbility.IMPORT_FLUIDS))
+                            .where('P', abilities(PartAbility.INPUT_ENERGY))
+                            .build()
+                             )
+   //.tooltips(
+   //Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
+  // Component.translatable("gtca.machine.flcr_desc.tooltip")
+  //      )
+     .workableCasingRenderer(
+         GTCA.id("block/casing/p_n_casing"),
+          GTCA.id("block/multiblock/aebf"),
+                true
+            )
+        .register();
+
+
+
+
+
+
+
+
+
+
 }
 
 
