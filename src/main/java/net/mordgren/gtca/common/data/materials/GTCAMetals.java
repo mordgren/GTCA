@@ -26,6 +26,7 @@ public class GTCAMetals {
         GTMaterials.NiobiumTitanium.addFlags(MaterialFlags.GENERATE_FRAME);
         GTMaterials.Titanium.addFlags(MaterialFlags.GENERATE_FOIL);
         GTMaterials.Stellite100.addFlags(MaterialFlags.GENERATE_GEAR, MaterialFlags.GENERATE_RING);
+        GTMaterials.Duranium.addFlags(GENERATE_FRAME);
 
         GTMaterials.Zirconium = new Material.Builder(GTCEu.id("zirconium_gtca"))
                 .dust()
@@ -143,7 +144,6 @@ public class GTCAMetals {
         GTCAMaterials.Incoloy903 = new Material.Builder(GTCA.id("incoloy903"))
                 .components(GTMaterials.Iron, 12,GTMaterials.Nickel, 10, GTMaterials.Cobalt, 8, GTMaterials.Titanium, 4, GTMaterials.Molybdenum, 2, GTMaterials.Aluminium, 1)
                 .flags(
-                        MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
                 )
@@ -193,8 +193,6 @@ public class GTCAMetals {
         GTCAMaterials.Incoloy846 = new Material.Builder(GTCA.id("incoloy846"))
                 .components(GTMaterials.Iron, 12,GTMaterials.Nickel, 10, GTMaterials.Cobalt, 8, GTMaterials.Titanium, 4, GTMaterials.Molybdenum, 2)
                 .flags(
-                        MaterialFlags.GENERATE_PLATE,
-                        MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
                 )
                 .dust()

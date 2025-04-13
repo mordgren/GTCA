@@ -125,10 +125,16 @@ public class GTCARecipeTypes {
 
     public static final GTRecipeType TEGMARK_FORGE = register("tegmark_forge", MULTIBLOCK)
             .setMaxIOSize(8,1,2,0)
-            .setSlotOverlay(false, false, GuiTextures.BOX_OVERLAY)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_FUSION, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setSound(GTCASounds.TG_FORGE)
             .setHasResearchSlot(true)
             .onRecipeBuild(ResearchManager::createDefaultResearchRecipe)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType PCB_FACTORY = register("pcb_factory", MULTIBLOCK)
+            .setMaxIOSize(6,9,3,0)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.ASSEMBLER)
             .setEUIO(IO.IN);
 }

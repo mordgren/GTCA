@@ -1,5 +1,6 @@
 package net.mordgren.gtca.common.data;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IRotorHolderMachine;
 import com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
 import com.gregtechceu.gtceu.api.pattern.predicates.SimplePredicate;
@@ -32,10 +33,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.GTCARegistration;
-import net.mordgren.gtca.common.util.AEBFMod;
-import net.mordgren.gtca.common.util.ChemGenProps;
-import net.mordgren.gtca.common.util.GTCACreativeModTab;
-import net.mordgren.gtca.common.util.GTCAHelper;
+import net.mordgren.gtca.common.util.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -48,6 +46,7 @@ import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
+import static net.mordgren.gtca.common.data.GTCAMaterials.Incoloy903;
 import static net.mordgren.gtca.common.data.GTCAMaterials.MAR_CE_M200;
 
 public class GTCAMachines {
@@ -777,29 +776,84 @@ public class GTCAMachines {
                             .where('K', abilities(PartAbility.EXPORT_ITEMS))
                             .where('L', abilities(PartAbility.DATA_ACCESS))
                             .where('M', abilities(PartAbility.IMPORT_FLUIDS))
-                            .where('P', abilities(PartAbility.INPUT_ENERGY))
+                            .where('P', blocks(GTCABlocks.P_N_PROTECTIVE_CASING.get()).or(abilities(PartAbility.INPUT_ENERGY)))
                             .build()
                              )
-   //.tooltips(
-   //Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
-  // Component.translatable("gtca.machine.flcr_desc.tooltip")
-  //      )
-     .workableCasingRenderer(
-         GTCA.id("block/casing/p_n_casing"),
-          GTCA.id("block/multiblock/aebf"),
-                true
+//            .tooltips(
+//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
+//                    Component.translatable("gtca.machine.flcr_desc.tooltip")
+//            )
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/p_n_casing"),
+                    GTCA.id("block/multiblock/aebf"),
+                    true
             )
-        .register();
+            .register();
 
 
+    public static final MultiblockMachineDefinition PCB_FACTORY_MKI = registerPcbFactory(
+            "pcb_factory_mki", 1,
+            GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, StainlessSteel,
+            GTCA.id("block/casing/vitallium_casing"),
+            GTCA.id("block/multiblock/aebf"));
+
+    public static final MultiblockMachineDefinition PCB_FACTORY_MKII = registerPcbFactory(
+            "pcb_factory_mkii", 2,
+            GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, Duranium,
+            GTCA.id("block/casing/vitallium_casing"),
+            GTCA.id("block/multiblock/aebf"));
+
+    public static final MultiblockMachineDefinition PCB_FACTORY_MKIII = registerPcbFactory(
+            "pcb_factory_mkiii", 3,
+            GTCABlocks.REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, NaquadahAlloy,
+            GTCA.id("block/casing/vitallium_casing"),
+            GTCA.id("block/multiblock/aebf"));
 
 
-
-
-
-
-
-
+    public static MultiblockMachineDefinition registerPcbFactory(String name, int tier,
+                                                                        Supplier<? extends Block> casing,
+                                                                        Material frame,
+                                                                        ResourceLocation casingTexture,
+                                                                        ResourceLocation overlayModel) {
+        return REGISTRATE.multiblock(name, holder -> new PCBProps(holder, tier))
+                .rotationState(RotationState.NON_Y_AXIS)
+                .recipeType(GTCARecipeTypes.PCB_FACTORY)
+                .appearanceBlock(casing)
+                .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                .pattern(definition ->
+                        FactoryBlockPattern.start()
+                                .aisle("FOOOOOF", "FOOOOOF", "FCCCCCF", "FCCCCCF", "F#####F", "#######")
+                                .aisle("CPPPPPC", "C#####C", "C#####C", "C#####C", "CCCCCCC", "F#####F")
+                                .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CCCCCCC", "F#####F")
+                                .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CCCCCCC", "FFFFFFF")
+                                .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CGGGGGC", "F#####F")
+                                .aisle("CPPPPPC", "C#####C", "C#####C", "C#####C", "CGGGGGC", "F#####F")
+                                .aisle("FCCXCCF", "FGGGGGF", "FGGGGGF", "FGGGGGF", "FFFFFFF", "#######")
+                                .where('#', Predicates.air())
+                                .where("X", Predicates.controller(Predicates.blocks(definition.get())))
+                                .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, frame)))
+                                .where('I', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Incoloy903)))
+                                .where('P', blocks(PLASTCRETE.get()))
+                                .where('L', blocks(CASING_GRATE.get()))
+                                .where('G', blocks(GTCABlocks.REINFORCED_GLASS.get()))
+                                .where("C", blocks(casing.get()))
+                                .where("O", blocks(casing.get())
+                                        .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                        .or(autoAbilities(true, false, false))
+                                )
+                                .build()
+                )
+//            .tooltips(
+//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
+//                    Component.translatable("gtca.machine.flcr_desc.tooltip")
+//            )
+                .workableCasingRenderer(
+                        casingTexture,
+                        overlayModel,
+                        true
+                )
+                .register();
+    }
 }
 
 
