@@ -92,14 +92,17 @@ public class GTCABlocks {
     public static BlockEntry<Block> P_N_PROTECTIVE_CASING = createCasingBlock("p_n_casing",
             GTCA.id("block/casing/p_n_casing"));
 
-    public static BlockEntry<Block> BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("bpf_casing",
-            GTCA.id("block/casing/bpf_casing"));
+//  public static BlockEntry<Block> BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("bpf_casing",
+//          GTCA.id("block/casing/bpf_casing"));
 
-    public static BlockEntry<Block> REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("rpf_casing",
-            GTCA.id("block/casing/rpf_casing"));
+//  public static BlockEntry<Block> REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("rpf_casing",
+//          GTCA.id("block/casing/rpf_casing"));
 
-    public static BlockEntry<Block> RADIANT_PROOF_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("rppf_casing",
-            GTCA.id("block/casing/rppf_casing"));
+//  public static BlockEntry<Block> RADIANT_PROOF_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("rppf_casing",
+//          GTCA.id("block/casing/rppf_casing"));
+
+    public static BlockEntry<Block> TEST = createCasingBlock("pcb_1",
+            GTCA.id("block/casing/pcb_1"));
     // Glass
 
     public static final BlockEntry<Block> BORSILICATE_YTTRIUM_GLASS = createGlassCasingBlock("borsilicate_yttrium_thorium_glass",

@@ -12,6 +12,6 @@ public class PCBFRecipes {
     }
 
     private static void test(Consumer<FinishedRecipe> provider){
-        GTCARecipeTypes.PCB_FACTORY.recipeBuilder("test").EUt(0).duration(30)
+        GTCARecipeTypes.PCB_FACTORY.recipeBuilder("test").EUt(0).duration(30);
     }
 }
