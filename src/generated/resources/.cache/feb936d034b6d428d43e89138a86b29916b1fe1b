@@ -1,4 +1,4 @@
-// 1.20.1	2025-04-14T16:49:59.0923044	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2025-04-14T22:30:43.6833371	Registrate Provider for gtca [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 000048b7230edf2266d15e26a233ef35d10fea39 assets/gtca/blockstates/borsilicate_reinforced_iridium_glass.json
 6ab814a1724684d8ca5e3d3ce46435a3ebcc76ba assets/gtca/blockstates/borsilicate_yttrium_thorium_glass.json
 024b08426f2facdfa257a443de7d797ba3732e63 assets/gtca/blockstates/bpf_casing.json
@@ -29,8 +29,8 @@ c7d16122d51142ac64a659c61e6ae7902795b676 assets/gtca/blockstates/reinforced_glas
 fe3140ea2850e50c907a740117e67257dbad9603 assets/gtca/blockstates/tantalloy61_casing.json
 02ba24f94f7cddd7d827cdf461e8404969fb93ab assets/gtca/blockstates/u_i_casing.json
 fe947fa7f00fa4956c5fffbe6a6fc3c0543c486c assets/gtca/blockstates/vitallium_casing.json
-57b8498398caf8688ae3f7ee47b9b41830a0fcdf assets/gtca/lang/en_ud.json
-9341c6c3114e8ddc029928271a87d3ca64663841 assets/gtca/lang/en_us.json
+0cef3cf20572d1d547cabe5d944eaeeb9a20e583 assets/gtca/lang/en_ud.json
+399458f7cb8cf60eab059b061a029cb292572aa5 assets/gtca/lang/en_us.json
 9e4468f69243fb51aaaf9ca156a37519262c91e8 assets/gtca/models/block/borsilicate_reinforced_iridium_glass.json
 75ea7d2b2a9ef61294a1a5b4d89eb13970dfcaec assets/gtca/models/block/borsilicate_yttrium_thorium_glass.json
 c15f1b89797e74b5624441443a473d7efcba535d assets/gtca/models/block/bpf_casing.json
@@ -80,6 +80,7 @@ df080d7c6c78be93f59d8fd4d27673af539de741 assets/gtca/models/item/electron_cell.j
 1a65d1fc94628041b53d272273036249a82600ca assets/gtca/models/item/electron_cell_empty.json
 65174df2fe1c81a1f642c65327b08c498986d96a assets/gtca/models/item/flcr_casing_type_i.json
 8ddb0aedac11469f726e66579652ab28c15078a3 assets/gtca/models/item/flcr_casing_type_ii.json
+004b0e0cff8342889b135f89968b26c7670a5678 assets/gtca/models/item/gold_nanites.json
 926d20386b226929000b6ced8a9ce0ac71d35c02 assets/gtca/models/item/graviton.json
 beffc94f8eb17406e7d2fa90b66a0e049b2d691c assets/gtca/models/item/graviton_anomaly.json
 e6250ce344389a548dc216f7dacc90ff80207941 assets/gtca/models/item/graviton_anomaly/0.json
@@ -137,6 +138,7 @@ af4d36ea5e29a540343317d239cfaacc13bc29e9 assets/gtca/models/item/quark_entanglem
 9360deda4e1a632c414ea22439d46f07435bfc32 assets/gtca/models/item/reinforced_glass.json
 c2f23d8f343ad4ff46500ddff00e0be3ea4194f1 assets/gtca/models/item/shd_casing.json
 6ce9b982b3898603e44d55f3b0437d80d2a5111e assets/gtca/models/item/shd_gearbox.json
+518c17dbb850db5804698aeeb8ad6ade519a2534 assets/gtca/models/item/silver_nanites.json
 42270b5e2ccf67accd9529f508e386b0cb7abdf9 assets/gtca/models/item/stabilized_transmutation_core.json
 a30a1c0aa5b0cc7bc39f17fd00d8aa32f65354df assets/gtca/models/item/tantalloy61_casing.json
 c1a7a737a73fc2eb2a0bac405e413d89ecbf38ab assets/gtca/models/item/unknown_particle.json

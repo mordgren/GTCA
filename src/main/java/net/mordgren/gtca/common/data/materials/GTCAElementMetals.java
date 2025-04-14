@@ -13,7 +13,6 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.EXT_METAL;
 
 public class GTCAElementMetals {
     public static void init(){
-        // gad daymmm
 
         GTCAMaterials.Adamantium = new Material.Builder(GTCA.id("adamantium"))
                 .color(0x8fa5c9)
