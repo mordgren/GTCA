@@ -203,9 +203,11 @@
 
   "itemGroup.gtca.main": "GT Community Additions",
 
-  "gtceu.jei.ore_vein.zirconium_vein": "Zirconium Vein"
+  "gtceu.jei.ore_vein.zirconium_vein": "Zirconium Vein",
 
 
-
-
+  "gtca.recipe.condition.tier_casing.tooltip": "Tier: %s",
+  "gtca.recipe.condition.tier_casing.tier.mki": "MKI",
+  "gtca.recipe.condition.tier_casing.tier.mkii": "MKII",
+  "gtca.recipe.condition.tier_casing.tier.mkiii": "MKIII"
 }

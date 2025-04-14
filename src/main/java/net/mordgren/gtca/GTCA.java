@@ -5,6 +5,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEv
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
@@ -16,6 +17,7 @@ import net.mordgren.gtca.common.data.GTCAItems;
 import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
+import net.mordgren.gtca.common.util.GTCARecipeConditions;
 import org.slf4j.Logger;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.LoggerFactory;
@@ -35,7 +37,7 @@ public class GTCA {
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
-        // bus.addGenericListener(Class.class, this::registerRecipeConditions);
+        bus.addGenericListener(RecipeConditionType.class, this::registerRecipeConditions);
         // bus.addGenericListener(MachineDefinition.class, this::registerMachines);
         bus.addGenericListener(MachineDefinition.class, this::registerMachines);
     }
@@ -65,5 +67,9 @@ public class GTCA {
 
     public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
         GTCAMachines.init();
+    }
+
+    public void registerRecipeConditions(GTCEuAPI.RegisterEvent<String, RecipeConditionType<?>> event) {
+        GTCARecipeConditions.init();
     }
 }

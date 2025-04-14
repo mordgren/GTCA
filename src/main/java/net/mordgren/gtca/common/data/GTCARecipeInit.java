@@ -9,6 +9,7 @@ import net.mordgren.gtca.common.data.recipes.fuel.ChemGenFuels;
 import net.mordgren.gtca.common.data.recipes.fuel.AltSteam;
 import net.mordgren.gtca.common.data.recipes.permachine.*;
 import net.mordgren.gtca.common.data.recipes.MiscRecipes;
+import net.mordgren.gtca.common.util.PCBRecipeCondition;
 
 import java.util.function.Consumer;
 
@@ -28,6 +29,7 @@ public class GTCARecipeInit {
             ICORecipes.init(provider);
             FrothLineRecipes.init(provider);
             TMForgeRecipes.init(provider);
+            PCBFRecipes.init(provider);
 
             CasingRecipes.init(provider);
             GTCAMachinesRecipes.init(provider);
@@ -40,5 +42,9 @@ public class GTCARecipeInit {
                 GTNNIntProxy.fallbackinit(provider);
                 GTCA.LOGGER.info("GT-- not found, some recipes are not loaded, or replaced.");
             }
+        }
+
+        public static PCBRecipeCondition setTier(int tier){
+            return new PCBRecipeCondition(tier);
         }
     }

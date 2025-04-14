@@ -432,7 +432,7 @@ public class GTCAMachines {
                     .where('H', blocks(CASING_STAINLESS_CLEAN.get()).setMinGlobalLimited(12)
                             .or(Predicates.autoAbilities(definition.getRecipeTypes(), true, false, true, false, false, false))
                             .or(Predicates.autoAbilities(true, false, true)))
-                    .where('#', Predicates.air())
+                    .where('#', Predicates.any())
                     .where('C', Predicates.heatingCoils())
                     .where('G', blocks(CASING_LAMINATED_GLASS.get()))
                     .where('I', abilities(PartAbility.IMPORT_FLUIDS))
@@ -565,7 +565,7 @@ public class GTCAMachines {
                             .aisle("#CEC#", "#NNN#", "#CCC#", "#####", "#####","#####","#####","#####","#####","#####")
                             .where("E", Predicates.controller(Predicates.blocks(definition.get())))
                             .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, TungstenCarbide)))
-                            .where('#', Predicates.air())
+                            .where('#', Predicates.any())
                             .where('D', blocks(GTCABlocks.NIMONIC80A_CASING.get()))
                             .where('P', blocks(CASING_TITANIUM_PIPE.get()))
                             .where('N', heatingCoils())
@@ -645,7 +645,7 @@ public class GTCAMachines {
                             .aisle("####BB###BB####", "###BCCBBBCCB###", "####BB###BB####")
                             .aisle("######BBB######", "####BBCCCBB####", "######BBB######")
                             .aisle("###############", "######BBB######", "###############")
-                            .where('#', Predicates.air())
+                            .where('#', Predicates.any())
                             .where('C', blocks(GTCABlocks.CYCLOTRON_COIL.get()))
                             .where("A", Predicates.controller(Predicates.blocks(definition.get())))
                             .where("B", blocks(GTCABlocks.COMET_CASING.get()).setMinGlobalLimited(112)
@@ -713,7 +713,7 @@ public class GTCAMachines {
                             .aisle("##CCC##", "##CCC##", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
                             .where("E", Predicates.controller(Predicates.blocks(definition.get())))
                             .where("F", blocks(GTCABlocks.FLCR_CASING_TYPE_I.get()))
-                            .where('#', Predicates.air())
+                            .where('#', Predicates.any())
                             .where("C", blocks(GTCABlocks.FLCR_CASING_TYPE_II.get()).setMinGlobalLimited(44)
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes()))
                                     .or(autoAbilities(true, true, false))
@@ -790,70 +790,161 @@ public class GTCAMachines {
             )
             .register();
 
+/// TEST PCB FACTORY///
+  public static final MultiblockMachineDefinition PCB_FACTORY_MKI = registerPcbFactory(
+          "pcb_factory_mki", 1,
+          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, null, StainlessSteel, null,
+          GTCA.id("block/casing/bpf_casing"),
+          GTCA.id("block/multiblock/aebf"));
 
- // public static final MultiblockMachineDefinition PCB_FACTORY_MKI = registerPcbFactory(
- //         "pcb_factory_mki", 1,
- //         GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, StainlessSteel,
- //         GTCA.id("block/casing/vitallium_casing"),
- //         GTCA.id("block/multiblock/aebf"));
+  public static final MultiblockMachineDefinition PCB_FACTORY_MKII = registerPcbFactory(
+          "pcb_factory_mkii", 2,
+          GTCABlocks.INCONEL718_CASING, GTCABlocks.DURAL_CASING, StainlessSteel, Duranium,
+          GTCA.id("block/casing/inconel718_casing"),
+          GTCA.id("block/multiblock/aebf"));
 
- // public static final MultiblockMachineDefinition PCB_FACTORY_MKII = registerPcbFactory(
- //         "pcb_factory_mkii", 2,
- //         GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, Duranium,
- //         GTCA.id("block/casing/vitallium_casing"),
- //         GTCA.id("block/multiblock/aebf"));
-
- // public static final MultiblockMachineDefinition PCB_FACTORY_MKIII = registerPcbFactory(
- //         "pcb_factory_mkiii", 3,
- //         GTCABlocks.REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, NaquadahAlloy,
- //         GTCA.id("block/casing/vitallium_casing"),
- //         GTCA.id("block/multiblock/aebf"));
+  public static final MultiblockMachineDefinition PCB_FACTORY_MKIII = registerPcbFactory(
+          "pcb_factory_mkiii", 3,
+          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.SHD_CASING, null, null,
+          GTCA.id("block/casing/bpf_casing"),
+          GTCA.id("block/multiblock/aebf"));
 
 
- // public static MultiblockMachineDefinition registerPcbFactory(String name, int tier,
- //                                                                     Supplier<? extends Block> casing,
- //                                                                     Material frame,
- //                                                                   ResourceLocation casingTexture,
- //                                                                   ResourceLocation overlayModel) {
- //     return REGISTRATE.multiblock(name, holder -> new PCBProps(holder, tier))
- //           .rotationState(RotationState.NON_Y_AXIS)
- //           .recipeType(GTCARecipeTypes.PCB_FACTORY)
- //           .appearanceBlock(casing)
- //           .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
- //           .pattern(definition ->
- //                     FactoryBlockPattern.start()
- //                             .aisle("FOOOOOF", "FOOOOOF", "FCCCCCF", "FCCCCCF", "F#####F", "#######")
- //                             .aisle("CPPPPPC", "C#####C", "C#####C", "C#####C", "CCCCCCC", "F#####F")
- //                             .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CCCCCCC", "F#####F")
- //                             .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CCCCCCC", "FFFFFFF")
- //                             .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CGGGGGC", "F#####F")
- //                             .aisle("CPPPPPC", "C#####C", "C#####C", "C#####C", "CGGGGGC", "F#####F")
- //                             .aisle("FCCXCCF", "FGGGGGF", "FGGGGGF", "FGGGGGF", "FFFFFFF", "#######")
- //                             .where('#', Predicates.air())
- //                             .where("X", Predicates.controller(Predicates.blocks(definition.get())))
- //                             .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, frame)))
- //                             .where('I', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Incoloy903)))
- //                             .where('P', blocks(PLASTCRETE.get()))
- //                             .where('L', blocks(CASING_GRATE.get()))
- //                             .where('G', blocks(GTCABlocks.REINFORCED_GLASS.get()))
- //                             .where("C", blocks(casing.get()))
- //                             .where("O", blocks(casing.get())
- //                                     .or(Predicates.autoAbilities(definition.getRecipeTypes()))
- //                                     .or(autoAbilities(true, false, false))
- //                             )
- //                             .build()
- //             )
+  public static MultiblockMachineDefinition registerPcbFactory(String name, int tier,
+                                                                      Supplier<? extends Block> casing,
+                                                                      Supplier<? extends Block> casing2,
+                                                                      Material frame,
+                                                                      Material frame2,
+                                                                    ResourceLocation casingTexture,
+                                                                    ResourceLocation overlayModel) {
+      if (tier == 1) {
+          return REGISTRATE.multiblock(name, holder -> new PCBProps(holder, tier))
+                  .rotationState(RotationState.NON_Y_AXIS)
+                  .recipeType(GTCARecipeTypes.PCB_FACTORY)
+                  .appearanceBlock(casing)
+                  .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                  .pattern(definition ->
+                          FactoryBlockPattern.start()
+                                  .aisle("FOOOOOF", "FOOOOOF", "FCCCCCF", "FCCCCCF", "FAAAAAF", "AAAAAAA")
+                                  .aisle("CPPPPPC", "C#####C", "C#####C", "C#####C", "CCCCCCC", "FAAAAAF")
+                                  .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CCCCCCC", "FAAAAAF")
+                                  .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CCCCCCC", "FFFFFFF")
+                                  .aisle("CPPPPPC", "L#III#L", "L#####L", "C#####C", "CGGGGGC", "FAAAAAF")
+                                  .aisle("CPPPPPC", "C#####C", "C#####C", "C#####C", "CGGGGGC", "FAAAAAF")
+                                  .aisle("FCCXCCF", "FGGGGGF", "FGGGGGF", "FGGGGGF", "FFFFFFF", "AAAAAAA")
+                                  .where('#', Predicates.air())
+                                  .where('A', Predicates.any())
+                                  .where("X", Predicates.controller(Predicates.blocks(definition.get())))
+                                  .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, frame)))
+                                  .where('I', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Incoloy903)))
+                                  .where('P', blocks(PLASTCRETE.get()))
+                                  .where('L', blocks(CASING_GRATE.get()))
+                                  .where('G', blocks(GTCABlocks.REINFORCED_GLASS.get()))
+                                  .where("C", blocks(casing.get()))
+                                  .where("O", blocks(casing.get())
+                                          .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                          .or(autoAbilities(true, false, false))
+                                  )
+                                  .build()
+                  )
 //            .tooltips(
 //                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
 //                    Component.translatable("gtca.machine.flcr_desc.tooltip")
 //            )
-//              .workableCasingRenderer(
-//                      casingTexture,
-//                      overlayModel,
-//                      true
-//              )
-//              .register();
- //   }
+                  .workableCasingRenderer(
+                          casingTexture,
+                          overlayModel,
+                          true
+                  )
+                  .register();
+      } if (tier == 2) {
+          return REGISTRATE.multiblock(name, holder -> new PCBProps(holder, tier))
+                  .rotationState(RotationState.NON_Y_AXIS)
+                  .recipeType(GTCARecipeTypes.PCB_FACTORY)
+                  .appearanceBlock(casing)
+                  .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                  .pattern(definition ->
+                          FactoryBlockPattern.start()
+                                  .aisle("HDDHAAAAAAA", "HDDHAAAAAAA", "HDDHAAAAAAA", "AAAAAAAAAAA", "AAAAAAAAAAA", "AAAAAAAAAAA", "AAAAAAAAAAA")
+                                  .aisle("DDDDAAAAAAA", "D##DAAAAAAA", "D##DAAAAAAA", "HDDHAAAAAAA", "HDDHAAAAAAA", "AAAAAAAAAAA", "AAAAAAAAAAA")
+                                  .aisle("DDDDFOOOOOF", "D##DFOOOOOF", "D##DFCCCCCF", "D##DFCCCCCF", "DDDDFAAAAAF", "HDDHAAAAAAA", "AAAAAAAAAAA")
+                                  .aisle("DDDDCPPPPPC", "D##DC#####C", "D##DC#####C", "D##DC#####C", "D##DCCCCCCC", "DDDDFAAAAAF", "HDDHAAAAAAA")
+                                  .aisle("DDDDCPPPPPC", "D##DL#III#L", "D##DL#####L", "D##DC#####C", "D##DCCCCCCC", "DDDDFAAAAAF", "HDDHAAAAAAA")
+                                  .aisle("DDDDCPPPPPC", "D##DL#III#L", "D##DL#####L", "D##DC#####C", "D##DCCCCCCC", "DDDDFFFFFFF", "HDDHAAAAAAA")
+                                  .aisle("DDDDCPPPPPC", "D##DL#III#L", "D##DL#####L", "D##DC#####C", "D##DCGGGGGC", "DDDDFAAAAAF", "HDDHAAAAAAA")
+                                  .aisle("DDDDCPPPPPC", "D##DC#####C", "D##DC#####C", "D##DC#####C", "D##DCGGGGGC", "DDDDFAAAAAF", "HDDHAAAAAAA")
+                                  .aisle("DDDDFCCXCCF", "D##DFGGGGGF", "D##DFGGGGGF", "D##DFGGGGGF", "DDDDFFFFFFF", "HDDHAAAAAAA", "AAAAAAAAAAA")
+                                  .aisle("DDDDAAAAAAA", "D##DAAAAAAA", "D##DAAAAAAA", "HDDHAAAAAAA", "HDDHAAAAAAA", "AAAAAAAAAAA", "AAAAAAAAAAA")
+                                  .aisle("HDDHAAAAAAA", "HDDHAAAAAAA", "HDDHAAAAAAA", "AAAAAAAAAAA", "AAAAAAAAAAA", "AAAAAAAAAAA", "AAAAAAAAAAA")
+                                  .where('#', Predicates.air())
+                                  .where('A', Predicates.any())
+                                  .where("X", Predicates.controller(Predicates.blocks(definition.get())))
+                                  .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, frame)))
+                                  .where('H', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, frame2)))
+                                  .where('I', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Incoloy903)))
+                                  .where('P', blocks(PLASTCRETE.get()))
+                                  .where('L', blocks(CASING_GRATE.get()))
+                                  .where('G', blocks(GTCABlocks.REINFORCED_GLASS.get()))
+                                  .where("C", blocks(casing.get()))
+                                  .where("D", blocks(casing2.get()))
+                                  .where("O", blocks(casing.get())
+                                          .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                          .or(autoAbilities(true, false, false))
+                                  )
+                                  .build()
+                  )
+//            .tooltips(
+//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
+//                    Component.translatable("gtca.machine.flcr_desc.tooltip")
+//            )
+                  .workableCasingRenderer(
+                          casingTexture,
+                          overlayModel,
+                          true
+                  )
+                  .register();
+
+      } if (tier == 3){
+          return REGISTRATE.multiblock(name, holder -> new PCBProps(holder, tier))
+                  .rotationState(RotationState.NON_Y_AXIS)
+                  .recipeType(GTCARecipeTypes.PCB_FACTORY)
+                  .appearanceBlock(casing)
+                  .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                  .pattern(definition ->
+                          FactoryBlockPattern.start()
+                                  .aisle("#CCCCC#", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
+                                  .aisle("CCOOOCC", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
+                                  .aisle("COOOOOC", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "##DDD##", "##DDD##", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
+                                  .aisle("COOOOOC", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "##D#D##", "#C###C#", "##D#D##", "##D#D##", "##DCD##", "##DCD##", "###C###", "###C###", "###C###", "###C###", "###C###", "#######")
+                                  .aisle("COOOOOC", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "##D#D##", "#C###C#", "##D#D##", "##D#D##", "##D#D##", "##D#D##", "##D#D##", "##D#D##", "##D#D##", "##D#D##", "###C###", "###C###")
+                                  .aisle("COOOOOC", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "##D#D##", "##D#D##", "##D#D##", "#C###C#", "##D#D##", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "##D#D##", "##D#D##", "###C###", "###C###")
+                                  .aisle("COOOOOC", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "##D#D##", "##D#D##", "##D#D##", "#C###C#", "##D#D##", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "##D#D##", "##DCD##", "###C###", "#######")
+                                  .aisle("COOOOOC", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "#C###C#", "##DDD##", "##DDD##", "##DDD##", "#C###C#", "#C###C#", "#C###C#", "#C#D#C#", "#C#D#C#", "#C#D#C#", "#C###C#", "#C###C#", "#C###C#", "##DDD##", "##DDD##", "#######", "#######")
+                                  .aisle("CCOOOCC", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "##CCC##", "#######", "#######", "#######", "##CCC##", "##CCC##", "##CCC##", "##C#C##", "##C#C##", "##C#C##", "##CCC##", "##CCC##", "##CCC##", "#######", "#######", "#######", "#######")
+                                  .aisle("#CCXCC#", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
+                                  .where('#', Predicates.any())
+                                  .where("X", Predicates.controller(Predicates.blocks(definition.get())))
+                                  .where("C", blocks(casing.get()))
+                                  .where("D", blocks(casing2.get()))
+                                  .where("O", blocks(casing.get())
+                                          .or(Predicates.autoAbilities(definition.getRecipeTypes()))
+                                          .or(autoAbilities(true, false, false))
+                                  )
+                                  .build()
+                  )
+//            .tooltips(
+//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
+//                    Component.translatable("gtca.machine.flcr_desc.tooltip")
+//            )
+                  .workableCasingRenderer(
+                          casingTexture,
+                          overlayModel,
+                          true
+                  )
+                  .register();
+      }
+      else{return null;}
+  }
 }
 
 

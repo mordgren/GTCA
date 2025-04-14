@@ -92,17 +92,15 @@ public class GTCABlocks {
     public static BlockEntry<Block> P_N_PROTECTIVE_CASING = createCasingBlock("p_n_casing",
             GTCA.id("block/casing/p_n_casing"));
 
-//  public static BlockEntry<Block> BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("bpf_casing",
-//          GTCA.id("block/casing/bpf_casing"));
+  public static BlockEntry<Block> BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("bpf_casing",
+          GTCA.id("block/casing/bpf_casing"));
 
 //  public static BlockEntry<Block> REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("rpf_casing",
 //          GTCA.id("block/casing/rpf_casing"));
-
+//
 //  public static BlockEntry<Block> RADIANT_PROOF_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("rppf_casing",
 //          GTCA.id("block/casing/rppf_casing"));
 
-    public static BlockEntry<Block> TEST = createCasingBlock("pcb_1",
-            GTCA.id("block/casing/pcb_1"));
     // Glass
 
     public static final BlockEntry<Block> BORSILICATE_YTTRIUM_GLASS = createGlassCasingBlock("borsilicate_yttrium_thorium_glass",
@@ -132,14 +130,14 @@ public class GTCABlocks {
 
     public static BlockEntry<Block> P_N_E_CAPACITOR = createSidedCasingBlock(
             "p_n_e_capacitor",
-            GTCA.id("block/electric_casing/p_n_e_capacitor_side"),
-            GTCA.id("block/electric_casing/p_n_e_capacitor_top")
+            GTCA.id("block/sided_casing/p_n_e_capacitor_side"),
+            GTCA.id("block/sided_casing/p_n_e_capacitor_top")
     );
 
     public static BlockEntry<Block> P_N_E_LASER_ACTIVATOR = createSidedCasingBlock(
             "p_n_e_laser_activator",
-            GTCA.id("block/electric_casing/p_n_e_laser_activator_side"),
-            GTCA.id("block/electric_casing/p_n_e_laser_activator_top")
+            GTCA.id("block/sided_casing/p_n_e_laser_activator_side"),
+            GTCA.id("block/sided_casing/p_n_e_laser_activator_top")
     );
 
     @SuppressWarnings("removal")

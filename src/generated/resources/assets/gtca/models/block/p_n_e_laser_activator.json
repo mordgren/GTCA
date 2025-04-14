@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "bottom": "gtca:block/electric_casing/p_n_e_laser_activator_top",
-    "side": "gtca:block/electric_casing/p_n_e_laser_activator_side",
-    "top": "gtca:block/electric_casing/p_n_e_laser_activator_top"
+    "bottom": "gtca:block/sided_casing/p_n_e_laser_activator_top",
+    "side": "gtca:block/sided_casing/p_n_e_laser_activator_side",
+    "top": "gtca:block/sided_casing/p_n_e_laser_activator_top"
   }
 }

@@ -15,4 +15,8 @@ public class PCBProps extends WorkableElectricMultiblockMachine implements ITier
 
     @Getter
     public final int tier;
+
+    public int getTier() {
+        return tier;
+    }
 }

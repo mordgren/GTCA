@@ -134,7 +134,8 @@ public class GTCARecipeTypes {
     public static final GTRecipeType PCB_FACTORY = register("pcb_factory", MULTIBLOCK)
             .setMaxIOSize(6,9,3,0)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
             .setSound(GTSoundEntries.ASSEMBLER)
             .setEUIO(IO.IN);
 }
