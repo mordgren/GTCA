@@ -17,7 +17,7 @@ import net.mordgren.gtca.common.data.GTCAMaterials;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_LONG_ROD;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.EXT_METAL;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
 public class GTCAMetals {
     public static void init(){
@@ -566,7 +566,7 @@ public class GTCAMetals {
 
         GTCAMaterials.Pikyonium64Y = new Material.Builder(GTCA.id("pikyonium64_y"))
                 .color(0x4900d1)
-                .components(GTCAMaterials.Inconel792, 8, GTCAMaterials.EglinSteel, 5, GTMaterials.NaquadahEnriched, 4, GTMaterials.Cerium, 3, GTMaterials.Antimony, 2, GTMaterials.Platinum, 2, GTMaterials.Yttrium, 1, GTMaterials.TungstenSteel, 4)
+                .components(GTCAMaterials.Inconel792, 8, GTCAMaterials.EglinSteel, 5, NaquadahEnriched, 4, GTMaterials.Cerium, 3, GTMaterials.Antimony, 2, GTMaterials.Platinum, 2, GTMaterials.Yttrium, 1, GTMaterials.TungstenSteel, 4)
                 .fluid()
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
@@ -574,6 +574,68 @@ public class GTCAMetals {
                 )
                 .blastTemp(7125, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
                 .buildAndRegister();
+
+
+        GTCAMaterials.Neutronex = new Material.Builder(GTCA.id("neutronex"))
+                .color(0x1e151c)
+                .components(GTMaterials.NaquadahEnriched, 6, GTMaterials.Aluminium, 18, GTMaterials.Silicon, 6, GTMaterials.Platinum, 6, GTMaterials.Uranium238, 2)
+                .fluid()
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_GEAR,
+                        MaterialFlags.GENERATE_FRAME
+                )
+                .blastTemp(6999, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
+                .buildAndRegister();
+
+        GTCAMaterials.Duranium_X = new Material.Builder(GTCA.id("duranium_x"))
+                .color(0x45674a)
+                .components(GTMaterials.Uranium235, 10, GTMaterials.Plutonium241, 8, GTMaterials.Molybdenum, 8, GTMaterials.Tungsten, 8, GTMaterials.Iron, 6, GTMaterials.Chromium, 4, GTMaterials.NaquadahEnriched, 4)
+                .fluid()
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_GEAR,
+                        MaterialFlags.GENERATE_FRAME
+                )
+                .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
+                .buildAndRegister();
+
+        GTCAMaterials.Berwollium = new Material.Builder(GTCA.id("berwollium"))
+                .color(0xb7c0ac)
+                .components(GTMaterials.Beryllium, 4, GTMaterials.Molybdenum, 2, GTMaterials.Tungsten, 1)
+                .fluid()
+                .flags(
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_GEAR,
+                        MaterialFlags.GENERATE_FRAME
+                )
+                .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.EV])
+                .buildAndRegister();
+
+//      GTCAMaterials.AdamantiumAlloy = new Material.Builder(GTCA.id("adamantium_alloy"))
+//              .color(0xd2d4da)
+//              .components(GTCAMaterials.Adamantium, 5,GTMaterials.Naquadria, 2,GTMaterials.Lanthanum, 3)
+//              .fluid()
+//              .flags(
+//                      MaterialFlags.GENERATE_PLATE,
+//                      MaterialFlags.GENERATE_GEAR,
+//                      MaterialFlags.GENERATE_FRAME
+//              )
+//              .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
+//              .buildAndRegister();
+
+//     GTCAMaterials.Artherium_Sn = new Material.Builder(GTCA.id("adamantium_alloy"))
+//             .color(0x003aff)
+//             .components(GTCAMaterials.AdamantiumAlloy, 12, GTCAMaterials.Orundum, 9, GTMaterials.Tin, 8, GTMaterials.Arsenic, 7, GTMaterials.Caesium, 4,GTMaterials.Osmiridium, 3)
+//             .fluid()
+//             .flags(
+//                     MaterialFlags.GENERATE_PLATE,
+//                     MaterialFlags.GENERATE_GEAR,
+//                     MaterialFlags.GENERATE_FRAME
+//             )
+//             .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
+//             .buildAndRegister()
+//             .setFormula("(Ad5Nq2La3)12Or9Sn8As7Cs4(Ir3Os)3",true);
 
 
         // gad daymmm
@@ -585,10 +647,22 @@ public class GTCAMetals {
                 .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
                 .element(GTCAElements.Ad)
                 .toolStats(ToolProperty.Builder.of(200.0F, 150.0F, 127535, 6)
-                        .attackSpeed(0.5F).enchantability(33).magnetic().unbreakable().build())
+                        .attackSpeed(0.5F).enchantability(33).build())
                 .rotorStats(500, 300, 12.0f, 877360)
                 .fluidPipeProperties(120_000, 7000, true, true, true, true)
                 .radioactiveHazard(10)
                 .buildAndRegister();
+
+        GTCAMaterials.Orundum = new Material.Builder(GTCA.id("orundum"))
+                .color(0xff0000)
+                .ingot()
+                .liquid(new FluidBuilder().temperature(120_000))
+                .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
+                .element(GTCAElements.Or)
+                .buildAndRegister();
+
+
+
+
     }
 }

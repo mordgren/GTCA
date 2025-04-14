@@ -84,9 +84,12 @@ public class GTCAMaterials {
     public static Material Inconel792;
     public static Material CinobiteA241;
     public static Material Pikyonium64Y;
-    public static Material Naquadriairidium;
-    public static Material Nucleanitite_4;
-    public static Material Beriliwulfanite;
+    public static Material Neutronex;
+    public static Material Duranium_X;
+    public static Material Berwollium;
+    public static Material AdamantiumAlloy;
+    public static Material Artherium_Sn;
+
 
     // Dusts
 
@@ -120,4 +123,5 @@ public class GTCAMaterials {
 
     // Elements
     public static Material Adamantium;
+    public static Material Orundum;
 }
