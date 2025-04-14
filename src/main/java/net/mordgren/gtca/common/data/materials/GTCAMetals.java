@@ -456,12 +456,6 @@ public class GTCAMetals {
                 .setFormula("(Ke5Nq9)9C",true);
 
 
-
-
-
-
-
-
         // Ores
 
         GTCAMaterials.RedZircon = new Material.Builder(GTCA.id("red_zircon"))
@@ -612,30 +606,30 @@ public class GTCAMetals {
                 .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.EV])
                 .buildAndRegister();
 
-//      GTCAMaterials.AdamantiumAlloy = new Material.Builder(GTCA.id("adamantium_alloy"))
-//              .color(0xd2d4da)
-//              .components(GTCAMaterials.Adamantium, 5,GTMaterials.Naquadria, 2,GTMaterials.Lanthanum, 3)
-//              .fluid()
-//              .flags(
-//                      MaterialFlags.GENERATE_PLATE,
-//                      MaterialFlags.GENERATE_GEAR,
-//                      MaterialFlags.GENERATE_FRAME
-//              )
-//              .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
-//              .buildAndRegister();
+//        GTCAMaterials.AdamantiumAlloy = new Material.Builder(GTCA.id("adamantium_alloy"))
+//                        .color(0xd2d4da)
+//                        .components(GTCAMaterials.Adamantium, 5,GTMaterials.Naquadria, 2,GTMaterials.Lanthanum, 3)
+//                        .fluid()
+//                        .flags(
+//                                MaterialFlags.GENERATE_PLATE,
+//                        MaterialFlags.GENERATE_GEAR,
+//                        MaterialFlags.GENERATE_FRAME
+//                        )
+//                .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
+//                        .buildAndRegister();
 
-//     GTCAMaterials.Artherium_Sn = new Material.Builder(GTCA.id("adamantium_alloy"))
-//             .color(0x003aff)
-//             .components(GTCAMaterials.AdamantiumAlloy, 12, GTCAMaterials.Orundum, 9, GTMaterials.Tin, 8, GTMaterials.Arsenic, 7, GTMaterials.Caesium, 4,GTMaterials.Osmiridium, 3)
-//             .fluid()
-//             .flags(
-//                     MaterialFlags.GENERATE_PLATE,
-//                     MaterialFlags.GENERATE_GEAR,
-//                     MaterialFlags.GENERATE_FRAME
-//             )
-//             .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
-//             .buildAndRegister()
-//             .setFormula("(Ad5Nq2La3)12Or9Sn8As7Cs4(Ir3Os)3",true);
+ //  GTCAMaterials.Artherium_Sn = new Material.Builder(GTCA.id("adamantium_alloy"))
+ //          .color(0x003aff)
+ //          .components(GTCAMaterials.AdamantiumAlloy, 12, GTCAMaterials.Orundum, 9, GTMaterials.Tin, 8, GTMaterials.Arsenic, 7, GTMaterials.Caesium, 4,GTMaterials.Osmiridium, 3)
+ //          .fluid()
+ //          .flags(
+ //                  MaterialFlags.GENERATE_PLATE,
+ //                  MaterialFlags.GENERATE_GEAR,
+ //                  MaterialFlags.GENERATE_FRAME
+ //          )
+ //          .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
+ //          .buildAndRegister()
+ //          .setFormula("(Ad5Nq2La3)12Or9Sn8As7Cs4(Ir3Os)3",true);
 
 
         // gad daymmm
@@ -643,8 +637,9 @@ public class GTCAMetals {
         GTCAMaterials.Adamantium = new Material.Builder(GTCA.id("adamantium"))
                 .color(0x8fa5c9)
                 .ingot(6)
-                .liquid(new FluidBuilder().temperature(120_000))
-                .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
+                .liquid(new FluidBuilder().temperature(933))
+                .appendFlags(EXT2_METAL, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_RING, GENERATE_FRAME,
+                        GENERATE_SPRING)
                 .element(GTCAElements.Ad)
                 .toolStats(ToolProperty.Builder.of(200.0F, 150.0F, 127535, 6)
                         .attackSpeed(0.5F).enchantability(33).build())

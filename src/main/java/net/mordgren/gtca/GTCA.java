@@ -13,10 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.mordgren.gtca.common.data.GTCAItems;
-import net.mordgren.gtca.common.data.GTCAMachines;
-import net.mordgren.gtca.common.data.GTCAMaterials;
-import net.mordgren.gtca.common.data.GTCARecipeTypes;
+import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.util.GTCARecipeConditions;
 import org.slf4j.Logger;
 import net.minecraft.resources.ResourceLocation;
@@ -59,6 +56,7 @@ public class GTCA {
     @SubscribeEvent
     public void registerMaterials(MaterialEvent event) {
         GTCAMaterials.init();
+        GTCAElements.init();
     }
 
     public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
