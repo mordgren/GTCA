@@ -6,6 +6,7 @@ import net.mordgren.gtca.common.data.materials.*;
 public class GTCAMaterials {
     public static void init() {
         GTCAFuels.init();
+        GTCAElementMetals.init();
         GTCAMetals.init();
         GTCAChemicals.init();
         MaterialFlagAddition.init();

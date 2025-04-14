@@ -606,31 +606,6 @@ public class GTCAMetals {
                 .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.EV])
                 .buildAndRegister();
 
-
-        // gad daymmm
-
-        GTCAMaterials.Adamantium = new Material.Builder(GTCA.id("adamantium"))
-                .color(0x8fa5c9)
-                .ingot(6)
-                .liquid(new FluidBuilder().temperature(933))
-                .appendFlags(EXT2_METAL, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_RING, GENERATE_FRAME,
-                        GENERATE_SPRING)
-                .element(GTCAElements.Ad)
-                .toolStats(ToolProperty.Builder.of(200.0F, 150.0F, 127535, 6)
-                        .attackSpeed(0.5F).enchantability(33).build())
-                .rotorStats(500, 300, 12.0f, 877360)
-                .fluidPipeProperties(120_000, 7000, true, true, true, true)
-                .radioactiveHazard(10)
-                .buildAndRegister();
-
-        GTCAMaterials.Orundum = new Material.Builder(GTCA.id("orundum"))
-                .color(0xff0000)
-                .ingot()
-                .liquid(new FluidBuilder().temperature(120_000))
-                .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
-                .element(GTCAElements.Or)
-                .buildAndRegister();
-
         GTCAMaterials.AdamantiumAlloy = new Material.Builder(GTCA.id("adamantium_alloy"))
                         .color(0xd2d4da)
                         .components(GTCAMaterials.Adamantium, 5,GTMaterials.Naquadria, 2,GTMaterials.Lanthanum, 3)
