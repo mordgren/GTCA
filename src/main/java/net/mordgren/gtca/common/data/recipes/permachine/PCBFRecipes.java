@@ -42,8 +42,8 @@ public class PCBFRecipes {
         plasticPcbT1.add(new Object[]{1000, 500, 1440, 18.1, 23, GTMaterials.Epoxy, 32});
         plasticPcbT1.add(new Object[]{1118, 559, 5760, 14.8, 32, GTMaterials.ReinforcedEpoxyResin, 35});
         plasticPcbT1.add(new Object[]{1224, 612, 23040, 12.05, 46, GTMaterials.Polybenzimidazole, 39});
-        plasticPcbT1.add(new Object[]{1322, 661, 92160, 9.85, 64, GTMaterials.SiliconeRubber, 42});
-        plasticPcbT1.add(new Object[]{1414, 707, 368640, 8.05, 91, GTMaterials.StyreneButadieneRubber, 45});
+//        plasticPcbT1.add(new Object[]{1322, 661, 92160, 9.85, 64, GTMaterials.SiliconeRubber, 42}); NEED KEVLAR
+//        plasticPcbT1.add(new Object[]{1414, 707, 368640, 8.05, 91, GTMaterials.StyreneButadieneRubber, 45}); NEED RADON POLYMER
     }
     private static void plasticPcbT2Init() {
         plasticPcbT2 = new ArrayList<>();
@@ -54,8 +54,8 @@ public class PCBFRecipes {
         plasticPcbT2.add(new Object[]{1000, 500, 5760, 15.1, 27, GTMaterials.Epoxy, 32});
         plasticPcbT2.add(new Object[]{1118, 559, 23040, 12.3, 39, GTMaterials.ReinforcedEpoxyResin, 35});
         plasticPcbT2.add(new Object[]{1224, 612, 92160, 10.05, 54, GTMaterials.Polybenzimidazole, 39});
-        plasticPcbT2.add(new Object[]{1322, 661, 368640, 8.2, 77, GTMaterials.SiliconeRubber, 42});
-        plasticPcbT2.add(new Object[]{1414, 707, 1474560, 6.7, 108, GTMaterials.StyreneButadieneRubber, 45});
+//        plasticPcbT2.add(new Object[]{1322, 661, 368640, 8.2, 77, GTMaterials.SiliconeRubber, 42}); NEED KEVLAR
+//        plasticPcbT2.add(new Object[]{1414, 707, 1474560, 6.7, 108, GTMaterials.StyreneButadieneRubber, 45}); NEED RADON POLYMER
     }
     private static void plasticPcbT3Init() {
         plasticPcbT3 = new ArrayList<>();
@@ -66,8 +66,8 @@ public class PCBFRecipes {
         plasticPcbT3.add(new Object[]{1000, 500, 5760, 12.05, 32, GTMaterials.Epoxy, 32});
         plasticPcbT3.add(new Object[]{1118, 559, 23040, 9.85, 46, GTMaterials.ReinforcedEpoxyResin, 35});
         plasticPcbT3.add(new Object[]{1224, 612, 92160, 8.05, 64, GTMaterials.Polybenzimidazole, 39});
-        plasticPcbT3.add(new Object[]{1322, 661, 368640, 6.6, 91, GTMaterials.SiliconeRubber, 42});
-        plasticPcbT3.add(new Object[]{1414, 707, 1474560, 5.4, 128, GTMaterials.StyreneButadieneRubber, 45});
+//        plasticPcbT3.add(new Object[]{1322, 661, 368640, 6.6, 91, GTMaterials.SiliconeRubber, 42}); NEED KEVLAR
+//        plasticPcbT3.add(new Object[]{1414, 707, 1474560, 5.4, 128, GTMaterials.StyreneButadieneRubber, 45}); NEED RADON POLYMER
     }
 
     private static void plasticPcb(Consumer<FinishedRecipe> provider) {
