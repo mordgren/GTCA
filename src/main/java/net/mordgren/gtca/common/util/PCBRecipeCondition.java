@@ -26,9 +26,9 @@ public class PCBRecipeCondition extends RecipeCondition {
 
     private int tier = 0;
 
-    public static final int MKI = 1;
-    public static final int MKII = 2;
-    public static final int MKIII = 3;
+    public static final int MKI = 8;
+    public static final int MKII = 9;
+    public static final int MKIII = 10;
 
     public static Map<Integer, String> CASING_TIERS = Map.of(
             MKI, "gtca.recipe.condition.tier_casing.tier.mki",
@@ -36,12 +36,12 @@ public class PCBRecipeCondition extends RecipeCondition {
             MKIII, "gtca.recipe.condition.tier_casing.tier.mkiii");
 
     public PCBRecipeCondition(int tier) {
-        this.tier = Mth.clamp(tier, 1, 3);
+        this.tier = Mth.clamp(tier, 8, 10);
     }
 
     public PCBRecipeCondition(Boolean isReverse, int tier) {
         super(isReverse);
-        this.tier = Mth.clamp(tier, 1, 3);
+        this.tier = Mth.clamp(tier, 8, 10);
     }
 
     public PCBRecipeCondition() {}

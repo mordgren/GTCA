@@ -792,19 +792,19 @@ public class GTCAMachines {
 
 /// TEST PCB FACTORY///
   public static final MultiblockMachineDefinition PCB_FACTORY_MKI = registerPcbFactory(
-          "pcb_factory_mki", 1,
+          "pcb_factory_mki", UV,
           GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, null, StainlessSteel, null,
           GTCA.id("block/casing/bpf_casing"),
           GTCA.id("block/multiblock/aebf"));
 
   public static final MultiblockMachineDefinition PCB_FACTORY_MKII = registerPcbFactory(
-          "pcb_factory_mkii", 2,
+          "pcb_factory_mkii", UHV,
           GTCABlocks.INCONEL718_CASING, GTCABlocks.DURAL_CASING, StainlessSteel, Duranium,
           GTCA.id("block/casing/inconel718_casing"),
           GTCA.id("block/multiblock/aebf"));
 
   public static final MultiblockMachineDefinition PCB_FACTORY_MKIII = registerPcbFactory(
-          "pcb_factory_mkiii", 3,
+          "pcb_factory_mkiii", UEV,
           GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.SHD_CASING, null, null,
           GTCA.id("block/casing/bpf_casing"),
           GTCA.id("block/multiblock/aebf"));
@@ -817,7 +817,7 @@ public class GTCAMachines {
                                                                       Material frame2,
                                                                     ResourceLocation casingTexture,
                                                                     ResourceLocation overlayModel) {
-      if (tier == 1) {
+      if (tier == UV) {
           return REGISTRATE.multiblock(name, holder -> new PCBProps(holder, tier))
                   .rotationState(RotationState.NON_Y_AXIS)
                   .recipeType(GTCARecipeTypes.PCB_FACTORY)
@@ -857,7 +857,7 @@ public class GTCAMachines {
                           true
                   )
                   .register();
-      } if (tier == 2) {
+      } if (tier == UHV) {
           return REGISTRATE.multiblock(name, holder -> new PCBProps(holder, tier))
                   .rotationState(RotationState.NON_Y_AXIS)
                   .recipeType(GTCARecipeTypes.PCB_FACTORY)
@@ -904,7 +904,7 @@ public class GTCAMachines {
                   )
                   .register();
 
-      } if (tier == 3){
+      } if (tier == UEV){
           return REGISTRATE.multiblock(name, holder -> new PCBProps(holder, tier))
                   .rotationState(RotationState.NON_Y_AXIS)
                   .recipeType(GTCARecipeTypes.PCB_FACTORY)
