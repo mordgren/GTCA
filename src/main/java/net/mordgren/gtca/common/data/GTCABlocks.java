@@ -101,6 +101,9 @@ public class GTCABlocks {
 //  public static BlockEntry<Block> RADIANT_PROOF_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("rppf_casing",
 //          GTCA.id("block/casing/rppf_casing"));
 
+    public static BlockEntry<Block> AIR_INTAKE_FORGE = createCasingBlock("air_intake_forge",
+            GTCA.id("block/casing/air_intake_nanoforge"));
+
     // Glass
 
     public static final BlockEntry<Block> BORSILICATE_YTTRIUM_GLASS = createGlassCasingBlock("borsilicate_yttrium_thorium_glass",

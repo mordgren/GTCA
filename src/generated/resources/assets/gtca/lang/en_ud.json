@@ -1,5 +1,6 @@
 {
   "block.gtca.advanced_ebf": "ɟqƎ pǝɔuɐʌpⱯ",
+  "block.gtca.air_intake_forge": "ǝbɹoℲ ǝʞɐʇuI ɹıⱯ",
   "block.gtca.borsilicate_reinforced_iridium_glass": "ssɐן⅁ ɯnıpıɹI pǝɔɹoɟuıǝᴚ ǝʇɐɔıןısɹoᗺ",
   "block.gtca.borsilicate_yttrium_thorium_glass": "ssɐן⅁ ɯnıɹoɥ⟘ ɯnıɹʇʇʎ ǝʇɐɔıןısɹoᗺ",
   "block.gtca.bpf_casing": "buısɐƆ ɟdᗺ",
@@ -30,6 +31,9 @@
   "block.gtca.p_n_casing": "buısɐƆ N Ԁ",
   "block.gtca.p_n_e_capacitor": "ɹoʇıɔɐdɐƆ Ǝ N Ԁ",
   "block.gtca.p_n_e_laser_activator": "ɹoʇɐʌıʇɔⱯ ɹǝsɐꞀ Ǝ N Ԁ",
+  "block.gtca.pcb_factory_mki": "ıʞW ʎɹoʇɔɐℲ qɔԀ",
+  "block.gtca.pcb_factory_mkii": "ııʞW ʎɹoʇɔɐℲ qɔԀ",
+  "block.gtca.pcb_factory_mkiii": "ıııʞW ʎɹoʇɔɐℲ qɔԀ",
   "block.gtca.polymerizer": "ɹǝzıɹǝɯʎןoԀ",
   "block.gtca.pressure_resistant_wall": "ןןɐM ʇuɐʇsısǝᴚ ǝɹnssǝɹԀ",
   "block.gtca.proton_cell_battery": "ʎɹǝʇʇɐᗺ ןןǝƆ uoʇoɹԀ",
