@@ -1,6 +1,8 @@
 package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.data.GTMachines;
@@ -186,6 +188,20 @@ public class CasingRecipes {
                 .inputItems(GTItems.CARBON_FIBER_PLATE, 3)
                 .inputItems(GTCAHelper.getItem("dust", Glass,4))
                 .outputItems(GTCABlocks.REINFORCED_GLASS, 4)
+                .save(provider);
+
+        ///ULTRA_INDUCTIVE_CASING
+        ///STABILIZED_TRANSMUTATION_CORE
+        ///P_N_PROTECTIVE_CASING
+        ///P_N_E_CAPACITOR
+        ///P_N_E_LASER_ACTIVATOR
+        ///BORSILICATE_REINFORCED_IRIDIUM_GLASS
+
+        ASSEMBLER_RECIPES.recipeBuilder("bpf_casing").EUt(122880).duration(600)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("frame", NaquadahAlloy, 1))
+                .inputItems(GTCAHelper.getItem("plate", ArtheriumSn, 6))
+                .outputItems(GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, 1)
                 .save(provider);
     }
 }

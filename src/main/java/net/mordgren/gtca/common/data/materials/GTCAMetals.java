@@ -7,15 +7,12 @@ import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
-import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.mordgren.gtca.GTCA;
-import net.mordgren.gtca.common.data.GTCAElements;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_LONG_ROD;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
@@ -27,6 +24,7 @@ public class GTCAMetals {
         GTMaterials.Titanium.addFlags(MaterialFlags.GENERATE_FOIL);
         GTMaterials.Stellite100.addFlags(MaterialFlags.GENERATE_GEAR, MaterialFlags.GENERATE_RING);
         GTMaterials.Duranium.addFlags(GENERATE_FRAME);
+        RedSteel.addFlags(GENERATE_FOIL);
 
         GTMaterials.Zirconium = new Material.Builder(GTCEu.id("zirconium_gtca"))
                 .dust()
@@ -618,7 +616,7 @@ public class GTCAMetals {
                 .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
                         .buildAndRegister();
 
-        GTCAMaterials.Artherium_Sn = new Material.Builder(GTCA.id("adamantium_alloy2"))
+        GTCAMaterials.ArtheriumSn = new Material.Builder(GTCA.id("artherium_sn"))
                 .color(0x003aff)
                 .components(GTCAMaterials.AdamantiumAlloy, 12, GTCAMaterials.Orundum, 9, GTMaterials.Tin, 8, GTMaterials.Arsenic, 7, GTMaterials.Caesium, 4,GTMaterials.Osmiridium, 3)
                 .fluid()

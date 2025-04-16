@@ -168,7 +168,7 @@ public class AlloyRecipes {
                 .blastFurnaceTemp(4700)
                 .inputItems(GTCAHelper.getItem("dust", Zirconium, 1))
                 .inputItems(GTCAHelper.getItem("dust", Carbon, 1))
-                .outputFluids(GTCAMaterials.ZirconiumCarbide.getFluid(288))
+                .outputFluids(GTCAMaterials.ZirconiumCarbide.getHotFluid(288))
                 .save(provider);
     }
 
