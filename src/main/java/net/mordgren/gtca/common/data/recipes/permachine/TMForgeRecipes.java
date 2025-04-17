@@ -25,7 +25,8 @@ public class TMForgeRecipes {
                 .inputItems(GTCAItems.Neutron.asStack(64))
                 .inputItems(GTCAItems.Neutron.asStack(64))
                 .inputItems(GTCAItems.Neutron.asStack(48))
-                .outputItems(GTCAHelper.getItem("ingot", GTCAMaterials.Adamantium, 1))
+                .inputFluids(GTMaterials.Tungsten.getFluid(1536))
+                .outputItems(GTCAHelper.getItem("ingot", GTCAMaterials.Adamantium, 12))
                 .stationResearch(b -> b
                         .researchStack(GTCAHelper.getItem("ingot",GTMaterials.Tungsten, 1))
                         .CWUt(32)
