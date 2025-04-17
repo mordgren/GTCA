@@ -6,7 +6,6 @@ import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistr
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
-import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,7 +40,7 @@ public class GTCA {
     }
 
     public static void init() {
-        ConfigHolder.init();
+        ConfigHandler.init();
         GTCARegistration.REGISTRATE.registerRegistrate();
     }
 

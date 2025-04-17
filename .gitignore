@@ -3,6 +3,7 @@
 !src/**/build/
 lib/
 run/
+/src/generated/resources/.cache
 
 # Ignore Gradle GUI config
 gradle-app.setting
