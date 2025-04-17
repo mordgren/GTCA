@@ -104,6 +104,9 @@ public class GTCABlocks {
     public static BlockEntry<Block> AIR_INTAKE_FORGE = createCasingBlock("air_intake_forge",
             GTCA.id("block/casing/air_intake_nanoforge"));
 
+    public static BlockEntry<Block> NANOFORGE_CASING = createCasingBlock("nanoforge_casing",
+            GTCA.id("block/casing/nanoforge_casing"));
+
     // Glass
 
     public static final BlockEntry<Block> BORSILICATE_YTTRIUM_GLASS = createGlassCasingBlock("borsilicate_yttrium_thorium_glass",
