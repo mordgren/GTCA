@@ -83,6 +83,9 @@
     "gtca:oxylene_bucket",
     "gtca:octene_bucket",
     "gtca:carbon_disulfide_bucket",
+    "gtca:dihydrodiaminosilane_bucket",
+    "gtca:silamid_bucket",
+    "gtca:ammonium_chloride_bucket",
     "gtca:ender_fluid_bucket",
     "gtca:sphalerite_froth_bucket",
     "gtca:chalcopyrite_froth_bucket",
@@ -103,6 +106,14 @@
     "gtca:sulfur_plasma_plasma_bucket",
     "gtca:calcium_plasma_plasma_bucket",
     "gtca:titanium_plasma_plasma_bucket",
-    "gtca:zinc_plasma_plasma_bucket"
+    "gtca:zinc_plasma_plasma_bucket",
+    "gtca:muddy_bastnasite_rare_earth_solution_bucket",
+    "gtca:steam_cracked_bastnasite_mud_bucket",
+    "gtca:conditioned_bastnasite_mud_bucket",
+    "gtca:diluted_bastnasite_mud_bucket",
+    "gtca:filtered_bastnasite_mud_bucket",
+    "gtca:nitrogenated_bastnasite_rarer_earth_oxides_bucket",
+    "gtca:bastnasite_rarer_earth_oxides_suspension_bucket",
+    "gtca:oxalate_bucket"
   ]
 }

@@ -7,12 +7,10 @@ import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
-import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
@@ -20,18 +18,6 @@ public class GTCAMetals {
     public static void init(){
 
         ///MISC
-        GTMaterials.NiobiumTitanium.addFlags(MaterialFlags.GENERATE_FRAME);
-        GTMaterials.Titanium.addFlags(MaterialFlags.GENERATE_FOIL);
-        GTMaterials.Stellite100.addFlags(MaterialFlags.GENERATE_GEAR, MaterialFlags.GENERATE_RING);
-        GTMaterials.Duranium.addFlags(GENERATE_FRAME);
-        RedSteel.addFlags(GENERATE_FOIL);
-
-        GTMaterials.Zirconium = new Material.Builder(GTCEu.id("zirconium_gtca"))
-                .dust()
-                .color(0xb99b7e).secondaryColor(0x271813).iconSet(METALLIC)
-                .element(GTElements.Zr)
-                .buildAndRegister();
-
         GTCAMaterials.SiliconTetrachloride = new Material.Builder(GTCEu.id("silicon_tetrachloride"))
                 .dust()
                 .color(0x6e7592)

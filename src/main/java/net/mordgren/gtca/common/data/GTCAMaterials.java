@@ -1,7 +1,12 @@
 package net.mordgren.gtca.common.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import net.mordgren.gtca.common.data.materials.*;
+
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.SodiumPersulfate;
 
 public class GTCAMaterials {
     public static void init() {
@@ -9,9 +14,9 @@ public class GTCAMaterials {
         GTCAElementMetals.init();
         GTCAMetals.init();
         GTCAChemicals.init();
-        MaterialFlagAddition.init();
         GTCAFluids.init();
         GTCAPlasmas.init();
+        oreProps();
     }
 
     // Fuels
@@ -130,4 +135,26 @@ public class GTCAMaterials {
     // Elements
     public static Material Adamantium;
     public static Material Orundum;
+
+
+
+
+
+    private static void oreProps(){
+        OreProperty oreProp = GTCAMaterials.RedZircon.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(Zirconium);
+        oreProp.setWashedIn(SodiumPersulfate);
+
+        oreProp = GTCAMaterials.RedFuchsite.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(Chromium);
+        oreProp.setWashedIn(SodiumPersulfate);
+
+        oreProp = GTCAMaterials.GreenFuchsite.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(Aluminium);
+        oreProp.setWashedIn(SodiumPersulfate);
+
+        oreProp = GTCAMaterials.Fayalite.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(Iron);
+        oreProp.setWashedIn(SodiumPersulfate);
+    }
 }

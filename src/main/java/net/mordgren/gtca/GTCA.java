@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.data.BastnasiteLine.BLProxy;
+import net.mordgren.gtca.common.data.materials.GTMaterialAdjustments;
 import net.mordgren.gtca.common.util.ConfigHandler;
 import net.mordgren.gtca.common.util.GTCARecipeConditions;
 import org.slf4j.Logger;
@@ -57,6 +58,7 @@ public class GTCA {
     @SubscribeEvent
     public void registerMaterials(MaterialEvent event) {
         GTCAMaterials.init();
+        GTMaterialAdjustments.init();
         GTCAElements.init();
         BLProxy.init();
     }
