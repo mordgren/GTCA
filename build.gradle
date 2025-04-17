@@ -151,6 +151,8 @@ dependencies {
         it.officialMojangMappings { nameSyntheticMembers = false }
     }
 
+    modCompileOnly("curse.maven:configuration-444699:4608425")
+
     modCompileOnly("mezz.jei:jei-$project.minecraft_version-forge-api:$project.jei_version") { transitive = false }
     modCompileOnly("mezz.jei:jei-$project.minecraft_version-common-api:$project.jei_version") { transitive = false }
 

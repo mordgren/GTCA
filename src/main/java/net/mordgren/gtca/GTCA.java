@@ -14,6 +14,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mordgren.gtca.common.data.*;
+import net.mordgren.gtca.common.util.ConfigHandler;
 import net.mordgren.gtca.common.util.GTCARecipeConditions;
 import org.slf4j.Logger;
 import net.minecraft.resources.ResourceLocation;
@@ -69,5 +70,13 @@ public class GTCA {
 
     public void registerRecipeConditions(GTCEuAPI.RegisterEvent<String, RecipeConditionType<?>> event) {
         GTCARecipeConditions.init();
+    }
+
+    public ConfigHandler.ClientConfigs getClientConfig() {
+        return ConfigHandler.Client;
+    }
+
+    public ConfigHandler.ServerConfigs getServerConfig() {
+        return ConfigHandler.Server;
     }
 }
