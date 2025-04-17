@@ -78,5 +78,37 @@ public class GTCAChemicals {
                 .color(0x979797)
                 .buildAndRegister()
                 .setFormula("CS2",true);
+
+        GTCAMaterials.Dihydrodiaminosilane = new Material.Builder(GTCA.id("dihydrodiaminosilane"))
+                .fluid()
+                .color(0x8f9092)
+                .buildAndRegister()
+                .setFormula("(NH2)2Si(OH)2",true);
+
+        GTCAMaterials.Silamid = new Material.Builder(GTCA.id("silamid"))
+                .fluid()
+                .ingot()
+                .color(0x583b58)
+                .buildAndRegister()
+                .setFormula("SiN2H2O",true);
+
+        GTCAMaterials.SiliconNitride = new Material.Builder(GTCA.id("silicon_nitride"))
+                .dust()
+                .components(GTMaterials.Silicon, 1, GTMaterials.Ammonia, 1)
+                .color(0x612461)
+                .buildAndRegister()
+                .setFormula("Si(NH2)2",true);
+
+        GTCAMaterials.AmmoniumChloride = new Material.Builder(GTCA.id("ammonium_chloride"))
+                .fluid()
+                .components(GTMaterials.Ammonia, 4, GTMaterials.Chlorine, 1 )
+                .color(0x3e2f49)
+                .buildAndRegister()
+                .setFormula("4NH3Cl",true);
+
+
+
+
+
     }
 }

@@ -32,6 +32,12 @@ public class GTCAMetals {
                 .element(GTElements.Zr)
                 .buildAndRegister();
 
+        GTCAMaterials.SiliconTetrachloride = new Material.Builder(GTCEu.id("silicon_tetrachloride"))
+                .dust()
+                .color(0x6e7592)
+                .components(Silicon, 1, Chlorine, 4)
+                .buildAndRegister();
+
         ///ALLOYS
         GTCAMaterials.TM20MnAlloy = new Material.Builder(GTCA.id("tm_20_mn_alloy"))
                 .components(GTMaterials.Tungsten, 4, GTMaterials.Molybdenum, 1, GTMaterials.Manganese, 1)

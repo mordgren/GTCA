@@ -48,6 +48,11 @@ public class GTCAMaterials {
     public static Material MonaziteFroth;
     public static Material RedMudSlurry;
     public static Material SpruceOil;
+    public static Material SiliconTetrachloride;
+    public static Material SiliconNitride;
+    public static Material AmmoniumChloride;
+    public static Material Dihydrodiaminosilane;
+    public static Material Silamid;
 
     // Catalyst
 

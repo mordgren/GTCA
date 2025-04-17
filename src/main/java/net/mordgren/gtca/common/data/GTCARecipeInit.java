@@ -21,6 +21,7 @@ public class GTCARecipeInit {
             ChemicalRecipes.init(provider);
             AlloyRecipes.init(provider);
             PlasmaRecipes.init(provider);
+            SilamidLine.init(provider);
 
             GreenHouseRecipes.init(provider);
             PolymerizerRecipes.init(provider);
