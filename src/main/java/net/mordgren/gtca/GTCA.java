@@ -13,6 +13,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mordgren.gtca.common.data.*;
+import net.mordgren.gtca.common.data.BastnasiteLine.BLProxy;
 import net.mordgren.gtca.common.util.ConfigHandler;
 import net.mordgren.gtca.common.util.GTCARecipeConditions;
 import org.slf4j.Logger;
@@ -57,6 +58,7 @@ public class GTCA {
     public void registerMaterials(MaterialEvent event) {
         GTCAMaterials.init();
         GTCAElements.init();
+        BLProxy.init();
     }
 
     public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
@@ -69,13 +71,5 @@ public class GTCA {
 
     public void registerRecipeConditions(GTCEuAPI.RegisterEvent<String, RecipeConditionType<?>> event) {
         GTCARecipeConditions.init();
-    }
-
-    public ConfigHandler.ClientConfigs getClientConfig() {
-        return ConfigHandler.Client;
-    }
-
-    public ConfigHandler.ServerConfigs getServerConfig() {
-        return ConfigHandler.Server;
     }
 }
