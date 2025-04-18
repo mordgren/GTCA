@@ -116,6 +116,7 @@ public class GTCAMaterials {
     public static Material GreenFuchsite;
     public static Material Fayalite;
     public static Material RedFuchsite;
+    public static Material Germanite;
 
     // Plasma
 
@@ -135,13 +136,7 @@ public class GTCAMaterials {
     // Elements
     public static Material Adamantium;
     public static Material Orundum;
-    public static Material Holmium;
-    public static Material Germanium;
     public static Material Ohriharukon;
-
-
-
-
 
 
     private static void oreProps(){
@@ -160,5 +155,10 @@ public class GTCAMaterials {
         oreProp = GTCAMaterials.Fayalite.getProperty(PropertyKey.ORE);
         oreProp.setOreByProducts(Iron);
         oreProp.setWashedIn(SodiumPersulfate);
+
+        oreProp = GTCAMaterials.Germanite.getProperty(PropertyKey.ORE);
+        oreProp.setOreByProducts(Zinc);
+        oreProp.setWashedIn(SodiumPersulfate);
+
     }
 }

@@ -520,6 +520,25 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("KCr3Si3O10(OH)2",true);
 
+        GTCAMaterials.Germanite = new Material.Builder(GTCA.id("germanite"))
+                .dust(3)
+                .flags
+                        (
+                                MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING,
+                                MaterialFlags.NO_SMASHING,
+                                MaterialFlags.NO_SMELTING
+                        )
+                .iconSet(FINE)
+                .ore(2, 1)
+                .color(0x464646).secondaryColor(0x595858)
+                .components(GTMaterials.Zinc, 2, GTMaterials.Iron, 2, GTMaterials.Germanium, 1, GTMaterials.Sulfur, 4)
+                .buildAndRegister()
+                .setFormula("(ZnFe)2GeS4",true);
+
+
+
+
+     //   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         GTCAMaterials.Nitinol60 = new Material.Builder(GTCA.id("nitinol60"))
                 .color(0x9f8ab8).secondaryColor(0xb69dd2)

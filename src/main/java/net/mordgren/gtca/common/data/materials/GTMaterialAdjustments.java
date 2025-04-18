@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_FOIL;
@@ -19,12 +20,12 @@ public class GTMaterialAdjustments {
         Duranium.addFlags(GENERATE_FRAME);
         RedSteel.addFlags(GENERATE_FOIL);
 
-
         addDust(Zirconium);
         addDust(Terbium);
         addIngot(Holmium);
         addIngot(Germanium);
     }
+
     public static void addDust(Material material) {
         if (!material.hasProperty(PropertyKey.DUST)) {
             material.setProperty(PropertyKey.DUST, new DustProperty());
@@ -33,6 +34,12 @@ public class GTMaterialAdjustments {
     public static void addIngot(Material material) {
         if (!material.hasProperty(PropertyKey.INGOT)) {
             material.setProperty(PropertyKey.INGOT, new IngotProperty());
+        }
+    }
+
+    public static void addOre(Material material) {
+        if (!material.hasProperty(PropertyKey.ORE)) {
+            material.setProperty(PropertyKey.ORE, new OreProperty());
         }
     }
 }
