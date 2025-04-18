@@ -46,8 +46,7 @@ import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
-import static net.mordgren.gtca.common.data.GTCAMaterials.Incoloy903;
-import static net.mordgren.gtca.common.data.GTCAMaterials.MAR_CE_M200;
+import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
 public class GTCAMachines {
     public static void init() {
@@ -789,6 +788,42 @@ public class GTCAMachines {
                     true
             )
             .register();
+
+    public static final MultiblockMachineDefinition NANOFORGE = REGISTRATE.multiblock("nano_forge", WorkableElectricMultiblockMachine::new)
+            .rotationState(RotationState.NON_Y_AXIS)
+            .recipeType(GTCARecipeTypes.NANOFORGE)
+            .appearanceBlock(GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING)
+            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .pattern(definition ->
+                            FactoryBlockPattern.start()
+                                    .aisle("###BBBBB###", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CDC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########")
+                                    .aisle("##BBBBBBB##", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CDC####", "####CBC####", "###CB#BC###", "###CB#BC###", "###CB#BC###", "###CB#BC###", "###BB#BB###", "###DD#DD###", "###BB#BB###", "###BB#BB###", "###BB#BB###", "###BB#BB###", "###DD#DD###", "###BB#BB###", "###CB#BC###", "###CB#BC###", "###CB#BC###", "###CB#BC###", "####CDC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CDC####", "####CBC####", "#####C#####", "#####C#####", "#####C#####", "#####C#####", "#####C#####", "###########", "###########")
+                                    .aisle("#BBBBBBBBK#", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "####B#B####", "####B#B####", "###B###B###", "###B###B###", "###B###B###", "###D###D###", "###B###B###", "##B#####B##", "##B#####B##", "###B###B###", "###D###D###", "###B###B###", "###B###B###", "###B###B###", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "#####B#####", "#####B#####", "#####B#####", "#####B#####", "#####B#####", "###########", "###########")
+                                    .aisle("#PBBBBBBBL#", "###B###B###", "###B###B###", "###B###B###", "###B###B###", "####B#B####", "####D#D####", "####B#B####", "####B#B####", "####B#B####", "###B###B###", "###B###B###", "###B###B###", "###D###D###", "###B###B###", "##B#####B##", "##B#####B##", "###B###B###", "###D###D###", "###B###B###", "###B###B###", "###B###B###", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "#####B#####", "#####B#####", "#####B#####", "#####B#####", "#####B#####", "###########", "###########")
+                                    .aisle("#PBBBBBBBM#", "###B###B###", "###B###B###", "###B###B###", "###B###B###", "####B#B####", "####D#D####", "####B#B####", "####B#B####", "####B#B####", "###B###B###", "###B###B###", "###B###B###", "###D###D###", "###B###B###", "##B#####B##", "##B#####B##", "###B###B###", "###D###D###", "###B###B###", "###B###B###", "###B###B###", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "#####B#####", "#####B#####", "#####B#####", "#####B#####", "#####B#####", "###########", "###########")
+                                    .aisle("#BBBBBBBBB#", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "####B#B####", "####B#B####", "###B###B###", "###B###B###", "###B###B###", "###D###D###", "###B###B###", "##B#####B##", "##B#####B##", "###B###B###", "###D###D###", "###B###B###", "###B###B###", "###B###B###", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####B#B####", "####D#D####", "####B#B####", "#####B#####", "#####B#####", "#####B#####", "#####B#####", "#####B#####", "###########", "###########")
+                                    .aisle("##BBBBBBB##", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CDC####", "####CBC####", "###CB#BC###", "###CB#BC###", "###CB#BC###", "###CB#BC###", "###BB#BB###", "###DD#DD###", "###BB#BB###", "###BB#BB###", "###BB#BB###", "###BB#BB###", "###DD#DD###", "###BB#BB###", "###CB#BC###", "###CB#BC###", "###CB#BC###", "###CB#BC###", "####CDC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CDC####", "####CBC####", "#####C#####", "#####C#####", "#####C#####", "#####C#####", "#####C#####", "###########", "###########")
+                                    .aisle("###BOJBB###", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CDC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "####CBC####", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########", "###########")
+                                    .where('#', Predicates.any())
+                                    .where('B', blocks(GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING.get()))
+                                    .where('C', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, StellarAlloy)))
+                                    .where('D', blocks(GTCABlocks.RADIANT_NAQUADAH_ALLOY_AIR_INTAKE_CASING.get()))
+                                    .where('J', Predicates.controller(Predicates.blocks(definition.get())))
+                                    .where('O', abilities(PartAbility.MAINTENANCE))
+                                    .where('P', blocks(GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING.get()).or(abilities(PartAbility.INPUT_ENERGY)))
+                                    .where('K', abilities(PartAbility.EXPORT_ITEMS))
+                                    .where('L', abilities(PartAbility.IMPORT_ITEMS))
+                                    .where('M', abilities(PartAbility.IMPORT_FLUIDS))
+                                    .build()
+            )
+            .workableCasingRenderer(
+                    GTCA.id("block/casing/rnac_casing"),
+                    GTCA.id("block/multiblock/aebf"),
+                    true
+            )
+            .register();
+
+
 
 /// TEST PCB FACTORY///
   public static final MultiblockMachineDefinition PCB_FACTORY_MKI = registerPcbFactory(

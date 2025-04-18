@@ -35,10 +35,13 @@ public class BLMaterials {
     public static Material NeodymiumOxide; // Dust
 
     public static void initMaterials(){
-        BLMaterials.MuddyBastnasiteRareEarthSolution = new Material.Builder(GTCA.id("muddy_bastnasite_rare_earth_solution"))
-                .fluid()
-                .color(0x9b6633)
-                .buildAndRegister().setFormula("??LaCeY??", true);
+
+             BLMaterials.MuddyBastnasiteRareEarthSolution = new Material.Builder(GTCA.id("muddy_bastnasite_rare_earth_solution"))
+                     .fluid()
+                     .color(0x9b6633)
+                     .buildAndRegister().setFormula("??LaCeY??", true);
+
+        // !!тут ошибка при рандате брат, хз почему!!
 
         BLMaterials.SteamCrackedBastnasiteMud = new Material.Builder(GTCA.id("steam_cracked_bastnasite_mud"))
                 .fluid()

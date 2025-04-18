@@ -3,6 +3,7 @@ package net.mordgren.gtca.common.data;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+import net.mordgren.gtca.common.data.BastnasiteLine.BLProxy;
 import net.mordgren.gtca.common.data.materials.*;
 
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
@@ -17,6 +18,7 @@ public class GTCAMaterials {
         GTCAFluids.init();
         GTCAPlasmas.init();
         oreProps();
+        // BLProxy.init();
     }
 
     // Fuels

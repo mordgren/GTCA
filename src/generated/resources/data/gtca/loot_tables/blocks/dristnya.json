@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gtca:nanoforge_casing"
+          "name": "gtca:dristnya"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "gtca:blocks/nanoforge_casing"
+  "random_sequence": "gtca:blocks/dristnya"
 }
