@@ -1,6 +1,7 @@
 package net.mordgren.gtca.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.common.data.GTElements;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAMaterials;
@@ -9,9 +10,16 @@ public class GTCAPlasmas {
     public static void init(){
 
 
-        GTCAMaterials.CelestialPlasma = new Material.Builder(GTCA.id("celestial_plasma"))
-                .plasma()
-                .color(0xffffff)
+        GTCAMaterials.CelestialTungsten = new Material.Builder(GTCA.id("celestial_tungsten"))
+                .plasma(10000)
+                .ingot()
+                .flags(
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_FRAME
+                )
+                .color(0x343434)
                 .buildAndRegister()
                 .setFormula("✦✧✦",true);
 

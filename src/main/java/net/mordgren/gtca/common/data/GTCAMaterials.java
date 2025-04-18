@@ -95,11 +95,25 @@ public class GTCAMaterials {
     public static Material Inconel792;
     public static Material CinobiteA241;
     public static Material Pikyonium64Y;
+
     public static Material Neutronex;
     public static Material Duranium_X;
     public static Material Berwollium;
+
     public static Material AdamantiumAlloy;
     public static Material ArtheriumSn;
+
+    public static Material ElectricalSteel;
+    public static Material DarkSteel;
+    public static Material EndSteel;
+    public static Material MelodicAlloy;
+    public static Material StellarAlloy;
+    public static Material EnrichedHolmium;
+    public static Material Stellite79;
+    public static Material SiliconCarbide;
+    public static Material QuantumAlloy;
+
+
 
 
     // Dusts
@@ -120,7 +134,7 @@ public class GTCAMaterials {
 
     // Plasma
 
-    public static Material CelestialPlasma;
+    public static Material CelestialTungsten;
     public static Material HydrogenPlasma;
     public static Material SulfurPlasma;
     public static Material CalciumPlasma;
