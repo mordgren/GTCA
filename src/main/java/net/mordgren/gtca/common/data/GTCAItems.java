@@ -36,6 +36,7 @@ public class GTCAItems {
 
     public static ItemEntry<Item> QuantumAnomaly = REGISTRATE.item("quantum_anomaly", Item::new).register();
 
+    public static ItemEntry<Item> PNEresistor = REGISTRATE.item("pne_resistor", Item::new).register();
 
 
 // Nanites

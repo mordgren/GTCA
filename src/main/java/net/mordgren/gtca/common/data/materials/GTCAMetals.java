@@ -567,7 +567,8 @@ public class GTCAMetals {
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
-                        MaterialFlags.GENERATE_FRAME
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_BOLT_SCREW
                 )
                 .blastTemp(6999, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
                 .buildAndRegister();
@@ -579,7 +580,8 @@ public class GTCAMetals {
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
-                        MaterialFlags.GENERATE_FRAME
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_BOLT_SCREW
                 )
                 .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM])
                 .buildAndRegister();
@@ -591,7 +593,8 @@ public class GTCAMetals {
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
-                        MaterialFlags.GENERATE_FRAME
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_BOLT_SCREW
                 )
                 .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.EV])
                 .buildAndRegister();
@@ -602,8 +605,9 @@ public class GTCAMetals {
                         .fluid()
                         .flags(
                                 MaterialFlags.GENERATE_PLATE,
-                        MaterialFlags.GENERATE_GEAR,
-                        MaterialFlags.GENERATE_FRAME
+                                MaterialFlags.GENERATE_GEAR,
+                                MaterialFlags.GENERATE_FRAME,
+                                MaterialFlags.GENERATE_BOLT_SCREW
                         )
                 .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
                         .buildAndRegister();
@@ -615,7 +619,8 @@ public class GTCAMetals {
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
-                        MaterialFlags.GENERATE_FRAME
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_BOLT_SCREW
                 )
                 .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV])
                 .buildAndRegister()

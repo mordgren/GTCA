@@ -135,6 +135,10 @@ public class GTCAMaterials {
     // Elements
     public static Material Adamantium;
     public static Material Orundum;
+    public static Material Holmium;
+    public static Material Germanium;
+    public static Material Ohriharukon;
+
 
 
 
