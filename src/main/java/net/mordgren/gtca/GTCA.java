@@ -60,7 +60,6 @@ public class GTCA {
         GTCAMaterials.init();
         GTMaterialAdjustments.init();
         GTCAElements.init();
-        BLProxy.init();
     }
 
     public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {

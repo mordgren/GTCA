@@ -18,7 +18,7 @@ public class GTCAMaterials {
         GTCAFluids.init();
         GTCAPlasmas.init();
         oreProps();
-        // BLProxy.init();
+        BLProxy.init();
     }
 
     // Fuels
