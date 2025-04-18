@@ -36,22 +36,6 @@ public class GTCAElementMetals {
                 .element(GTCAElements.Or)
                 .buildAndRegister();
 
-        GTCAMaterials.Holmium = new Material.Builder(GTCA.id("holmium"))
-                .color(0xb2b2b2)
-                .ingot()
-                .liquid(new FluidBuilder().temperature(1270))
-                .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
-                .element(GTCAElements.Hl)
-                .buildAndRegister();
-
-        GTCAMaterials.Germanium = new Material.Builder(GTCA.id("germanium"))
-                .color(0xcdc1b7)
-                .ingot()
-                .liquid(new FluidBuilder().temperature(1074))
-                .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
-                .element(GTCAElements.Ge)
-                .buildAndRegister();
-
         GTCAMaterials.Ohriharukon = new Material.Builder(GTCA.id("ohriharukon"))
                 .color(0x004d25)
                 .ingot()

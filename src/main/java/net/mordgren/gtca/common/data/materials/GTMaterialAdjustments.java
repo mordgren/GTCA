@@ -3,6 +3,7 @@ package net.mordgren.gtca.common.data.materials;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.DustProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_FOIL;
@@ -21,11 +22,17 @@ public class GTMaterialAdjustments {
 
         addDust(Zirconium);
         addDust(Terbium);
-        addDust(Holmium);
+        addIngot(Holmium);
+        addIngot(Germanium);
     }
     public static void addDust(Material material) {
         if (!material.hasProperty(PropertyKey.DUST)) {
             material.setProperty(PropertyKey.DUST, new DustProperty());
+        }
+    }
+    public static void addIngot(Material material) {
+        if (!material.hasProperty(PropertyKey.INGOT)) {
+            material.setProperty(PropertyKey.INGOT, new IngotProperty());
         }
     }
 }
