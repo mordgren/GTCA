@@ -8,6 +8,8 @@ public class BLMaterials {
 
     public static Material MuddyBastnasiteRareEarthSolution;
     public static Material SteamCrackedBastnasiteMud;
+    public static Material HexafluorosilicicAcid;
+    public static Material Sodiumfluorosilicate;
     public static Material ConditionedBastnasiteMud;
     public static Material DilutedBastnasiteMud;
     public static Material FilteredBastnasiteMud;
@@ -45,6 +47,16 @@ public class BLMaterials {
                 .fluid()
                 .color(0x996533)
                 .buildAndRegister().setFormula("??LaCeY??", true);
+
+        BLMaterials.HexafluorosilicicAcid = new Material.Builder(GTCA.id("hexa_fluorosilicic_acid"))
+                .fluid()
+                .color(0x255789)
+                .buildAndRegister().setFormula("H2SiF6", true);
+
+        BLMaterials.Sodiumfluorosilicate = new Material.Builder(GTCA.id("sodiumfluorosilicate"))
+                .fluid()
+                .color(0xa16a34)
+                .buildAndRegister().setFormula("Na2SiF6", true);
 
         BLMaterials.ConditionedBastnasiteMud = new Material.Builder(GTCA.id("conditioned_bastnasite_mud"))
                 .fluid()

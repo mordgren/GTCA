@@ -2,6 +2,7 @@ package net.mordgren.gtca.common.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.GTCA;
+import net.mordgren.gtca.common.data.BastnasiteLine.BLProxy;
 import net.mordgren.gtca.common.data.recipes.*;
 import net.mordgren.gtca.common.data.GTNNIntegration.GTNNIntProxy;
 import net.mordgren.gtca.common.data.recipes.fuel.AltFuels;
@@ -22,6 +23,8 @@ public class GTCARecipeInit {
             AlloyRecipes.init(provider);
             PlasmaRecipes.init(provider);
             SilamidLine.init(provider);
+
+            BLProxy.init(provider);
 
             GreenHouseRecipes.init(provider);
             PolymerizerRecipes.init(provider);

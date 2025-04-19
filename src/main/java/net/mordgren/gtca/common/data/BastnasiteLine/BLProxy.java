@@ -13,6 +13,8 @@ public class BLProxy {
     }
 
     public static void init(Consumer<FinishedRecipe> provider) {
-
+        if (ConfigHandler.INSTANCE.enableBastnasiteLine) {
+            BLRecipes.init(provider);
+        }
     }
 }

@@ -1,6 +1,5 @@
 package net.mordgren.gtca.common.data.materials;
 
-import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
@@ -18,7 +17,7 @@ public class GTCAMetals {
     public static void init(){
 
         ///MISC
-        GTCAMaterials.SiliconTetrachloride = new Material.Builder(GTCEu.id("silicon_tetrachloride"))
+        GTCAMaterials.SiliconTetrachloride = new Material.Builder(GTCA.id("silicon_tetrachloride"))
                 .dust()
                 .color(0x6e7592)
                 .components(Silicon, 1, Chlorine, 4)
