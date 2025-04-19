@@ -95,6 +95,9 @@ public class GTCABlocks {
     public static BlockEntry<Block> BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("bpf_casing",
             GTCA.id("block/casing/bpf_casing"));
 
+    public static BlockEntry<Block> REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING = createCasingBlock("reinforced_rpp_casing",
+            GTCA.id("block/casing/reinforced_rpp_casing"));
+
     public static BlockEntry<Block> RADIANT_NAQUADAH_ALLOY_AIR_INTAKE_CASING = createCasingBlock("air_intake_rnac",
             GTCA.id("block/casing/air_intake_rnac"));
 
