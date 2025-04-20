@@ -840,8 +840,8 @@ public class GTCAMachines {
 
   public static final MultiblockMachineDefinition PCB_FACTORY_MKIII = registerPcbFactory(
           "pcb_factory_mkiii", UEV,
-          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING, null, null,
-          GTCA.id("block/casing/bpf_casing"),
+          GTCABlocks.RADIANT_PROOF_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING, null, null,
+          GTCA.id("block/casing/radiant_proof_reinforced_casing"),
           GTCA.id("block/multiblock/pcb_factory"));
 
 
