@@ -310,7 +310,7 @@ public class AlloyRecipes {
                 .inputItems(GTCAHelper.getItem("dust", Adamantium, 5))
                 .inputItems(GTCAHelper.getItem("dust", NaquadahEnriched, 2))
                 .inputItems(GTCAHelper.getItem("dust", Lanthanum, 3))
-                .outputItems(GTCAHelper.getItem("dust", Berwollium, 10))
+                .outputItems(GTCAHelper.getItem("dust", AdamantiumAlloy, 10))
                 .save(provider);
 
 
