@@ -5,18 +5,20 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.common.data.GCYMRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.mordgren.gtca.common.data.GTCAItems;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
 public class AlloyRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
-        OldOne(provider);
+        LowMidTier(provider);
         NewOne(provider);
     }
 
-    private static void OldOne(Consumer<FinishedRecipe> provider) {
+    private static void LowMidTier(Consumer<FinishedRecipe> provider) {
 
         MIXER_RECIPES.recipeBuilder("tm_20_mn_alloy").EUt(GTValues.VA[GTValues.IV]).duration(380)
                 .inputItems(GTCAHelper.getItem("dust", Tungsten, 4))
@@ -206,10 +208,112 @@ public class AlloyRecipes {
                 .inputItems(GTCAHelper.getItem("dust", Invar, 5))
                 .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.EglinSteelCompound, 10))
                 .save(provider);
-
     }
 
     private static void NewOne(Consumer<FinishedRecipe> provider) {
+
+        MIXER_RECIPES.recipeBuilder("electrical_steel").EUt(GTValues.VA[GTValues.LV]).duration(160)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("dust", Iron, 1))
+                .inputItems(GTCAHelper.getItem("dust", Silicon, 1))
+                .inputItems(GTCAHelper.getItem("dust", Coal, 1))
+                .outputItems(GTCAHelper.getItem("dust", ElectricalSteel, 3))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("electrical_steel").EUt(GTValues.VA[GTValues.LV]).duration(160)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("dust", Iron, 1))
+                .inputItems(GTCAHelper.getItem("dust", Silicon, 1))
+                .inputItems(GTCAHelper.getItem("dust", Coal, 1))
+                .outputItems(GTCAHelper.getItem("dust", ElectricalSteel, 3))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("dark_steel").EUt(GTValues.VA[GTValues.MV]).duration(200)
+                .circuitMeta(5)
+                .inputItems(GTCAHelper.getItem("dust", ElectricalSteel, 1))
+                .inputItems(GTCAHelper.getItem("dust", Coal, 1))
+                .inputItems(GTCAHelper.getItem("dust", Obsidian, 1))
+                .outputItems(GTCAHelper.getItem("dust", DarkSteel, 3))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("end_steel").EUt(GTValues.VA[GTValues.EV]).duration(190)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("dust", DarkSteel, 1))
+                .inputItems(GTCAHelper.getItem("dust", Endstone, 1))
+                .inputItems(GTCAHelper.getItem("dust", Tungsten, 1))
+                .outputItems(GTCAHelper.getItem("dust", EndSteel, 3))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("melodic_alloy").EUt(GTValues.VA[GTValues.EV]).duration(290)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("dust", EndSteel, 1))
+                .inputItems(GTCAHelper.getItem("dust", EnderEye, 1))
+                .inputItems(GTCAHelper.getItem("dust", Ohriharukon, 1))
+                .outputItems(GTCAHelper.getItem("dust", MelodicAlloy, 3))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("stellar_alloy").EUt(GTValues.VA[GTValues.IV]).duration(300)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("dust", MelodicAlloy, 1))
+                .inputItems(GTCAHelper.getItem("dust", NetherStar, 1))
+                .inputItems(GTCAHelper.getItem("dust", Naquadah, 1))
+                .outputItems(GTCAHelper.getItem("dust", StellarAlloy, 3))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("stellar_alloy").EUt(GTValues.VA[GTValues.IV]).duration(300)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("dust", MelodicAlloy, 1))
+                .inputItems(GTCAHelper.getItem("dust", NetherStar, 1))
+                .inputItems(GTCAHelper.getItem("dust", Naquadah, 1))
+                .outputItems(GTCAHelper.getItem("dust", StellarAlloy, 3))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("enriched_holmium").EUt(GTValues.VA[GTValues.ZPM]).duration(350)
+                .circuitMeta(4)
+                .inputItems(GTCAHelper.getItem("dust", Holmium, 1))
+                .inputItems(GTCAHelper.getItem("dust", NaquadahEnriched, 4))
+                .outputItems(GTCAHelper.getItem("dust", EnrichedHolmium, 5))
+                .save(provider);
+
+        LASER_ENGRAVER_RECIPES.recipeBuilder("celestial_tungsten").EUt(GTValues.VA[GTValues.UEV]).duration(3600)
+                .inputItems(GTCAHelper.getItem("dust", Tungsten, 6))
+                .chancedInput(GTCAItems.QuantumAnomaly.asStack(), 0, 0)
+                .outputItems(GTCAHelper.getItem("dust", CelestialTungsten, 1))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("stellite_79").EUt(GTValues.VA[GTValues.EV]).duration(290)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("dust", Cobalt, 7))
+                .inputItems(GTCAHelper.getItem("dust", Chromium, 7))
+                .inputItems(GTCAHelper.getItem("dust", Manganese, 4))
+                .inputItems(GTCAHelper.getItem("dust", Titanium, 2))
+                .outputItems(GTCAHelper.getItem("dust", Stellite79, 20))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("silicon_carbide").EUt(GTValues.VA[GTValues.LV]).duration(100)
+                .circuitMeta(1)
+                .inputItems(GTCAHelper.getItem("dust", Carbon, 1))
+                .inputItems(GTCAHelper.getItem("dust", Silicon, 1))
+                .outputItems(GTCAHelper.getItem("dust", SiliconCarbide, 2))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("bewrollium").EUt(GTValues.VA[GTValues.EV]).duration(210)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("dust", Beryllium, 4))
+                .inputItems(GTCAHelper.getItem("dust", Molybdenum, 2))
+                .inputItems(GTCAHelper.getItem("dust", Tungsten, 1))
+                .outputItems(GTCAHelper.getItem("dust", Berwollium, 7))
+                .save(provider);
+
+        MIXER_RECIPES.recipeBuilder("adamantium_alloy").EUt(GTValues.VA[GTValues.LuV]).duration(490)
+                .circuitMeta(1)
+                .inputItems(GTCAHelper.getItem("dust", Adamantium, 5))
+                .inputItems(GTCAHelper.getItem("dust", NaquadahEnriched, 2))
+                .inputItems(GTCAHelper.getItem("dust", Lanthanum, 3))
+                .outputItems(GTCAHelper.getItem("dust", Berwollium, 10))
+                .save(provider);
+
+
     }
 
 }

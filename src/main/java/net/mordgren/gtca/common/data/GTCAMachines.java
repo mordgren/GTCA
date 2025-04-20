@@ -828,13 +828,13 @@ public class GTCAMachines {
 /// TEST PCB FACTORY///
   public static final MultiblockMachineDefinition PCB_FACTORY_MKI = registerPcbFactory(
           "pcb_factory_mki", UV,
-          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, null, EglinSteel, null,
+          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, null, Neutronex, null,
           GTCA.id("block/casing/bpf_casing"),
           GTCA.id("block/multiblock/pcb_factory"));
 
   public static final MultiblockMachineDefinition PCB_FACTORY_MKII = registerPcbFactory(
           "pcb_factory_mkii", UHV,
-          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, EglinSteel, Duranium,
+          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, Neutronex, Duranium,
           GTCA.id("block/casing/bpf_casing"),
           GTCA.id("block/multiblock/pcb_factory"));
 

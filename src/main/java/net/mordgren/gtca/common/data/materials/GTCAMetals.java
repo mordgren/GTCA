@@ -620,7 +620,7 @@ public class GTCAMetals {
 
         GTCAMaterials.AdamantiumAlloy = new Material.Builder(GTCA.id("adamantium_alloy"))
                         .color(0xd2d4da)
-                        .components(GTCAMaterials.Adamantium, 5,GTMaterials.Naquadria, 2,GTMaterials.Lanthanum, 3)
+                        .components(GTCAMaterials.Adamantium, 5, GTMaterials.NaquadahEnriched, 2,GTMaterials.Lanthanum, 3)
                         .fluid()
                         .flags(
                                 MaterialFlags.GENERATE_PLATE,
