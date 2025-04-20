@@ -7,17 +7,21 @@ import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.common.data.GTCABlocks;
+import net.mordgren.gtca.common.data.GTCAItems;
+import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
 
+import static com.gregtechceu.gtceu.api.GTValues.LuV;
+import static com.gregtechceu.gtceu.api.GTValues.VA;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ALLOY_SMELTER_RECIPES;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLER_RECIPES;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
 public class CasingRecipes {
@@ -202,6 +206,94 @@ public class CasingRecipes {
                 .inputItems(GTCAHelper.getItem("frame", NaquadahAlloy, 1))
                 .inputItems(GTCAHelper.getItem("plate", ArtheriumSn, 6))
                 .outputItems(GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("radiant_naquadah_casing").EUt(GTValues.VA[GTValues.UV]).duration(490)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("frame", NaquadahAlloy, 1))
+                .inputItems(GTCAHelper.getItem("plate", NaquadahAlloy, 6))
+                .outputItems(GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("radiant_air_intake_naquadah_casing").EUt(GTValues.VA[GTValues.UV]).duration(410)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("frame", NaquadahAlloy, 1))
+                .inputItems(GTCAHelper.getItem("plate", NaquadahAlloy, 6))
+                .inputItems(GTItems.ELECTRIC_MOTOR_LuV, 2)
+                .inputItems(GTCAHelper.getItem("rotor", NaquadahAlloy, 2))
+                .outputItems(GTCABlocks.RADIANT_NAQUADAH_ALLOY_AIR_INTAKE_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("reinforced_phontl_casing").EUt(GTValues.VA[GTValues.UV]).duration(570)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("frame", Neutronium, 1))
+                .inputItems(GTCAHelper.getItem("plate", EnrichedHolmium, 6))
+                .outputItems(GTCABlocks.REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("pne_capacitor").EUt(GTValues.VA[GTValues.ZPM]).duration(570)
+                .circuitMeta(6)
+                .inputItems(GTCAItems.PNEresistor, 2)
+                .inputItems(GTCAHelper.getItem("plate", Neutronex, 4))
+                .inputItems(GTCAHelper.getItem("screw", Berwollium, 2))
+                .outputItems(GTCABlocks.P_N_E_CAPACITOR, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("pne_laser_activator").EUt(GTValues.VA[GTValues.ZPM]).duration(700)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("lens", NetherStar, 1))
+                .inputItems(GTCAItems.PNEresistor, 1)
+                .inputItems(GTCAHelper.getItem("plate", Duranium_X, 4))
+                .inputItems(GTCAHelper.getItem("plate", Neutronex, 4))
+                .inputItems(GTCAHelper.getItem("frame", Berwollium, 1))
+                .outputItems(GTCABlocks.P_N_E_LASER_ACTIVATOR, 1)
+                .save(provider);
+
+
+        ASSEMBLER_RECIPES.recipeBuilder("ultra_inductive_casing").EUt(GTValues.VA[GTValues.UV]).duration(750)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("doublePlate", Duranium_X, 4))
+                .inputItems(GTCAHelper.getItem("foil", Osmiridium, 8))
+                .inputItems(GTCAHelper.getItem("plate", NaquadahAlloy, 2))
+                .inputItems(GTCAHelper.getItem("frame", EglinSteel, 1))
+                .outputItems(GTCABlocks.ULTRA_INDUCTIVE_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("reinforced_radiantproof_casing").EUt(GTValues.VA[GTValues.UHV]).duration(750)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("plate", QuantumAlloy, 6))
+                .inputItems(GTCAHelper.getItem("frame", CelestialTungsten, 1))
+                .outputItems(GTCABlocks.RADIANT_PROOF_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("borsilicate_iridium_glass").EUt(GTValues.VA[GTValues.IV]).duration(600)
+                .circuitMeta(6)
+                .inputItems(GTCABlocks.REINFORCED_GLASS, 1)
+                .inputFluids(Iridium.getFluid(432))
+                .outputItems(GTCABlocks.BORSILICATE_REINFORCED_IRIDIUM_GLASS, 1)
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder(("stabilized_transmutation_core")).EUt(GTValues.VA[GTValues.UV]).duration(1700)
+                .inputItems(GTItems.FIELD_GENERATOR_ZPM, 2)
+                .inputItems(GTItems.VOLTAGE_COIL_ZPM, 4)
+                .inputItems(GTItems.NEUTRON_REFLECTOR, 2)
+                .inputItems(GTMachines.HULL[GTValues.UV].asStack(1))
+                .inputItems(GTCAHelper.getItem("bolt", TriniumNaquadahCarbonite, 12))
+                .inputItems(CustomTags.LuV_CIRCUITS, 1)
+                .inputFluids(Duranium_X.getFluid(432))
+                .inputFluids(Neutronex.getFluid(864))
+                .outputItems(GTCABlocks.STABILIZED_TRANSMUTATION_CORE.asStack())
+                .scannerResearch(b -> b
+                        .researchStack(GTCAItems.HydrogenIon.asStack())
+                        .duration(1600)
+                        .EUt(VA[LuV]))
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("pn_casing").EUt(GTValues.VA[GTValues.ZPM]).duration(680)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("doublePlate", Neutronex, 4))
+                .inputItems(GTCAHelper.getItem("frame", Neutronex, 1))
+                .outputItems(GTCABlocks.P_N_PROTECTIVE_CASING, 1)
                 .save(provider);
     }
 }
