@@ -720,7 +720,7 @@ public class GTCAMachines {
                             .build()
             )
             .tooltips(
-                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotation cell"),
                     Component.translatable("gtca.machine.flcr_desc.tooltip")
             )
             .workableCasingRenderer(
@@ -784,7 +784,7 @@ public class GTCAMachines {
 //            )
             .workableCasingRenderer(
                     GTCA.id("block/casing/p_n_casing"),
-                    GTCA.id("block/multiblock/aebf"),
+                    GTCA.id("block/multiblock/tegmark_forge"),
                     true
             )
             .register();
@@ -818,7 +818,7 @@ public class GTCAMachines {
             )
             .workableCasingRenderer(
                     GTCA.id("block/casing/rnac_casing"),
-                    GTCA.id("block/multiblock/aebf"),
+                    GTCA.id("block/multiblock/nanoforge"),
                     true
             )
             .register();
@@ -828,21 +828,21 @@ public class GTCAMachines {
 /// TEST PCB FACTORY///
   public static final MultiblockMachineDefinition PCB_FACTORY_MKI = registerPcbFactory(
           "pcb_factory_mki", UV,
-          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, null, StainlessSteel, null,
+          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, null, EglinSteel, null,
           GTCA.id("block/casing/bpf_casing"),
-          GTCA.id("block/multiblock/aebf"));
+          GTCA.id("block/multiblock/pcb_factory"));
 
   public static final MultiblockMachineDefinition PCB_FACTORY_MKII = registerPcbFactory(
           "pcb_factory_mkii", UHV,
-          GTCABlocks.INCONEL718_CASING, GTCABlocks.DURAL_CASING, StainlessSteel, Duranium,
-          GTCA.id("block/casing/inconel718_casing"),
-          GTCA.id("block/multiblock/aebf"));
+          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.REINFORCED_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, EglinSteel, Duranium,
+          GTCA.id("block/casing/bpf_casing"),
+          GTCA.id("block/multiblock/pcb_factory"));
 
   public static final MultiblockMachineDefinition PCB_FACTORY_MKIII = registerPcbFactory(
           "pcb_factory_mkiii", UEV,
-          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.SHD_CASING, null, null,
+          GTCABlocks.BASIC_PHOTOLITHOGRAPHIC_FRAMEWORK_CASING, GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING, null, null,
           GTCA.id("block/casing/bpf_casing"),
-          GTCA.id("block/multiblock/aebf"));
+          GTCA.id("block/multiblock/pcb_factory"));
 
 
   public static MultiblockMachineDefinition registerPcbFactory(String name, int tier,
@@ -968,7 +968,7 @@ public class GTCAMachines {
                                   .build()
                   )
 //            .tooltips(
-//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
+//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotation cell"),
 //                    Component.translatable("gtca.machine.flcr_desc.tooltip")
 //            )
                   .workableCasingRenderer(

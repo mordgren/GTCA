@@ -321,7 +321,8 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING,
                         MaterialFlags.GENERATE_BOLT_SCREW,
-                        MaterialFlags.GENERATE_LONG_ROD
+                        MaterialFlags.GENERATE_LONG_ROD,
+                        MaterialFlags.GENERATE_FRAME
 
                 )
                 .dust()
