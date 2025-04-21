@@ -22,6 +22,7 @@ public class GTMaterialAdjustments {
 
         Holmium.addFlags(GENERATE_FOIL);
 
+        Carbon.addFlags(MaterialFlags.FORCE_GENERATE_BLOCK);
         NiobiumTitanium.addFlags(MaterialFlags.GENERATE_FRAME);
         Titanium.addFlags(MaterialFlags.GENERATE_FOIL);
         Stellite100.addFlags(MaterialFlags.GENERATE_GEAR, MaterialFlags.GENERATE_RING);

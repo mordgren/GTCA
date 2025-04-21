@@ -140,9 +140,9 @@ public class GTCARecipeTypes {
             .setEUIO(IO.IN);
 
     public static final GTRecipeType NANOFORGE = register("nano_forge", MULTIBLOCK)
-            .setMaxIOSize(4,4,2,0)
+            .setMaxIOSize(6,2,3,0)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
-            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)
             .setSound(GTCASounds.NANOFORGE)
             .setEUIO(IO.IN);

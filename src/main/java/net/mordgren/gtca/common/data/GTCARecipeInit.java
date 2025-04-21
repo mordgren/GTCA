@@ -23,6 +23,7 @@ public class GTCARecipeInit {
             AlloyRecipes.init(provider);
             PlasmaRecipes.init(provider);
             SilamidLine.init(provider);
+            NanoForgeRecipes.init(provider);
 
             BLProxy.init(provider);
 

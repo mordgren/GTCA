@@ -769,7 +769,7 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_ROD
                 )
-                .blastTemp(9002, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.UEV], 3500)
+                .blastTemp(9002, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.UV], 4900)
                 .buildAndRegister()
                 .setFormula("(Co7Cr7Mn4Ti2)(SiC)GaAmPdBiGe",true);
 
