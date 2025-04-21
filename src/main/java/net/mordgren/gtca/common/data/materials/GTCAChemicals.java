@@ -88,7 +88,7 @@ public class GTCAChemicals {
         GTCAMaterials.Silamid = new Material.Builder(GTCA.id("silamid"))
                 .fluid()
                 .ingot()
-                .flags(MaterialFlags.GENERATE_FOIL)
+                .flags(MaterialFlags.GENERATE_PLATE)
                 .color(0x583b58)
                 .buildAndRegister()
                 .setFormula("SiN2H2O",true);
