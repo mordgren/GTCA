@@ -1,10 +1,14 @@
 package net.mordgren.gtca.common.data;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.block.ICoilType;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.gui.GuiTextures;
+import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.common.data.GTMachines;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
 import com.gregtechceu.gtceu.utils.ResearchManager;
 import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
@@ -18,8 +22,9 @@ import net.mordgren.gtca.common.util.GTCASounds;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.register;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.hvCappedTankSizeFunction;
+import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.registerSimpleMachines;
 
 public class GTCARecipeTypes {
 
@@ -146,4 +151,22 @@ public class GTCARecipeTypes {
             .setMaxTooltips(4)
             .setSound(GTCASounds.NANOFORGE)
             .setEUIO(IO.IN);
+
+    // singleblock machines
+
+
+    public static final GTRecipeType UU_MATTER_FABRICATOR = register("uu_matter_fabricator", ELECTRIC)
+            .setMaxIOSize(0,0,1,1)
+            .setSlotOverlay(true, true, GuiTextures.FLUID_SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.CHEMICAL)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType UU_MATTER_AMPLIFICATOR = register("uu_matter_amplificator", ELECTRIC)
+            .setMaxIOSize(1,0,0,1)
+            .setSlotOverlay(true, true, GuiTextures.FLUID_SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.CHEMICAL)
+            .setEUIO(IO.IN);
+
 }

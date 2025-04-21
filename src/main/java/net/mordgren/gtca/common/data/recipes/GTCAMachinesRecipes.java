@@ -24,6 +24,10 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLER_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLY_LINE_RECIPES;
 import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.DISTILLATION_TOWER;
 import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.ELECTRIC_BLAST_FURNACE;
+import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
+import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.HULL;
+import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
+import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
 public class GTCAMachinesRecipes {
@@ -44,7 +48,7 @@ public class GTCAMachinesRecipes {
                 'C', CustomTags.HV_CIRCUITS,
                 'S', new UnificationEntry(TagPrefix.pipeLargeFluid, StainlessSteel),
                 'W', new UnificationEntry(TagPrefix.cableGtSingle, Gold),
-                'H', HULL[GTValues.HV].asStack());
+                'H', GTMachines.HULL[GTValues.HV].asStack());
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "advanced_ebf",
                 /// Output
@@ -307,6 +311,13 @@ public class GTCAMachinesRecipes {
                 .inputFluids(Duranium_X.getFluid(2592))
                 .outputItems(GTCAMachines.TEGMARK_FORGE.asStack())
                 .save(provider);
+
+        registerMachineRecipe(provider, GTCAMachines.MATTER_FABRICATOR, "ICI", "KMK", "ICI", 'M', HULL, 'C', CIRCUIT,
+                'I', FIELD_GENERATOR, 'K', CABLE_TIER_UP_HEX);
+
+        registerMachineRecipe(provider, GTCAMachines.MATTER_AMPLIFICATOR, "ICI", "KMK", "FCJ", 'M', HULL, 'C', CIRCUIT,
+                'I', FIELD_GENERATOR, 'K', CABLE_TIER_UP_HEX, 'J', SENSOR, 'F', EMITTER);
+
 
     }
 }

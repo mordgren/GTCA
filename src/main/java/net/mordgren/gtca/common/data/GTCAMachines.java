@@ -20,6 +20,7 @@ import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
 import com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.utils.BlockInfo;
@@ -34,6 +35,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.GTCARegistration;
 import net.mordgren.gtca.common.util.*;
+import net.mordgren.gtca.common.util.machine_builder.MatterAmplificatorMachine;
+import net.mordgren.gtca.common.util.machine_builder.MatterFabricatorMachine;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -45,6 +48,7 @@ import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.*;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
@@ -54,7 +58,34 @@ public class GTCAMachines {
     }
 
 
+    public static final MachineDefinition[] MATTER_FABRICATOR = GTMachineUtils.registerTieredMachines("matter_fabricator",
+            MatterFabricatorMachine::new,
+            (tier, builder) -> builder
+                    .rotationState(RotationState.NON_Y_AXIS)
+                    .recipeModifier(GTRecipeModifiers.OC_PERFECT)
+                    .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCA.id("matter_fabricator"),
+                            GTCARecipeTypes.UU_MATTER_FABRICATOR))
+                    .tooltips(workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64,
+                            GTCARecipeTypes.UU_MATTER_FABRICATOR, defaultTankSizeFunction.apply(tier), false))
+                    .recipeType(GTCARecipeTypes.UU_MATTER_FABRICATOR)
+                    .workableTieredHullRenderer(GTCA.id("block/machines/matter_fabricator"))
+                    .register(),
+            HIGH_TIERS);
 
+
+    public static final MachineDefinition[] MATTER_AMPLIFICATOR = GTMachineUtils.registerTieredMachines("matter_amplificator",
+            MatterAmplificatorMachine::new,
+            (tier, builder) -> builder
+                    .rotationState(RotationState.NON_Y_AXIS)
+                    .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCA.id("matter_amplificator"),
+                            GTCARecipeTypes.UU_MATTER_AMPLIFICATOR))
+                    .tooltips(workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64,
+                            GTCARecipeTypes.UU_MATTER_AMPLIFICATOR, defaultTankSizeFunction.apply(tier), true))
+                    .recipeModifier(GTRecipeModifiers.OC_PERFECT)
+                    .recipeType(GTCARecipeTypes.UU_MATTER_AMPLIFICATOR)
+                    .workableTieredHullRenderer(GTCA.id("block/machines/matter_amplificator"))
+                    .register(),
+            HIGH_TIERS);
 
     /// STEAM PRESSURIZER ///
     public static final MultiblockMachineDefinition STEAM_PRESSURIZER = REGISTRATE.multiblock("steam_pressurizer", WorkableElectricMultiblockMachine::new)
