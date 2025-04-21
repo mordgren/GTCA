@@ -28,6 +28,15 @@
   "gtceu.isamill":"IsaMill",
   "block.gtca.flotation_cell_regulator":"Flotation Cell Regulator",
   "gtceu.flotation_cell_regulator":"Flotation Cell Regulator",
+  "block.gtca.tegmark_forge":"Tegmark® Forge",
+  "gtceu.tegmark_forge":"Tegmark® Forge",
+  "block.gtca.nano_forge":"Nano Forge",
+  "gtceu.nano_forge":"Nano Forge",
+  "gtceu.pcb_factory":"PCB Factory",
+  "block.gtca.pcb_factory_mki":"PCB Factory MKI",
+  "block.gtca.pcb_factory_mkii":"PCB Factory MKII",
+  "block.gtca.pcb_factory_mkiii":"PCB Factory MKIII",
+
 
 
 
@@ -52,6 +61,17 @@
   "block.gtca.isa_mill_gearbox":"IsaMill Gearbox",
   "block.gtca.flcr_casing_type_i":"Flotation Cell Casings",
   "block.gtca.flcr_casing_type_ii":"Inconel Reinforced Casings",
+  "block.gtca.u_i_casing":"Ultra Inductive Casing",
+  "block.gtca.stabilized_transmutation_core":"Stabilized Transmutation Core",
+  "block.gtca.p_n_casing":"P/N Protective Casing",
+  "block.gtca.bpf_casing":"Basic Photolithographic Framework Casing",
+  "block.gtca.reinforced_rpp_casing":"Reinforced Photolithographic Framework Casing",
+  "block.gtca.radiant_proof_reinforced_casing":"Radiant Proof Photolithographic Framework Casing",
+  "block.gtca.air_intake_rnac":"Radiant Naquadah Alloy Air Intake",
+  "block.gtca.rnac_casing":"Radiant Naquadah Alloy Casing",
+  "block.gtca.borsilicate_reinforced_iridium_glass":"Borsilicate Reinforced Iridium Glass",
+  "block.gtca.p_n_e_capacitor":"P/N/E Capacitor",
+  "block.gtca.p_n_e_laser_activator":"P/N/E Laser Activator",
 
   "block.gtca.proton_cell_battery":"LuV Proton Capacitor",
   "block.gtca.electron_cell_battery":"ZPM Electron Capacitor",
@@ -91,13 +111,32 @@
   "material.gtca.trinium_naquadah_carbonite" : "Trinium Naquadah Carbonite",
   "material.gtca.nitinol60" : "Nitinol-60",
   "material.gtca.inconel792" : "Inconel-792",
-  "material.gtceu.zirconium_gtca" : "Zirconium",
   "material.gtca.cinobite_a241" : "Cinobite-A241",
   "material.gtca.pikyonium64_y" : "Pikyonium-64Y",
-
-
+  "material.gtca.neutronex" : "Neutronex",
+  "material.gtca.duranium_x" : "Duranium-X",
+  "material.gtca.berwollium" : "Berwollium",
+  "material.gtca.adamantium_alloy" : "Adamantium Alloy",
+  "material.gtca.artherium_sn" : "Artherium-Sn",
+  "material.gtca.electrical_steel" : "Electrical Steel",
+  "material.gtca.dark_steel" : "Dark Steel",
+  "material.gtca.end_steel" : "End Steel",
+  "material.gtca.melodic_alloy" : "Melodic Alloy",
+  "material.gtca.stellar_alloy" : "Stellar Alloy",
+  "material.gtca.enriched_holmium" : "Enriched Holmium",
+  "material.gtca.stellite_79" : "Stellite-79",
+  "material.gtca.silicon_carbide" : "Silicon Carbide",
+  "material.gtca.quantum_alloy" : "Quantum Alloy",
+  "material.gtca.celestial_tungsten" : "Celestial Tungsten",
   "material.gtca.adamantium" : "Adamantium",
+  "material.gtca.radon_polymer" : "Radon Polymer",
+  "material.gtca.orundum" : "Orundum",
+  "material.gtca.ohriharukon" : "Ohriharukon",
+  "material.gtca.silamid" : "Silamid",
 
+
+
+  "material.gtca.germanite" : "Germanite",
 
   "material.gtca.fayalite" : "Fayalite",
   "material.gtca.red_zircon" : "Red Zircon",
@@ -123,6 +162,13 @@
   "item.gtca.electron_cell_empty" : "Containment Unit II",
   "item.gtca.quark_entanglement_empty" : "Advanced Containment Unit",
   "item.gtca.graviton_anomaly_empty" : "Exotic Containment Unit",
+
+
+  "item.gtca.pne_resistor" : "P/N/E Resistor",
+
+  "item.gtca.gold_nanites":"Gold Nanites",
+  "item.gtca.silver_nanites": "Silver Nanites",
+  "item.gtca.carbon_nanites": "Carbon Nanites",
 
   "item.gtca.grinding_ball_tungsten_carbide" : "Tungsten Carbide Grinding Ball",
   "item.gtca.grinding_ball_nq" : "Enriched Naquadah Grinding Ball",
@@ -181,8 +227,43 @@
   "material.gtca.calcium_plasma":"Calcium",
   "material.gtca.titanium_plasma":"Titanium",
   "material.gtca.zinc_plasma":"Zinc",
+  "material.gtca.celestial_tungsten_plasma":"Celestial Tungsten",
   "material.gtca.ender_fluid":"Ender Fluid",
   "material.gtca.pahoehoe_lava":"Pahoehoe Lava",
+
+
+  "material.gtca.muddy_bastnasite_rare_earth_solution":"Muddy Bastnasite Rare Earth Solution",
+  "material.gtca.steam_cracked_bastnasite_mud":"Steam Cracked Bastnasite Mud",
+  "material.gtca.hexa_fluorosilicic_acid":"Hexafluorosilicic Acid",
+  "material.gtca.sodiumfluorosilicate":"Sodiumfluorosilicate",
+  "material.gtca.conditioned_bastnasite_mud":"Conditioned Bastnasite Mud",
+  "material.gtca.diluted_bastnasite_mud":"Diluted Bastnasite Mud",
+  "material.gtca.filtered_bastnasite_mud":"Filtered Bastnasite Mud",
+  "material.gtca.bastnasite_rare_earth_oxides":"Bastnasite Rare Earth Oxides",
+  "material.gtca.acid_leached_rare_earth_oxides":"Acid-Leached Rare Earth Oxides",
+  "material.gtca.roasted_rare_earth_oxides":"Roasted Rare Earth Oxides",
+  "material.gtca.wet_rare_earth_oxides":"Wet Rare Earth Oxides",
+  "material.gtca.cerium_oxidised_rare_earth_oxides":"Cerium Rare Earth Oxides",
+  "material.gtca.bastnasite_rarer_earth_oxides":"Bastnasite Rarer Earth Oxides",
+  "material.gtca.nitrogenated_bastnasite_rarer_earth_oxides":"Nitrogenated Bastnasite Rare Earth Oxides",
+  "material.gtca.bastnasite_rarer_earth_oxides_suspension":"Bastnasite Rare Earth Oxides Suspension",
+  "material.gtca.samaric_rare_earth_concentrate":"Samaric Rare Earth Concentrate",
+  "material.gtca.fluorinated_samaric_concentrate":"Fluorinated Samaric Concentrate",
+  "material.gtca.samarium_terbium_mixture":"Samarium Terbium Mixture",
+  "material.gtca.nitrogenated_samarium_terbium_mixture":"Nitrogenated Samarium Terbium Mixture",
+  "material.gtca.terbium_nitrate":"Terbium Nitrate",
+  "material.gtca.samarium_residue":"Samarium Residue",
+  "material.gtca.cerium_dioxide":"Cerium Dioxide",
+  "material.gtca.cerium_chloride":"Cerium Chloride",
+  "material.gtca.cerium_oxalate":"Cerium Oxalate",
+  "material.gtca.oxalate":"Oxalate",
+  "material.gtca.cerium_iii_oxide":"Cerium (III) Oxide",
+  "material.gtca.neodymium_rare_earth_concentrate":"Neodymium Rare Earth Concentrate",
+  "material.gtca.lanthanium_chloride":"Lanthanium Chloride",
+  "material.gtca.neodymium_oxide":"Neodymium Oxide",
+  "material.gtca.calcium_fluoride":"Calcium Fluoride",
+  "material.gtca.ammonium_nitrate":"Ammonium Nitrate",
+  "material.gtca.hydrated_ammonium_nitrate_slurry":"Hydrated Ammonium Nitrate Slurry",
 
 
 
@@ -204,6 +285,7 @@
   "itemGroup.gtca.main": "GT Community Additions",
 
   "gtceu.jei.ore_vein.zirconium_vein": "Zirconium Vein",
+  "gtceu.jei.ore_vein.germanite_vein": "Germanite Vein",
 
 
   "gtca.recipe.condition.tier_casing.tooltip": "Tier: %s",

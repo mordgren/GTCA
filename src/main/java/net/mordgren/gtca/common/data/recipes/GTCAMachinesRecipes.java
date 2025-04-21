@@ -26,7 +26,6 @@ import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.DISTILL
 import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.ELECTRIC_BLAST_FURNACE;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
 import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.HULL;
-import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.PUMP;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
@@ -302,13 +301,13 @@ public class GTCAMachinesRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder("tegmark_forge_controller").duration(7200).EUt(VA[UHV])
                 .inputItems(GTCAHelper.getItem("frame", Neutronex, 16))
                 .inputItems(GTCAHelper.getItem("doublePlate", Neutronex, 8))
-                .inputItems(GTCAHelper.getItem("frame", Duranium_X, 8))
+                .inputItems(GTCAHelper.getItem("frame", DuraniumX, 8))
                 .inputItems(GTCAHelper.getItem("foil", Osmiridium, 32))
                 .inputItems(CustomTags.ZPM_CIRCUITS, 10)
                 .inputItems(FIELD_GENERATOR_LuV, 8)
                 .inputFluids(Neutronex.getFluid(4608))
                 .inputFluids(Berwollium.getFluid(8092))
-                .inputFluids(Duranium_X.getFluid(2592))
+                .inputFluids(DuraniumX.getFluid(2592))
                 .outputItems(GTCAMachines.TEGMARK_FORGE.asStack())
                 .save(provider);
 

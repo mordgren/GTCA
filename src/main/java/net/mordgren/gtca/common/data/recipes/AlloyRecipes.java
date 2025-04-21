@@ -277,7 +277,7 @@ public class AlloyRecipes {
                 .save(provider);
 
         MIXER_RECIPES.recipeBuilder("silicon_carbide").EUt(GTValues.VA[GTValues.LV]).duration(100)
-                .circuitMeta(1)
+                .circuitMeta(4)
                 .inputItems(GTCAHelper.getItem("dust", Carbon, 1))
                 .inputItems(GTCAHelper.getItem("dust", Silicon, 1))
                 .outputItems(GTCAHelper.getItem("dust", SiliconCarbide, 2))

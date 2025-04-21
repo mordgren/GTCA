@@ -99,7 +99,7 @@ public class GTCAMaterials {
     public static Material Pikyonium64Y;
 
     public static Material Neutronex;
-    public static Material Duranium_X;
+    public static Material DuraniumX;
     public static Material Berwollium;
 
     public static Material AdamantiumAlloy;

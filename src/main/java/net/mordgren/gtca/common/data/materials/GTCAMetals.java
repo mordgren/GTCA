@@ -592,7 +592,7 @@ public class GTCAMetals {
                 .blastTemp(6999, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM], 1700)
                 .buildAndRegister();
 
-        GTCAMaterials.Duranium_X = new Material.Builder(GTCA.id("duranium_x"))
+        GTCAMaterials.DuraniumX = new Material.Builder(GTCA.id("duranium_x"))
                 .color(0x45674a)
                 .components(GTMaterials.Uranium235, 10, GTMaterials.Plutonium241, 8, GTMaterials.Molybdenum, 8, GTMaterials.Tungsten, 8, GTMaterials.Iron, 6, GTMaterials.Chromium, 4, GTMaterials.NaquadahEnriched, 4)
                 .fluid()

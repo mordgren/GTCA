@@ -1,8 +1,6 @@
 package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.data.GTMachines;
@@ -12,7 +10,6 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.common.data.GTCABlocks;
 import net.mordgren.gtca.common.data.GTCAItems;
-import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
@@ -243,7 +240,7 @@ public class CasingRecipes {
                 .circuitMeta(6)
                 .inputItems(GTCAHelper.getItem("lens", NetherStar, 1))
                 .inputItems(GTCAItems.PNEresistor, 1)
-                .inputItems(GTCAHelper.getItem("plate", Duranium_X, 4))
+                .inputItems(GTCAHelper.getItem("plate", DuraniumX, 4))
                 .inputItems(GTCAHelper.getItem("plate", Neutronex, 4))
                 .inputItems(GTCAHelper.getItem("frame", Berwollium, 1))
                 .outputItems(GTCABlocks.P_N_E_LASER_ACTIVATOR, 1)
@@ -252,7 +249,7 @@ public class CasingRecipes {
 
         ASSEMBLER_RECIPES.recipeBuilder("ultra_inductive_casing").EUt(GTValues.VA[GTValues.UV]).duration(750)
                 .circuitMeta(6)
-                .inputItems(GTCAHelper.getItem("doublePlate", Duranium_X, 4))
+                .inputItems(GTCAHelper.getItem("doublePlate", DuraniumX, 4))
                 .inputItems(GTCAHelper.getItem("foil", Osmiridium, 8))
                 .inputItems(GTCAHelper.getItem("plate", NaquadahAlloy, 2))
                 .inputItems(GTCAHelper.getItem("frame", EglinSteel, 1))
@@ -280,7 +277,7 @@ public class CasingRecipes {
                 .inputItems(GTMachines.HULL[GTValues.UV].asStack(1))
                 .inputItems(GTCAHelper.getItem("bolt", TriniumNaquadahCarbonite, 12))
                 .inputItems(CustomTags.LuV_CIRCUITS, 1)
-                .inputFluids(Duranium_X.getFluid(432))
+                .inputFluids(DuraniumX.getFluid(432))
                 .inputFluids(Neutronex.getFluid(864))
                 .outputItems(GTCABlocks.STABILIZED_TRANSMUTATION_CORE.asStack())
                 .scannerResearch(b -> b
