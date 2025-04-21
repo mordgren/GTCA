@@ -88,6 +88,7 @@ public class GTCAChemicals {
         GTCAMaterials.Silamid = new Material.Builder(GTCA.id("silamid"))
                 .fluid()
                 .ingot()
+                .flags(MaterialFlags.GENERATE_FOIL)
                 .color(0x583b58)
                 .buildAndRegister()
                 .setFormula("SiN2H2O",true);
@@ -98,17 +99,6 @@ public class GTCAChemicals {
                 .color(0x612461)
                 .buildAndRegister()
                 .setFormula("Si(NH2)2",true);
-
-        GTCAMaterials.AmmoniumChloride = new Material.Builder(GTCA.id("ammonium_chloride"))
-                .fluid()
-                .components(GTMaterials.Ammonia, 4, GTMaterials.Chlorine, 1 )
-                .color(0x3e2f49)
-                .buildAndRegister()
-                .setFormula("4NH3Cl",true);
-
-
-
-
 
     }
 }

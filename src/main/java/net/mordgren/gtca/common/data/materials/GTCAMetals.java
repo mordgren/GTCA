@@ -773,5 +773,19 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("(Co7Cr7Mn4Ti2)(SiC)GaAmPdBiGe",true);
 
+        GTCAMaterials.CelestialTungsten = new Material.Builder(GTCA.id("celestial_tungsten"))
+                .dust()
+                .ingot()
+                .flags(
+                        MaterialFlags.NO_SMELTING,
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_FRAME
+                )
+                .color(0x343434)
+                .buildAndRegister()
+                .setFormula("✦✧✦",true);
+
     }
 }

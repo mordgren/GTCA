@@ -10,15 +10,8 @@ public class GTCAPlasmas {
     public static void init(){
 
 
-        GTCAMaterials.CelestialTungsten = new Material.Builder(GTCA.id("celestial_tungsten"))
+        GTCAMaterials.CelestialTungstenPlasma = new Material.Builder(GTCA.id("celestial_tungsten_plasma"))
                 .plasma(10000)
-                .ingot()
-                .flags(
-                        MaterialFlags.GENERATE_BOLT_SCREW,
-                        MaterialFlags.GENERATE_PLATE,
-                        MaterialFlags.GENERATE_ROD,
-                        MaterialFlags.GENERATE_FRAME
-                )
                 .color(0x343434)
                 .buildAndRegister()
                 .setFormula("✦✧✦",true);

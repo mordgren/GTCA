@@ -93,6 +93,7 @@
     "gtca:molten_stellite_79_bucket",
     "gtca:quantum_alloy_bucket",
     "gtca:molten_quantum_alloy_bucket",
+    "gtca:celestial_tungsten_plasma_bucket",
     "gtca:propyne_bucket",
     "gtca:propadiene_bucket",
     "gtca:isononyl_alcohol_bucket",
@@ -102,7 +103,6 @@
     "gtca:carbon_disulfide_bucket",
     "gtca:dihydrodiaminosilane_bucket",
     "gtca:silamid_bucket",
-    "gtca:ammonium_chloride_bucket",
     "gtca:ender_fluid_bucket",
     "gtca:sphalerite_froth_bucket",
     "gtca:chalcopyrite_froth_bucket",
@@ -118,7 +118,6 @@
     "gtca:spruce_oil_bucket",
     "gtca:red_mud_slurry_bucket",
     "gtca:pahoehoe_lava_bucket",
-    "gtca:celestial_tungsten_plasma_bucket",
     "gtca:hydrogen_plasma_plasma_bucket",
     "gtca:sulfur_plasma_plasma_bucket",
     "gtca:calcium_plasma_plasma_bucket",
@@ -133,6 +132,8 @@
     "gtca:filtered_bastnasite_mud_bucket",
     "gtca:nitrogenated_bastnasite_rarer_earth_oxides_bucket",
     "gtca:bastnasite_rarer_earth_oxides_suspension_bucket",
-    "gtca:oxalate_bucket"
+    "gtca:oxalate_bucket",
+    "gtca:calcium_fluoride_bucket",
+    "gtca:hydrated_ammonium_nitrate_slurry_bucket"
   ]
 }

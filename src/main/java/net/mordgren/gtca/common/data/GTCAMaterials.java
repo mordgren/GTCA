@@ -57,7 +57,6 @@ public class GTCAMaterials {
     public static Material SpruceOil;
     public static Material SiliconTetrachloride;
     public static Material SiliconNitride;
-    public static Material AmmoniumChloride;
     public static Material Dihydrodiaminosilane;
     public static Material Silamid;
 
@@ -114,6 +113,7 @@ public class GTCAMaterials {
     public static Material Stellite79;
     public static Material SiliconCarbide;
     public static Material QuantumAlloy;
+    public static Material CelestialTungsten;
 
 
 
@@ -136,7 +136,7 @@ public class GTCAMaterials {
 
     // Plasma
 
-    public static Material CelestialTungsten;
+    public static Material CelestialTungstenPlasma;
     public static Material HydrogenPlasma;
     public static Material SulfurPlasma;
     public static Material CalciumPlasma;

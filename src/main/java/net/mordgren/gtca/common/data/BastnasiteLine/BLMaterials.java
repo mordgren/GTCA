@@ -23,7 +23,10 @@ public class BLMaterials {
     public static Material BastnasiteRarerEarthOxideSuspension;
     public static Material SamaricRareEarthConcentrate; // Dust
     public static Material FluorinatedSamaricConcentrate; // Dust
+    public static Material CalciumFluoride;
     public static Material SamariumTerbiumMixture; // Dust
+    public static Material AmmoniumNitrate;
+    public static Material HydratedAmmoniumNitrateSlurry;
     public static Material NitrogenatedSamariumTerbiumMixture; // Dust
     public static Material TerbiumNitrate; // Dust
     public static Material SamariumResidue; // Dust
@@ -182,5 +185,21 @@ public class BLMaterials {
                 .dust()
                 .color(0x30413b).iconSet(MaterialIconSet.DULL)
                 .buildAndRegister().setFormula("Nd2O3", true);
+
+        BLMaterials.CalciumFluoride = new Material.Builder(GTCA.id("calcium_fluoride"))
+                .dust()
+                .fluid()
+                .color(0xbebbbb).iconSet(MaterialIconSet.DULL)
+                .buildAndRegister().setFormula("CaF2", true);
+
+        BLMaterials.AmmoniumNitrate = new Material.Builder(GTCA.id("ammonium_nitrate"))
+                .dust()
+                .color(0xaa3abf).iconSet(MaterialIconSet.DULL)
+                .buildAndRegister().setFormula("N2H4O3", true);
+
+        BLMaterials.HydratedAmmoniumNitrateSlurry = new Material.Builder(GTCA.id("hydrated_ammonium_nitrate_slurry"))
+                .fluid()
+                .color(0xaa3abf)
+                .buildAndRegister();
     }
 }

@@ -22,7 +22,7 @@ public class SilamidLine {
                     .inputItems(GTCAHelper.getItem("dust", GTCAMaterials.SiliconTetrachloride, 1))
                     .inputFluids(GTMaterials.Ammonia.getFluid(6000))
                     .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.SiliconNitride, 1))
-                    .outputFluids(GTCAMaterials.AmmoniumChloride.getFluid(3000))
+                    .outputFluids(GTMaterials.AmmoniumChloride.getFluid(3000))
                     .save(provider);
 
             GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder("silicon_nitride_to_dyhydromini_ahh").EUt(1920).duration(280)
