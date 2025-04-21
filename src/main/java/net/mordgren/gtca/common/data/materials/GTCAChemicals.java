@@ -88,6 +88,7 @@ public class GTCAChemicals {
         GTCAMaterials.Silamid = new Material.Builder(GTCA.id("silamid"))
                 .fluid()
                 .ingot()
+                .polymer()
                 .flags(MaterialFlags.GENERATE_PLATE)
                 .color(0x583b58)
                 .buildAndRegister()

@@ -43,6 +43,7 @@ public class GTCAItems {
 
     public static ItemEntry<Item> GoldNanites  = REGISTRATE.item("gold_nanites", Item::new).register();
     public static ItemEntry<Item> SilverNanites = REGISTRATE.item("silver_nanites", Item::new).register();
+    public static ItemEntry<Item> CarbonNanites = REGISTRATE.item("carbon_nanites", Item::new).register();
 
 
     public static ItemEntry<Item> TungstenCarbideGrindBall = REGISTRATE.item("grinding_ball_tungsten_carbide", Item::new).properties(p -> p.stacksTo(1)).register();

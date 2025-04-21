@@ -787,5 +787,46 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("✦✧✦",true);
 
+        // MISC
+
+
+        GTCAMaterials.StrangeCrystal = new Material.Builder(GTCA.id("strange_crystal"))
+                .gem()
+                .iconSet(DIAMOND)
+                .flags(
+                        MaterialFlags.NO_SMELTING,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.NO_UNIFICATION
+                )
+                .color(0x74a271)
+                .buildAndRegister()
+                .setFormula("???",true);
+
+        GTCAMaterials.UnknownCrystal = new Material.Builder(GTCA.id("unknown_crystal"))
+                .gem()
+                .iconSet(EMERALD)
+                .flags(
+                        MaterialFlags.NO_SMELTING,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.NO_UNIFICATION
+                )
+                .color(0x5ca483)
+                .buildAndRegister()
+                .setFormula("???",true);
+
+        GTCAMaterials.QuiteCertainCrystal = new Material.Builder(GTCA.id("certain_crystal"))
+                .gem()
+                .iconSet(RUBY)
+                .flags(
+                        MaterialFlags.NO_SMELTING,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_LENS,
+                        MaterialFlags.NO_UNIFICATION
+                        )
+                .color(0x26714f)
+                .buildAndRegister()
+                .setFormula("???",true);
+
+
     }
 }

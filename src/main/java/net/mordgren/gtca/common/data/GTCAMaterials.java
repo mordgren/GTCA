@@ -115,7 +115,11 @@ public class GTCAMaterials {
     public static Material QuantumAlloy;
     public static Material CelestialTungsten;
 
+    // Misc
 
+    public static Material StrangeCrystal;
+    public static Material UnknownCrystal;
+    public static Material QuiteCertainCrystal;
 
 
     // Dusts

@@ -9,14 +9,14 @@ import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCABlocks;
+import net.mordgren.gtca.common.data.GTCAItems;
 import net.mordgren.gtca.common.data.GTCAMachines;
 import net.mordgren.gtca.common.data.GTCAMaterials;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
 
-import static com.gregtechceu.gtceu.api.GTValues.LuV;
-import static com.gregtechceu.gtceu.api.GTValues.VA;
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
@@ -232,6 +232,80 @@ public class GTCAMachinesRecipes {
                         .duration(2100)
                         .EUt(VA[LuV]))
                 .duration(12000).EUt(30720)
+                .save(provider);
+
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("nanoforge_controller").duration(4000).EUt(VA[UV])
+                .inputItems(GTMachines.HULL[GTValues.UV].asStack(16))
+                .inputItems(GTCAItems.CarbonNanites, 16)
+                .inputItems(FIELD_GENERATOR_UV, 16)
+                .inputItems(CONVEYOR_MODULE_UV, 16)
+                .inputItems(ELECTRIC_MOTOR_UV, 32)
+                .inputItems(CustomTags.LuV_CIRCUITS, 16)
+                .inputItems(TagPrefix.cableGtHex, Naquadah, 32)
+                .inputFluids(GTCAMaterials.Incoloy846.getFluid(4608))
+                .inputFluids(HSSG.getFluid(4608))
+                .inputFluids(Osmiridium.getFluid(4608))
+                .outputItems(GTCAMachines.NANOFORGE.asStack())
+                .stationResearch(b -> b
+                        .researchStack(GTCAItems.CarbonNanites.asStack())
+                        .CWUt(98)
+                        .EUt(VA[LuV]))
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("pcb_tier_i").duration(6000).EUt(VA[UV])
+                .inputItems(GTCAHelper.getItem("frame", StellarAlloy, 32))
+                .inputItems(CIRCUIT_ASSEMBLER[ZPM].asStack(4))
+                .inputItems(CustomTags.LuV_CIRCUITS, 16)
+                .inputItems(ROBOT_ARM_ZPM, 8)
+                .inputFluids(GTCAMaterials.Incoloy846.getFluid(4608))
+                .inputFluids(Naquadah.getFluid(2592))
+                .outputItems(GTCAMachines.PCB_FACTORY_MKI.asStack())
+                .stationResearch(b -> b
+                        .researchStack(WETWARE_BOARD.asStack())
+                        .CWUt(98)
+                        .EUt(VA[ZPM]))
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("pcb_tier_ii").duration(6600).EUt(VA[UV])
+                .inputItems(GTCAHelper.getItem("frame", QuantumAlloy, 16))
+                .inputItems(CIRCUIT_ASSEMBLER[UV].asStack(8))
+                .inputItems(CustomTags.UV_CIRCUITS, 16)
+                .inputItems(ROBOT_ARM_UV, 8)
+                .inputFluids(HG1223.getFluid(4608))
+                .inputFluids(Neutronex.getFluid(2592))
+                .outputItems(GTCAMachines.PCB_FACTORY_MKII.asStack())
+                .stationResearch(b -> b
+                        .researchStack(GTCAMachines.PCB_FACTORY_MKI.asStack())
+                        .CWUt(120)
+                        .EUt(VA[ZPM]))
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("pcb_tier_iii").duration(7200).EUt(VA[UHV])
+                .inputItems(GTCAHelper.getItem("frame", Neutronium, 32))
+                .inputItems(CIRCUIT_ASSEMBLER[UV].asStack(16))
+                .inputItems(CustomTags.UV_CIRCUITS, 16)
+                .inputItems(ROBOT_ARM_UV, 8)
+                .inputFluids(GTCAMaterials.Incoloy846.getFluid(4608))
+                .inputFluids(Naquadah.getFluid(2592))
+                .outputItems(GTCAMachines.PCB_FACTORY_MKIII.asStack())
+                .stationResearch(b -> b
+                        .researchStack(GTCAItems.QuantumAnomaly.asStack())
+                        .CWUt(128)
+                        .EUt(VA[UV]))
+                .save(provider);
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("tegmark_forge_controller").duration(7200).EUt(VA[UHV])
+                .inputItems(GTCAHelper.getItem("frame", Neutronex, 16))
+                .inputItems(GTCAHelper.getItem("doublePlate", Neutronex, 8))
+                .inputItems(GTCAHelper.getItem("frame", Duranium_X, 8))
+                .inputItems(GTCAHelper.getItem("foil", Osmiridium, 32))
+                .inputItems(CustomTags.ZPM_CIRCUITS, 10)
+                .inputItems(FIELD_GENERATOR_LuV, 8)
+                .inputFluids(Neutronex.getFluid(4608))
+                .inputFluids(Berwollium.getFluid(8092))
+                .inputFluids(Duranium_X.getFluid(2592))
+                .outputItems(GTCAMachines.TEGMARK_FORGE.asStack())
                 .save(provider);
 
     }
