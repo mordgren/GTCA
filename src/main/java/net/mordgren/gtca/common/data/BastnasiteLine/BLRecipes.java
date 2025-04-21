@@ -43,7 +43,7 @@ public class BLRecipes {
 
         if (GTCA.GTNNINT) {
 
-            GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder("oxalate").EUt(240).duration(4050)
+            GTRecipeTypes.LARGE_CHEMICAL_RECIPES.recipeBuilder("oxalate").EUt(240).duration(4050)
                     .circuitMeta(9)
                     .inputItems(GTCAHelper.getItem("dust", GTNNMaterials.VanadiumPentoxide, 1))
                     .inputFluids(GTMaterials.Ethanol.getFluid(9000))
@@ -52,7 +52,7 @@ public class BLRecipes {
                     .outputFluids(GTMaterials.Water.getFluid(18000))
                     .save(provider);
 
-            GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder("oxalate").EUt(120).duration(600)
+            GTRecipeTypes.LARGE_CHEMICAL_RECIPES.recipeBuilder("oxalate_sugar").EUt(120).duration(600)
                     .circuitMeta(1)
                     .notConsumable(GTCAHelper.getItem("dust", GTNNMaterials.VanadiumPentoxide, 1))
                     .inputItems(Items.SUGAR, 24)
@@ -78,7 +78,7 @@ public class BLRecipes {
 
         } else {
 
-            GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder("oxalate").EUt(240).duration(4050)
+            GTRecipeTypes.LARGE_CHEMICAL_RECIPES.recipeBuilder("oxalate").EUt(240).duration(4050)
                     .circuitMeta(9)
                     .inputItems(GTCAHelper.getItem("dust", GTMaterials.Vanadium, 1))
                     .inputFluids(GTMaterials.Ethanol.getFluid(9000))
@@ -87,7 +87,7 @@ public class BLRecipes {
                     .outputFluids(GTMaterials.Water.getFluid(20000))
                     .save(provider);
 
-            GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder("oxalate").EUt(120).duration(600)
+            GTRecipeTypes.LARGE_CHEMICAL_RECIPES.recipeBuilder("oxalate_sugar").EUt(120).duration(600)
                     .circuitMeta(1)
                     .notConsumable(GTCAHelper.getItem("dust", GTMaterials.Vanadium, 1))
                     .inputItems(Items.SUGAR, 24)
@@ -271,8 +271,8 @@ public class BLRecipes {
                 .circuitMeta(1)
                 .inputItems(GTCAHelper.getItem("dust", BLMaterials.CeriumChloride, 8))
                 .inputFluids(BLMaterials.Oxalate.getFluid(3000))
-                .inputItems(GTCAHelper.getItem("dust", BLMaterials.CeriumChloride, 8))
-                .inputItems(GTCAHelper.getItem("dust", BLMaterials.CeriumChloride, 8))
+                .outputItems(GTCAHelper.getItem("dust", BLMaterials.CeriumOxalate, 5))
+                .outputFluids(GTMaterials.HydrochloricAcid.getFluid(6000))
                 .save(provider);
 
         GTRecipeTypes.BLAST_RECIPES.recipeBuilder("ceox_to_ceiii").EUt(480).duration(200)

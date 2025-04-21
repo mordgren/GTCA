@@ -59,6 +59,7 @@ public class GTCAMaterials {
     public static Material SiliconNitride;
     public static Material Dihydrodiaminosilane;
     public static Material Silamid;
+    public static Material RadonPolymer;
 
     // Catalyst
 

@@ -240,8 +240,9 @@ public class FrothLineRecipes {
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Zinc, 64))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Zinc, 52))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Iron, 64))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Iron, 56))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Indium, 64))
-                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Indium, 16))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.Germanium, 16))
                 .save(provider);
 
         //Missing selenium(registered in gtceu), tellurium(registered in gtceu)

@@ -47,7 +47,7 @@ public class PCBFRecipes {
         plasticPcbT1.add(new Object[]{1118, 559, 5760, 14.8, 32, GTMaterials.ReinforcedEpoxyResin, 35});
         plasticPcbT1.add(new Object[]{1224, 612, 23040, 12.05, 46, GTMaterials.Polybenzimidazole, 39});
         plasticPcbT1.add(new Object[]{1322, 661, 92160, 9.85, 64, GTCAMaterials.Silamid, 42});
-//        plasticPcbT1.add(new Object[]{1414, 707, 368640, 8.05, 91, GTMaterials.StyreneButadieneRubber, 45}); NEED RADON POLYMER
+        plasticPcbT1.add(new Object[]{1414, 707, 368640, 8.05, 91, GTCAMaterials.RadonPolymer, 45});
     }
     private static void plasticPcbT2Init() {
         plasticPcbT2 = new ArrayList<>();
@@ -59,7 +59,7 @@ public class PCBFRecipes {
         plasticPcbT2.add(new Object[]{1118, 559, 23040, 12.3, 39, GTMaterials.ReinforcedEpoxyResin, 35});
         plasticPcbT2.add(new Object[]{1224, 612, 92160, 10.05, 54, GTMaterials.Polybenzimidazole, 39});
         plasticPcbT2.add(new Object[]{1322, 661, 368640, 8.2, 77, GTCAMaterials.Silamid, 42});
-//        plasticPcbT2.add(new Object[]{1414, 707, 1474560, 6.7, 108, GTMaterials.StyreneButadieneRubber, 45}); NEED RADON POLYMER
+        plasticPcbT2.add(new Object[]{1414, 707, 1474560, 6.7, 108, GTCAMaterials.RadonPolymer, 45});
     }
     private static void plasticPcbT3Init() {
         plasticPcbT3 = new ArrayList<>();
@@ -71,7 +71,7 @@ public class PCBFRecipes {
         plasticPcbT3.add(new Object[]{1118, 559, 23040, 9.85, 46, GTMaterials.ReinforcedEpoxyResin, 35});
         plasticPcbT3.add(new Object[]{1224, 612, 92160, 8.05, 64, GTMaterials.Polybenzimidazole, 39});
         plasticPcbT3.add(new Object[]{1322, 661, 368640, 6.6, 91, GTCAMaterials.Silamid, 42});
-//        plasticPcbT3.add(new Object[]{1414, 707, 1474560, 5.4, 128, GTMaterials.StyreneButadieneRubber, 45}); NEED RADON POLYMER
+        plasticPcbT3.add(new Object[]{1414, 707, 1474560, 5.4, 128, GTCAMaterials.RadonPolymer, 45});
     }
 
     private static void plasticPcb(Consumer<FinishedRecipe> provider) {
@@ -158,7 +158,7 @@ public class PCBFRecipes {
         advancedPcbT1.add(new Object[]{1000, 5760, 18.1, 23, GTMaterials.ReinforcedEpoxyResin, 32});
         advancedPcbT1.add(new Object[]{1118, 23040, 14.8, 32, GTMaterials.Polybenzimidazole, 35});
         advancedPcbT1.add(new Object[]{1224, 92160, 12.05, 46, GTCAMaterials.Silamid, 39});
-//        advancedPcbT1.add(new Object[]{1322, 368640, 9.85, 64, GTMaterials.StyreneButadieneRubber, 42}); NEED RADON POLYMER
+        advancedPcbT1.add(new Object[]{1322, 368640, 9.85, 64, GTCAMaterials.RadonPolymer, 42});
     }
 
     private static void advancedPcbT2Init() {
@@ -170,7 +170,7 @@ public class PCBFRecipes {
         advancedPcbT2.add(new Object[]{1000, 23040, 15.1, 27, GTMaterials.ReinforcedEpoxyResin, 32});
         advancedPcbT2.add(new Object[]{1118, 92160, 12.3, 39, GTMaterials.Polybenzimidazole, 35});
         advancedPcbT2.add(new Object[]{1224, 368640, 10.05, 54, GTCAMaterials.Silamid, 39});
-//        advancedPcbT2.add(new Object[]{1322, 1474560, 8.2, 77, GTMaterials.StyreneButadieneRubber, 42}); NEED RADON POLYMER
+        advancedPcbT2.add(new Object[]{1322, 1474560, 8.2, 77, GTCAMaterials.RadonPolymer, 42});
     }
 
     private static void advancedPcbT3Init() {
@@ -182,7 +182,7 @@ public class PCBFRecipes {
         advancedPcbT3.add(new Object[]{1000, 23040, 12.05, 32, GTMaterials.ReinforcedEpoxyResin, 32});
         advancedPcbT3.add(new Object[]{1118, 92160, 9.85, 46, GTMaterials.Polybenzimidazole, 35});
         advancedPcbT3.add(new Object[]{1224, 368640, 8.05, 64, GTCAMaterials.Silamid, 39});
-//        advancedPcbT3.add(new Object[]{1322, 1474560, 6.6, 91, GTMaterials.StyreneButadieneRubber, 42}); NEED RADON POLYMER
+        advancedPcbT3.add(new Object[]{1322, 1474560, 6.6, 91, GTCAMaterials.RadonPolymer, 42});
     }
 
     private static void advancedPcb(Consumer<FinishedRecipe> provider) {
@@ -265,7 +265,7 @@ public class PCBFRecipes {
         moreAdvancedPcbT1.add(new Object[]{866, 1732, 5760, 22.15, 16, GTMaterials.ReinforcedEpoxyResin, 27});
         moreAdvancedPcbT1.add(new Object[]{1000, 2000, 23040, 18.1, 23, GTMaterials.Polybenzimidazole, 32});
         moreAdvancedPcbT1.add(new Object[]{1118, 2236, 92160, 14.8, 32, GTCAMaterials.Silamid, 35});
-//        moreAdvancedPcbT1.add(new Object[]{1224, 2449, 368640, 12.05, 46, GTMaterials.SiliconeRubber, 39}); NEED RADON POLYMER
+        moreAdvancedPcbT1.add(new Object[]{1224, 2449, 368640, 12.05, 46, GTCAMaterials.RadonPolymer, 39});
     }
 
     private static void moreAdvancedPcbT2Init() {
@@ -277,7 +277,7 @@ public class PCBFRecipes {
         moreAdvancedPcbT2.add(new Object[]{866, 1732, 23040, 18.45, 20, GTMaterials.ReinforcedEpoxyResin, 27});
         moreAdvancedPcbT2.add(new Object[]{1000, 2000, 92160, 15.1, 27, GTMaterials.Polybenzimidazole, 32});
         moreAdvancedPcbT2.add(new Object[]{1118, 2236, 368640, 12.3, 39, GTCAMaterials.Silamid, 35});
-//        moreAdvancedPcbT2.add(new Object[]{1224, 2449, 1474560, 10.05, 54, GTMaterials.SiliconeRubber, 39}); NEED RADON POLYMER
+        moreAdvancedPcbT2.add(new Object[]{1224, 2449, 1474560, 10.05, 54, GTCAMaterials.RadonPolymer, 39});
     }
 
     private static void moreAdvancedPcbT3Init() {
@@ -289,7 +289,7 @@ public class PCBFRecipes {
         moreAdvancedPcbT3.add(new Object[]{866, 1732, 23040, 14.8, 23, GTMaterials.ReinforcedEpoxyResin, 27});
         moreAdvancedPcbT3.add(new Object[]{1000, 2000, 92160, 12.05, 32, GTMaterials.Polybenzimidazole, 32});
         moreAdvancedPcbT3.add(new Object[]{1118, 2236, 368640, 9.85, 46, GTCAMaterials.Silamid, 35});
-//        moreAdvancedPcbT3.add(new Object[]{1224, 2449, 1474560, 8.05, 64, GTMaterials.SiliconeRubber, 39}); NEED RADON POLYMER
+        moreAdvancedPcbT3.add(new Object[]{1224, 2449, 1474560, 8.05, 64, GTCAMaterials.RadonPolymer, 39});
     }
 
     private static void moreAdvancedPcb(Consumer<FinishedRecipe> provider) {
@@ -375,7 +375,7 @@ public class PCBFRecipes {
         elitePcbT1.add(new Object[]{707, 2828, 5760, 27.15, 12, GTMaterials.ReinforcedEpoxyResin, 22});
         elitePcbT1.add(new Object[]{866, 3464, 23040, 22.15, 16, GTMaterials.Polybenzimidazole, 27});
         elitePcbT1.add(new Object[]{1000, 4000, 92160, 18.1, 23, GTCAMaterials.Silamid, 32});
-//        elitePcbT1.add(new Object[]{1118, 4472, 368640, 14.8, 32, GTMaterials.SiliconeRubber, 35}); NEED RADON POLYMER
+        elitePcbT1.add(new Object[]{1118, 4472, 368640, 14.8, 32, GTCAMaterials.RadonPolymer, 35});
     }
 
     private static void elitePcbT2Init() {
@@ -386,7 +386,7 @@ public class PCBFRecipes {
         elitePcbT2.add(new Object[]{707, 2828, 23040, 22.6, 14, GTMaterials.ReinforcedEpoxyResin, 22});
         elitePcbT2.add(new Object[]{866, 3464, 92160, 18.45, 20, GTMaterials.Polybenzimidazole, 27});
         elitePcbT2.add(new Object[]{1000, 4000, 368640, 15.1, 27, GTCAMaterials.Silamid, 32});
-//        elitePcbT2.add(new Object[]{1118, 4472, 1474560, 12.3, 39, GTMaterials.SiliconeRubber, 35}); NEED RADON POLYMER
+        elitePcbT2.add(new Object[]{1118, 4472, 1474560, 12.3, 39, GTCAMaterials.RadonPolymer, 35});
     }
 
     private static void elitePcbT3Init() {
@@ -397,7 +397,7 @@ public class PCBFRecipes {
         elitePcbT3.add(new Object[]{707, 2828, 23040, 18.1, 16, GTMaterials.ReinforcedEpoxyResin, 22});
         elitePcbT3.add(new Object[]{866, 3464, 92160, 14.8, 23, GTMaterials.Polybenzimidazole, 27});
         elitePcbT3.add(new Object[]{1000, 4000, 368640, 12.05, 32, GTCAMaterials.Silamid, 32});
-//        elitePcbT3.add(new Object[]{1118, 4472, 1474560, 9.85, 46, GTMaterials.SiliconeRubber, 35}); NEED RADON POLYMER
+        elitePcbT3.add(new Object[]{1118, 4472, 1474560, 9.85, 46, GTCAMaterials.RadonPolymer, 35});
     }
 
     private static void elitePcb(Consumer<FinishedRecipe> provider) {
@@ -481,7 +481,7 @@ public class PCBFRecipes {
         wetwarePcbT1.add(new Object[]{707, 5760, 27.15, 12, GTMaterials.ReinforcedEpoxyResin, 16});
         wetwarePcbT1.add(new Object[]{866, 23040, 22.15, 16, GTMaterials.Polybenzimidazole, 22});
         wetwarePcbT1.add(new Object[]{1000, 92160, 18.1, 23, GTCAMaterials.Silamid, 27});
-//        wetwarePcbT1.add(new Object[]{1118, 368640, 14.8, 32, GTMaterials.SiliconeRubber, 32}); NEED RADON POLYMER
+        wetwarePcbT1.add(new Object[]{1118, 368640, 14.8, 32, GTCAMaterials.RadonPolymer, 32});
     }
 
     private static void wetwarePcbT2Init() {
@@ -491,7 +491,7 @@ public class PCBFRecipes {
         wetwarePcbT2.add(new Object[]{707, 23040, 22.6, 14, GTMaterials.ReinforcedEpoxyResin, 16});
         wetwarePcbT2.add(new Object[]{866, 92160, 18.45, 20, GTMaterials.Polybenzimidazole, 22});
         wetwarePcbT2.add(new Object[]{1000, 368640, 15.1, 27, GTCAMaterials.Silamid, 27});
-//        wetwarePcbT2.add(new Object[]{1118, 1474560, 12.3, 39, GTMaterials.SiliconeRubber, 32}); NEED RADON POLYMER
+        wetwarePcbT2.add(new Object[]{1118, 1474560, 12.3, 39, GTCAMaterials.RadonPolymer, 32});
     }
 
     private static void wetwarePcbT3Init() {
@@ -501,7 +501,7 @@ public class PCBFRecipes {
         wetwarePcbT3.add(new Object[]{707, 23040, 18.1, 16, GTMaterials.ReinforcedEpoxyResin, 16});
         wetwarePcbT3.add(new Object[]{866, 92160, 14.8, 23, GTMaterials.Polybenzimidazole, 22});
         wetwarePcbT3.add(new Object[]{1000, 368640, 12.05, 32, GTCAMaterials.Silamid, 27});
-//        wetwarePcbT3.add(new Object[]{1118, 1474560, 9.85, 46, GTMaterials.SiliconeRubber, 32}); NEED RADON POLYMER
+        wetwarePcbT3.add(new Object[]{1118, 1474560, 9.85, 46, GTCAMaterials.RadonPolymer, 32});
     }
 
     private static void wetwarePcb(Consumer<FinishedRecipe> provider) {
@@ -521,7 +521,7 @@ public class PCBFRecipes {
                     .addCondition(GTCARecipeInit.setTier(PCBRecipeCondition.MKI))
                     .inputItems(plate)
                     .inputItems(GTCAHelper.getItem("foil", GTMaterials.NiobiumTitanium, amountFoil))
-                    .inputItems(GTCAHelper.getItem("foil", GTMaterials.Holmium, amountFoil))
+                    .inputItems(GTCAHelper.getItem("foil", GTCAMaterials.EnrichedHolmium, amountFoil))
                     .inputFluids(GTMaterials.SulfuricAcid.getFluid(amountFluid))
                     .inputFluids(GTMaterials.Iron3Chloride.getFluid(amountFluid*10))
                     .inputFluids(GTMaterials.SterileGrowthMedium.getFluid(amountFluid*4))
@@ -542,7 +542,7 @@ public class PCBFRecipes {
                     .notConsumable(GTCAItems.SilverNanites.asStack(1))
                     .inputItems(plate)
                     .inputItems(GTCAHelper.getItem("foil", GTMaterials.NiobiumTitanium, amountFoil))
-                    .inputItems(GTCAHelper.getItem("foil", GTMaterials.Holmium, amountFoil))
+                    .inputItems(GTCAHelper.getItem("foil", GTCAMaterials.EnrichedHolmium, amountFoil))
                     .inputFluids(GTMaterials.SulfuricAcid.getFluid(amountFluid))
                     .inputFluids(GTMaterials.Iron3Chloride.getFluid(amountFluid*10))
                     .inputFluids(GTMaterials.SterileGrowthMedium.getFluid(amountFluid*4))
@@ -564,7 +564,7 @@ public class PCBFRecipes {
                     .notConsumable(GTCAItems.GoldNanites.asStack(1))
                     .inputItems(plate)
                     .inputItems(GTCAHelper.getItem("foil", GTMaterials.NiobiumTitanium, amountFoil))
-                    .inputItems(GTCAHelper.getItem("foil", GTMaterials.Holmium, amountFoil))
+                    .inputItems(GTCAHelper.getItem("foil", GTCAMaterials.EnrichedHolmium, amountFoil))
                     .inputFluids(GTMaterials.SulfuricAcid.getFluid(amountFluid))
                     .inputFluids(GTMaterials.Iron3Chloride.getFluid(amountFluid*10))
                     .inputFluids(GTMaterials.SterileGrowthMedium.getFluid(amountFluid*4))

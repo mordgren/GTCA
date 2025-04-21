@@ -726,6 +726,7 @@ public class GTCAMetals {
                 .fluid()
                 .iconSet(SHINY)
                 .flags(
+                        MaterialFlags.GENERATE_FOIL,
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,

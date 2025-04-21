@@ -2,10 +2,7 @@ package net.mordgren.gtca.common.data.recipes;
 
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
-import com.gregtechceu.gtceu.common.data.GTBlocks;
-import com.gregtechceu.gtceu.common.data.GTFluids;
-import com.gregtechceu.gtceu.common.data.GTItems;
-import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCABlocks;
@@ -27,11 +24,7 @@ import static net.mordgren.gtca.common.data.GTCAMaterials.HastelloyN;
 
 public class MiscRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
-        cellRecipes(provider);
-        pahoehoeRecipes(provider);
-    }
 
-    public static void cellRecipes(Consumer<FinishedRecipe> provider) {
         ///PROTON CELL
         ASSEMBLY_LINE_RECIPES.recipeBuilder("proton_cell_empty")
                 .inputItems(GTCAHelper.getItem("plate", Nitinol60, 16))
@@ -123,9 +116,8 @@ public class MiscRecipes {
                 .inputItems(GTCABlocks.BATTERY_ELECTRON_CELL)
                 .outputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
                 .outputItems(GTCAItems.ELECTRON_CELL.asStack()).save(provider);
-    }
 
-    public static void pahoehoeRecipes(Consumer<FinishedRecipe> provider) {
+
         CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_nugget").duration(40).EUt(VA[EV])
                 .inputFluids(PahoehoeLava.getFluid(100))
                 .circuitMeta(10)
@@ -198,5 +190,12 @@ public class MiscRecipes {
                 .outputItems(GTCAHelper.getItem("lens", QuiteCertainCrystal, 1))
                 .cleanroom(CleanroomType.STERILE_CLEANROOM)
                 .save(provider);
+
+
+        LATHE_RECIPES.recipeBuilder("radon_polymer_lens").EUt(7864320).duration(1800)
+                .inputItems(GTCAHelper.getItem("plate", RadonPolymer, 1))
+                .outputItems(GTCAHelper.getItem("lens", RadonPolymer, 1))
+                .save(provider);
     }
+
 }
