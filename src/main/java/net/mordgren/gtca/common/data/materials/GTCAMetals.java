@@ -589,7 +589,7 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_BOLT_SCREW
                 )
-                .blastTemp(6999, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM], 1700)
+                .blastTemp(6999, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM], 1000)
                 .buildAndRegister();
 
         GTCAMaterials.DuraniumX = new Material.Builder(GTCA.id("duranium_x"))
@@ -602,7 +602,7 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_BOLT_SCREW
                 )
-                .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM], 1600)
+                .blastTemp(8100, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.ZPM], 1100)
                 .buildAndRegister();
 
         GTCAMaterials.Berwollium = new Material.Builder(GTCA.id("berwollium"))

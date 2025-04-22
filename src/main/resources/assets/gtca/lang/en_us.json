@@ -37,6 +37,20 @@
   "block.gtca.pcb_factory_mkii":"PCB Factory MKII",
   "block.gtca.pcb_factory_mkiii":"PCB Factory MKIII",
 
+  "block.gtca.iv_matter_fabricator": "Elite UU-Matter Fabricator",
+  "block.gtca.luv_matter_fabricator": "Elite UU-Matter Fabricator II",
+  "block.gtca.zpm_matter_fabricator": "Elite UU-Matter Fabricator III",
+  "block.gtca.uv_matter_fabricator": "Ultimate UU-Matter Fabricator",
+  "block.gtca.uhv_matter_fabricator": "Ultimate UU-Matter Fabricator II",
+
+  "block.gtca.iv_matter_amplificator": "Elite UU-Matter Amplificator",
+  "block.gtca.luv_matter_amplificator": "Elite UU-Matter Amplificator II",
+  "block.gtca.zpm_matter_amplificator": "Elite UU-Matter Amplificator III",
+  "block.gtca.uv_matter_amplificator": "Ultimate UU-Matter Amplificator",
+  "block.gtca.uhv_matter_amplificator": "Ultimate UU-Matter Amplificator II",
+
+  "gtceu.uu_matter_fabricator": "UU-Matter Fabrication",
+  "gtceu.uu_matter_amplificator": "UU-Matter Amplification",
 
 
 
@@ -133,6 +147,12 @@
   "material.gtca.orundum" : "Orundum",
   "material.gtca.ohriharukon" : "Ohriharukon",
   "material.gtca.silamid" : "Silamid",
+  "material.gtca.silicon_tetrachloride" : "Silicon Tetrachloride",
+  "material.gtca.silicon_nitride" : "Silicon Nitride",
+  "material.gtca.strange_crystal" : "Strange Crystal",
+  "material.gtca.unknown_crystal" : "Unknown Crystal",
+  "material.gtca.certain_crystal" : "Quite Uncertain Crystal",
+  "material.gtca.dihydrodiaminosilane" : "Dihydrodiaminosilane",
 
 
 
@@ -278,6 +298,16 @@
 
   "gtca.machine.comet_desc.tooltip": "Super Magnetic Speed Shooter",
   "gtca.machine.comet_desc.tooltip2": "Consist of the same layout as a Fusion Reactor. Any external casing can be a Hatch/Bus.",
+
+  "gtca.machine.tegmark1_desc.tooltip": "Protons goes BRRRRRR",
+  "gtca.machine.tegmark2_desc.tooltip": "Allows the creation of ethereal materials by combining protons, electrons and protons in the right ratio. Accepts only 2 Energy Hatches, 8 ULV Buses, 1 Fluid I/O Hatch.",
+
+
+  "gtca.machine.nanoforge1_desc.tooltip": "Requires insane amounts of power and UU-matter to create nanites. Supports Multi-Amp energy hatches!",
+
+
+  "gtca.machine.pcb1_desc.tooltip": "Tier of machine determines the available recipe. Recipe tier (I - III) set in the EMI/JEI/REI GUI. Each tier requires new tier of controller block and additional structures",
+
 
   "gtca.machine.flcr_desc.tooltip": "Process that milled ore!",
 

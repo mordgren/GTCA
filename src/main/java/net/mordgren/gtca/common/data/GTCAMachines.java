@@ -832,10 +832,11 @@ public class GTCAMachines {
                             .where('P', abilities(PartAbility.INPUT_ENERGY))
                             .build()
                              )
-//            .tooltips(
-//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
-//                    Component.translatable("gtca.machine.flcr_desc.tooltip")
-//            )
+           .tooltips(
+                   Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Tegmark Forge"),
+                    Component.translatable("gtca.machine.tegmark1_desc.tooltip"),
+                    Component.translatable("gtca.machine.tegmark2_desc.tooltip")
+           )
             .workableCasingRenderer(
                     GTCA.id("block/casing/p_n_casing"),
                     GTCA.id("block/multiblock/tegmark_forge"),
@@ -870,6 +871,13 @@ public class GTCAMachines {
                                     .where('M', abilities(PartAbility.IMPORT_FLUIDS))
                                     .build()
             )
+
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Nanite Fabricator"),
+                    Component.translatable("gtca.machine.nanoforge1_desc.tooltip")
+
+            )
+
             .workableCasingRenderer(
                     GTCA.id("block/casing/rnac_casing"),
                     GTCA.id("block/multiblock/nanoforge"),
@@ -936,10 +944,10 @@ public class GTCAMachines {
                                   )
                                   .build()
                   )
-//            .tooltips(
-//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
-//                    Component.translatable("gtca.machine.flcr_desc.tooltip")
-//            )
+                  .tooltips(
+                          Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Circuit Factory Board"),
+                          Component.translatable("gtca.machine.pcb1_desc.tooltip")
+                  )
                   .workableCasingRenderer(
                           casingTexture,
                           overlayModel,
@@ -982,10 +990,10 @@ public class GTCAMachines {
                                   )
                                   .build()
                   )
-//            .tooltips(
-//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotaton cell"),
-//                    Component.translatable("gtca.machine.flcr_desc.tooltip")
-//            )
+            .tooltips(
+                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Circuit Factory Board"),
+                    Component.translatable("gtca.machine.pcb1_desc.tooltip")
+            )
                   .workableCasingRenderer(
                           casingTexture,
                           overlayModel,
@@ -1021,10 +1029,10 @@ public class GTCAMachines {
                                   )
                                   .build()
                   )
-//            .tooltips(
-//                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotation cell"),
-//                    Component.translatable("gtca.machine.flcr_desc.tooltip")
-//            )
+                  .tooltips(
+                          Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Circuit Factory Board"),
+                          Component.translatable("gtca.machine.pcb1_desc.tooltip")
+                  )
                   .workableCasingRenderer(
                           casingTexture,
                           overlayModel,
