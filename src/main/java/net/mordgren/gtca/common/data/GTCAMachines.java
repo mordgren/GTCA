@@ -829,7 +829,7 @@ public class GTCAMachines {
                             .where('K', abilities(PartAbility.EXPORT_ITEMS))
                             .where('L', abilities(PartAbility.DATA_ACCESS))
                             .where('M', abilities(PartAbility.IMPORT_FLUIDS))
-                            .where('P', blocks(GTCABlocks.P_N_PROTECTIVE_CASING.get()).or(abilities(PartAbility.INPUT_ENERGY)))
+                            .where('P', abilities(PartAbility.INPUT_ENERGY))
                             .build()
                              )
 //            .tooltips(

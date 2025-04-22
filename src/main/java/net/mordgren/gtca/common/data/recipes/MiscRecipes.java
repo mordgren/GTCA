@@ -156,6 +156,19 @@ public class MiscRecipes {
                         .EUt(VA[ZPM]))
                 .save(provider);
 
+        // PNE resistor
+
+        ASSEMBLER_RECIPES.recipeBuilder("pne_resistor").duration(580).EUt(VA[LuV])
+                .inputItems(GTCAHelper.getItem("plate", Neutronex, 2))
+                .inputItems(GTCAHelper.getItem("foil", Osmiridium, 8))
+                .inputItems(GTCAHelper.getItem("bolt", Berwollium, 4))
+                .inputItems(GTCAHelper.getItem("foil", Polybenzimidazole, 24))
+                .inputItems(GTItems.QUANTUM_STAR, 4)
+                .inputFluids(Naquadah.getFluid(864))
+                .outputItems(GTCAItems.PNEresistor, 2)
+                .save(provider);
+
+
         // strange crystal line
 
         COMPRESSOR_RECIPES.recipeBuilder("strange_crystal_plates").duration(120).EUt(VA[LV])
