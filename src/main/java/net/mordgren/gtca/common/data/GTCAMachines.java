@@ -4,6 +4,8 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IRotorHolderMachine;
 import com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
 import com.gregtechceu.gtceu.api.pattern.predicates.SimplePredicate;
+import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder;
 import com.gregtechceu.gtceu.common.data.GCYMBlocks;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
@@ -20,10 +22,11 @@ import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.common.data.*;
-import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
 import com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
+import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.utils.BlockInfo;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -35,12 +38,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.GTCARegistration;
 import net.mordgren.gtca.common.util.*;
-import net.mordgren.gtca.common.util.machine_builder.MatterAmplificatorMachine;
-import net.mordgren.gtca.common.util.machine_builder.MatterFabricatorMachine;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
+import java.util.function.BiFunction;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import static com.gregtechceu.gtceu.api.GTValues.*;
@@ -49,6 +52,7 @@ import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.*;
+import static com.gregtechceu.gtceu.utils.FormattingUtil.toEnglishName;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
@@ -58,34 +62,52 @@ public class GTCAMachines {
     }
 
 
-    public static final MachineDefinition[] MATTER_FABRICATOR = GTMachineUtils.registerTieredMachines("matter_fabricator",
-            MatterFabricatorMachine::new,
-            (tier, builder) -> builder
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeModifier(GTRecipeModifiers.OC_PERFECT)
-                    .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCA.id("matter_fabricator"),
-                            GTCARecipeTypes.UU_MATTER_FABRICATOR))
-                    .tooltips(workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64,
-                            GTCARecipeTypes.UU_MATTER_FABRICATOR, defaultTankSizeFunction.apply(tier), false))
-                    .recipeType(GTCARecipeTypes.UU_MATTER_FABRICATOR)
-                    .workableTieredHullRenderer(GTCA.id("block/machines/matter_fabricator"))
-                    .register(),
-            HIGH_TIERS);
+    public static final MachineDefinition[] MATTER_FABRICATOR = registerSimpleMachines("matter_fabricator", GTCARecipeTypes.UU_MATTER_FABRICATOR, defaultTankSizeFunction,false, HIGH_TIERS);
+    public static final MachineDefinition[] MATTER_AMPLIFICATOR = registerSimpleMachines("matter_amplificator", GTCARecipeTypes.UU_MATTER_AMPLIFICATOR, defaultTankSizeFunction,false, HIGH_TIERS);
 
+    public static MachineDefinition[] registerSimpleMachines(String name,
+                                                             GTRecipeType recipeType,
+                                                             Int2IntFunction tankScalingFunction,
+                                                             boolean hasPollutionDebuff,
+                                                             int... tiers) {
+        return registerTieredMachines(name,
+                (holder, tier) -> new SimpleTieredMachine(holder, tier, tankScalingFunction), (tier, builder) -> {
+                    if (hasPollutionDebuff) {
+                        builder.recipeModifiers(GTRecipeModifiers.ENVIRONMENT_REQUIREMENT
+                                                .apply(GTMedicalConditions.CARBON_MONOXIDE_POISONING, 100 * tier),
+                                        GTRecipeModifiers.OC_NON_PERFECT)
+                                .conditionalTooltip(defaultEnvironmentRequirement(),
+                                        ConfigHolder.INSTANCE.gameplay.environmentalHazards);
+                    } else {
+                        builder.recipeModifier(GTRecipeModifiers.OC_NON_PERFECT);
+                    }
+                    return builder
+                            .langValue("%s %s %s".formatted(VLVH[tier], toEnglishName(name), VLVT[tier]))
+                            .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCA.id(name), recipeType))
+                            .rotationState(RotationState.NON_Y_AXIS)
+                            .recipeType(recipeType)
+                            .workableTieredHullRenderer(GTCEu.id("block/machines/" + name))
+                            .tooltips(workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64, recipeType,
+                                    tankScalingFunction.apply(tier), true))
+                            .register();
+                },
+                tiers);
+    }
 
-    public static final MachineDefinition[] MATTER_AMPLIFICATOR = GTMachineUtils.registerTieredMachines("matter_amplificator",
-            MatterAmplificatorMachine::new,
-            (tier, builder) -> builder
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCA.id("matter_amplificator"),
-                            GTCARecipeTypes.UU_MATTER_AMPLIFICATOR))
-                    .tooltips(workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64,
-                            GTCARecipeTypes.UU_MATTER_AMPLIFICATOR, defaultTankSizeFunction.apply(tier), true))
-                    .recipeModifier(GTRecipeModifiers.OC_PERFECT)
-                    .recipeType(GTCARecipeTypes.UU_MATTER_AMPLIFICATOR)
-                    .workableTieredHullRenderer(GTCA.id("block/machines/matter_amplificator"))
-                    .register(),
-            HIGH_TIERS);
+    public static MachineDefinition[] registerTieredMachines(String name,
+                                                             BiFunction<IMachineBlockEntity, Integer, MetaMachine> factory,
+                                                             BiFunction<Integer, MachineBuilder<MachineDefinition>, MachineDefinition> builder,
+                                                             int... tiers) {
+        MachineDefinition[] definitions = new MachineDefinition[GTValues.TIER_COUNT];
+        for (int tier : tiers) {
+            var register = GTCARegistration.REGISTRATE
+                    .machine(GTValues.VN[tier].toLowerCase(Locale.ROOT) + "_" + name,
+                            holder -> factory.apply(holder, tier))
+                    .tier(tier);
+            definitions[tier] = builder.apply(tier, register);
+        }
+        return definitions;
+    }
 
     /// STEAM PRESSURIZER ///
     public static final MultiblockMachineDefinition STEAM_PRESSURIZER = REGISTRATE.multiblock("steam_pressurizer", WorkableElectricMultiblockMachine::new)
@@ -133,12 +155,12 @@ public class GTCAMachines {
                     .where('F', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, Tungsten)))
                     .where('V', blocks(GTBlocks.CASING_EXTREME_ENGINE_INTAKE.get()))
                     .where('I', blocks(GCYMBlocks.HEAT_VENT.get()))
-                    .where('X', blocks(GTCABlocks.CASING_AEBF.get()).setMinGlobalLimited(158)
+                    .where('X', blocks(GTCABlocks.CASING_AEBF.get()).setMinGlobalLimited(155)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, true)))
                     .where('H', abilities(PartAbility.MUFFLER))
                     .where('C', heatingCoils())
-                    .where('#', air())
+                    .where('#', any())
                     .build()
             )
             .shapeInfos(definition -> {
@@ -273,16 +295,17 @@ public class GTCAMachines {
             .appearanceBlock(GTCABlocks.CASING_GREENHOUSE)
             .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
             .pattern(definition -> FactoryBlockPattern.start()
-                    .aisle("AAAAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
-                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "#BBB#")
-                    .aisle("AADAA", "#AAA#", "#AAA#", "#BBB#", "#BBB#", "#BBB#", "#####")
+                    .aisle("AAAAA", "FAAAF", "FAAAF", "FBBBF", "FBBBF", "FBBBF", "FFFFF")
+                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "FBBBF")
+                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "FBBBF")
+                    .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "FBBBF")
+                    .aisle("AADAA", "FAAAF", "FAAAF", "FBBBF", "FBBBF", "FBBBF", "FFFFF")
                     .where('A', blocks(GTCABlocks.CASING_GREENHOUSE.get()).setMinGlobalLimited(42)
                             .or(autoAbilities(definition.getRecipeTypes()))
                             .or(autoAbilities(true, false, false)))
                     .where('D', controller(blocks(definition.getBlock())))
                     .where('#', air())
+                    .where('F', any())
                     .where('C', blocks(Blocks.DIRT))
                     .where('B', blocks(CASING_TEMPERED_GLASS.get()))
                     .build()
@@ -426,7 +449,7 @@ public class GTCAMachines {
                             .where("P", blocks(CASING_TUNGSTENSTEEL_PIPE.get()))
                             .where("W", blocks(GTCABlocks.PRW_Casing.get()))
                             .where("G", blocks(GTCABlocks.REINFORCED_GLASS.get()))
-                            .where('#', air())
+                            .where('#', any())
                             .build()
             )
             .workableCasingRenderer(

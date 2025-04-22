@@ -60,6 +60,7 @@ public class GTCAMaterials {
     public static Material Dihydrodiaminosilane;
     public static Material Silamid;
     public static Material RadonPolymer;
+    public static Material UUMatterAmplifier;
 
     // Catalyst
 

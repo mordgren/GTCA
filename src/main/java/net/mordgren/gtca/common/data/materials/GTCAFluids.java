@@ -19,6 +19,11 @@ public class GTCAFluids {
                 .buildAndRegister()
                 .setFormula("BeK4N5",true);
 
+        GTCAMaterials.UUMatterAmplifier = new Material.Builder(GTCA.id("uu_matter_amplifier"))
+                .fluid()
+                .color(0xc03eb5)
+                .buildAndRegister();
+
         GTCAMaterials.SphaleriteFroth = new Material.Builder(GTCA.id("sphalerite_froth")).fluid().color(0xdadada).buildAndRegister();
         GTCAMaterials.ChalcopyriteFroth = new Material.Builder(GTCA.id("chalcopyrite_froth")).fluid().color(0x896726).buildAndRegister();
         GTCAMaterials.NickelFroth = new Material.Builder(GTCA.id("nickel_froth")).fluid().color(0xababd4).buildAndRegister();

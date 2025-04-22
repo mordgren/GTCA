@@ -5,10 +5,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.mordgren.gtca.common.data.GTCABlocks;
-import net.mordgren.gtca.common.data.GTCAItems;
-import net.mordgren.gtca.common.data.GTCAMachines;
-import net.mordgren.gtca.common.data.GTCAMaterials;
+import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
@@ -16,7 +13,6 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.ROBOT_ARM_UV;
 import static com.gregtechceu.gtceu.common.data.GTItems.STEM_CELLS;
-import static com.gregtechceu.gtceu.common.data.GTMachines.CIRCUIT_ASSEMBLER;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
@@ -196,6 +192,29 @@ public class MiscRecipes {
                 .inputItems(GTCAHelper.getItem("plate", RadonPolymer, 1))
                 .outputItems(GTCAHelper.getItem("lens", RadonPolymer, 1))
                 .save(provider);
+
+    /// MATTER
+        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_ash").EUt(30).duration(180)
+                .inputItems(GTCAHelper.getItem("dust", Ash, 9))
+                .outputFluids(UUMatterAmplifier.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_dash").EUt(30).duration(180)
+                .inputItems(GTCAHelper.getItem("dust", DarkAsh, 9))
+                .outputFluids(UUMatterAmplifier.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.UU_MATTER_FABRICATOR.recipeBuilder("uumatter_amped").EUt(256).duration(803)
+                .circuitMeta(1)
+                .inputFluids(UUMatterAmplifier.getFluid(1))
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.UU_MATTER_FABRICATOR.recipeBuilder("uumatter_std").EUt(256).duration(3215)
+                .circuitMeta(2)
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
+
     }
 
 }
