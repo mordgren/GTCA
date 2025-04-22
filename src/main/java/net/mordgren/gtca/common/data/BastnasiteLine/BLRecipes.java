@@ -224,7 +224,6 @@ public class BLRecipes {
                 .inputItems(GTCAHelper.getItem("dust", BLMaterials.FluorinatedSamaricConcentrate, 8))
                 .inputItems(GTCAHelper.getItem("dust", GTMaterials.Calcium, 4))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Holmium, 1))
-                .outputItems(GTCAHelper.getItem("dust", GTCAMaterials.StrangeCrystal, 1))
                 .outputItems(GTCAHelper.getItem("dust", BLMaterials.SamariumTerbiumMixture, 4))
                 .outputFluids(BLMaterials.CalciumFluoride.getFluid(12000))
                 .save(provider);

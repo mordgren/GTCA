@@ -4,7 +4,10 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
+import dev.arbor.gtnn.data.GTNNTagPrefix;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
@@ -187,6 +190,12 @@ public class MiscRecipes {
                 .cleanroom(CleanroomType.STERILE_CLEANROOM)
                 .save(provider);
 
+        CHEMICAL_BATH_RECIPES.recipeBuilder("strange_dust").duration(990).EUt(VA[IV])
+                .inputItems(GTCAHelper.getItem("dust", NetherStar, 1))
+                .inputFluids(UUMatter.getFluid(6000))
+                .outputItems(GTCAHelper.getItem("dust", StrangeCrystal, 1))
+                .save(provider);
+
 
         LATHE_RECIPES.recipeBuilder("radon_polymer_lens").EUt(7864320).duration(1800)
                 .inputItems(GTCAHelper.getItem("plate", RadonPolymer, 1))
@@ -194,26 +203,32 @@ public class MiscRecipes {
                 .save(provider);
 
     /// MATTER
-        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_ash").EUt(30).duration(180)
+        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_ash").duration(100).EUt(VA[IV])
                 .inputItems(GTCAHelper.getItem("dust", Ash, 9))
                 .outputFluids(UUMatterAmplifier.getFluid(1))
                 .save(provider);
 
-        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_dash").EUt(30).duration(180)
+        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_dash").duration(100).EUt(VA[IV])
                 .inputItems(GTCAHelper.getItem("dust", DarkAsh, 9))
                 .outputFluids(UUMatterAmplifier.getFluid(1))
                 .save(provider);
 
-        GTCARecipeTypes.UU_MATTER_FABRICATOR.recipeBuilder("uumatter_amped").EUt(256).duration(803)
+        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_any_ingot").duration(200).EUt(VA[IV])
+                .inputItems(Tags.Items.INGOTS, 5)
+                .outputFluids(UUMatterAmplifier.getFluid(2))
+                .save(provider);
+
+        GTCARecipeTypes.UU_MATTER_FABRICATOR.recipeBuilder("uumatter_amped").duration(800).EUt(VA[IV])
                 .circuitMeta(1)
                 .inputFluids(UUMatterAmplifier.getFluid(1))
                 .outputFluids(UUMatter.getFluid(1))
                 .save(provider);
 
-        GTCARecipeTypes.UU_MATTER_FABRICATOR.recipeBuilder("uumatter_std").EUt(256).duration(3215)
+        GTCARecipeTypes.UU_MATTER_FABRICATOR.recipeBuilder("uumatter_std").duration(1100).EUt(VA[IV])
                 .circuitMeta(2)
                 .outputFluids(UUMatter.getFluid(1))
                 .save(provider);
+
 
     }
 
