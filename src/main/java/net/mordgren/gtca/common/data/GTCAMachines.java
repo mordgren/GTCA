@@ -828,7 +828,7 @@ public class GTCAMachines {
                             .where('I', blocks(GTCABlocks.STABILIZED_TRANSMUTATION_CORE.get()))
                             .where('J', Predicates.controller(Predicates.blocks(definition.get())))
                             .where('K', abilities(PartAbility.EXPORT_ITEMS))
-                            .where('L', abilities(PartAbility.DATA_ACCESS).or(abilities(PartAbility.COMPUTATION_DATA_RECEPTION)))
+                            .where('L', abilities(PartAbility.DATA_ACCESS).or(abilities(PartAbility.OPTICAL_DATA_RECEPTION)))
                             .where('M', abilities(PartAbility.IMPORT_FLUIDS))
                             .where('P', abilities(PartAbility.INPUT_ENERGY))
                             .build()

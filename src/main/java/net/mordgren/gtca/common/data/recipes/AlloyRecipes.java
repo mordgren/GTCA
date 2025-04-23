@@ -2,6 +2,9 @@ package net.mordgren.gtca.common.data.recipes;
 
 import java.util.function.Consumer;
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
 import com.gregtechceu.gtceu.common.data.GCYMRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -135,14 +138,6 @@ public class AlloyRecipes {
         VACUUM_RECIPES.recipeBuilder("mar_ce_m200").EUt(GTValues.VA[GTValues.MV]).duration(220)
                 .inputItems(GTCAHelper.getItem("hotIngot", GTCAMaterials.MAR_CE_M200, 1))
                 .outputItems(GTCAHelper.getItem("ingot", GTCAMaterials.MAR_CE_M200, 1))
-                .save(provider);
-
-
-        GCYMRecipeTypes.ALLOY_BLAST_RECIPES.recipeBuilder("zirconium_carbide").EUt(GTValues.VA[GTValues.EV]).duration(200)
-                .blastFurnaceTemp(4700)
-                .inputItems(GTCAHelper.getItem("dust", Zirconium, 1))
-                .inputItems(GTCAHelper.getItem("dust", Carbon, 1))
-                .outputFluids(GTCAMaterials.ZirconiumCarbide.getFluid(288))
                 .save(provider);
 
 

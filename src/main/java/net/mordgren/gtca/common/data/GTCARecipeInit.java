@@ -43,8 +43,10 @@ public class GTCARecipeInit {
 
             if (GTCA.GTNNINT) {
                 GTNNIntProxy.init(provider);
+                BLProxy.gtnninit(provider);
             } else {
                 GTNNIntProxy.fallbackinit(provider);
+                BLProxy.gtnninitfallback(provider);
                 GTCA.LOGGER.info("GT-- not found, some recipes are not loaded, or replaced.");
             }
         }

@@ -336,12 +336,9 @@ public class GTCAMetals {
 
         GTCAMaterials.ZirconiumCarbide = new Material.Builder(GTCA.id("zirconium_carbide"))
                 .components(GTMaterials.Zirconium, 1, GTMaterials.Carbon, 1)
-                .flags(
-                       MaterialFlags.DISABLE_ALLOY_BLAST
-                )
                 .color(0xb89b7a)
                 .fluid()
-                .blastTemp(3300, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.LuV], 1100)
+                .blastTemp(4700, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 200)
                 .iconSet(METALLIC)
                 .buildAndRegister()
                 .setFormula("ZrC",true);
@@ -649,51 +646,49 @@ public class GTCAMetals {
         GTCAMaterials.ElectricalSteel = new Material.Builder(GTCA.id("electrical_steel"))
                 .color(0xadadad)
                 .components(Iron, 1, Carbon, 1, Silicon, 1)
-                .fluid()
-                .iconSet(METALLIC)
+                .ingot().iconSet(METALLIC)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_ROD
                 )
-                .blastTemp(860, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV], 400)
+//                .blastTemp(860, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV], 400)
                 .buildAndRegister()
                 .setFormula("FeCSi",true);
 
         GTCAMaterials.DarkSteel = new Material.Builder(GTCA.id("dark_steel"))
                 .color(0x786f6f)
                 .components(GTCAMaterials.ElectricalSteel, 1, Obsidian, 1)
-                .fluid()
-                .iconSet(SHINY)
+                .ingot().iconSet(SHINY)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_ROD
                 )
-                .blastTemp(1200, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV])
+//                .blastTemp(1200, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV])
                 .buildAndRegister()
                 .setFormula("(FeCSi)C(MgFeSi2O8)",true);
 
         GTCAMaterials.EndSteel = new Material.Builder(GTCA.id("end_steel"))
                 .color(0xadb699)
                 .components(Endstone, 1, GTCAMaterials.DarkSteel, 1, Tungsten, 1)
-                .fluid()
+                .ingot()
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_ROD
                 )
-                .blastTemp(3400, BlastProperty.GasTier.MID, GTValues.VA[GTValues.HV], 990)
+//                .blastTemp(3400, BlastProperty.GasTier.MID, GTValues.VA[GTValues.HV], 990)
                 .buildAndRegister()
                 .setFormula("?(FeCSi)C(MgFeSi2O8)W?",true);
 
         GTCAMaterials.MelodicAlloy = new Material.Builder(GTCA.id("melodic_alloy"))
                 .color(0x6a5286)
                 .components(GTCAMaterials.EndSteel, 1,GTCAMaterials.Ohriharukon, 1, EnderEye, 1)
-                .fluid()
+                .ingot()
                 .iconSet(SHINY)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
@@ -701,14 +696,14 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_ROD
                 )
-                .blastTemp(3900, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1540)
+//                .blastTemp(3900, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1540)
                 .buildAndRegister()
                 .setFormula("?(FeCSi)C(MgFeSi2O8)W?(BeK4N5Ma6)Oh",true);
 
         GTCAMaterials.StellarAlloy = new Material.Builder(GTCA.id("stellar_alloy"))
                 .color(0xe1e1e1)
                 .components(GTCAMaterials.MelodicAlloy, 1, NetherStar, 1, NaquadahEnriched, 1)
-                .fluid()
+                .ingot()
                 .iconSet(METALLIC)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
@@ -716,7 +711,7 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_ROD
                 )
-                .blastTemp(7199, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV], 2200)
+//                .blastTemp(7199, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV], 2200)
                 .buildAndRegister()
                 .setFormula("((?(FeCSi)C(MgFeSi2O8)W?)(BeK4N5Ma6)(CSMa)Oh)Nq+",true);
 

@@ -20,8 +20,6 @@ public class GTMaterialAdjustments {
         addIngot(Gadolinium);
         addFluid(AmmoniumChloride);
 
-        Holmium.addFlags(GENERATE_FOIL);
-
         Carbon.addFlags(MaterialFlags.FORCE_GENERATE_BLOCK);
         NiobiumTitanium.addFlags(MaterialFlags.GENERATE_FRAME);
         Titanium.addFlags(MaterialFlags.GENERATE_FOIL);

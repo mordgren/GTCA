@@ -226,8 +226,13 @@ public class MiscRecipes {
                     .chancedOutput(GTCAItems.Scrap.asStack(1), 725, 0)
                     .save(provider);
         }
-        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier").duration(100).EUt(VA[IV])
+        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amp_scrap").duration(100).EUt(VA[IV])
                 .inputItems(GTCAItems.Scrap.asStack(9))
+                .outputFluids(UUMatterAmplifier.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amp_box").duration(100).EUt(VA[IV])
+                .inputItems(GTCAItems.ScrapBox.asStack(1))
                 .outputFluids(UUMatterAmplifier.getFluid(1))
                 .save(provider);
 
