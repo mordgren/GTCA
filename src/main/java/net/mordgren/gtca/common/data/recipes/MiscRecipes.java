@@ -1,10 +1,13 @@
 package net.mordgren.gtca.common.data.recipes;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
+import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.mordgren.gtca.common.data.*;
@@ -14,8 +17,7 @@ import java.util.ArrayList;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.ROBOT_ARM_UV;
-import static com.gregtechceu.gtceu.common.data.GTItems.STEM_CELLS;
+import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
@@ -240,8 +242,23 @@ public class MiscRecipes {
                 .outputFluids(UUMatter.getFluid(1))
                 .save(provider);
 
+        // scrapbox
 
+        VanillaRecipeHelper.addShapedRecipe(provider, true, "scrapbox",
+                /// Output
+                GTCAItems.ScrapBox.asStack(),
+                /// Pattern
+                "AAA", "AAA", "AAA",
+                /// Ingredients definition
+                'A', GTCAItems.Scrap.asStack());
+
+        PACKER_RECIPES.recipeBuilder("scrapbox_in_packer").duration(60).EUt(VA[LV])
+                .inputItems(GTCAItems.Scrap, 9)
+                .outputItems(GTCAItems.ScrapBox, 1)
+                .save(provider);
     }
+
+
 
     private static ArrayList<Object[]> Scraps;
 

@@ -108,7 +108,7 @@ public class GTCABlocks {
             GTCA.id("block/casing/rnac_casing"));
 
 
-    //
+    // damn
 
     public static BlockEntry<Block> DRIST = createCasingBlock("dristnya",
             GTCA.id("block/casing/dristnya"));

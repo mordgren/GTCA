@@ -167,7 +167,7 @@ public class GTCARecipeTypes {
             .setMaxIOSize(1,1,0,0)
             .setSlotOverlay(true, false, GuiTextures.BOX_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_RECYCLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setSound(GTSoundEntries.ARC)
+            .setSound(GTSoundEntries.MACERATOR)
             .setEUIO(IO.IN);
 
 }
