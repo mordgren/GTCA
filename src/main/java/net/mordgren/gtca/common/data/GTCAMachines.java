@@ -52,7 +52,6 @@ import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.*;
-import static com.gregtechceu.gtceu.utils.FormattingUtil.toEnglishName;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
@@ -62,13 +61,15 @@ public class GTCAMachines {
     }
 
 
-    public static final MachineDefinition[] MATTER_FABRICATOR = registerSimpleMachines("matter_fabricator", GTCARecipeTypes.UU_MATTER_FABRICATOR, defaultTankSizeFunction,false, HIGH_TIERS);
-    public static final MachineDefinition[] MATTER_AMPLIFICATOR = registerSimpleMachines("matter_amplificator", GTCARecipeTypes.UU_MATTER_AMPLIFICATOR, defaultTankSizeFunction,false, HIGH_TIERS);
+    public static final MachineDefinition[] MATTER_FABRICATOR = registerSimpleMachines("matter_fabricator", GTCARecipeTypes.UU_MATTER_FABRICATOR, defaultTankSizeFunction,false, "UU-Matter Fabricator", GTValues.tiersBetween(IV, UHV));
+    public static final MachineDefinition[] MATTER_AMPLIFICATOR = registerSimpleMachines("matter_amplificator", GTCARecipeTypes.UU_MATTER_AMPLIFICATOR, defaultTankSizeFunction,false, "UU-Matter Amplificator", GTValues.tiersBetween(IV, UHV));
+    public static final MachineDefinition[] RECYCLER = registerSimpleMachines("recycler", GTCARecipeTypes.RECYCLER, defaultTankSizeFunction,false, "Recycler", GTValues.tiersBetween(LV, UHV));
 
     public static MachineDefinition[] registerSimpleMachines(String name,
                                                              GTRecipeType recipeType,
                                                              Int2IntFunction tankScalingFunction,
                                                              boolean hasPollutionDebuff,
+                                                             String lang,
                                                              int... tiers) {
         return registerTieredMachines(name,
                 (holder, tier) -> new SimpleTieredMachine(holder, tier, tankScalingFunction), (tier, builder) -> {
@@ -82,7 +83,7 @@ public class GTCAMachines {
                         builder.recipeModifier(GTRecipeModifiers.OC_NON_PERFECT);
                     }
                     return builder
-                            .langValue("%s %s %s".formatted(VLVH[tier], toEnglishName(name), VLVT[tier]))
+                            .langValue("%s %s %s".formatted(VLVH[tier], lang, VLVT[tier]))
                             .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCA.id(name), recipeType))
                             .rotationState(RotationState.NON_Y_AXIS)
                             .recipeType(recipeType)

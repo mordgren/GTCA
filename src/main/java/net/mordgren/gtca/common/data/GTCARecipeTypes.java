@@ -163,4 +163,11 @@ public class GTCARecipeTypes {
             .setSound(GTSoundEntries.CHEMICAL)
             .setEUIO(IO.IN);
 
+    public static final GTRecipeType RECYCLER = register("recycler", ELECTRIC)
+            .setMaxIOSize(1,1,0,0)
+            .setSlotOverlay(true, false, GuiTextures.BOX_OVERLAY)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_RECYCLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setSound(GTSoundEntries.ARC)
+            .setEUIO(IO.IN);
+
 }

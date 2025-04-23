@@ -12,8 +12,8 @@ import net.minecraft.world.item.Item;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.GTCARegistration;
 import net.mordgren.gtca.common.util.GTCACreativeModTab;
+import net.mordgren.gtca.common.util.ScrapBox;
 
-import static com.gregtechceu.gtceu.common.data.GTItems.modelPredicate;
 import static com.gregtechceu.gtceu.common.data.GTModels.overrideModel;
 import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
 
@@ -64,6 +64,9 @@ public class GTCAItems {
     public static ItemEntry<Item> MilledMonazite = REGISTRATE.item("milled_monazite", Item::new).register();
 
     public static ItemEntry<Item> CrushedSpruce = REGISTRATE.item("crushed_spruce", Item::new).register();
+
+    public static ItemEntry<Item> Scrap = REGISTRATE.item("scrap", Item::new).register();
+    public static ItemEntry<ScrapBox> ScrapBox = REGISTRATE.item("scrapbox", props -> new ScrapBox(props)).register();
 
     public static ItemEntry<ComponentItem> PROTON_CELL = REGISTRATE
             .item("proton_cell", ComponentItem::create)

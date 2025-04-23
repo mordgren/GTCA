@@ -317,6 +317,9 @@ public class GTCAMachinesRecipes {
         registerMachineRecipe(provider, GTCAMachines.MATTER_AMPLIFICATOR, "ICI", "KMK", "FCJ", 'M', HULL, 'C', CIRCUIT,
                 'I', FIELD_GENERATOR, 'K', CABLE_TIER_UP_HEX, 'J', SENSOR, 'F', EMITTER);
 
+        registerMachineRecipe(provider, GTCAMachines.RECYCLER, "GCG", "PMP", "KCK", 'M', HULL, 'C', CIRCUIT,
+                'K', CABLE_TIER_UP, 'P', PISTON, 'G', new UnificationEntry(TagPrefix.dust, Glowstone));
+
 
     }
 }

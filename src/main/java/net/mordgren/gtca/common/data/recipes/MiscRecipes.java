@@ -1,16 +1,16 @@
 package net.mordgren.gtca.common.data.recipes;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
-import dev.arbor.gtnn.data.GTNNTagPrefix;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
+import net.minecraft.world.item.ItemStack;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
+import java.util.ArrayList;
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
@@ -216,19 +216,17 @@ public class MiscRecipes {
                 .save(provider);
 
     /// MATTER
-        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_ash").duration(100).EUt(VA[IV])
-                .inputItems(GTCAHelper.getItem("dust", Ash, 9))
+        setScraps();
+        for (Object[] objectType : Scraps) {
+            ItemStack dust = (GTCAHelper.getItem("dust", (Material) objectType[0], 1));
+            GTCARecipeTypes.RECYCLER.recipeBuilder(objectType[1].toString()).EUt(1).duration(46)
+                    .inputItems(dust)
+                    .chancedOutput(GTCAItems.Scrap.asStack(1), 725, 0)
+                    .save(provider);
+        }
+        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier").duration(100).EUt(VA[IV])
+                .inputItems(GTCAItems.Scrap.asStack(9))
                 .outputFluids(UUMatterAmplifier.getFluid(1))
-                .save(provider);
-
-        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_dash").duration(100).EUt(VA[IV])
-                .inputItems(GTCAHelper.getItem("dust", DarkAsh, 9))
-                .outputFluids(UUMatterAmplifier.getFluid(1))
-                .save(provider);
-
-        GTCARecipeTypes.UU_MATTER_AMPLIFICATOR.recipeBuilder("amplifier_any_ingot").duration(200).EUt(VA[IV])
-                .inputItems(Tags.Items.INGOTS, 5)
-                .outputFluids(UUMatterAmplifier.getFluid(2))
                 .save(provider);
 
         GTCARecipeTypes.UU_MATTER_FABRICATOR.recipeBuilder("uumatter_amped").duration(800).EUt(VA[IV])
@@ -243,6 +241,19 @@ public class MiscRecipes {
                 .save(provider);
 
 
+    }
+
+    private static ArrayList<Object[]> Scraps;
+
+    private static void setScraps() {
+        Scraps = new ArrayList<>();
+
+        Scraps.add(new Object[]{Stone, "stone"});
+        Scraps.add(new Object[]{Endstone, "endstone"});
+        Scraps.add(new Object[]{Deepslate, "deepslate"});
+        Scraps.add(new Object[]{Netherrack, "netherrack"});
+        Scraps.add(new Object[]{Ash, "ash"});
+        Scraps.add(new Object[]{DarkAsh, "dash"});
     }
 
 }
