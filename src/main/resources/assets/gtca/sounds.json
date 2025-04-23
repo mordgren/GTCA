@@ -7,5 +7,14 @@
       }
     ],
     "subtitle": "gtca.subtitle.tg_forge"
+  },
+  "nanoforge": {
+    "sounds": [
+      {
+        "type": "file",
+        "name": "gtca:nanoforge"
+      }
+    ],
+    "subtitle": "gtca.subtitle.nanoforge"
   }
 }

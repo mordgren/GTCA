@@ -31,7 +31,7 @@ public class NanoForgeRecipes {
                 .outputItems(GTCAItems.SilverNanites, 1)
                 .save(provider);
 
-        NANOFORGE.recipeBuilder("gold_nanites_nanoforge").duration(17500).EUt(VA[UIV])
+        NANOFORGE.recipeBuilder("gold_nanites_nanoforge").duration(17500).EUt(VA[UEV])
                 .inputItems(GTCAHelper.getItem("block", Gold, 8))
                 .inputItems(GTItems.SYSTEM_ON_CHIP, 16)
                 .inputFluids(UUMatter.getFluid(300000))

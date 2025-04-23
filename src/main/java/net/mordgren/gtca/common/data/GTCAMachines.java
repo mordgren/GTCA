@@ -866,7 +866,7 @@ public class GTCAMachines {
                                     .where('D', blocks(GTCABlocks.RADIANT_NAQUADAH_ALLOY_AIR_INTAKE_CASING.get()))
                                     .where('J', Predicates.controller(Predicates.blocks(definition.get())))
                                     .where('O', abilities(PartAbility.MAINTENANCE))
-                                    .where('P', blocks(GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING.get()).or(abilities(PartAbility.INPUT_ENERGY)))
+                                    .where('P', (abilities(PartAbility.INPUT_ENERGY)))
                                     .where('K', abilities(PartAbility.EXPORT_ITEMS))
                                     .where('L', abilities(PartAbility.IMPORT_ITEMS))
                                     .where('M', abilities(PartAbility.IMPORT_FLUIDS))
