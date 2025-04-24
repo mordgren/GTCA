@@ -651,9 +651,12 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,
-                        MaterialFlags.GENERATE_ROD
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.NO_SMELTING
                 )
-//                .blastTemp(860, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV], 400)
+                .toolStats(ToolProperty.Builder.of(4.0F, 6.0F, 512, 2)
+                        .attackSpeed(0.5F).enchantability(10).build())
+                .blastTemp(860, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV], 400)
                 .buildAndRegister()
                 .setFormula("FeCSi",true);
 
@@ -665,9 +668,10 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,
-                        MaterialFlags.GENERATE_ROD
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.NO_SMELTING
                 )
-//                .blastTemp(1200, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV])
+               .blastTemp(1200, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV])
                 .buildAndRegister()
                 .setFormula("(FeCSi)C(MgFeSi2O8)",true);
 
@@ -679,9 +683,12 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,
-                        MaterialFlags.GENERATE_ROD
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.NO_SMELTING
                 )
-//                .blastTemp(3400, BlastProperty.GasTier.MID, GTValues.VA[GTValues.HV], 990)
+                .toolStats(ToolProperty.Builder.of(25.0F, 11.0F, 2048, 5)
+                        .attackSpeed(0.5F).enchantability(33).build())
+               .blastTemp(3400, BlastProperty.GasTier.MID, GTValues.VA[GTValues.HV], 990)
                 .buildAndRegister()
                 .setFormula("?(FeCSi)C(MgFeSi2O8)W?",true);
 
@@ -694,9 +701,12 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,
-                        MaterialFlags.GENERATE_ROD
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.NO_SMELTING
                 )
-//                .blastTemp(3900, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1540)
+                .toolStats(ToolProperty.Builder.of(30.0F, 12.0F, 2512, 5)
+                        .attackSpeed(0.5F).enchantability(33).build())
+              .blastTemp(3900, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.EV], 1540)
                 .buildAndRegister()
                 .setFormula("?(FeCSi)C(MgFeSi2O8)W?(BeK4N5Ma6)Oh",true);
 
@@ -709,9 +719,12 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
                         MaterialFlags.GENERATE_FRAME,
-                        MaterialFlags.GENERATE_ROD
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.NO_SMELTING
                 )
-//                .blastTemp(7199, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV], 2200)
+                .toolStats(ToolProperty.Builder.of(80.0F, 25.0F, 7912, 6)
+                        .attackSpeed(0.5F).enchantability(33).build())
+                .blastTemp(7199, BlastProperty.GasTier.HIGHER, GTValues.VA[GTValues.LuV], 2200)
                 .buildAndRegister()
                 .setFormula("((?(FeCSi)C(MgFeSi2O8)W?)(BeK4N5Ma6)(CSMa)Oh)Nq+",true);
 
