@@ -655,7 +655,7 @@ public class GTCAMetals {
                 )
                 .toolStats(ToolProperty.Builder.of(4.0F, 6.0F, 512, 2)
                         .attackSpeed(0.5F).enchantability(10).build())
-                .blastTemp(860, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV], 400)
+                .blastTemp(1820, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV], 400)
                 .buildAndRegister()
                 .setFormula("FeCSi",true);
 
@@ -669,7 +669,7 @@ public class GTCAMetals {
                         MaterialFlags.GENERATE_FRAME,
                         MaterialFlags.GENERATE_ROD
                 )
-               .blastTemp(1200, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV])
+               .blastTemp(1912, BlastProperty.GasTier.LOW, GTValues.VA[GTValues.MV])
                .buildAndRegister()
                .setFormula("(FeCSi)C(MgFeSi2O8)",true);
 
