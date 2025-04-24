@@ -646,7 +646,7 @@ public class GTCAMetals {
         GTCAMaterials.ElectricalSteel = new Material.Builder(GTCA.id("electrical_steel"))
                 .color(0xadadad)
                 .components(Iron, 1, Carbon, 1, Silicon, 1)
-                .dust().iconSet(METALLIC)
+                .dust().fluid().iconSet(METALLIC)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
@@ -662,7 +662,7 @@ public class GTCAMetals {
         GTCAMaterials.DarkSteel = new Material.Builder(GTCA.id("dark_steel"))
                 .color(0x786f6f)
                 .components(GTCAMaterials.ElectricalSteel, 1, Obsidian, 1)
-                .dust().iconSet(SHINY)
+                .dust().fluid().iconSet(SHINY)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
@@ -676,7 +676,7 @@ public class GTCAMetals {
         GTCAMaterials.EndSteel = new Material.Builder(GTCA.id("end_steel"))
                 .color(0xadb699)
                 .components(Endstone, 1, GTCAMaterials.DarkSteel, 1, Tungsten, 1)
-                .fluid()
+                .dust().fluid()
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_GEAR,
@@ -692,7 +692,7 @@ public class GTCAMetals {
         GTCAMaterials.MelodicAlloy = new Material.Builder(GTCA.id("melodic_alloy"))
                 .color(0x6a5286)
                 .components(GTCAMaterials.EndSteel, 1,GTCAMaterials.Ohriharukon, 1, EnderEye, 1)
-                .fluid()
+                .dust().fluid()
                 .iconSet(SHINY)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
@@ -709,7 +709,7 @@ public class GTCAMetals {
         GTCAMaterials.StellarAlloy = new Material.Builder(GTCA.id("stellar_alloy"))
                 .color(0xe1e1e1)
                 .components(GTCAMaterials.MelodicAlloy, 1, NetherStar, 1, NaquadahEnriched, 1)
-                .fluid()
+                .dust().fluid()
                 .iconSet(METALLIC)
                 .flags(
                         MaterialFlags.GENERATE_PLATE,
