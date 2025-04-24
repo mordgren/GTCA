@@ -1,12 +1,13 @@
 {
   "animation": {
-    "frametime": 6,
+    "frametime": 5,
     "frames": [
       0,
 	  1,
 	  2,
 	  3,
-	  4
+	  4,
+	  5
 	 
     ]
   }
