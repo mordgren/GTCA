@@ -13,7 +13,6 @@ import com.lowdragmc.lowdraglib.utils.CycleItemStackHandler;
 import com.lowdragmc.lowdraglib.utils.LocalizationUtils;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.world.item.ItemStack;
-import net.mordgren.gtca.common.util.GTCASounds;
 
 import java.util.ArrayList;
 import java.util.List;

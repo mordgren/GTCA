@@ -10,12 +10,11 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import net.minecraft.world.item.Item;
 import net.mordgren.gtca.GTCA;
-import net.mordgren.gtca.GTCARegistration;
-import net.mordgren.gtca.common.util.GTCACreativeModTab;
-import net.mordgren.gtca.common.util.ScrapBox;
+import net.mordgren.gtca.common.registry.GTCARegistration;
+import net.mordgren.gtca.common.item.ScrapBoxBehaviour;
 
 import static com.gregtechceu.gtceu.common.data.GTModels.overrideModel;
-import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
+import static net.mordgren.gtca.common.registry.GTCARegistration.REGISTRATE;
 
 public class GTCAItems {
     static{GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);}
@@ -66,7 +65,7 @@ public class GTCAItems {
     public static ItemEntry<Item> CrushedSpruce = REGISTRATE.item("crushed_spruce", Item::new).register();
 
     public static ItemEntry<Item> Scrap = REGISTRATE.item("scrap", Item::new).register();
-    public static ItemEntry<ScrapBox> ScrapBox = REGISTRATE.item("scrapbox", props -> new ScrapBox(props)).register();
+    public static ItemEntry<ScrapBoxBehaviour> ScrapBox = REGISTRATE.item("scrapbox", props -> new ScrapBoxBehaviour(props)).register();
 
     public static ItemEntry<ComponentItem> PROTON_CELL = REGISTRATE
             .item("proton_cell", ComponentItem::create)

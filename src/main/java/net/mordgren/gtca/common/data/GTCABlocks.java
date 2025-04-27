@@ -21,17 +21,22 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.mordgren.gtca.GTCA;
-import net.mordgren.gtca.GTCARegistration;
-import net.mordgren.gtca.common.util.GTCACreativeModTab;
-import net.mordgren.gtca.common.util.battery.GTCABatteryBlock;
+import net.mordgren.gtca.common.registry.GTCARegistration;
+import net.mordgren.gtca.common.block.GTCABatteryBlock;
+import net.mordgren.gtca.common.util.CustomTags;
 
 import java.util.function.Supplier;
 
 
-import static net.mordgren.gtca.GTCARegistration.REGISTRATE;
+import static net.mordgren.gtca.common.registry.GTCARegistration.REGISTRATE;
 
 
 public class GTCABlocks {
+
+    static {
+        GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);
+    }
+
     public static final BlockEntry<Block> CASING_AEBF = createCasingBlock("casing_aebf",
             GTCA.id("block/casing/casing_aebf"));
 
@@ -163,7 +168,7 @@ public class GTCABlocks {
                 .blockstate(
                         GTCABlocks.createBatteryBlockModel("%s_battery".formatted(batteryData.getBatteryName()),batteryData)
                         )
-                .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
+                .tag(CustomTags.MINEABLE_WITH_CONFIG_VALID_PICKAXE_WRENCH)
                 .item(BlockItem::new)
 //                .onRegister(compassNodeExist(GTCompassSections.BLOCKS, "pss_battery"))
                 .build()
@@ -203,7 +208,7 @@ public class GTCABlocks {
                 .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
                 .addLayer(type)
                 .blockstate(GTModels.cubeAllModel(name, texture))
-                .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
+                .tag(CustomTags.MINEABLE_WITH_CONFIG_VALID_PICKAXE_WRENCH)
                 .item(BlockItem::new)
                 .build()
                 .register();
@@ -229,7 +234,7 @@ public class GTCABlocks {
                 .addLayer(type)
                 .blockstate((ctx, prov) -> prov.simpleBlock(ctx.get(), prov.models()
                         .cubeBottomTop(name, sideTexture, topTexture, topTexture)))
-                .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
+                .tag(CustomTags.MINEABLE_WITH_CONFIG_VALID_PICKAXE_WRENCH)
                 .item(BlockItem::new)
                 .build()
                 .register();
@@ -241,7 +246,7 @@ public class GTCABlocks {
                 .initialProperties(() -> Blocks.IRON_BLOCK)
                 .addLayer(() -> RenderType::cutoutMipped)
                 .blockstate(GTModels.createActiveModel(GTCA.id(baseModelPath)))
-                .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
+                .tag(CustomTags.MINEABLE_WITH_CONFIG_VALID_PICKAXE_WRENCH)
                 .item(BlockItem::new)
                 .model((ctx, prov) -> prov.withExistingParent(prov.name(ctx), GTCA.id(baseModelPath)))
                 .build()
@@ -249,6 +254,6 @@ public class GTCABlocks {
     }
 
     public static void init(){
-        GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);
+
     }
 }

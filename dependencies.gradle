@@ -1,0 +1,25 @@
+dependencies {
+
+    modCompileOnly("curse.maven:gt-985872:6325816") //gtnn
+
+    compileOnly(libs.jetbrains.annotations)
+
+    jarJar(modApi(forge.gtceu.get()))
+
+    // LDLib
+    jarJar(modApi(forge.ldlib.get()))
+
+    // Registrate
+    jarJar(modApi(forge.registrate.get()))
+
+    // Configuration
+    jarJar(modApi(forge.configuration.get()))
+
+    // Mixin (& Extras)
+    annotationProcessor(variantOf(libs.mixin) { classifier("processor") })
+    annotationProcessor(forge.mixinExtras.common)
+    api(forge.mixinExtras.common)
+    jarJar(forge.mixinExtras.forge)
+
+    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+}

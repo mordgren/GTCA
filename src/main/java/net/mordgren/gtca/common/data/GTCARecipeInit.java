@@ -2,15 +2,15 @@ package net.mordgren.gtca.common.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.GTCA;
-import net.mordgren.gtca.common.data.BastnasiteLine.BLProxy;
-import net.mordgren.gtca.common.data.recipes.*;
-import net.mordgren.gtca.common.data.GTNNIntegration.GTNNIntProxy;
-import net.mordgren.gtca.common.data.recipes.fuel.AltFuels;
-import net.mordgren.gtca.common.data.recipes.fuel.ChemGenFuels;
-import net.mordgren.gtca.common.data.recipes.fuel.AltSteam;
-import net.mordgren.gtca.common.data.recipes.permachine.*;
-import net.mordgren.gtca.common.data.recipes.MiscRecipes;
-import net.mordgren.gtca.common.util.PCBRecipeCondition;
+import net.mordgren.gtca.data.recipe.*;
+import net.mordgren.gtca.data.recipe.BLRecipes;
+import net.mordgren.gtca.integration.gtnn.GTNNIntProxy;
+import net.mordgren.gtca.data.recipe.fuel.AltFuels;
+import net.mordgren.gtca.data.recipe.fuel.ChemGenFuels;
+import net.mordgren.gtca.data.recipe.fuel.AltSteam;
+import net.mordgren.gtca.data.recipe.permachine.*;
+import net.mordgren.gtca.data.recipe.MiscRecipes;
+import net.mordgren.gtca.common.recipe.condition.PCBRecipeCondition;
 
 import java.util.function.Consumer;
 
@@ -25,7 +25,7 @@ public class GTCARecipeInit {
             SilamidLine.init(provider);
             NanoForgeRecipes.init(provider);
 
-            BLProxy.init(provider);
+            BLRecipes.init(provider);
 
             GreenHouseRecipes.init(provider);
             PolymerizerRecipes.init(provider);
@@ -43,11 +43,9 @@ public class GTCARecipeInit {
 
             if (GTCA.GTNNINT) {
                 GTNNIntProxy.init(provider);
-                BLProxy.gtnninit(provider);
             } else {
                 GTNNIntProxy.fallbackinit(provider);
-                BLProxy.gtnninitfallback(provider);
-                GTCA.LOGGER.info("GT-- not found, some recipes are not loaded, or replaced.");
+                GTCA.LOGGER.info("GT-- not found, some recipe are not loaded, or replaced.");
             }
         }
 

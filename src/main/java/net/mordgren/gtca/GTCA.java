@@ -13,10 +13,12 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mordgren.gtca.common.data.*;
-import net.mordgren.gtca.common.data.BastnasiteLine.BLProxy;
+import net.mordgren.gtca.common.data.machines.GTCAMachines;
 import net.mordgren.gtca.common.data.materials.GTMaterialAdjustments;
-import net.mordgren.gtca.common.util.ConfigHandler;
-import net.mordgren.gtca.common.util.GTCARecipeConditions;
+import net.mordgren.gtca.common.registry.GTCARegistration;
+import net.mordgren.gtca.config.ConfigHandler;
+import net.mordgren.gtca.common.data.GTCARecipeConditions;
+import net.mordgren.gtca.data.GTCADataGen;
 import org.slf4j.Logger;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.LoggerFactory;
@@ -32,7 +34,7 @@ public class GTCA {
     //Init Everything
     public GTCA() {
         GTCA.init();
-        GTCAItems.init();
+
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
@@ -42,7 +44,10 @@ public class GTCA {
     }
 
     public static void init() {
+        GTCAItems.init();
+        GTCABlocks.init();
         ConfigHandler.init();
+        GTCADataGen.init();
         GTCARegistration.REGISTRATE.registerRegistrate();
     }
 
@@ -59,7 +64,7 @@ public class GTCA {
     public void registerMaterials(MaterialEvent event) {
         GTCAMaterials.init();
         GTMaterialAdjustments.init();
-        GTCAElements.init();
+//        GTCAElements.init();
     }
 
     public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {

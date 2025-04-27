@@ -8,7 +8,8 @@ import net.mordgren.gtca.common.data.GTCAElements;
 import net.mordgren.gtca.common.data.GTCAOres;
 import net.mordgren.gtca.common.data.GTCARecipeInit;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
-import net.mordgren.gtca.common.util.GTCASounds;
+import net.mordgren.gtca.common.registry.GTCARegistration;
+import net.mordgren.gtca.common.data.GTCASounds;
 
 import java.util.function.Consumer;
 @SuppressWarnings("unused")
