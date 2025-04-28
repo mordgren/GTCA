@@ -23,15 +23,17 @@ public class ScrapBoxBehaviour extends Item {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level world, @NotNull Player player, @NotNull InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+
         if (!world.isClientSide) {
             List<Item> items = ForgeRegistries.ITEMS.getValues().stream().toList();
             Item randomItem = items.get(world.getRandom().nextInt(items.size()));
             ItemEntity drop = new ItemEntity(world, player.getX(), player.getY() + 1, player.getZ(), new ItemStack(randomItem));
             world.addFreshEntity(drop);
 
-            player.getItemInHand(hand).hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+            stack.shrink(1);
         }
-        return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), world.isClientSide());
+        return InteractionResultHolder.sidedSuccess(stack, world.isClientSide());
     }
 
     @Override
