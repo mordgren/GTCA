@@ -781,13 +781,13 @@ public class GTCAMetals {
                 .dust()
                 .ingot()
                 .flags(
-                        MaterialFlags.NO_SMELTING,
                         MaterialFlags.GENERATE_BOLT_SCREW,
                         MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.GENERATE_ROD,
                         MaterialFlags.GENERATE_FRAME
                 )
                 .color(0x343434)
+                .blastTemp(10470, BlastProperty.GasTier.HIGHEST, GTValues.VA[GTValues.UEV], 8750)
                 .buildAndRegister()
                 .setFormula("✦✧✦",true);
 
