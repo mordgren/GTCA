@@ -143,6 +143,7 @@ public class BLRecipes {
                 .save(provider);
 
         GTRecipeTypes.BLAST_RECIPES.recipeBuilder("flsamaric_to_ho").EUt(1920).duration(1220)
+                .blastFurnaceTemp(1200)
                 .inputItems(GTCAHelper.getItem("dust", BLMaterials.FluorinatedSamaricConcentrate, 8))
                 .inputItems(GTCAHelper.getItem("dust", GTMaterials.Calcium, 4))
                 .outputItems(GTCAHelper.getItem("dust", GTMaterials.Holmium, 1))
