@@ -1,6 +1,6 @@
 package net.mordgren.gtca.integration.gtnn.recipes;
 
-import dev.arbor.gtnn.api.recipe.PlantCasingCondition;
+import dev.arbor.gtnn.common.recipe.PlantCasingCondition;
 import dev.arbor.gtnn.data.GTNNRecipeTypes;
 import dev.arbor.gtnn.data.GTNNRecipes;
 import net.minecraft.data.recipes.FinishedRecipe;

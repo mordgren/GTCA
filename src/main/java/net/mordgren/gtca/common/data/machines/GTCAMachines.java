@@ -92,7 +92,7 @@ public class GTCAMachines {
                             .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCA.id(name), recipeType))
                             .rotationState(RotationState.NON_Y_AXIS)
                             .recipeType(recipeType)
-                            .workableTieredHullRenderer(GTCA.id("block/machines/" + name))
+                            .workableTieredHullModel(GTCA.id("block/machines/" + name))
                             .tooltips(workableTiered(tier, GTValues.V[tier], GTValues.V[tier] * 64, recipeType,
                                     tankScalingFunction.apply(tier), true))
                             .register();
@@ -133,10 +133,9 @@ public class GTCAMachines {
                             .where("B", blocks(GTBlocks.CASING_STEEL_SOLID.get()).setMinGlobalLimited(2).or(Predicates.autoAbilities(definition.getRecipeTypes())))
                             .build()
             )
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCEu.id("block/casings/solid/machine_casing_solid_steel"),
-                    GTCEu.id("block/multiblock/implosion_compressor"),
-                    true
+                    GTCEu.id("block/multiblock/implosion_compressor")
             )
             .register();
 
@@ -203,10 +202,9 @@ public class GTCAMachines {
             .recoveryItems(
                     () -> new ItemLike[] {
                             GTMaterialItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/casing_aebf"),
-                    GTCA.id("block/multiblock/aebf"),
-                    true
+                    GTCA.id("block/multiblock/aebf")
             )
             .tooltips(
                     Component.translatable("gtceu.multiblock.parallelizable.tooltip"),
@@ -285,7 +283,7 @@ public class GTCAMachines {
                 .recoveryItems(
                         () -> new ItemLike[] {
                                 GTMaterialItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
-                .workableCasingRenderer(casingTexture, overlayModel)
+                .workableCasingModel(casingTexture, overlayModel)
                 .tooltips(
                         Component.translatable("gtceu.universal.tooltip.base_production_eut", V[tier]),
                         tier > EV ?
@@ -344,10 +342,9 @@ public class GTCAMachines {
             .tooltips(
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Green House")
             )
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/casing_greenhouse"),
-                    GTCA.id("block/multiblock/aebf"),
-                    true
+                    GTCA.id("block/multiblock/aebf")
             )
 //            .compassSections(GTCompassSections.TIER[MV])
 //            .compassNodeSelf()
@@ -377,10 +374,9 @@ public class GTCAMachines {
             .tooltips(
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Polymerizer")
             )
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/dural_casing"),
-                    GTCA.id("block/multiblock/aebf"),
-                    true
+                    GTCA.id("block/multiblock/aebf")
             )
             .register();
 
@@ -422,7 +418,7 @@ public class GTCAMachines {
             .recoveryItems(
                     () -> new ItemLike[] {
                             GTMaterialItems.MATERIAL_ITEMS.get(TagPrefix.dustTiny, GTMaterials.Ash).get() })
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/shd_casing"),
                     GTCA.id("block/multiblock/shd")
             )
@@ -466,10 +462,9 @@ public class GTCAMachines {
                             .where('#', any())
                             .build()
             )
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
-                    GTCEu.id("block/multiblock/implosion_compressor"),
-                    true
+                    GTCEu.id("block/multiblock/implosion_compressor")
             )
             .tooltips(
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Heat Exchanger"),
@@ -535,7 +530,7 @@ public class GTCAMachines {
                                 coil -> shapeInfo.add(builder.shallowCopy().where('C', coil.getValue().get()).build()));
                 return shapeInfo;
             })
-            .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
+            .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
                     GTCEu.id("block/multiblock/cracking_unit"))
             .tooltips(
                     Component.translatable("gtceu.multiblock.parallelizable.tooltip"),
@@ -583,10 +578,9 @@ public class GTCAMachines {
                                     .or(autoAbilities(true, false, true)))
                             .build()
             )
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCEu.id("block/casings/solid/machine_casing_inert_ptfe"),
-                    GTCA.id("block/multiblock/shd"),
-                    true
+                    GTCA.id("block/multiblock/shd")
             )
             .tooltips(
                     Component.translatable("gtceu.multiblock.parallelizable.tooltip"),
@@ -614,10 +608,9 @@ public class GTCAMachines {
                                   .or(autoAbilities(true, false, false)))
                             .build()
             )
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/tantalloy61_casing"),
-                    GTCEu.id("block/multiblock/implosion_compressor"),
-                    true
+                    GTCEu.id("block/multiblock/implosion_compressor")
             )
             .register();
 
@@ -670,10 +663,9 @@ public class GTCAMachines {
                                 coil -> shapeInfo.add(builder.shallowCopy().where('N', coil.getValue().get()).build()));
                 return shapeInfo;
             })
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/nimonic80a_casing"),
-                    GTCA.id("block/multiblock/aebf"),
-                    true
+                    GTCA.id("block/multiblock/aebf")
             )
             .tooltips(
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Thermal Catalyst Reactor")
@@ -726,10 +718,9 @@ public class GTCAMachines {
                                 )
                             .build()
             )
-                            .workableCasingRenderer(
+                            .workableCasingModel(
                                     GTCA.id("block/casing/comet_casing"),
-                                    GTCA.id("block/multiblock/comet"),
-                                    true
+                                    GTCA.id("block/multiblock/comet")
                             )
             .tooltips(
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Particle Accelerator"),
@@ -763,10 +754,9 @@ public class GTCAMachines {
                     Component.translatable("gtca.machine.isamill_desc.tooltip")
             )
 
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/isa_mill_casing"),
-                    GTCA.id("block/multiblock/aebf"),
-                    true
+                    GTCA.id("block/multiblock/aebf")
             )
             .register();
 
@@ -798,10 +788,9 @@ public class GTCAMachines {
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Flotation cell"),
                     Component.translatable("gtca.machine.flcr_desc.tooltip")
             )
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/flcr_2"),
-                    GTCA.id("block/multiblock/aebf"),
-                    true
+                    GTCA.id("block/multiblock/aebf")
             )
             .register();
 
@@ -859,10 +848,9 @@ public class GTCAMachines {
                     Component.translatable("gtca.machine.tegmark1_desc.tooltip"),
                     Component.translatable("gtca.machine.tegmark2_desc.tooltip")
            )
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/p_n_casing"),
-                    GTCA.id("block/multiblock/tegmark_forge"),
-                    true
+                    GTCA.id("block/multiblock/tegmark_forge")
             )
             .register();
 
@@ -897,10 +885,9 @@ public class GTCAMachines {
 
             )
 
-            .workableCasingRenderer(
+            .workableCasingModel(
                     GTCA.id("block/casing/rnac_casing"),
-                    GTCA.id("block/multiblock/nanoforge"),
-                    true
+                    GTCA.id("block/multiblock/nanoforge")
             )
             .register();
 
@@ -969,10 +956,9 @@ public class GTCAMachines {
                           Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Circuit Factory Board"),
                           Component.translatable("gtca.machine.pcb1_desc.tooltip")
                   )
-                  .workableCasingRenderer(
+                  .workableCasingModel(
                           casingTexture,
-                          overlayModel,
-                          true
+                          overlayModel
                   )
                   .register();
       } if (tier == UHV) {
@@ -1016,10 +1002,9 @@ public class GTCAMachines {
                     Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Circuit Factory Board"),
                     Component.translatable("gtca.machine.pcb1_desc.tooltip")
             )
-                  .workableCasingRenderer(
+                  .workableCasingModel(
                           casingTexture,
-                          overlayModel,
-                          true
+                          overlayModel
                   )
                   .register();
 
@@ -1056,10 +1041,9 @@ public class GTCAMachines {
                           Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Circuit Factory Board"),
                           Component.translatable("gtca.machine.pcb1_desc.tooltip")
                   )
-                  .workableCasingRenderer(
+                  .workableCasingModel(
                           casingTexture,
-                          overlayModel,
-                          true
+                          overlayModel
                   )
                   .register();
       }

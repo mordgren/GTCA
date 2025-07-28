@@ -13,8 +13,9 @@ import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import net.mordgren.gtca.common.item.ScrapBoxBehaviour;
 
-import static com.gregtechceu.gtceu.common.data.GTModels.overrideModel;
+import static com.gregtechceu.gtceu.common.data.models.GTModels.overrideModel;
 import static net.mordgren.gtca.common.registry.GTCARegistration.REGISTRATE;
+import com.gregtechceu.gtceu.common.data.models.GTModels;
 
 public class GTCAItems {
     static{GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);}

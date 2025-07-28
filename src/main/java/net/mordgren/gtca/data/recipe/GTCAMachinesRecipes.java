@@ -1,7 +1,7 @@
 package net.mordgren.gtca.data.recipe;
 
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.common.data.machines.GTMultiMachines;
@@ -24,8 +24,8 @@ import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLER_RECIPES;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ASSEMBLY_LINE_RECIPES;
 import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.DISTILLATION_TOWER;
 import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.ELECTRIC_BLAST_FURNACE;
-import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.*;
-import static com.gregtechceu.gtceu.data.recipe.CraftingComponent.HULL;
+import static com.gregtechceu.gtceu.data.recipe.GTCraftingComponents.*;
+import static com.gregtechceu.gtceu.data.recipe.GTCraftingComponents.HULL;
 import static com.gregtechceu.gtceu.data.recipe.misc.MetaTileEntityLoader.registerMachineRecipe;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 
@@ -45,8 +45,8 @@ public class GTCAMachinesRecipes {
                 'P', ELECTRIC_PUMP_HV.asStack(),
                 'R', ELECTRIC_PISTON_HV.asStack(),
                 'C', CustomTags.HV_CIRCUITS,
-                'S', new UnificationEntry(TagPrefix.pipeLargeFluid, StainlessSteel),
-                'W', new UnificationEntry(TagPrefix.cableGtSingle, Gold),
+                'S', new MaterialEntry(TagPrefix.pipeLargeFluid, StainlessSteel),
+                'W', new MaterialEntry(TagPrefix.cableGtSingle, Gold),
                 'H', GTMachines.HULL[GTValues.HV].asStack());
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "advanced_ebf",
@@ -69,8 +69,8 @@ public class GTCAMachinesRecipes {
                 'P', GTItems.ELECTRIC_PISTON_EV.asStack(),
                 'E', ELECTRIC_PUMP_EV.asStack(),
                 'C', CustomTags.IV_CIRCUITS,
-                'W', new UnificationEntry(TagPrefix.cableGtSingle, GTMaterials.Aluminium),
-                'G', new UnificationEntry(TagPrefix.gear, GTMaterials.Titanium));
+                'W', new MaterialEntry(TagPrefix.cableGtSingle, GTMaterials.Aluminium),
+                'G', new MaterialEntry(TagPrefix.gear, GTMaterials.Titanium));
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "iv_chemgen",
                 /// Output
@@ -82,8 +82,8 @@ public class GTCAMachinesRecipes {
                 'P', GTItems.ELECTRIC_PISTON_IV.asStack(),
                 'E', ELECTRIC_PUMP_IV.asStack(),
                 'C', CustomTags.LuV_CIRCUITS,
-                'W', new UnificationEntry(TagPrefix.cableGtSingle, GTMaterials.HSSG),
-                'G', new UnificationEntry(TagPrefix.gear, GTMaterials.TungstenSteel));
+                'W', new MaterialEntry(TagPrefix.cableGtSingle, GTMaterials.HSSG),
+                'G', new MaterialEntry(TagPrefix.gear, GTMaterials.TungstenSteel));
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "greenhouse",
                 /// Output
@@ -106,7 +106,7 @@ public class GTCAMachinesRecipes {
                 'H', GTMachines.HULL[GTValues.EV].asStack(),
                 'U', ELECTRIC_PUMP_EV.asStack(),
                 'C', CustomTags.EV_CIRCUITS,
-                'P', new UnificationEntry(TagPrefix.pipeLargeFluid, Polytetrafluoroethylene));
+                'P', new MaterialEntry(TagPrefix.pipeLargeFluid, Polytetrafluoroethylene));
 
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder("mega_lcr").EUt(480).duration(72000)
                 .circuitMeta(17)
@@ -129,10 +129,10 @@ public class GTCAMachinesRecipes {
                 "CPC", "GHG", "LPL",
                 /// Ingredients definition
                 'H', GTMachines.HULL[GTValues.IV].asStack(),
-                'P', new UnificationEntry(TagPrefix.plate, GTCAMaterials.MAR_M200),
+                'P', new MaterialEntry(TagPrefix.plate, GTCAMaterials.MAR_M200),
                 'C', CustomTags.LuV_CIRCUITS,
-                'G', new UnificationEntry(TagPrefix.gear, GTCAMaterials.Moltech),
-                'L', new UnificationEntry(TagPrefix.pipeLargeFluid, Naquadah));
+                'G', new MaterialEntry(TagPrefix.gear, GTCAMaterials.Moltech),
+                'L', new MaterialEntry(TagPrefix.pipeLargeFluid, Naquadah));
 
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder("sc_turbine_assembler").EUt(480).duration(300)
                 .inputItems(GTCAHelper.getItem("gear", GTCAMaterials.Moltech, 2))
@@ -151,8 +151,8 @@ public class GTCAMachinesRecipes {
                 /// Ingredients definition
                 'V', GCYMBlocks.HEAT_VENT.asStack(),
                 'H', GTMachines.HULL[GTValues.IV].asStack(),
-                'P', new UnificationEntry(TagPrefix.plate, GTCAMaterials.MAR_M200),
-                'L', new UnificationEntry(TagPrefix.pipeLargeFluid, TungstenSteel));
+                'P', new MaterialEntry(TagPrefix.plate, GTCAMaterials.MAR_M200),
+                'L', new MaterialEntry(TagPrefix.pipeLargeFluid, TungstenSteel));
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "industrial_coke_oven",
                 /// Output
@@ -162,7 +162,7 @@ public class GTCAMachinesRecipes {
                 /// Ingredients definition
                 'B', GTMultiMachines.COKE_OVEN.asStack(),
                 'H', GTMachines.HULL[GTValues.EV].asStack(),
-                'P', new UnificationEntry(TagPrefix.plate, GTCAMaterials.Tantalloy61),
+                'P', new MaterialEntry(TagPrefix.plate, GTCAMaterials.Tantalloy61),
                 'C', CustomTags.EV_CIRCUITS);
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "thermal_reactor",
@@ -172,11 +172,11 @@ public class GTCAMachinesRecipes {
                 "RHR", "PSP", "CXC",
                 /// Ingredients definition
                 'X', GTMachines.CHEMICAL_REACTOR[GTValues.EV].asStack(),
-                'H', new UnificationEntry(TagPrefix.pipeHugeFluid, Titanium),
+                'H', new MaterialEntry(TagPrefix.pipeHugeFluid, Titanium),
                 'C', CustomTags.EV_CIRCUITS,
-                'R', new UnificationEntry(TagPrefix.rotor, TungstenSteel),
+                'R', new MaterialEntry(TagPrefix.rotor, TungstenSteel),
                 'P', ELECTRIC_PUMP_EV.asStack(),
-                'S', new UnificationEntry(TagPrefix.spring, TungstenSteel));
+                'S', new MaterialEntry(TagPrefix.spring, TungstenSteel));
 
         ASSEMBLER_RECIPES.recipeBuilder("comet_controller").EUt(7680).duration(6000)
                 .inputItems(GTCAHelper.getItem("plate", GTCAMaterials.Incoloy020, 8))
@@ -318,7 +318,7 @@ public class GTCAMachinesRecipes {
                 'I', FIELD_GENERATOR, 'K', CABLE_TIER_UP_HEX, 'J', SENSOR, 'F', EMITTER);
 
         registerMachineRecipe(provider, GTCAMachines.RECYCLER, "GCG", "PMP", "KCK", 'M', HULL, 'C', CIRCUIT,
-                'K', CABLE_TIER_UP, 'P', PISTON, 'G', new UnificationEntry(TagPrefix.dust, Glowstone));
+                'K', CABLE_TIER_UP, 'P', PISTON, 'G', new MaterialEntry(TagPrefix.dust, Glowstone));
 
 
     }
