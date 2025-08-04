@@ -1,0 +1,82 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "gtceu:machine",
+  "machine": "gtca:advanced_ebf",
+  "texture_overrides": {
+    "all": "gtca:block/casing/casing_aebf"
+  },
+  "variants": {
+    "is_formed=false,recipe_logic_status=idle": {
+      "model": {
+        "parent": "gtceu:block/machine/template/cube_all/sided",
+        "textures": {
+          "all": "gtca:block/casing/casing_aebf",
+          "overlay_front": "gtca:block/multiblock/aebf/overlay_front"
+        }
+      }
+    },
+    "is_formed=false,recipe_logic_status=suspend": {
+      "model": {
+        "parent": "gtceu:block/machine/template/cube_all/sided",
+        "textures": {
+          "all": "gtca:block/casing/casing_aebf",
+          "overlay_front": "gtca:block/multiblock/aebf/overlay_front_paused"
+        }
+      }
+    },
+    "is_formed=false,recipe_logic_status=waiting": {
+      "model": {
+        "parent": "gtceu:block/machine/template/cube_all/sided",
+        "textures": {
+          "all": "gtca:block/casing/casing_aebf",
+          "overlay_front": "gtca:block/multiblock/aebf/overlay_front_active"
+        }
+      }
+    },
+    "is_formed=false,recipe_logic_status=working": {
+      "model": {
+        "parent": "gtceu:block/machine/template/cube_all/sided",
+        "textures": {
+          "all": "gtca:block/casing/casing_aebf",
+          "overlay_front": "gtca:block/multiblock/aebf/overlay_front_active"
+        }
+      }
+    },
+    "is_formed=true,recipe_logic_status=idle": {
+      "model": {
+        "parent": "gtceu:block/machine/template/cube_all/sided",
+        "textures": {
+          "all": "gtca:block/casing/casing_aebf",
+          "overlay_front": "gtca:block/multiblock/aebf/overlay_front"
+        }
+      }
+    },
+    "is_formed=true,recipe_logic_status=suspend": {
+      "model": {
+        "parent": "gtceu:block/machine/template/cube_all/sided",
+        "textures": {
+          "all": "gtca:block/casing/casing_aebf",
+          "overlay_front": "gtca:block/multiblock/aebf/overlay_front_paused"
+        }
+      }
+    },
+    "is_formed=true,recipe_logic_status=waiting": {
+      "model": {
+        "parent": "gtceu:block/machine/template/cube_all/sided",
+        "textures": {
+          "all": "gtca:block/casing/casing_aebf",
+          "overlay_front": "gtca:block/multiblock/aebf/overlay_front_active"
+        }
+      }
+    },
+    "is_formed=true,recipe_logic_status=working": {
+      "model": {
+        "parent": "gtceu:block/machine/template/cube_all/sided",
+        "textures": {
+          "all": "gtca:block/casing/casing_aebf",
+          "overlay_front": "gtca:block/multiblock/aebf/overlay_front_active"
+        }
+      }
+    }
+  }
+}

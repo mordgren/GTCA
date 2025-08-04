@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gtca:block/machine/uv_recycler",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gtca:block/machine/uv_recycler"
+    },
+    "facing=south": {
+      "model": "gtca:block/machine/uv_recycler",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gtca:block/machine/uv_recycler",
+      "y": 270
+    }
+  }
+}

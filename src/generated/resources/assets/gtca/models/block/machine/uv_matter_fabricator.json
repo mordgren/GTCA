@@ -1,0 +1,51 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "gtceu:machine",
+  "machine": "gtca:uv_matter_fabricator",
+  "variants": {
+    "recipe_logic_status=idle": {
+      "model": {
+        "parent": "gtceu:block/casings/voltage/uv",
+        "textures": {
+          "overlay_bottom": "gtca:block/machines/matter_fabricator/overlay_bottom",
+          "overlay_front": "gtca:block/machines/matter_fabricator/overlay_front",
+          "overlay_side": "gtca:block/machines/matter_fabricator/overlay_side",
+          "overlay_top": "gtca:block/machines/matter_fabricator/overlay_top"
+        }
+      }
+    },
+    "recipe_logic_status=suspend": {
+      "model": {
+        "parent": "gtceu:block/casings/voltage/uv",
+        "textures": {
+          "overlay_bottom": "gtca:block/machines/matter_fabricator/overlay_bottom",
+          "overlay_front": "gtca:block/machines/matter_fabricator/overlay_front_paused",
+          "overlay_side": "gtca:block/machines/matter_fabricator/overlay_side",
+          "overlay_top": "gtca:block/machines/matter_fabricator/overlay_top_paused"
+        }
+      }
+    },
+    "recipe_logic_status=waiting": {
+      "model": {
+        "parent": "gtceu:block/casings/voltage/uv",
+        "textures": {
+          "overlay_bottom": "gtca:block/machines/matter_fabricator/overlay_bottom",
+          "overlay_front": "gtca:block/machines/matter_fabricator/overlay_front_active",
+          "overlay_side": "gtca:block/machines/matter_fabricator/overlay_side_active",
+          "overlay_top": "gtca:block/machines/matter_fabricator/overlay_top_active"
+        }
+      }
+    },
+    "recipe_logic_status=working": {
+      "model": {
+        "parent": "gtceu:block/casings/voltage/uv",
+        "textures": {
+          "overlay_bottom": "gtca:block/machines/matter_fabricator/overlay_bottom",
+          "overlay_front": "gtca:block/machines/matter_fabricator/overlay_front_active",
+          "overlay_side": "gtca:block/machines/matter_fabricator/overlay_side_active",
+          "overlay_top": "gtca:block/machines/matter_fabricator/overlay_top_active"
+        }
+      }
+    }
+  }
+}
