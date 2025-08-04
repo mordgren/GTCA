@@ -48,13 +48,13 @@ public class GTCABlocks {
             GTCA.id("block/casing/vitallium_casing"));
 
     public static final BlockEntry<Block> NIMONIC80A_CASING = createCasingBlock("nimonic80a_casing",
-            GTCA.id("block/casing/nimonic80a_casing"));
+            GTCA.id("block/casing/nimonic_80_a_casing"));
 
     public static final BlockEntry<Block> SHD_CASING = createCasingBlock("shd_casing",
             GTCA.id("block/casing/shd_casing"));
 
     public static final BlockEntry<Block> INCONEL718_CASING = createCasingBlock("inconel718_casing",
-            GTCA.id("block/casing/inconel718_casing"));
+            GTCA.id("block/casing/inconel_718_casing"));
 
     public static final BlockEntry<Block> PRW_Casing = createCasingBlock("pressure_resistant_wall",
             GTCA.id("block/casing/pressure_resistant_wall"));
@@ -63,7 +63,7 @@ public class GTCABlocks {
             GTCA.id("block/casing/machine_casing_gearbox_shd"));
 
     public static final BlockEntry<Block> TANTALLOY61_CASING = createCasingBlock("tantalloy61_casing",
-            GTCA.id("block/casing/tantalloy61_casing"));
+            GTCA.id("block/casing/tantalloy_61_casing"));
 
     public static final BlockEntry<Block> COMET_CASING = createCasingBlock("comet_casing",
             GTCA.id("block/casing/comet_casing"));

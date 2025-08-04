@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gtca:block/casing/tantalloy61_casing"
+    "all": "gtca:block/casing/tantalloy_61_casing"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "gtca:block/casing/nimonic80a_casing"
+    "all": "gtca:block/casing/nimonic_80_a_casing"
   }
 }

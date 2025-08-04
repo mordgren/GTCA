@@ -61,7 +61,7 @@ public class PCBRecipeCondition extends RecipeCondition {
     }
 
     @Override
-    public boolean test(@NotNull GTRecipe gtRecipe, @NotNull RecipeLogic recipeLogic) {
+    protected boolean testCondition(@NotNull GTRecipe recipe, @NotNull RecipeLogic recipeLogic) {
         if (recipeLogic.machine instanceof PCBFactoryMachine pcbProps) {
             return pcbProps.getTier() >= tier;
         }
