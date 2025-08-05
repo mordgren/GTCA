@@ -31,8 +31,8 @@ public class TMForgeRecipes {
                 .stationResearch(b -> b
                         .researchStack(GTCAHelper.getItem("ingot",GTMaterials.Tungsten, 1))
                         .CWUt(74)
-                        .EUt(VA[ZPM]))
-                .duration(600).EUt(VA[ZPM]).save(provider);
+                        .EUt(VA[122880]))
+                .duration(600).EUt(VA[122880]).save(provider);
 
 
         GTCARecipeTypes.TEGMARK_FORGE.recipeBuilder("ohriharucon")
