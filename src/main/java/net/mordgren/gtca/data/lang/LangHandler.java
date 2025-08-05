@@ -272,7 +272,7 @@ public class LangHandler extends com.gregtechceu.gtceu.data.lang.LangHandler {
         provider.add("gtca.machine.AEBF_desc.tooltip1", "All recipes are 50% faster!");
 
         provider.add("gtca.machine.SC_desc.tooltip", "Needs a rotor. Uses Supercritical steam to generate power.");
-        provider.add("gtca.machine.SC_desc.tooltip2", "1mB SuperCritical steam = 96 EU");
+        provider.add("gtca.machine.SC_desc.tooltip2", "1mB SuperCritical steam = 103 EU");
 
         provider.add("gtca.machine.EHE_desc.tooltip", "Accepts hot fluid like lava, or plasma.");
         provider.add("gtca.machine.EHE_desc.tooltip2", "Output: SC Steam/SH Steam/Steam. Check EMI/REI/JEI for more info.");

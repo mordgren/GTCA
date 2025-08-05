@@ -29,12 +29,12 @@ public class HERecipes {
         inpHotCustom = new ArrayList<>();
 
         /// Plasma material, plasma amount, coolant amount, sc steam output amount, recipe name(kostyl`)
-        inpHot.add(new Object[]{GTMaterials.Argon, 1000, 3532800, 5652480, "argon"});
-        inpHot.add(new Object[]{GTMaterials.Helium, 800, 1228800, 1966080, "helium"});
-        inpHot.add(new Object[]{GTMaterials.Iron, 1500, 5806068, 9289710, "iron"});
-        inpHot.add(new Object[]{GTMaterials.Nickel, 1500, 6013434, 9621495, "nickel"});
-        inpHot.add(new Object[]{GTMaterials.Nitrogen, 1000, 2419200, 3870720, "nitrogen"});
-        inpHot.add(new Object[]{GTMaterials.Oxygen, 1000, 2457600, 3932160, "oxygen"});
+        inpHot.add(new Object[]{GTMaterials.Argon, 1000, 3532800, 6782976, "argon"});
+        inpHot.add(new Object[]{GTMaterials.Helium, 800, 1228800, 2359296, "helium"});
+        inpHot.add(new Object[]{GTMaterials.Iron, 1500, 5806068, 11147652, "iron"});
+        inpHot.add(new Object[]{GTMaterials.Nickel, 1500, 6013434, 11545794, "nickel"});
+        inpHot.add(new Object[]{GTMaterials.Nitrogen, 1000, 2419200, 4644864, "nitrogen"});
+        inpHot.add(new Object[]{GTMaterials.Oxygen, 1000, 2457600, 4718592, "oxygen"});
 
         inpHotCustom.add(new Object[]{GTCAMaterials.HydrogenPlasma, 500, 192000, 307200, GTMaterials.Hydrogen,"hydrogen"});
         inpHotCustom.add(new Object[]{GTCAMaterials.TitaniumPlasma, 1000, 3686400, 5898240, GTMaterials.Titanium,"titanium"});
@@ -89,7 +89,6 @@ public class HERecipes {
                 .inputFluids(GTMaterials.Lava.getFluid(160000))
                 .inputFluids(GTMaterials.DistilledWater.getFluid(80000))
                 .outputFluids(GTCAMaterials.SuperheatedSteam.getFluid(12800000))
-                .outputFluids(GTCAMaterials.SuperCriticalSteam.getFluid(12800000))
                 .outputFluids(GTCAMaterials.PahoehoeLava.getFluid(160000))
                 .save(provider);
     }
