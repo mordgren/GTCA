@@ -130,7 +130,7 @@ public class GTCAMetals {
                 .iconSet(METALLIC)
                 .buildAndRegister();
 
-        GTCAMaterials.Incoloy903 = new Material.Builder(GTCA.id("incoloy903")) // 123
+        GTCAMaterials.Incoloy903 = new Material.Builder(GTCA.id("incoloy903"))
                 .components(GTMaterials.Iron, 12,GTMaterials.Nickel, 10, GTMaterials.Cobalt, 8, GTMaterials.Titanium, 4, GTMaterials.Molybdenum, 2, GTMaterials.Aluminium, 1)
                 .flags(
                         MaterialFlags.GENERATE_FRAME,

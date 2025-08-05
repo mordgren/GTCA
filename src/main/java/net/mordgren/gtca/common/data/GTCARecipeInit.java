@@ -33,7 +33,7 @@ public class GTCARecipeInit {
             CometRecipes.init(provider);
             ICORecipes.init(provider);
             FrothLineRecipes.init(provider);
-            //TMForgeRecipes.init(provider);
+            TMForgeRecipes.init(provider);
             PCBFRecipes.init(provider);
 
             CasingRecipes.init(provider);
