@@ -59,7 +59,7 @@ public class AlloyRecipes {
 
 
         MIXER_RECIPES.recipeBuilder("vitallium").EUt(GTValues.VA[GTValues.EV]).duration(200)
-                .circuitMeta(20)
+                .circuitMeta(4)
                 .inputItems(GTCAHelper.getItem("dust", Cobalt, 6))
                 .inputItems(GTCAHelper.getItem("dust", Chromium, 3))
                 .inputItems(GTCAHelper.getItem("dust", Molybdenum, 1))

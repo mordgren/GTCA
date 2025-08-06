@@ -134,6 +134,7 @@ public class GTCAMetals {
                 .components(GTMaterials.Iron, 12,GTMaterials.Nickel, 10, GTMaterials.Cobalt, 8, GTMaterials.Titanium, 4, GTMaterials.Molybdenum, 2, GTMaterials.Aluminium, 1)
                 .flags(
                         MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.GENERATE_PLATE,
                         MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING
                 )
                 .dust()
