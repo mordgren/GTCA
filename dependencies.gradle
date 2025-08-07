@@ -1,6 +1,8 @@
 dependencies {
 
-    modCompileOnly("curse.maven:gt-985872:6816503") //gtnn
+    //modCompileOnly("curse.maven:gt-985872:6816503") //gtnn
+    modCompileOnly("curse.maven:gt-985872:6851587") //gtnn 1.3.2
+//    modCompileOnly("curse.maven:gt-985872:6764684") //gtnn 1.3.0
 
     compileOnly(libs.jetbrains.annotations)
 
