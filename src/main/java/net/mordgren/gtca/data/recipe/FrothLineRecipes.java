@@ -140,11 +140,9 @@ public class FrothLineRecipes {
             FluidStack SpruceOil = (GTCAMaterials.SpruceOil.getFluid((int)holder[4]));
 
             GTCARecipeTypes.FLCR.recipeBuilder(id).duration(9600).EUt(eut)
-                    .inputItems(GTCAHelper.getItem("dust", GTCAMaterials.PotassiumEthylXanthate, 32))
+                    .inputItems(GTCAHelper.getItem("dust", GTCAMaterials.PotassiumEthylXanthate, 16))
                     .inputItems(item, 64)
-                    .inputItems(item, 64)
-                    .inputItems(item, 64)
-                    .inputItems(item, 64)
+                    .inputItems(item, 32)
                     .inputFluids(SpruceOil)
                     .outputFluids(frothOut)
                     .save(provider);
