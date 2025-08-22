@@ -25,6 +25,9 @@
     "gtca:radiant_proof_reinforced_casing",
     "gtca:air_intake_rnac",
     "gtca:rnac_casing",
+    "gtca:space_elevator_base_casing",
+    "gtca:neutronium_plated_reinforced_stone",
+    "gtca:ultra_high_strength_concrete_floor",
     "gtca:dristnya",
     "gtca:borsilicate_yttrium_thorium_glass",
     "gtca:reinforced_glass",
@@ -34,6 +37,13 @@
     "gtca:quark_entanglement_battery",
     "gtca:graviton_anomaly_battery",
     "gtca:p_n_e_capacitor",
-    "gtca:p_n_e_laser_activator"
+    "gtca:p_n_e_laser_activator",
+    "gtca:space_elevator_internal_structure",
+    "gtca:space_elevator_motor_mk_1",
+    "gtca:space_elevator_motor_mk_2",
+    "gtca:space_elevator_motor_mk_3",
+    "gtca:space_elevator_motor_mk_4",
+    "gtca:space_elevator_motor_mk_5",
+    "gtca:space_elevator_support_structure"
   ]
 }

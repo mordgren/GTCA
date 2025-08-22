@@ -165,43 +165,43 @@ public class GTCABlocks {
     );
 
     public static BlockEntry<Block> SPACE_ELEVATOR_INTERNAL_STRUCTURE = createSidedCasingBlock(
-            "p_n_e_laser_activator",
+            "space_elevator_internal_structure",
             GTCA.id("block/sided_casing/space_elevator_internal_structure_side"),
             GTCA.id("block/sided_casing/space_elevator_internal_structure_top")
     );
 
     public static BlockEntry<Block> SPACE_ELEVATOR_MOTOR_MK1 = createSidedCasingBlock(
-            "p_n_e_laser_activator",
+            "space_elevator_motor_mk_1",
             GTCA.id("block/sided_casing/space_elevator_motor_mk_1_side"),
             GTCA.id("block/sided_casing/space_elevator_motor_mk_x_top")
     );
 
     public static BlockEntry<Block> SPACE_ELEVATOR_MOTOR_MK2 = createSidedCasingBlock(
-            "p_n_e_laser_activator",
+            "space_elevator_motor_mk_2",
             GTCA.id("block/sided_casing/space_elevator_motor_mk_2_side"),
             GTCA.id("block/sided_casing/space_elevator_motor_mk_x_top")
     );
 
     public static BlockEntry<Block> SPACE_ELEVATOR_MOTOR_MK3 = createSidedCasingBlock(
-            "p_n_e_laser_activator",
+            "space_elevator_motor_mk_3",
             GTCA.id("block/sided_casing/space_elevator_motor_mk_3_side"),
             GTCA.id("block/sided_casing/space_elevator_motor_mk_x_top")
     );
 
     public static BlockEntry<Block> SPACE_ELEVATOR_MOTOR_MK4 = createSidedCasingBlock(
-            "p_n_e_laser_activator",
+            "space_elevator_motor_mk_4",
             GTCA.id("block/sided_casing/space_elevator_motor_mk_4_side"),
             GTCA.id("block/sided_casing/space_elevator_motor_mk_x_top")
     );
 
     public static BlockEntry<Block> SPACE_ELEVATOR_MOTOR_MK5 = createSidedCasingBlock(
-            "p_n_e_laser_activator",
+            "space_elevator_motor_mk_5",
             GTCA.id("block/sided_casing/space_elevator_motor_mk_5_side"),
             GTCA.id("block/sided_casing/space_elevator_motor_mk_x_top")
     );
 
     public static BlockEntry<Block> SPACE_ELEVATOR_SUPPORT_STRUCTURE = createSidedCasingBlock(
-            "p_n_e_laser_activator",
+            "space_elevator_support_structure",
             GTCA.id("block/sided_casing/space_elevator_support_structure_side"),
             GTCA.id("block/sided_casing/space_elevator_support_structure_top")
     );
