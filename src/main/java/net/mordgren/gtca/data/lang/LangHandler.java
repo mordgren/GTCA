@@ -239,7 +239,13 @@ public class LangHandler extends com.gregtechceu.gtceu.data.lang.LangHandler {
         replace(provider, "item.gtca.proton_cell_empty", "Containment Unit I");
         replace(provider, "item.gtca.electron_cell_empty", "Containment Unit II");
         replace(provider, "item.gtca.quark_entanglement_empty", "Advanced Containment Unit");
-        replace(provider, "item.gtca.graviton_anomaly_empty", "Exotic Containment Unit");
+
+
+        replace(provider, "item.gtca.hv_drone", "Mining Drone MK I");
+        replace(provider, "item.gtca.ev_drone", "Mining Drone MK II");
+        replace(provider, "item.gtca.luv_drone", "Mining Drone MK III");
+        replace(provider, "item.gtca.iv_drone", "Mining Drone MK IV");
+        replace(provider, "item.gtca.zpm_drone", "Mining Drone MK V");
 
 
         replace(provider, "item.gtca.pne_resistor", "P/N/E Resistor");
@@ -301,8 +307,8 @@ public class LangHandler extends com.gregtechceu.gtceu.data.lang.LangHandler {
 
 
         provider.add("gtca.recipe.condition.tier_casing.tooltip", "Tier: %s");
-        provider.add("gtca.recipe.condition.tier_casing.tier.mki", "MKI");
-        provider.add("gtca.recipe.condition.tier_casing.tier.mkii", "MKII");
-        provider.add("gtca.recipe.condition.tier_casing.tier.mkiii", "MKIII");
+        provider.add("gtca.recipe.condition.tier_casing.tier.mki", "MK I");
+        provider.add("gtca.recipe.condition.tier_casing.tier.mkii", "MK II");
+        provider.add("gtca.recipe.condition.tier_casing.tier.mkiii", "MK III");
     }
 }
