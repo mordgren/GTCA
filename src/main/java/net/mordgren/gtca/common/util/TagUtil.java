@@ -1,5 +1,6 @@
 package net.mordgren.gtca.common.util;
 
+import com.gregtechceu.gtceu.GTCEu;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -19,4 +20,7 @@ public class TagUtil {
     public static TagKey<Block> createModBlockTag(String path) {
         return createModTag(BuiltInRegistries.BLOCK, path);
     }
+
+
+
 }
