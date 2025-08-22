@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "gtca:ultra_high_strength_concrete_floor"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "gtca:blocks/ultra_high_strength_concrete_floor"
+}

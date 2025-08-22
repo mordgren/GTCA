@@ -38,13 +38,13 @@ public class GTCAItems {
 
     public static ItemEntry<Item> PNEresistor = REGISTRATE.item("pne_resistor", Item::new).register();
 
-
 // Nanites
 
     public static ItemEntry<Item> GoldNanites  = REGISTRATE.item("gold_nanites", Item::new).register();
     public static ItemEntry<Item> SilverNanites = REGISTRATE.item("silver_nanites", Item::new).register();
     public static ItemEntry<Item> CarbonNanites = REGISTRATE.item("carbon_nanites", Item::new).register();
 
+    // forth
 
     public static ItemEntry<Item> TungstenCarbideGrindBall = REGISTRATE.item("grinding_ball_tungsten_carbide", Item::new).properties(p -> p.stacksTo(1)).register();
     public static ItemEntry<Item> NqGrindBall = REGISTRATE.item("grinding_ball_nq", Item::new).properties(p -> p.stacksTo(1)).register();
@@ -101,9 +101,33 @@ public class GTCAItems {
     public static ItemEntry<Item> QUARK_ENTANGLEMENT_EMPTY = REGISTRATE.item("quark_entanglement_empty", Item::new).register();
     public static ItemEntry<Item> GRAVITON_ANOMALY_EMPTY = REGISTRATE.item("graviton_anomaly_empty", Item::new).register();
 
+    // drones
+
+    public static ItemEntry<Item> MinerDroneHV = REGISTRATE.item("hv_drone", Item::new).register();
+    public static ItemEntry<Item> MinerDroneEV = REGISTRATE.item("ev_drone", Item::new).register();
+    public static ItemEntry<Item> MinerDroneIV = REGISTRATE.item("iv_drone", Item::new).register();
+    public static ItemEntry<Item> MinerDroneLuV = REGISTRATE.item("luv_drone", Item::new).register();
+    public static ItemEntry<Item> MinerDroneZPM = REGISTRATE.item("zpm_drone", Item::new).register();
+
+    // wafers
+
+    public static ItemEntry<Item> EUROPIUM_BOULE = REGISTRATE.item("europium_doped_monocrystalyne_silicon_boule", Item::new).register();
+    public static ItemEntry<Item> EUROPIUM_WAFER = REGISTRATE.item("europium_waffle", Item::new).register();
+    public static ItemEntry<Item> NANO_POWER_IC = REGISTRATE.item("nano_power_ic", Item::new).register();
+    public static ItemEntry<Item> NPIC_WAFER = REGISTRATE.item("npic_wafer", Item::new).register();
+    public static ItemEntry<Item> PPIC_WAFER = REGISTRATE.item("ppic_wafer", Item::new).register();
+    public static ItemEntry<Item> PIKO_WAFER = REGISTRATE.item("piko_wafer_ic", Item::new).register();
+    public static ItemEntry<Item> NANOTUBE_SPOOL = REGISTRATE.item("nanotube_spool", Item::new).register();
+
 
     private static <T extends IComponentItem> NonNullConsumer<T> attach(IItemComponent components) {
         return item -> item.attachComponents(components);
+
+
+
+
+
+
     }
 
 
