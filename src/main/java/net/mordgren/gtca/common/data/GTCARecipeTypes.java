@@ -145,6 +145,37 @@ public class GTCARecipeTypes {
             .setSound(GTCASounds.NANOFORGE)
             .setEUIO(IO.IN);
 
+    public static final GTRecipeType SPACE_MINER = register("space_miner", MULTIBLOCK)
+            .setMaxIOSize(6,9,1,0)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType SPACE_ASSEMBLER = register("space_assembler", MULTIBLOCK)
+            .setMaxIOSize(6,6,3,0)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+
+    public static final GTRecipeType SPACE_PUMP = register("space_pump", MULTIBLOCK)
+            .setMaxIOSize(2,0,1,1)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType SPACE_ELEVATOR = register("space_elevator", MULTIBLOCK)
+            .setMaxIOSize(9,9,4,4)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+
+
     // singleblock machines
 
 

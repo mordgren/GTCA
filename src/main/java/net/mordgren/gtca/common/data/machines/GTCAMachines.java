@@ -41,6 +41,7 @@ import net.mordgren.gtca.common.data.GTCACreativeModTab;
 import net.mordgren.gtca.common.data.GTCARecipeModifiers;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
 import net.mordgren.gtca.common.machine.multiblock.electric.PCBFactoryMachine;
+import net.mordgren.gtca.common.machine.multiblock.electric.SpaceMinerMachine;
 import net.mordgren.gtca.common.machine.multiblock.generator.ChemicalGeneratorMachine;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 
@@ -961,7 +962,8 @@ public class GTCAMachines {
                           overlayModel
                   )
                   .register();
-      } if (tier == UHV) {
+      }
+      if (tier == UHV) {
           return REGISTRATE.multiblock(name, holder -> new PCBFactoryMachine(holder, tier))
                   .langValue(lang)
                   .rotationState(RotationState.NON_Y_AXIS)
@@ -998,17 +1000,18 @@ public class GTCAMachines {
                                   )
                                   .build()
                   )
-            .tooltips(
-                    Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Circuit Factory Board"),
-                    Component.translatable("gtca.machine.pcb1_desc.tooltip")
-            )
+                  .tooltips(
+                          Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Circuit Factory Board"),
+                          Component.translatable("gtca.machine.pcb1_desc.tooltip")
+                  )
                   .workableCasingModel(
                           casingTexture,
                           overlayModel
                   )
                   .register();
 
-      } if (tier == UEV){
+      }
+      if (tier == UEV) {
           return REGISTRATE.multiblock(name, holder -> new PCBFactoryMachine(holder, tier))
                   .langValue(lang)
                   .rotationState(RotationState.NON_Y_AXIS)
@@ -1046,10 +1049,134 @@ public class GTCAMachines {
                           overlayModel
                   )
                   .register();
+      } else {
+          return null;
       }
-      else{return null;}
   }
-}
+      /// space elevator and modules ///
+
+
+
+    public static final MultiblockMachineDefinition SPACE_MINER_MKI = registerSpaceMiner(
+            "space_miner_mki", LuV,
+            GTCABlocks.SPACE_ELEVATOR_CASING,
+            GTCA.id("block/casing/space_elevator_base_casing"),
+            GTCA.id("block/multiblock/space_miner"), "Space Miner MK I");
+
+    public static final MultiblockMachineDefinition SPACE_MINER_MKII = registerSpaceMiner(
+            "space_miner_mkii", ZPM,
+            GTCABlocks.SPACE_ELEVATOR_CASING,
+            GTCA.id("block/casing/space_elevator_base_casing"),
+            GTCA.id("block/multiblock/space_miner"), "Space Miner MK II");
+
+    public static final MultiblockMachineDefinition SPACE_MINER_MKIII = registerSpaceMiner(
+            "space_miner_mkiii", UV,
+            GTCABlocks.SPACE_ELEVATOR_CASING,
+            GTCA.id("block/casing/space_elevator_base_casing"),
+            GTCA.id("block/multiblock/space_miner"), "Space Miner MK III");
+
+
+    public static MultiblockMachineDefinition registerSpaceMiner(String name, int tier,
+                                                                 Supplier<? extends Block> casing,
+                                                                 ResourceLocation casingTexture,
+                                                                 ResourceLocation overlayModel,
+                                                                 String lang) {
+        if (tier == LuV) {
+            return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
+                    .langValue(lang)
+                    .rotationState(RotationState.NON_Y_AXIS)
+                    .recipeType(GTCARecipeTypes.SPACE_MINER)
+                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
+                    .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                    .pattern(definition ->
+                            FactoryBlockPattern.start()
+                                    .aisle("CC")
+                                    .aisle("CC")
+                                    .aisle("CC")
+                                    .aisle("XC")
+                                    .aisle("CC")
+                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
+                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(autoAbilities(definition.getRecipeTypes())).or(Predicates.autoAbilities(false,false,false)))
+                                    .build()
+                    )
+                    .tooltips(
+                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Mining Module"),
+                            Component.translatable("gtca.machine.space_miner_desc.tooltip")
+                    )
+                    .workableCasingModel(
+                            casingTexture,
+                            overlayModel
+                    )
+                    .register();
+        }
+        if (tier == ZPM) {
+            return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
+                    .langValue(lang)
+                    .rotationState(RotationState.NON_Y_AXIS)
+                    .recipeType(GTCARecipeTypes.SPACE_MINER)
+                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
+                    .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                    .pattern(definition ->
+                            FactoryBlockPattern.start()
+                                    .aisle("CC")
+                                    .aisle("CC")
+                                    .aisle("CC")
+                                    .aisle("XC")
+                                    .aisle("CC")
+                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
+                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(autoAbilities(definition.getRecipeTypes())).or(Predicates.autoAbilities(false, false, false)))
+                                    .build()
+                    )
+                    .tooltips(
+                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Mining Module"),
+                            Component.translatable("gtca.machine.space_miner_desc.tooltip")
+                    )
+                    .workableCasingModel(
+                            casingTexture,
+                            overlayModel
+                    )
+                    .register();
+        }
+            if (tier == UV) {
+                return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
+                        .langValue(lang)
+                        .rotationState(RotationState.NON_Y_AXIS)
+                        .recipeType(GTCARecipeTypes.SPACE_MINER)
+                        .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
+                        .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                        .pattern(definition ->
+                                FactoryBlockPattern.start()
+                                        .aisle("CC")
+                                        .aisle("CC")
+                                        .aisle("CC")
+                                        .aisle("XC")
+                                        .aisle("CC")
+                                        .where('X', Predicates.controller(Predicates.blocks(definition.get())))
+                                        .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(autoAbilities(definition.getRecipeTypes())).or(Predicates.autoAbilities(false, false, false)))
+                                        .build()
+                        )
+                        .tooltips(
+                                Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Mining Module"),
+                                Component.translatable("gtca.machine.space_miner_desc.tooltip")
+                        )
+                        .workableCasingModel(
+                                casingTexture,
+                                overlayModel
+                        )
+                        .register();
+            } else {
+                return null;
+            }
+        }
+
+  }
+
+
+
+
+
+
+
 
 
 
