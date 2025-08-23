@@ -117,6 +117,33 @@ public class GTCAItems {
     public static ItemEntry<Item> NPIC_WAFER = REGISTRATE.item("npic_wafer", Item::new).register();
     public static ItemEntry<Item> PPIC_WAFER = REGISTRATE.item("ppic_wafer", Item::new).register();
     public static ItemEntry<Item> PIKO_WAFER = REGISTRATE.item("piko_wafer_ic", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_SILICON_BOULE = REGISTRATE.item("opticaly_enriched_monocrystalyne_silicon_boule", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_SILICON_WAFER = REGISTRATE.item("photonically_prepared_wafer", Item::new).register();
+
+    // smd
+
+    public static ItemEntry<Item> OPTICAL_SMD_CAPACITOR = REGISTRATE.item("optical_smd_capacitor", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_SMD_DIODE = REGISTRATE.item("optical_smd_diode", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_SMD_INDUCTOR = REGISTRATE.item("optical_smd_inductor", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_SMD_RESISTOR = REGISTRATE.item("optical_smd_resistor", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_SMD_TRANSISTOR = REGISTRATE.item("optical_smd_transistor", Item::new).register();
+
+
+    // optical wares
+
+    public static ItemEntry<Item> ACCURATE_OPTICAL_RAM = REGISTRATE.item("accurate_optical_ram", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_CIRCUIT_BOARD = REGISTRATE.item("optical_circuit_board", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_CPU_CONTAINMENT_HOUSING = REGISTRATE.item("optical_cpu_containment_housing", Item::new).register();
+    public static ItemEntry<Item> RAW_EXPOSED_OPTICAL_CHIP = REGISTRATE.item("raw_exposed_optical_chip", Item::new).register();
+    public static ItemEntry<Item> OPTICALLY_PERFECT_CPU = REGISTRATE.item("optically_perfect_cpu", Item::new).register();
+
+    public static ItemEntry<Item> OPTICAL_PROCESSOR = REGISTRATE.item("optical_processor", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_ASSEMBLY = REGISTRATE.item("optical_assembly", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_SUPERCOMPUTER = REGISTRATE.item("optical_supercomputer", Item::new).register();
+    public static ItemEntry<Item> OPTICAL_MAINFRAME = REGISTRATE.item("optical_mainframe", Item::new).register();
+
+
+
     public static ItemEntry<Item> NANOTUBE_SPOOL = REGISTRATE.item("nanotube_spool", Item::new).register();
 
 
