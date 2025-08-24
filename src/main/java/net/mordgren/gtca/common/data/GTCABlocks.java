@@ -119,6 +119,9 @@ public class GTCABlocks {
     public static BlockEntry<Block> ULTRA_HIGH_STRENGTH_CONCRETE_FLOOR = createCasingBlock("ultra_high_strength_concrete_floor",
             GTCA.id("block/casing/ultra_high_strength_concrete_floor"));
 
+    public static BlockEntry<Block> SPACE_ELEVATOR_CABLE = createCasingBlock("space_elevator_cable",
+            GTCA.id("block/casing/space_elevator_cable"));
+
     // damn
 
     public static BlockEntry<Block> DRIST = createCasingBlock("dristnya",

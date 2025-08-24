@@ -35,6 +35,8 @@ public class GTCA {
     public GTCA() {
         GTCA.init();
 
+
+
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
@@ -49,6 +51,7 @@ public class GTCA {
         ConfigHandler.init();
         GTCADataGen.init();
         GTCARegistration.REGISTRATE.registerRegistrate();
+        GTCAClient.init();
     }
 
     public static ResourceLocation id(String path) {
@@ -70,6 +73,7 @@ public class GTCA {
     public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
         GTCARecipeTypes.init();
     }
+
 
     public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
         GTCAMachines.init();

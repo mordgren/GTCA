@@ -116,7 +116,6 @@ public class GTCAMachinesRecipes {
                 .save(provider);
 
         GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder("mega_cracker").EUt(480).duration(72000)
-                .circuitMeta(17)
                 .inputItems(GTMultiMachines.CRACKER.asStack(64))
                 .inputFluids(SolderingAlloy.getFluid(9216))
                 .outputItems(GTCAMachines.MEGA_OIL_CRACKING_UNIT.asStack())
