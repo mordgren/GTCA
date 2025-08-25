@@ -14,6 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.mordgren.gtca.client.SpaceElevatorRenderer;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.data.machines.GTCAMachines;
 import net.mordgren.gtca.common.data.materials.GTMaterialAdjustments;

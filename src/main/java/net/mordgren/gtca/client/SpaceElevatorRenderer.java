@@ -1,4 +1,4 @@
-package net.mordgren.gtca.common.data;
+package net.mordgren.gtca.client;
 
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.client.renderer.machine.DynamicRender;
@@ -30,16 +30,18 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
 
     public static final ResourceLocation BEAM_MODEL = GTCA.id("obj/se_beam");
 
-    private static BakedModel beamModel;
-    private static final RandomSource random = RandomSource.create();
+    static final RandomSource random = RandomSource.create(0L);
+    private static BakedModel beamModel = null ;
 
-    private void SpaceElevatorRender() {
+
+    private SpaceElevatorRenderer() {
         ModelUtils.registerBakeEventListener(true, event -> {
             beamModel = event.getModels().get(BEAM_MODEL);
+
         });
     }
 
-    private SpaceElevatorRenderer() {}
+
 
     @Override
     public DynamicRenderType<WorkableElectricMultiblockMachine, SpaceElevatorRenderer> getType() {
