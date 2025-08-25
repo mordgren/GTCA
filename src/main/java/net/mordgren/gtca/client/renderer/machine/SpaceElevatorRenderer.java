@@ -1,4 +1,4 @@
-package net.mordgren.gtca.client;
+package net.mordgren.gtca.client.renderer.machine;
 
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.client.renderer.machine.DynamicRender;
@@ -7,8 +7,8 @@ import com.gregtechceu.gtceu.client.util.ModelUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.serialization.Codec;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.block.model.BakedQuad;
@@ -21,8 +21,11 @@ import net.minecraftforge.client.model.data.ModelData;
 import net.mordgren.gtca.GTCA;
 import org.joml.Quaternionf;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultiblockMachine, SpaceElevatorRenderer> {
 
     public static final SpaceElevatorRenderer INSTANCE = new SpaceElevatorRenderer();
@@ -33,17 +36,13 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
     public static final ResourceLocation BEAM_MODEL = GTCA.id("obj/se_beam");
 
     static final RandomSource random = RandomSource.create(0L);
-    private static BakedModel beamModel = null ;
-
+    private static BakedModel beamModel = null;
 
     private SpaceElevatorRenderer() {
         ModelUtils.registerBakeEventListener(true, event -> {
             beamModel = event.getModels().get(BEAM_MODEL);
-
         });
     }
-
-
 
     @Override
     public DynamicRenderType<WorkableElectricMultiblockMachine, SpaceElevatorRenderer> getType() {
@@ -53,26 +52,29 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
     @Override
     public void render(WorkableElectricMultiblockMachine machine, float partialTick, PoseStack poseStack,
                        MultiBufferSource buffer, int packedLight, int packedOverlay) {
-        if (!machine.isFormed())
+        if (!machine.isFormed()) {
             return;
-
+        }
         float totalTick = (Minecraft.getInstance().level.getGameTime() + partialTick);
         VertexConsumer consumer = buffer.getBuffer(Sheets.translucentCullBlockSheet());
+
         poseStack.pushPose();
         poseStack.translate(4, 0, 4);
-        renderBeam(poseStack, consumer, totalTick, packedLight, packedOverlay);
+
+        renderCylinder(poseStack, consumer, totalTick, packedLight, packedOverlay);
+
         poseStack.popPose();
     }
 
-    private void renderBeam(PoseStack poseStack, VertexConsumer consumer,
-                            float totalTick, int packedLight, int packedOverlay) {
+    public void renderCylinder(PoseStack poseStack, VertexConsumer consumer,
+                               float totalTick, int packedLight, int packedOverlay) {
         poseStack.pushPose();
 
         Quaternionf rot = new Quaternionf()
-                .rotateXYZ(0.0f, 0.0f, 0f)
-                .rotateAxis(0, 0f, 1f, 1);
+                .rotateXYZ(0.55f, 0.0f, 1f)
+                .rotateAxis(totalTick * Mth.TWO_PI / 80, 0f, 1f, 1);
         poseStack.mulPose(rot);
-
+        // ??? what is this scaling, magic numbers galore
         poseStack.scale(75.6f, 3f, 5f);
 
         PoseStack.Pose pose = poseStack.last();
@@ -82,16 +84,6 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
             consumer.putBulkData(pose, quad, 1f, 1f, 1f, 0.65f, packedLight, packedOverlay, false);
         }
         poseStack.popPose();
-    }
-
-    private void renderModel(PoseStack poseStack, VertexConsumer consumer, BakedModel model, float r, float g, float b,
-                             float a, int light, int overlay) {
-        if (model == null) return;
-        PoseStack.Pose pose = poseStack.last();
-        List<BakedQuad> quads = model.getQuads(null, null, random, ModelData.EMPTY, null);
-        for (BakedQuad quad : quads) {
-            consumer.putBulkData(pose, quad, r, g, b, a, light, overlay, false);
-        }
     }
 
     @Override
@@ -106,7 +98,7 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
 
     @Override
     public AABB getRenderBoundingBox(WorkableElectricMultiblockMachine machine) {
-        return new AABB(machine.getPos()).inflate(getViewDistance());
+        return new AABB(machine.getPos()).inflate(getViewDistance(), 16, getViewDistance());
     }
 }
 

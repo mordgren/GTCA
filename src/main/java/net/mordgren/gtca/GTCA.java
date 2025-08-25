@@ -7,14 +7,13 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
-import com.gregtechceu.gtceu.client.renderer.machine.DynamicRenderManager;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
-import net.minecraftforge.client.event.ModelEvent;
+import com.lowdragmc.lowdraglib.Platform;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.mordgren.gtca.client.SpaceElevatorRenderer;
+import net.mordgren.gtca.client.GTCAClient;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.data.machines.GTCAMachines;
 import net.mordgren.gtca.common.data.materials.GTMaterialAdjustments;
@@ -37,16 +36,14 @@ public class GTCA {
     //Init Everything
     public GTCA() {
         GTCA.init();
-
-
-
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         bus.addGenericListener(RecipeConditionType.class, this::registerRecipeConditions);
-        // bus.addGenericListener(MachineDefinition.class, this::registerMachines);
         bus.addGenericListener(MachineDefinition.class, this::registerMachines);
-        DynamicRenderManager.register(GTCA.id("space_elevator_beam"), SpaceElevatorRenderer.TYPE);
+        if (Platform.isClient()) {
+            GTCAClient.init(bus);
+        }
     }
 
     public static void init() {
@@ -70,12 +67,6 @@ public class GTCA {
     public void registerMaterials(MaterialEvent event) {
         GTCAMaterials.init();
         GTMaterialAdjustments.init();
-//        GTCAElements.init();
-    }
-
-    @SubscribeEvent
-    public static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {
-        event.register(SpaceElevatorRenderer.BEAM_MODEL);
     }
 
     public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {

@@ -1,9 +1,8 @@
-package net.mordgren.gtca.common.data;
+package net.mordgren.gtca.client.renderer.machine;
 
 import com.gregtechceu.gtceu.client.renderer.machine.DynamicRender;
-import net.mordgren.gtca.client.SpaceElevatorRenderer;
 
-public class GTCADynamicRenderer {
+public class GTCADynamicRenderHelpers {
 
          public static DynamicRender<?, ?> getSpaceElevatorRenderer() {
              return SpaceElevatorRenderer.INSTANCE;

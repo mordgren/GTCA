@@ -3,7 +3,7 @@
   "loader": "forge:obj",
   "model": "gtca:models/obj/se_beam.obj",
   "textures": {
-    "texture0": "gcta:block/obj/se_beam",
-    "particle":"gtca:block/obj/se_beam"
+    "texture0": "gcta:obj/se_beam",
+    "particle":"gtca:obj/se_beam"
   }
 }

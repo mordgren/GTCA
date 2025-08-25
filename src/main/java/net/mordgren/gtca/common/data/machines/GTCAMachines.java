@@ -22,6 +22,7 @@ import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.data.models.GTMachineModels;
 import com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
@@ -36,10 +37,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.mordgren.gtca.GTCA;
-import net.mordgren.gtca.common.data.GTCABlocks;
-import net.mordgren.gtca.common.data.GTCACreativeModTab;
-import net.mordgren.gtca.common.data.GTCARecipeModifiers;
-import net.mordgren.gtca.common.data.GTCARecipeTypes;
+import net.mordgren.gtca.client.renderer.machine.GTCADynamicRenderHelpers;
+import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.PCBFactoryMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.SpaceAssemblerMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.SpaceMinerMachine;
@@ -1434,10 +1433,10 @@ public class GTCAMachines {
                     Component.translatable("gtca.machine.space_elevator3_desc.tooltip")
             )
 
-            .workableCasingModel(
+            .model(GTMachineModels.createWorkableCasingMachineModel(
                     GTCA.id("block/casing/space_elevator_base_casing"),
-                    GTCA.id("block/multiblock/space_elevator")
-            )
+                    GTCA.id("block/multiblock/space_elevator")).andThen(d -> d.addDynamicRenderer(GTCADynamicRenderHelpers::getSpaceElevatorRenderer)))
+            .hasBER(true)
             .register();
 
 
