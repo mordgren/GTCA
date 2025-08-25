@@ -1,9 +1,9 @@
 {
-  "flip_v": true,
   "loader": "forge:obj",
   "model": "gtca:models/obj/se_beam.obj",
   "textures": {
-    "texture0": "gcta:obj/se_beam",
-    "particle":"gtca:obj/se_beam"
-  }
+    "texture0": "gtca:block/casing/space_elevator_cable",
+    "particle":"gtca:block/casing/space_elevator_cable"
+  },
+  "automatic_culling": false
 }

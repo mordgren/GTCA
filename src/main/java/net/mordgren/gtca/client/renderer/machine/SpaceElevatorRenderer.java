@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.client.util.ModelUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.serialization.Codec;
+import com.sun.jna.platform.win32.WinBase;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -34,13 +35,16 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
 
 
     public static final ResourceLocation BEAM_MODEL = GTCA.id("obj/se_beam");
+    public static final ResourceLocation SHUTTLE_MODEL = GTCA.id("obj/shuttle");
 
     static final RandomSource random = RandomSource.create(0L);
     private static BakedModel beamModel = null;
+    private static BakedModel shuttleModel = null;
 
     private SpaceElevatorRenderer() {
         ModelUtils.registerBakeEventListener(true, event -> {
             beamModel = event.getModels().get(BEAM_MODEL);
+            shuttleModel = event.getModels().get(SHUTTLE_MODEL);
         });
     }
 
@@ -59,29 +63,48 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
         VertexConsumer consumer = buffer.getBuffer(Sheets.translucentCullBlockSheet());
 
         poseStack.pushPose();
-        poseStack.translate(4, 0, 4);
 
-        renderCylinder(poseStack, consumer, totalTick, packedLight, packedOverlay);
+
+        renderBeam(poseStack, consumer, totalTick, packedLight, packedOverlay);
+        renderShuttle(poseStack, consumer, totalTick, packedLight, packedOverlay);
 
         poseStack.popPose();
     }
 
-    public void renderCylinder(PoseStack poseStack, VertexConsumer consumer,
+    public void renderBeam(PoseStack poseStack, VertexConsumer consumer,
                                float totalTick, int packedLight, int packedOverlay) {
         poseStack.pushPose();
-
+        poseStack.translate(0.5f, 0.5f, 3.5f);
         Quaternionf rot = new Quaternionf()
-                .rotateXYZ(0.55f, 0.0f, 1f)
-                .rotateAxis(totalTick * Mth.TWO_PI / 80, 0f, 1f, 1);
-        poseStack.mulPose(rot);
-        // ??? what is this scaling, magic numbers galore
-        poseStack.scale(75.6f, 3f, 5f);
+                .rotateXYZ(0f, 0f, 0f)
+                .rotateAxis(0, 0.1f, 1f, 1f);
+                 poseStack.mulPose(rot);
+                 poseStack.scale(1f, 16f, 1f);
 
         PoseStack.Pose pose = poseStack.last();
 
         List<BakedQuad> quads = beamModel.getQuads(null, null, random, ModelData.EMPTY, null);
         for (BakedQuad quad : quads) {
-            consumer.putBulkData(pose, quad, 1f, 1f, 1f, 0.65f, packedLight, packedOverlay, false);
+            consumer.putBulkData(pose, quad, 1f, 1f, 1f, 1f, packedLight, packedOverlay, false);
+        }
+        poseStack.popPose();
+    }
+
+    public void renderShuttle(PoseStack poseStack, VertexConsumer consumer,
+                           float totalTick, int packedLight, int packedOverlay) {
+        poseStack.pushPose();
+        poseStack.translate(0.5f, 50f, 3.5f);
+        Quaternionf rot = new Quaternionf()
+                .rotateXYZ(0f, 0f, 0f)
+                .rotateAxis(totalTick * Mth.TWO_PI/500f, 0f, 1f, 0f);
+        poseStack.mulPose(rot);
+        poseStack.scale(1f, 1f, 1f);
+
+        PoseStack.Pose pose = poseStack.last();
+
+        List<BakedQuad> quads = shuttleModel.getQuads(null, null, random, ModelData.EMPTY, null);
+        for (BakedQuad quad : quads) {
+            consumer.putBulkData(pose, quad, 1f, 1f, 1f, 1f, packedLight, packedOverlay, false);
         }
         poseStack.popPose();
     }

@@ -20,5 +20,6 @@ public class GTCAClient {
     @SubscribeEvent
     public static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {;
         event.register(SpaceElevatorRenderer.BEAM_MODEL);
+        event.register(SpaceElevatorRenderer.SHUTTLE_MODEL);
     }
 }
