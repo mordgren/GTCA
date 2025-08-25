@@ -7,12 +7,14 @@ import com.gregtechceu.gtceu.client.util.ModelUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.serialization.Codec;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.client.model.data.ModelData;
@@ -51,31 +53,34 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
     @Override
     public void render(WorkableElectricMultiblockMachine machine, float partialTick, PoseStack poseStack,
                        MultiBufferSource buffer, int packedLight, int packedOverlay) {
-        if (!machine.isFormed()) {
+        if (!machine.isFormed())
             return;
-        }
 
+        float totalTick = (Minecraft.getInstance().level.getGameTime() + partialTick);
         VertexConsumer consumer = buffer.getBuffer(Sheets.translucentCullBlockSheet());
-
         poseStack.pushPose();
         poseStack.translate(4, 0, 4);
-
-        renderCylinder(partialTick, poseStack, consumer, packedOverlay);
-
+        renderBeam(poseStack, consumer, totalTick, packedLight, packedOverlay);
         poseStack.popPose();
     }
 
-    private void renderCylinder(float tick, PoseStack poseStack, VertexConsumer consumer, int packedOverlay) {
-        if (beamModel == null) return;
+    private void renderBeam(PoseStack poseStack, VertexConsumer consumer,
+                            float totalTick, int packedLight, int packedOverlay) {
         poseStack.pushPose();
 
-        // Lógica de escala e rotação copiada do AnnihilateGeneratorRenderer
-        poseStack.scale(0.45F, 0.45F, 0.45F);
-        poseStack.mulPose(new Quaternionf().fromAxisAngleDeg(0.0F, 1.0F, 1.0F, tick % 360.0F));
+        Quaternionf rot = new Quaternionf()
+                .rotateXYZ(0.0f, 0.0f, 0f)
+                .rotateAxis(0, 0f, 1f, 1);
+        poseStack.mulPose(rot);
 
-        // Renderiza o modelo com brilho total
-        renderModel(poseStack, consumer, beamModel, 1.0F, 1.0F, 1.0F, 1.0f, LightTexture.FULL_BRIGHT, packedOverlay);
+        poseStack.scale(75.6f, 3f, 5f);
 
+        PoseStack.Pose pose = poseStack.last();
+
+        List<BakedQuad> quads = beamModel.getQuads(null, null, random, ModelData.EMPTY, null);
+        for (BakedQuad quad : quads) {
+            consumer.putBulkData(pose, quad, 1f, 1f, 1f, 0.65f, packedLight, packedOverlay, false);
+        }
         poseStack.popPose();
     }
 
