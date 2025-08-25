@@ -3,15 +3,23 @@ package net.mordgren.gtca.common.data;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.client.renderer.machine.DynamicRender;
 import com.gregtechceu.gtceu.client.renderer.machine.DynamicRenderType;
+import com.gregtechceu.gtceu.client.util.ModelUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.serialization.Codec;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.client.model.data.ModelData;
 import net.mordgren.gtca.GTCA;
-import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+
+import java.util.List;
 
 public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultiblockMachine, SpaceElevatorRenderer> {
 
@@ -20,7 +28,16 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
     public static final DynamicRenderType<WorkableElectricMultiblockMachine, SpaceElevatorRenderer> TYPE = new DynamicRenderType<>(SpaceElevatorRenderer.CODEC);
 
 
-    private static final ResourceLocation BEAM_TEXTURE = new ResourceLocation(GTCA.MOD_ID, "casing/space_elevator_cable");
+    public static final ResourceLocation BEAM_MODEL = GTCA.id("obj/se_beam");
+
+    private static BakedModel beamModel;
+    private static final RandomSource random = RandomSource.create();
+
+    private void SpaceElevatorRender() {
+        ModelUtils.registerBakeEventListener(true, event -> {
+            beamModel = event.getModels().get(BEAM_MODEL);
+        });
+    }
 
     private SpaceElevatorRenderer() {}
 
@@ -36,46 +53,43 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
             return;
         }
 
+        VertexConsumer consumer = buffer.getBuffer(Sheets.translucentCullBlockSheet());
+
         poseStack.pushPose();
         poseStack.translate(4, 0, 4);
 
-        VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(BEAM_TEXTURE));
-
-        renderCylinder(poseStack, consumer, packedLight, 256, 0.5f);
+        renderCylinder(partialTick, poseStack, consumer, packedOverlay);
 
         poseStack.popPose();
     }
 
-    private void renderCylinder(PoseStack poseStack, VertexConsumer consumer, int light, int height, float radius) {
-        int segments = 16;
-        Matrix4f matrix = poseStack.last().pose();
+    private void renderCylinder(float tick, PoseStack poseStack, VertexConsumer consumer, int packedOverlay) {
+        if (beamModel == null) return;
+        poseStack.pushPose();
 
-        for (int i = 0; i < segments; i++) {
-            double angle1 = 2 * Math.PI * i / segments;
-            double angle2 = 2 * Math.PI * (i + 1) / segments;
+        // Lógica de escala e rotação copiada do AnnihilateGeneratorRenderer
+        poseStack.scale(0.45F, 0.45F, 0.45F);
+        poseStack.mulPose(new Quaternionf().fromAxisAngleDeg(0.0F, 1.0F, 1.0F, tick % 360.0F));
 
-            float x1 = (float) (Math.cos(angle1) * radius);
-            float z1 = (float) (Math.sin(angle1) * radius);
-            float x2 = (float) (Math.cos(angle2) * radius);
-            float z2 = (float) (Math.sin(angle2) * radius);
+        // Renderiza o modelo com brilho total
+        renderModel(poseStack, consumer, beamModel, 1.0F, 1.0F, 1.0F, 1.0f, LightTexture.FULL_BRIGHT, packedOverlay);
 
-            float y0 = 0;
-            float y1 = height;
+        poseStack.popPose();
+    }
 
-            float u0 = (float) i / segments;
-            float u1 = (float) (i + 1) / segments;
-
-
-            consumer.vertex(matrix, x1, y0, z1).color(255, 255, 255, 200).uv(u0, 0).uv2(light).endVertex();
-            consumer.vertex(matrix, x1, y1, z1).color(255, 255, 255, 200).uv(u0, 1).uv2(light).endVertex();
-            consumer.vertex(matrix, x2, y1, z2).color(255, 255, 255, 200).uv(u1, 1).uv2(light).endVertex();
-            consumer.vertex(matrix, x2, y0, z2).color(255, 255, 255, 200).uv(u1, 0).uv2(light).endVertex();
+    private void renderModel(PoseStack poseStack, VertexConsumer consumer, BakedModel model, float r, float g, float b,
+                             float a, int light, int overlay) {
+        if (model == null) return;
+        PoseStack.Pose pose = poseStack.last();
+        List<BakedQuad> quads = model.getQuads(null, null, random, ModelData.EMPTY, null);
+        for (BakedQuad quad : quads) {
+            consumer.putBulkData(pose, quad, r, g, b, a, light, overlay, false);
         }
     }
 
     @Override
     public int getViewDistance() {
-        return 512;
+        return 256;
     }
 
     @Override

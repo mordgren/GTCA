@@ -1,0 +1,9 @@
+{
+  "flip_v": true,
+  "loader": "forge:obj",
+  "model": "gtca:models/obj/se_beam.obj",
+  "textures": {
+    "texture0": "gcta:block/obj/se_beam",
+    "particle":"gtca:block/obj/se_beam"
+  }
+}

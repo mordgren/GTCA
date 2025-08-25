@@ -7,7 +7,9 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
+import com.gregtechceu.gtceu.client.renderer.machine.DynamicRenderManager;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -43,6 +45,7 @@ public class GTCA {
         bus.addGenericListener(RecipeConditionType.class, this::registerRecipeConditions);
         // bus.addGenericListener(MachineDefinition.class, this::registerMachines);
         bus.addGenericListener(MachineDefinition.class, this::registerMachines);
+        DynamicRenderManager.register(GTCA.id("space_elevator_beam"), SpaceElevatorRenderer.TYPE);
     }
 
     public static void init() {
@@ -51,7 +54,6 @@ public class GTCA {
         ConfigHandler.init();
         GTCADataGen.init();
         GTCARegistration.REGISTRATE.registerRegistrate();
-        GTCAClient.init();
     }
 
     public static ResourceLocation id(String path) {
@@ -68,6 +70,11 @@ public class GTCA {
         GTCAMaterials.init();
         GTMaterialAdjustments.init();
 //        GTCAElements.init();
+    }
+
+    @SubscribeEvent
+    public static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {
+        event.register(SpaceElevatorRenderer.BEAM_MODEL);
     }
 
     public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
