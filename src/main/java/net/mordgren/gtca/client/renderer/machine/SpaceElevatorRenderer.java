@@ -96,9 +96,9 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
         poseStack.translate(0.5f, 50f, 3.5f);
         Quaternionf rot = new Quaternionf()
                 .rotateXYZ(0f, 0f, 0f)
-                .rotateAxis(totalTick * Mth.TWO_PI/500f, 0f, 1f, 0f);
+                .rotateAxis(totalTick * Mth.TWO_PI/1200f, 0f, 1f, 0f);
         poseStack.mulPose(rot);
-        poseStack.scale(1f, 1f, 1f);
+        poseStack.scale(3.5f, 3.5f, 3.5f);
 
         PoseStack.Pose pose = poseStack.last();
 
