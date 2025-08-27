@@ -1,15 +1,17 @@
 package net.mordgren.gtca.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAElements;
 import net.mordgren.gtca.common.data.GTCAMaterials;
+
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.NO_SMELTING;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.EXT2_METAL;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.EXT_METAL;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+
 
 public class GTCAElementMetals {
     public static void init(){
@@ -31,7 +33,7 @@ public class GTCAElementMetals {
         GTCAMaterials.Orundum = new Material.Builder(GTCA.id("orundum"))
                 .color(0xff0000)
                 .ingot()
-                .liquid(new FluidBuilder().temperature(120_000))
+                .liquid(new FluidBuilder().temperature(125_000))
                 .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
                 .element(GTCAElements.Or)
                 .buildAndRegister();
@@ -49,17 +51,21 @@ public class GTCAElementMetals {
                 .ingot()
                 .liquid(new FluidBuilder().temperature(9900))
                 .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_PLATE, GENERATE_ROUND, NO_SMELTING, GENERATE_SPRING, GENERATE_FINE_WIRE, GENERATE_SPRING_SMALL)
-                .blastTemp(9900)
+                .ore()
+                .blastTemp(9900, BlastProperty.GasTier.HIGHEST, VA[UHV])
+                .cableProperties(8388608, 96, 92)
+                .rotorStats(800, 450, 12.0f, 4024000)
                 .element(GTCAElements.SpNt)
                 .iconSet(GTCAMaterialSet.COSMIC_NEUTRONIUM)
                 .buildAndRegister();
 
         GTCAMaterials.CosmicPlutonium = new Material.Builder(GTCA.id("cosmic_plutonium"))
-                .color(0x0d0000)
+                .color(0x3e1a1a)
                 .ingot()
                 .liquid(new FluidBuilder().temperature(9900))
                 .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_PLATE, GENERATE_ROUND, NO_SMELTING)
-                .blastTemp(9000)
+                .ore()
+                .blastTemp(9000, BlastProperty.GasTier.HIGHEST, VA[ZPM])
                 .element(GTCAElements.SpPu)
                 .buildAndRegister();
 
