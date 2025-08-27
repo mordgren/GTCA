@@ -107,7 +107,7 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
             consumer.putBulkData(pose, quad, 1f, 1f, 1f, 1f, packedLight, packedOverlay, false);
         }
         poseStack.popPose();
-    }
+    } 
 
     @Override
     public int getViewDistance() {
