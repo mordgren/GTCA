@@ -153,6 +153,8 @@ public class GTCAMaterials {
     public static Material Adamantium;
     public static Material Orundum;
     public static Material Ohriharukon;
+    public static Material CosmicNeutronium;
+    public static Material CosmicPlutonium;
 
     // Bastnasite Line
     public static Material MuddyBastnasiteRareEarthSolution;

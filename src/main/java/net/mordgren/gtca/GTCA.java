@@ -16,6 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mordgren.gtca.client.GTCAClient;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.data.machines.GTCAMachines;
+import net.mordgren.gtca.common.data.materials.GTCAMaterialSet;
 import net.mordgren.gtca.common.data.materials.GTMaterialAdjustments;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import net.mordgren.gtca.config.ConfigHandler;
@@ -52,6 +53,7 @@ public class GTCA {
         ConfigHandler.init();
         GTCADataGen.init();
         GTCARegistration.REGISTRATE.registerRegistrate();
+        GTCAMaterialSet.init();
     }
 
     public static ResourceLocation id(String path) {
