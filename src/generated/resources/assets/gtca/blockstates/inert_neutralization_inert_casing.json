@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gtca:block/inert_neutralization_inert_casing"
+    }
+  }
+}

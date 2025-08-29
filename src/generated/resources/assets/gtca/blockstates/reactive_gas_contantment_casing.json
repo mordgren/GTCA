@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "gtca:block/reactive_gas_contantment_casing"
+    }
+  }
+}

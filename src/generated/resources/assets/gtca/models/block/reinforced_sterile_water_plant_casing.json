@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "gtca:block/casing/purification/reinforced_sterile_water_platn_casing"
+  }
+}

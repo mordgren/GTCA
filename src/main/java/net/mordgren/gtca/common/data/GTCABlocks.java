@@ -122,6 +122,41 @@ public class GTCABlocks {
     public static BlockEntry<Block> SPACE_ELEVATOR_CABLE = createCasingBlock("space_elevator_cable",
             GTCA.id("block/casing/space_elevator_cable"));
 
+    public static BlockEntry<Block> HEAT_RESISTANT_TRINIUM_PLATED_CASING = createCasingBlock("heat_resistant_trinium_plated_casing",
+            GTCA.id("block/casing/purification/heat_resistant_trinium_plated_casing"));
+
+    public static BlockEntry<Block> HIGH_ENERGY_ULTRAVIOLET_EMITTER_CASING = createCasingBlock("high_energy_ultraviolet_emitter_casing",
+            GTCA.id("block/casing/purification/high_energy_ultraviolet_emitter_casing"));
+
+    public static BlockEntry<Block> INERT_FILTRATION_CASING = createCasingBlock("inert_filtration_casing",
+            GTCA.id("block/casing/purification/inert_filtration_casing"));
+
+    public static BlockEntry<Block> INERT_NEUTRALIZATION_INTERT_CASING = createCasingBlock("inert_neutralization_inert_casing",
+            GTCA.id("block/casing/purification/inert_neutralization_inert_casing"));
+
+    public static BlockEntry<Block> NAQUADRIA_REINFORCED_WATERPLANT_CASING = createCasingBlock("naquadria_renforced_waterplant_casing",
+            GTCA.id("block/casing/purification/naquadria_renforced_waterplant_casing"));
+
+    public static BlockEntry<Block> REACTIVE_GAS_CONTANTMENT_CASING = createCasingBlock("reactive_gas_contantment_casing",
+            GTCA.id("block/casing/purification/reactive_gas_contantment_casing"));
+
+    public static BlockEntry<Block> REINFORCED_STERILE_WATER_PLANT_CASING = createCasingBlock("reinforced_sterile_water_plant_casing",
+            GTCA.id("block/casing/purification/reinforced_sterile_water_platn_casing"));
+
+    public static BlockEntry<Block> SLICK_STERILE_FLOCCULATION_CASING = createCasingBlock("slick_sterile_flocculation_casing",
+            GTCA.id("block/casing/purification/slick_sterile_flocculation_casing"));
+
+    public static BlockEntry<Block> STABILIZED_WATER_PLANT_CASING = createCasingBlock("stabilized_water_plant_casing",
+            GTCA.id("block/casing/purification/stabilized_water_plant_casing"));
+
+    public static BlockEntry<Block> STERILE_WATER_PLANT_CASING = createCasingBlock("sterile_waterplant_casing",
+            GTCA.id("block/casing/purification/sterile_waterplant_casing"));
+
+    public static BlockEntry<Block> NEONITE = createCasingBlock("neonite",
+            GTCA.id("block/casing/purification/neonite"));
+
+
+
     // damn
 
     public static BlockEntry<Block> DRIST = createCasingBlock("dristnya",
