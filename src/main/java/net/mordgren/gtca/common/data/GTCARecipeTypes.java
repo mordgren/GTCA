@@ -174,6 +174,55 @@ public class GTCARecipeTypes {
             .setMaxTooltips(4)
             .setEUIO(IO.IN);
 
+    public static final GTRecipeType CLARIFIER_PURIFICATION_UNIT = register("clarifier_purification_unit", MULTIBLOCK)
+            .setMaxIOSize(1,4,1,1)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType OZONATION_PURIFICATION_UNIT = register("ozonation_purification_unit", MULTIBLOCK)
+            .setMaxIOSize(0,4,2,1)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType FLOCCULATION_PURIFICATION_UNIT = register("flocculation_purification_unit", MULTIBLOCK)
+            .setMaxIOSize(0,3,2,2)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType PH_NEUTRALIZATION_PURIFICATION_UNIT = register("ph_neutralization_purification_unit", MULTIBLOCK)
+            .setMaxIOSize(0,0,2,2)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT = register("extreme_temperature_purification_unit", MULTIBLOCK)
+            .setMaxIOSize(0,0,2,2)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType HIGH_ENERGY_LASER_PURIFICATION_UNIT = register("high_energy_laser_purification_unit", MULTIBLOCK)
+            .setMaxIOSize(9,0,1,1)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
+    public static final GTRecipeType RESIDUAL_DECONTAMINANT_DEGASSER_PURIFICATION_UNIT = register("residual_decontamiant_degasser_purification_unit", MULTIBLOCK)
+            .setMaxIOSize(0,3,1,1)
+            .setSlotOverlay(false, false, GuiTextures.SLOT)
+            .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
+            .setMaxTooltips(4)
+            .setEUIO(IO.IN);
+
 
 
     // singleblock machines

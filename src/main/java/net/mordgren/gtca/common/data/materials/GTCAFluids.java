@@ -2,6 +2,7 @@ package net.mordgren.gtca.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCAMaterials;
@@ -38,6 +39,6 @@ public class GTCAFluids {
         GTCAMaterials.SpruceOil = new Material.Builder(GTCA.id("spruce_oil")).fluid().color(0x552d0b).buildAndRegister();
         GTCAMaterials.RedMudSlurry = new Material.Builder(GTCA.id("red_mud_slurry")).fluid().color(0xff0000).buildAndRegister();
 
-        GTCAMaterials.PahoehoeLava = new Material.Builder(GTCA.id("pahoehoe_lava")).liquid(1200).color(0xd55f13).secondaryColor(0x000000).buildAndRegister();
+        GTCAMaterials.PahoehoeLava = new Material.Builder(GTCA.id("pahoehoe_lava")).liquid(1200).color(0xd55f13).secondaryColor(0x000000).iconSet(MaterialIconSet.DULL).buildAndRegister();
     }
 }

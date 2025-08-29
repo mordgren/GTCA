@@ -21,7 +21,6 @@ public class MiscRecipesGTNN {
 
     private static void crushedSpruce(Consumer<FinishedRecipe> provider){
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("crushed_leaves").duration(200).EUt(30)
-                .circuitMeta(14)
                 .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.STAINLESS_STEEL))
                 .inputItems(Items.SPRUCE_LEAVES, 1)
                 .chancedOutput(GTCAItems.CrushedSpruce.asStack(2),5000,0)
@@ -31,7 +30,6 @@ public class MiscRecipesGTNN {
                 .save(provider);
 
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("crushed_sapling").duration(200).EUt(60)
-                .circuitMeta(14)
                 .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.STAINLESS_STEEL))
                 .inputItems(Items.SPRUCE_SAPLING, 1)
                 .chancedOutput(GTCAItems.CrushedSpruce.asStack(4),7500,0)
@@ -41,7 +39,6 @@ public class MiscRecipesGTNN {
                 .save(provider);
 
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("crushed_log").duration(200).EUt(120)
-                .circuitMeta(14)
                 .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.STAINLESS_STEEL))
                 .inputItems(Items.SPRUCE_LOG, 1)
                 .outputItems(GTCAItems.CrushedSpruce, 16)
@@ -53,7 +50,6 @@ public class MiscRecipesGTNN {
 
     private static void spruceOil(Consumer<FinishedRecipe> provider){
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("spruce_oil_shsteam").duration(900).EUt(120)
-                .circuitMeta(18)
                 .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.TITANIUM))
                 .inputItems(GTCAItems.CrushedSpruce, 64)
                 .inputFluids(GTCAMaterials.SuperheatedSteam.getFluid(5000))
@@ -65,7 +61,6 @@ public class MiscRecipesGTNN {
                 .save(provider);
 
         GTNNRecipeTypes.INSTANCE.getCHEMICAL_PLANT_RECIPES().recipeBuilder("spruce_oil_steam").duration(1200).EUt(120)
-                .circuitMeta(16)
                 .addCondition(GTNNRecipes.setPlantCasing(PlantCasingCondition.TITANIUM))
                 .inputItems(GTCAItems.CrushedSpruce, 64)
                 .inputFluids(GTMaterials.Steam.getFluid(5000))

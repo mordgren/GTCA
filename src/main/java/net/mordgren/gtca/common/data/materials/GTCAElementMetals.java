@@ -1,6 +1,7 @@
 package net.mordgren.gtca.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
@@ -28,22 +29,27 @@ public class GTCAElementMetals {
                 .rotorStats(500, 300, 12.0f, 877360)
                 .fluidPipeProperties(130_000, 7000, true, true, true, true)
                 .radioactiveHazard(10)
+                .ore()
                 .buildAndRegister();
 
         GTCAMaterials.Orundum = new Material.Builder(GTCA.id("orundum"))
+                .iconSet(MaterialIconSet.METALLIC)
                 .color(0xff0000)
                 .ingot()
                 .liquid(new FluidBuilder().temperature(125_000))
                 .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
                 .element(GTCAElements.Or)
+                .ore()
                 .buildAndRegister();
 
         GTCAMaterials.Ohriharukon = new Material.Builder(GTCA.id("ohriharukon"))
                 .color(0x004d25)
                 .ingot()
+                .iconSet(MaterialIconSet.ROUGH)
                 .liquid(new FluidBuilder().temperature(1465))
                 .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, NO_SMELTING)
                 .element(GTCAElements.Oh)
+                .ore()
                 .buildAndRegister();
 
         GTCAMaterials.CosmicNeutronium = new Material.Builder(GTCA.id("cosmic_neutronium"))

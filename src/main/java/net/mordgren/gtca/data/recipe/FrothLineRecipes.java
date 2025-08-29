@@ -117,17 +117,17 @@ public class FrothLineRecipes {
         MaterialsPEX = new ArrayList<>();
         MaterialsSEX = new ArrayList<>();
 
-        MaterialsSEX.add(new Object[]{"sphalerite", GTValues.VA[LuV], GTCAItems.MilledSphalerite, GTCAMaterials.SphaleriteFroth, 3500});
-        MaterialsSEX.add(new Object[]{"chalcopyrite", GTValues.VA[IV], GTCAItems.MilledChalcopyrite, GTCAMaterials.ChalcopyriteFroth, 2500});
-        MaterialsPEX.add(new Object[]{"nickel", GTValues.VA[IV], GTCAItems.MilledNickel, GTCAMaterials.NickelFroth, 12000});
-        MaterialsPEX.add(new Object[]{"platinum", GTValues.VA[LuV], GTCAItems.MilledPlatinum, GTCAMaterials.PlatinumFroth, 9000});
-        MaterialsSEX.add(new Object[]{"pentlandite", GTValues.VA[LuV], GTCAItems.MilledPentlandite, GTCAMaterials.PentlanditeFroth, 8000});
-        MaterialsSEX.add(new Object[]{"redstone", GTValues.VA[IV], GTCAItems.MilledRedstone, GTCAMaterials.RedstoneFroth, 6000});
-        MaterialsPEX.add(new Object[]{"spessartine", GTValues.VA[LuV], GTCAItems.MilledSpessartine, GTCAMaterials.SpessartineFroth, 9000});
-        MaterialsPEX.add(new Object[]{"grossular", GTValues.VA[LuV], GTCAItems.MilledGrossular, GTCAMaterials.GrossularFroth, 8000});
-        MaterialsSEX.add(new Object[]{"almandine", GTValues.VA[IV], GTCAItems.MilledAlmandine, GTCAMaterials.AlmandineFroth, 8000});
-        MaterialsSEX.add(new Object[]{"pyrope", GTValues.VA[EV], GTCAItems.MilledPyrope, GTCAMaterials.PyropeFroth, 8000});
-        MaterialsPEX.add(new Object[]{"monazite", GTValues.VA[LuV], GTCAItems.MilledMonazite, GTCAMaterials.MonaziteFroth, 3000});
+        MaterialsSEX.add(new Object[]{"sphalerite", GTValues.VA[LuV], GTCAItems.MilledSphalerite, GTCAMaterials.SphaleriteFroth, 4000});
+        MaterialsSEX.add(new Object[]{"chalcopyrite", GTValues.VA[IV], GTCAItems.MilledChalcopyrite, GTCAMaterials.ChalcopyriteFroth, 4000});
+        MaterialsPEX.add(new Object[]{"nickel", GTValues.VA[IV], GTCAItems.MilledNickel, GTCAMaterials.NickelFroth, 4000});
+        MaterialsPEX.add(new Object[]{"platinum", GTValues.VA[LuV], GTCAItems.MilledPlatinum, GTCAMaterials.PlatinumFroth, 4000});
+        MaterialsSEX.add(new Object[]{"pentlandite", GTValues.VA[LuV], GTCAItems.MilledPentlandite, GTCAMaterials.PentlanditeFroth, 4000});
+        MaterialsSEX.add(new Object[]{"redstone", GTValues.VA[IV], GTCAItems.MilledRedstone, GTCAMaterials.RedstoneFroth, 4000});
+        MaterialsPEX.add(new Object[]{"spessartine", GTValues.VA[LuV], GTCAItems.MilledSpessartine, GTCAMaterials.SpessartineFroth, 4000});
+        MaterialsPEX.add(new Object[]{"grossular", GTValues.VA[LuV], GTCAItems.MilledGrossular, GTCAMaterials.GrossularFroth, 4000});
+        MaterialsSEX.add(new Object[]{"almandine", GTValues.VA[IV], GTCAItems.MilledAlmandine, GTCAMaterials.AlmandineFroth, 4000});
+        MaterialsSEX.add(new Object[]{"pyrope", GTValues.VA[EV], GTCAItems.MilledPyrope, GTCAMaterials.PyropeFroth, 4000});
+        MaterialsPEX.add(new Object[]{"monazite", GTValues.VA[LuV], GTCAItems.MilledMonazite, GTCAMaterials.MonaziteFroth, 4000});
     }
 
     private static void frothRecipes(Consumer<FinishedRecipe> provider) {
@@ -139,7 +139,7 @@ public class FrothLineRecipes {
             FluidStack frothOut = ((Material) holder[3]).getFluid(6000);
             FluidStack SpruceOil = (GTCAMaterials.SpruceOil.getFluid((int)holder[4]));
 
-            GTCARecipeTypes.FLCR.recipeBuilder(id).duration(9600).EUt(eut)
+            GTCARecipeTypes.FLCR.recipeBuilder(id).duration(4800).EUt(eut)
                     .inputItems(GTCAHelper.getItem("dust", GTCAMaterials.PotassiumEthylXanthate, 16))
                     .inputItems(item, 64)
                     .inputItems(item, 32)
@@ -151,7 +151,7 @@ public class FrothLineRecipes {
             String id = (String) holder[0];
             int eut = (int) holder[1];
             ItemEntry<Item> item = (ItemEntry<Item>) holder[2];
-            FluidStack frothOut = ((Material) holder[3]).getFluid(1000);
+            FluidStack frothOut = ((Material) holder[3]).getFluid(4000);
             FluidStack SpruceOil = (GTCAMaterials.SpruceOil.getFluid((int)holder[4]));
 
             GTCARecipeTypes.FLCR.recipeBuilder(id).duration(9600).EUt(eut)
@@ -324,12 +324,12 @@ public class FrothLineRecipes {
 
         GTRecipeTypes.CENTRIFUGE_RECIPES.recipeBuilder("red_mud_slurry").EUt(30).duration(600)
                 .inputFluids(GTCAMaterials.RedMudSlurry.getFluid(1000))
-                .chancedOutput(GTCAHelper.getItem("smallDust", GTMaterials.Iron,1), 3000,0)
-                .chancedOutput(GTCAHelper.getItem("smallDust", GTMaterials.Copper,1), 3000,0)
-                .chancedOutput(GTCAHelper.getItem("smallDust", GTMaterials.Tin,1), 2000,0)
-                .chancedOutput(GTCAHelper.getItem("smallDust", GTMaterials.Sulfur,1), 2000,0)
-                .chancedOutput(GTCAHelper.getItem("tinyDust", GTMaterials.Nickel,1), 1000,0)
-                .chancedOutput(GTCAHelper.getItem("tinyDust", GTMaterials.Lead,1), 1000,0)
+                .chancedOutput(GTCAHelper.getItem("dust", GTMaterials.Iron,1), 3000,300)
+                .chancedOutput(GTCAHelper.getItem("dust", GTMaterials.Copper,1), 3000,300)
+                .chancedOutput(GTCAHelper.getItem("dust", GTMaterials.Tin,1), 2000,300)
+                .chancedOutput(GTCAHelper.getItem("dust", GTMaterials.Sulfur,1), 2000,300)
+                .chancedOutput(GTCAHelper.getItem("dust", GTMaterials.Nickel,1), 1000,300)
+                .chancedOutput(GTCAHelper.getItem("dust", GTMaterials.Lead,1), 1000,300)
                 .outputFluids(GTMaterials.Water.getFluid(500))
                 .save(provider);
     }
