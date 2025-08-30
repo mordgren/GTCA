@@ -1481,7 +1481,8 @@ public class GTCAMachines {
             )
             .model(GTMachineModels.createWorkableCasingMachineModel(
                     GTCA.id("block/casing/purification/reinforced_sterile_water_platn_casing"),
-                    GTCA.id("block/multiblock/purification_multiblock")))
+                    GTCA.id("block/multiblock/purification_multiblock")).andThen(d -> d.addDynamicRenderer(GTCADynamicRenderHelpers::getPurificationWaterRenderer)))
+            .hasBER(true)
             .register();
 
     public static final MultiblockMachineDefinition OZONATION_PURIFICATION_UNIT = REGISTRATE.multiblock("ozonation_purification_unit", WorkableElectricMultiblockMachine::new)

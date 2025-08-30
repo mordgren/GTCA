@@ -7,8 +7,10 @@ public class GTCADynamicRenderHelpers {
          public static DynamicRender<?, ?> getSpaceElevatorRenderer() {
              return SpaceElevatorRenderer.INSTANCE;
          }
-
-  }
+         public static DynamicRender<?, ?> getPurificationWaterRenderer() {
+             return PurificationUnitWaterRendering.INSTANCE;
+         }
+}
 
 
 

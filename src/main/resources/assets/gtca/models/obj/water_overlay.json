@@ -1,0 +1,9 @@
+{
+  "loader": "forge:obj",
+  "flip_v": true,
+  "model": "gtca:models/obj/water_overlay.obj",
+  "textures": {
+    "texture0": "gtca:block/casing/water_overlay",
+    "particle": "gtca:block/casing/water_overlay"
+  }
+}

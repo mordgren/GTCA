@@ -1,5 +1,10 @@
 {
   "parent": "minecraft:block/block",
+  "dynamic_renders": [
+    {
+      "type": "gtca:clarifier_purification_unit"
+    }
+  ],
   "loader": "gtceu:machine",
   "machine": "gtca:clarifier_purification_unit",
   "texture_overrides": {
