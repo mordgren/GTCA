@@ -150,11 +150,10 @@ public class MiscRecipes {
                 .inputItems(GTCAHelper.getItem("dust", Carbon, 64))
                 .inputFluids(UUMatter.getFluid(10000))
                 .outputItems(GTCAItems.CarbonNanites.asStack(2))
-                .scannerResearch(b -> b
+                .stationResearch(b -> b
                         .researchStack(GTCAHelper.getItem("dust", Carbon, 1))
-                        .duration(6000)
-                        .EUt(VA[UHV]))
-                        .inputCWU(72)
+                                .CWUt(128)
+                                .EUt(VA[UHV]))
                 .save(provider);
 
         // PNE resistor

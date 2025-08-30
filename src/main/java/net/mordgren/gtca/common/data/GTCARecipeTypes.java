@@ -196,14 +196,14 @@ public class GTCARecipeTypes {
             .setEUIO(IO.IN);
 
     public static final GTRecipeType PH_NEUTRALIZATION_PURIFICATION_UNIT = register("ph_neutralization_purification_unit", MULTIBLOCK)
-            .setMaxIOSize(0,0,2,2)
+            .setMaxIOSize(1,0,2,1)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)
             .setEUIO(IO.IN);
 
     public static final GTRecipeType EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT = register("extreme_temperature_purification_unit", MULTIBLOCK)
-            .setMaxIOSize(0,0,2,2)
+            .setMaxIOSize(0,0,3,1)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)
@@ -217,7 +217,7 @@ public class GTCARecipeTypes {
             .setEUIO(IO.IN);
 
     public static final GTRecipeType RESIDUAL_DECONTAMINANT_DEGASSER_PURIFICATION_UNIT = register("residual_decontamiant_degasser_purification_unit", MULTIBLOCK)
-            .setMaxIOSize(0,3,1,1)
+            .setMaxIOSize(0,3,4,1)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)

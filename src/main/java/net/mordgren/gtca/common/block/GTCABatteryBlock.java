@@ -7,7 +7,7 @@ import lombok.Getter;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
-public class GTCABatteryBlock extends AppearanceBlock {
+public class    GTCABatteryBlock extends AppearanceBlock {
 
     @Getter
     private final IBatteryData data;

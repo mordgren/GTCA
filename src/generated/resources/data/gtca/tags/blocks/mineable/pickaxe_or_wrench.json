@@ -44,6 +44,8 @@
     "gtca:borsilicate_yttrium_thorium_glass",
     "gtca:reinforced_glass",
     "gtca:borsilicate_reinforced_iridium_glass",
+    "gtca:neutronium_fused_glass",
+    "gtca:omni_purpose_infinity_fused_glass",
     "gtca:proton_cell_battery",
     "gtca:electron_cell_battery",
     "gtca:quark_entanglement_battery",

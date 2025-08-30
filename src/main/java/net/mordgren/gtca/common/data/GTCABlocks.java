@@ -174,6 +174,12 @@ public class GTCABlocks {
     public static final BlockEntry<Block> BORSILICATE_REINFORCED_IRIDIUM_GLASS = createGlassCasingBlock("borsilicate_reinforced_iridium_glass",
             GTCA.id("block/casing/transparent/borsilicate_reinforced_iridium_glass"));
 
+    public static final BlockEntry<Block> NEUTRONIUM_FUSED_GLASS = createGlassCasingBlock("neutronium_fused_glass",
+            GTCA.id("block/casing/transparent/neutronium_fused_glass"));
+
+    public static final BlockEntry<Block> OMNI_GLASS = createGlassCasingBlock("omni_purpose_infinity_fused_glass",
+            GTCA.id("block/casing/transparent/omni_purpose_infinity_fused_glass"));
+
     // Battery
 
     public static final BlockEntry<BatteryBlock> BATTERY_PROTON_CELL = createBatteryBlock(
