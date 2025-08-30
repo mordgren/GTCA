@@ -153,7 +153,8 @@ public class MiscRecipes {
                 .scannerResearch(b -> b
                         .researchStack(GTCAHelper.getItem("dust", Carbon, 1))
                         .duration(6000)
-                        .EUt(VA[ZPM]))
+                        .EUt(VA[UHV]))
+                        .inputCWU(72)
                 .save(provider);
 
         // PNE resistor

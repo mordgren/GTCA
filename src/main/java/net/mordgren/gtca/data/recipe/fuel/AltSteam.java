@@ -27,13 +27,18 @@ public class AltSteam {
                 .inputFluids(GTCAMaterials.HighPressureSteam.getFluid(64))
                 .outputFluids(DistilledWater.getFluid(2))
                 .save(provider);
+
+        STEAM_TURBINE_FUELS.recipeBuilder("sh_steam").EUt(-64).duration(25)
+                .inputFluids(GTCAMaterials.SuperheatedSteam.getFluid(48))
+                .outputFluids(DistilledWater.getFluid(4))
+                .save(provider);
     }
 
 
     private static void SCsteam (Consumer<FinishedRecipe> provider) {
 
-        SHD_STEAM_TURBINE.recipeBuilder("sc_steam").EUt(-412).duration(4)
-                .inputFluids(GTCAMaterials.SuperCriticalSteam.getFluid(4))
+        SHD_STEAM_TURBINE.recipeBuilder("sc_steam").EUt(-828).duration(1)
+                .inputFluids(GTCAMaterials.SuperCriticalSteam.getFluid(8))
                 .save(provider);
     }
 }

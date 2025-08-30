@@ -9,11 +9,15 @@ import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.function.Consumer;
 
+import static com.gregtechceu.gtceu.api.GTValues.IV;
+import static com.gregtechceu.gtceu.api.GTValues.VA;
+
 public class ChemicalRecipes {
     public static void init(Consumer<FinishedRecipe> provider){
         other(provider);
         chemGenChemicals(provider);
         mappline(provider);
+        netherstar(provider);
     }
 
     private static void other(Consumer<FinishedRecipe> provider){
@@ -107,4 +111,15 @@ public class ChemicalRecipes {
                 .outputFluids(GTCAMaterials.MAPP.getFluid(12000))
                 .save(provider);
     }
+
+    private static void netherstar(Consumer<FinishedRecipe> provider) {
+
+        GTRecipeTypes.CHEMICAL_RECIPES.recipeBuilder("nether_star_from_pearl_dust").EUt(VA[IV]).duration(400)
+                .inputFluids(GTMaterials.UUMatter.getFluid(40))
+                .inputItems(GTCAHelper.getItem("dust", GTMaterials.EnderPearl, 32))
+                .outputItems(GTCAHelper.getItem("dust", GTMaterials.NetherStar, 4))
+                .save(provider);
+
+    }
+
 }

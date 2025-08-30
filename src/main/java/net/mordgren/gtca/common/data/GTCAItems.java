@@ -38,7 +38,9 @@ public class GTCAItems {
 
     public static ItemEntry<Item> PNEresistor = REGISTRATE.item("pne_resistor", Item::new).register();
 
-// Nanites
+    public static ItemEntry<Item> CARBON_FILTER = REGISTRATE.item("carbon_filter", Item::new).register();
+
+    // Nanites
 
     public static ItemEntry<Item> GoldNanites  = REGISTRATE.item("gold_nanites", Item::new).register();
     public static ItemEntry<Item> SilverNanites = REGISTRATE.item("silver_nanites", Item::new).register();
