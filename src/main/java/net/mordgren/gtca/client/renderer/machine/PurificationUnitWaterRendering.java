@@ -64,7 +64,7 @@ public class PurificationUnitWaterRendering extends DynamicRender<WorkableElectr
     public void renderWater(PoseStack poseStack, VertexConsumer consumer,
                            float totalTick, int packedLight, int packedOverlay) {
         poseStack.pushPose();
-        poseStack.translate(0.5f, 1f, 2.5f);
+        poseStack.translate(0.5f, -0.2f, 5.5f);
         Quaternionf rot = new Quaternionf()
                 .rotateXYZ(0f, 0f, 0f)
                 .rotateAxis(0, 0.1f, 1f, 1f);
