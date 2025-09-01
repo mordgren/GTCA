@@ -259,6 +259,12 @@ public class MiscRecipes {
                 .inputItems(GTCAItems.Scrap, 9)
                 .outputItems(GTCAItems.ScrapBox, 1)
                 .save(provider);
+
+
+        GTCARecipeTypes.SPACE_PUMP.recipeBuilder("test").duration(200).EUt(VA[LuV])
+                .inputItems(GTCAHelper.getItem("dust", IncoloyDS, 1))
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
     }
 
 

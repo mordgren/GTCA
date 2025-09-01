@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.mordgren.gtca.client.GTCAClient;
 import net.mordgren.gtca.common.data.*;
+import net.mordgren.gtca.common.data.machines.GTCAMachineUtils;
 import net.mordgren.gtca.common.data.machines.GTCAMachines;
 import net.mordgren.gtca.common.data.materials.GTCAMaterialSet;
 import net.mordgren.gtca.common.data.materials.GTMaterialAdjustments;
@@ -78,6 +79,7 @@ public class GTCA {
 
     public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
         GTCAMachines.init();
+        GTCAMachineUtils.init();
     }
 
     public void registerRecipeConditions(GTCEuAPI.RegisterEvent<String, RecipeConditionType<?>> event) {
