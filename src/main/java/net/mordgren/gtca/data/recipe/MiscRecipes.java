@@ -265,6 +265,40 @@ public class MiscRecipes {
                 .inputItems(GTCAHelper.getItem("dust", IncoloyDS, 1))
                 .outputFluids(UUMatter.getFluid(1))
                 .save(provider);
+
+        // GRADE 1-7 WATERLINE TEST RTUI //
+
+        GTCARecipeTypes.CLARIFIER_PURIFICATION_UNIT.recipeBuilder("a").duration(20).EUt(VA[LV])
+                .inputFluids(UUMatter.getFluid(1))
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT.recipeBuilder("b").duration(20).EUt(VA[LV])
+                .inputFluids(UUMatter.getFluid(1))
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.FLOCCULATION_PURIFICATION_UNIT.recipeBuilder("c").duration(20).EUt(VA[LV])
+                .inputFluids(UUMatter.getFluid(1))
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.HIGH_ENERGY_LASER_PURIFICATION_UNIT.recipeBuilder("d").duration(20).EUt(VA[LV])
+                .inputFluids(UUMatter.getFluid(1))
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.OZONATION_PURIFICATION_UNIT.recipeBuilder("f").duration(20).EUt(VA[LV])
+                .inputFluids(UUMatter.getFluid(1))
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
+
+        GTCARecipeTypes.PH_NEUTRALIZATION_PURIFICATION_UNIT.recipeBuilder("i").duration(20).EUt(VA[LV])
+                .inputFluids(UUMatter.getFluid(1))
+                .outputFluids(UUMatter.getFluid(1))
+                .save(provider);
+
+
     }
 
 
