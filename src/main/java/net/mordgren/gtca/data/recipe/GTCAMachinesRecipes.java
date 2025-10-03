@@ -310,6 +310,24 @@ public class GTCAMachinesRecipes {
                 .outputItems(GTCAMachines.TEGMARK_FORGE.asStack())
                 .save(provider);
 
+        ASSEMBLY_LINE_RECIPES.recipeBuilder("space_elevator_controller").duration(7200).EUt(VA[UHV])
+                .inputItems(GTCAHelper.getItem("frame", Neutronium, 64))
+                .inputItems(FIELD_GENERATOR_UV, 16)
+                .inputItems(CustomTags.UHV_CIRCUITS, 16)
+                .inputItems(GTCAItems.PIKO_WAFER, 64)
+                .inputItems(GTCAHelper.getItem("screw", Neutronium, 64))
+                .inputItems(ELECTRIC_MOTOR_UV, 16)
+                .inputFluids(IncoloyMA323.getFluid(5760))
+                .inputFluids(UUMatter.getFluid(16000))
+                .inputFluids(Lubricant.getFluid(32000))
+                .inputFluids(Neutronium.getFluid(1440))
+                .outputItems(GTCAMachines.SPACE_ELEVATOR.asStack())
+                .stationResearch(b -> b
+                        .researchStack(GTCAItems.NANOTUBE_SPOOL.asStack())
+                        .CWUt(128)
+                        .EUt(VA[UHV]))
+                .save(provider);
+
         registerMachineRecipe(provider, GTCAMachines.MATTER_FABRICATOR, "ICI", "KMK", "ICI", 'M', HULL, 'C', CIRCUIT,
                 'I', FIELD_GENERATOR, 'K', CABLE_TIER_UP_HEX);
 

@@ -40,5 +40,16 @@ public class GTCAFluids {
         GTCAMaterials.RedMudSlurry = new Material.Builder(GTCA.id("red_mud_slurry")).fluid().color(0xff0000).buildAndRegister();
 
         GTCAMaterials.PahoehoeLava = new Material.Builder(GTCA.id("pahoehoe_lava")).liquid(1200).color(0xd55f13).secondaryColor(0x000000).iconSet(MaterialIconSet.DULL).buildAndRegister();
+
+        GTCAMaterials.PurifiedWaterGradeI = new Material.Builder(GTCA.id("purified_water_grade_1")).fluid().color(0x8eb2ed).buildAndRegister();
+        GTCAMaterials.PurifiedWaterGradeII = new Material.Builder(GTCA.id("purified_water_grade_2")).fluid().color(0x8eb2ed).buildAndRegister();
+        GTCAMaterials.PurifiedWaterGradeIII = new Material.Builder(GTCA.id("purified_water_grade_3")).fluid().color(0x8eb2ed).buildAndRegister();
+        GTCAMaterials.PurifiedWaterGradeIV = new Material.Builder(GTCA.id("purified_water_grade_4")).fluid().color(0x8eb2ed).buildAndRegister();
+        GTCAMaterials.PurifiedWaterGradeV = new Material.Builder(GTCA.id("purified_water_grade_5")).fluid().color(0x8eb2ed).buildAndRegister();
+        GTCAMaterials.PurifiedWaterGradeVI = new Material.Builder(GTCA.id("purified_water_grade_6")).fluid().color(0x8eb2ed).buildAndRegister();
+        GTCAMaterials.PurifiedWaterGradeVII = new Material.Builder(GTCA.id("purified_water_grade_7")).fluid().color(0x8eb2ed).buildAndRegister();
+        GTCAMaterials.PurifiedWaterGradeVIII = new Material.Builder(GTCA.id("purified_water_grade_8")).fluid().color(0x8eb2ed).buildAndRegister();
+
+
     }
 }

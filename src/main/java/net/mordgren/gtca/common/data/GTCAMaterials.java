@@ -190,6 +190,16 @@ public class GTCAMaterials {
     public static Material LanthaniumChloride; // Dust
     public static Material NeodymiumOxide; // Dust
 
+    // Water Grade 1-8
+
+    public static Material PurifiedWaterGradeI;
+    public static Material PurifiedWaterGradeII;
+    public static Material PurifiedWaterGradeIII;
+    public static Material PurifiedWaterGradeIV;
+    public static Material PurifiedWaterGradeV;
+    public static Material PurifiedWaterGradeVI;
+    public static Material PurifiedWaterGradeVII;
+    public static Material PurifiedWaterGradeVIII;
 
 
 }
