@@ -7,11 +7,30 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 public class SpaceMinerMachine extends WorkableElectricMultiblockMachine implements ITieredMachine {
 
 
-    public SpaceMinerMachine(IMachineBlockEntity holder, int tier) {
-        super(holder);
-        this.tier = tier;
+    public final int moduleTier;
+
+    private boolean enabledByElevator = false;
+
+    public SpaceMinerMachine(IMachineBlockEntity holder, int moduleTier) {
+        super(holder, moduleTier);
+        this.moduleTier = moduleTier;
     }
 
-    public final int tier;
+    public void setEnabledByElevator(boolean enabled) {
+        this.recipeLogic.setWorkingEnabled(enabled);
 
+
+        if (this.recipeLogic != null) {
+            this.recipeLogic.setWorkingEnabled(enabled);
+        }
+    }
+
+    public boolean isEnabledByElevator() {
+        return enabledByElevator;
+    }
+
+    @Override
+    public int getTier() {
+        return moduleTier;
+    }
 }
