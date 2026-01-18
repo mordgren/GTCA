@@ -792,6 +792,22 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("✦✧✦",true);
 
+        GTCAMaterials.HasteAlloy276 = new Material.Builder(GTCA.id("hastealloy_276"))
+                .dust()
+                .ingot()
+                .flags(
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_FRAME
+                )
+                .color(0xC489AF)
+                .blastTemp(4625, BlastProperty.GasTier.MID, GTValues.VA[GTValues.EV], 2000)
+                .components(Cobalt, 1, Molybdenum, 8, Tungsten, 1, Copper, 1, Chromium, 7, Nickel, 32)
+                .buildAndRegister()
+                .setFormula("CoMo8WCuCr7Ni32",true);
+
+
         // MISC
 
 
@@ -831,6 +847,8 @@ public class GTCAMetals {
                 .color(0x26714f)
                 .buildAndRegister()
                 .setFormula("???",true);
+
+
 
 
     }

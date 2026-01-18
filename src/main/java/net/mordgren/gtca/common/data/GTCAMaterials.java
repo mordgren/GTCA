@@ -110,6 +110,7 @@ public class GTCAMaterials {
     public static Material SiliconCarbide;
     public static Material QuantumAlloy;
     public static Material CelestialTungsten;
+    public static Material HasteAlloy276;
 
     // Misc
 

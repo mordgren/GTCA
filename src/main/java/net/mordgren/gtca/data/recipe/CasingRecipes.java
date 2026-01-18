@@ -1,10 +1,7 @@
 package net.mordgren.gtca.data.recipe;
 
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.common.data.GTBlocks;
-import com.gregtechceu.gtceu.common.data.GTItems;
-import com.gregtechceu.gtceu.common.data.GTMachines;
-import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.level.block.Blocks;
@@ -292,6 +289,60 @@ public class CasingRecipes {
                 .inputItems(GTCAHelper.getItem("frame", Neutronex, 1))
                 .outputItems(GTCABlocks.P_N_PROTECTIVE_CASING, 1)
                 .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("reactive_gas_cont_cas").EUt(GTValues.VA[GTValues.IV]).duration(680)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("doublePlate", HastelloyN, 6))
+                .inputItems(GTCAHelper.getItem("frame", HastelloyN, 1))
+                .inputItems(GTCAHelper.getItem("rotor", HastelloyN, 1))
+                .outputItems(GTCABlocks.REACTIVE_GAS_CONTANTMENT_CASING, 2)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("inert_filtration_casing").EUt(GTValues.VA[GTValues.IV]).duration(680)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("frame", HasteAlloy276, 1))
+                .inputItems(GTCAHelper.getItem("plate", HastelloyX, 6))
+                .inputItems(GTCAHelper.getItem("rotor", HastelloyX, 2))
+                .inputItems(GTCAHelper.getItem("gear", HasteAlloy276, 2))
+                .inputItems(GTItems.ELECTRIC_PUMP_IV)
+                .inputFluids(Polytetrafluoroethylene.getFluid(576))
+                .outputItems(GTCABlocks.INERT_FILTRATION_CASING, 2)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("slick_sterile_floc_casing").EUt(GTValues.VA[LuV]).duration(680)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("doublePlate", StainlessSteel, 6))
+                .inputItems(GTCAHelper.getItem("frame", StainlessSteel, 1))
+                .inputItems(GTItems.ELECTRIC_PUMP_IV)
+                .inputFluids(Polytetrafluoroethylene.getFluid(576))
+                .outputItems(GTCABlocks.SLICK_STERILE_FLOCCULATION_CASING, 2)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("pn_casing").EUt(GTValues.VA[GTValues.IV]).duration(680)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("doublePlate", Neutronex, 4))
+                .inputItems(GTCAHelper.getItem("frame", Neutronex, 1))
+                .outputItems(GTCABlocks.P_N_PROTECTIVE_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("pn_casing").EUt(GTValues.VA[GTValues.IV]).duration(680)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("doublePlate", Neutronex, 4))
+                .inputItems(GTCAHelper.getItem("frame", Neutronex, 1))
+                .outputItems(GTCABlocks.P_N_PROTECTIVE_CASING, 1)
+                .save(provider);
+
+        ASSEMBLER_RECIPES.recipeBuilder("pn_casing").EUt(GTValues.VA[GTValues.IV]).duration(680)
+                .circuitMeta(6)
+                .inputItems(GTCAHelper.getItem("doublePlate", Neutronex, 4))
+                .inputItems(GTCAHelper.getItem("frame", Neutronex, 1))
+                .outputItems(GTCABlocks.P_N_PROTECTIVE_CASING, 1)
+                .save(provider);
+
+
+
+
+
     }
 }
 
