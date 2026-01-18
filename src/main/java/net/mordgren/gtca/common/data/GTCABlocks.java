@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import net.mordgren.gtca.common.block.GTCABatteryBlock;
-import net.mordgren.gtca.common.util.CustomTags;
+import com.gregtechceu.gtceu.data.recipe.CustomTags;
 
 import java.util.function.Supplier;
 
