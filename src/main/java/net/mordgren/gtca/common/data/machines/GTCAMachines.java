@@ -840,96 +840,36 @@ public class GTCAMachines {
                                                                  ResourceLocation casingTexture,
                                                                  ResourceLocation overlayModel,
                                                                  String lang) {
-        if (tier == LuV) {
-            return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_MINER)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Mining Module"),
-                            Component.translatable("gtca.machine.space_miner_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
-        }
-        if (tier == ZPM) {
-            return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_MINER)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Mining Module"),
-                            Component.translatable("gtca.machine.space_miner_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
-        }
-        if (tier == UV) {
-            return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_MINER)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Mining Module"),
-                            Component.translatable("gtca.machine.space_miner_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
-        } else {
-            return null;
-        }
+
+        // один общий билдер, чтобы не копипастить 3 раза
+        if (tier != LuV && tier != ZPM && tier != UV) return null;
+
+        return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
+                .langValue(lang)
+                .rotationState(RotationState.NON_Y_AXIS)
+                .recipeType(GTCARecipeTypes.SPACE_MINER)
+                .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
+                .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+
+                // ВАЖНО: модуль = якорь 1×1×1 (только контроллер)
+                .pattern(definition ->
+                        FactoryBlockPattern.start()
+                                .aisle("X")
+                                .where('X', Predicates.controller(Predicates.blocks(definition.get())))
+                                .build()
+                )
+
+                .tooltips(
+                        Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Mining Module"),
+                        Component.translatable("gtca.machine.space_miner_desc.tooltip")
+                )
+                .workableCasingModel(
+                        casingTexture,
+                        overlayModel
+                )
+                .register();
     }
+
 
     public static final MultiblockMachineDefinition SPACE_PUMP_MKI = registerSpacePump(
             "space_pump_mki", LuV,
@@ -955,97 +895,32 @@ public class GTCAMachines {
                                                                 ResourceLocation overlayModel,
                                                                 String lang) {
 
-        if (tier == LuV) {
-            return REGISTRATE.multiblock(name, holder -> new SpacePumpMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_PUMP)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifiers(true, GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Pump Module"),
-                            Component.translatable("gtca.machine.space_pump_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
-        }
-        if (tier == ZPM) {
-            return REGISTRATE.multiblock(name, holder -> new SpacePumpMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_PUMP)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifiers(true, GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Pump Module"),
-                            Component.translatable("gtca.machine.space_pump_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
-        }
-        if (tier == UV) {
-            return REGISTRATE.multiblock(name, holder -> new SpacePumpMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_PUMP)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifiers(true, GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Pump Module"),
-                            Component.translatable("gtca.machine.space_pump_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
+        if (tier != LuV && tier != ZPM && tier != UV) return null;
 
-        } else {
-            return null;
-        }
+        return REGISTRATE.multiblock(name, holder -> new SpacePumpMachine(holder, tier))
+                .langValue(lang)
+                .rotationState(RotationState.NON_Y_AXIS)
+                .recipeType(GTCARecipeTypes.SPACE_PUMP)
+                .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
+                .recipeModifiers(true, GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
 
+                // модуль = якорь 1×1×1
+                .pattern(definition ->
+                        FactoryBlockPattern.start()
+                                .aisle("X")
+                                .where('X', Predicates.controller(Predicates.blocks(definition.get())))
+                                .build()
+                )
+
+                .tooltips(
+                        Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Pump Module"),
+                        Component.translatable("gtca.machine.space_pump_desc.tooltip")
+                )
+                .workableCasingModel(
+                        casingTexture,
+                        overlayModel
+                )
+                .register();
     }
 
 
@@ -1072,98 +947,33 @@ public class GTCAMachines {
                                                                      ResourceLocation casingTexture,
                                                                      ResourceLocation overlayModel,
                                                                      String lang) {
-        if (tier == LuV) {
-            return REGISTRATE.multiblock(name, holder -> new SpaceAssemblerMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_ASSEMBLER)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Assembler Module"),
-                            Component.translatable("gtca.machine.space_assembler_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
-        }
-        if (tier == ZPM) {
-            return REGISTRATE.multiblock(name, holder -> new SpaceAssemblerMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_ASSEMBLER)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Assembler Module"),
-                            Component.translatable("gtca.machine.space_assembler_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
-        }
-        if (tier == UV) {
-            return REGISTRATE.multiblock(name, holder -> new SpaceAssemblerMachine(holder, tier))
-                    .langValue(lang)
-                    .rotationState(RotationState.NON_Y_AXIS)
-                    .recipeType(GTCARecipeTypes.SPACE_ASSEMBLER)
-                    .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                    .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
-                    .pattern(definition ->
-                            FactoryBlockPattern.start()
-                                    .aisle("C", "C", "C", "C", "C")
-                                    .aisle("C", "C", "C", "X", "C")
-                                    .where('X', Predicates.controller(Predicates.blocks(definition.get())))
-                                    .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
-                                            PartAbility.IMPORT_ITEMS,
-                                            PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )).or(Predicates.autoAbilities(false, false, false)))
-                                    .build()
-                    )
-                    .tooltips(
-                            Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Assembler Module"),
-                            Component.translatable("gtca.machine.space_assembler_desc.tooltip")
-                    )
-                    .workableCasingModel(
-                            casingTexture,
-                            overlayModel
-                    )
-                    .register();
-        } else {
 
-            return null;
-        }
+        if (tier != LuV && tier != ZPM && tier != UV) return null;
 
+        return REGISTRATE.multiblock(name, holder -> new SpaceAssemblerMachine(holder, tier))
+                .langValue(lang)
+                .rotationState(RotationState.NON_Y_AXIS)
+                .recipeType(GTCARecipeTypes.SPACE_ASSEMBLER)
+                .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
+                .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
 
+                // модуль = якорь 1×1×1
+                .pattern(definition ->
+                        FactoryBlockPattern.start()
+                                .aisle("X")
+                                .where('X', Predicates.controller(Predicates.blocks(definition.get())))
+                                .build()
+                )
+
+                .tooltips(
+                        Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Assembler Module"),
+                        Component.translatable("gtca.machine.space_assembler_desc.tooltip")
+                )
+                .workableCasingModel(
+                        casingTexture,
+                        overlayModel
+                )
+                .register();
     }
 
     public static final MultiblockMachineDefinition SPACE_ELEVATOR =
