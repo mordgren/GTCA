@@ -30,6 +30,7 @@ import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.utils.BlockInfo;
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -957,7 +958,7 @@ public class GTCAMachines {
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
                 .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
 
-                // модуль = якорь 1×1×1
+
                 .pattern(definition ->
                         FactoryBlockPattern.start()
                                 .aisle("X")
@@ -981,15 +982,39 @@ public class GTCAMachines {
             .langValue("Space Elevator")
             .rotationState(RotationState.NON_Y_AXIS)
                     .additionalDisplay((machine, list) -> {
-                        if (machine instanceof SpaceElevatorMachine se) {
-                            list.add(Component.literal("Formed: " + se.isFormed()));
+                        if (!(machine instanceof SpaceElevatorMachine se)) return;
 
-                            if (se.isFormed()) {
-                                list.add(Component.literal("Motor Tier: MK" + se.getMotorTier()));
-                                list.add(Component.literal("Module Slots: " + se.getUnlockedModuleSlots()));
-                                list.add(Component.literal("Modules Found: " + se.getModulesFound()));
-                                list.add(Component.literal("Modules Active: " + se.getModulesActive()));
+                        list.add(Component.literal("Formed: " + se.isFormed()));
+                        if (!se.isFormed()) return;
+
+                        list.add(Component.literal("Motor Tier: MK" + se.getMotorTier()));
+                        list.add(Component.literal("Module Slots: " + se.getUnlockedModuleSlots()));
+                        list.add(Component.literal("Modules Found: " + se.getModulesFound()));
+                        list.add(Component.literal("Modules Valid: " + se.getModulesValid()));
+                        list.add(Component.literal("Modules Active: " + se.getModulesActive() + "/" + se.getUnlockedModuleSlots()));
+
+                        if (se.getModulesFound() > se.getModulesValid()) {
+                            for (BlockPos p : se.getModuleControllersAll()) {
+                                if (!se.getModuleControllersValidSet().contains(p)) {
+                                    list.add(Component.literal(
+                                            "First invalid: " + p.getX() + ", " + p.getY() + ", " + p.getZ()
+                                                    + " -> " + se.debugModuleAtPublic(p)
+                                    ));
+                                    break;
+                                }
                             }
+                        }
+
+                        int shown = 0;
+                        for (var info : se.getModuleInfos()) {
+                            list.add(Component.literal(
+                                    (info.active ? "[A] " : "[ ] ")
+                                            + (info.valid ? "" : "!")
+                                            + info.kind
+                                            + " @ " + info.pos.getX() + ", " + info.pos.getY() + ", " + info.pos.getZ()
+                                            + " formed=" + info.formed
+                            ));
+                            if (++shown >= 24) break;
                         }
                     })
             .recipeType(GTCARecipeTypes.SPACE_ELEVATOR)
@@ -1050,15 +1075,17 @@ public class GTCAMachines {
                                     .or(Predicates.abilities(
                                             PartAbility.IMPORT_ITEMS,
                                             PartAbility.EXPORT_ITEMS,
-                                            PartAbility.OPTICAL_DATA_RECEPTION
-                                    )))
+                                            PartAbility.EXPORT_FLUIDS,
+                                            PartAbility.IMPORT_FLUIDS,
+                                            PartAbility.OPTICAL_DATA_RECEPTION,
+                                            PartAbility.COMPUTATION_DATA_RECEPTION
+                                            )))
                             .where('G', blocks(
                                     GTCABlocks.SPACE_ELEVATOR_MOTOR_MK1.get(),
                                     GTCABlocks.SPACE_ELEVATOR_MOTOR_MK2.get(),
                                     GTCABlocks.SPACE_ELEVATOR_MOTOR_MK3.get(),
                                     GTCABlocks.SPACE_ELEVATOR_MOTOR_MK4.get(),
-                                    GTCABlocks.SPACE_ELEVATOR_MOTOR_MK5.get()
-                            ))
+                                    GTCABlocks.SPACE_ELEVATOR_MOTOR_MK5.get()))
                             .where('O', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(autoAbilities(definition.getRecipeTypes())).or(Predicates.autoAbilities(false, false, false)))
                             .where('E', blocks(GTCABlocks.SPACE_ELEVATOR_SUPPORT_STRUCTURE.get()))
                             .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_INTERNAL_STRUCTURE.get()))

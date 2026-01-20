@@ -1,19 +1,24 @@
 package net.mordgren.gtca.common.machine.multiblock.electric;
 
+import com.gregtechceu.gtceu.api.block.IMachineBlock;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.TickableSubscription;
+import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
 import com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
 
-
-
 import net.mordgren.gtca.common.data.GTCABlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.mordgren.gtca.common.machine.multiblock.electric.elevator.ElevatorModuleKind;
+import net.mordgren.gtca.common.machine.multiblock.electric.elevator.IElevatorModule;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -31,6 +36,7 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         return MANAGED_FIELD_HOLDER;
     }
 
+    // -------- persisted / synced --------
     @Persisted
     @DescSynced
     private int motorTier = 1;
@@ -39,16 +45,24 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
     @DescSynced
     private int unlockedModuleSlots = 6;
 
-    // modules: found/valid lists
+    @Persisted
+    @DescSynced
+    private int modulesFound = 0;
+
+    @Persisted
+    @DescSynced
+    private int modulesValid = 0;
+
+    @Persisted
+    @DescSynced
+    private int modulesActive = 0;
+
+    // -------- runtime --------
     private final List<BlockPos> moduleControllersAll = new ArrayList<>();
     private final List<BlockPos> moduleControllersValid = new ArrayList<>();
     private final Set<BlockPos> moduleControllersValidSet = new HashSet<>();
+    private final List<ModuleInfo> moduleInfos = new ArrayList<>();
 
-    private int modulesFound = 0;
-    private int modulesValid = 0;
-    private int modulesActive = 0;
-
-    // periodic rescan (subscription-based)
     private TickableSubscription rescanSub = null;
     private int rescanTimer = 0;
 
@@ -63,21 +77,27 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         super.onUnload();
         rescanSub = null;
         rescanTimer = 0;
+        clearModules();
     }
 
     @Override
     public void onStructureFormed() {
         super.onStructureFormed();
 
-        // подписка на серверный тик
         if (rescanSub == null) {
             rescanSub = subscribeServerTick(this::onServerTickSubscribed);
         }
 
-        // первичный расчёт
-        recalcMotorTierAndSlotsSafe();
-        rebuildModulesSafe();
-        applyModuleEnabling();
+        Iterable<BlockPos> cache = safeGetCache();
+        if (cache != null) {
+            recalcMotorTierAndSlots(cache);
+            rebuildModules(cache);
+            applyModuleEnabling();
+        } else {
+            motorTier = 1;
+            unlockedModuleSlots = slotsForMotorTier(1);
+            clearModules();
+        }
 
         rescanTimer = 0;
     }
@@ -91,18 +111,11 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         motorTier = 1;
         unlockedModuleSlots = 0;
 
-        moduleControllersAll.clear();
-        moduleControllersValid.clear();
-        moduleControllersValidSet.clear();
-
-        modulesFound = 0;
-        modulesValid = 0;
-        modulesActive = 0;
-
+        clearModules();
         rescanTimer = 0;
     }
 
-    // ---------------- subscribed tick ----------------
+    // ---------------- tick ----------------
 
     private void onServerTickSubscribed() {
         if (getLevel() == null) return;
@@ -111,12 +124,13 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         Iterable<BlockPos> cache = safeGetCache();
         if (cache == null) return;
 
+        // перескан раз в секунду
         rescanTimer++;
-        if (rescanTimer >= 20) { // раз в секунду
+        if (rescanTimer >= 20) {
             rescanTimer = 0;
 
-            recalcMotorTierAndSlotsSafe(cache);
-            rebuildModulesSafe(cache);
+            recalcMotorTierAndSlots(cache);
+            rebuildModules(cache);
             applyModuleEnabling();
         }
     }
@@ -129,7 +143,17 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         }
     }
 
-    // ---------------- getters ----------------
+    private void clearModules() {
+        moduleControllersAll.clear();
+        moduleControllersValid.clear();
+        moduleControllersValidSet.clear();
+        moduleInfos.clear();
+        modulesFound = 0;
+        modulesValid = 0;
+        modulesActive = 0;
+    }
+
+    // ---------------- getters (UI / debug) ----------------
 
     public int getMotorTier() {
         return motorTier;
@@ -151,25 +175,32 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         return modulesActive;
     }
 
+    public List<BlockPos> getModuleControllersAll() {
+        return List.copyOf(moduleControllersAll);
+    }
+
+    public Set<BlockPos> getModuleControllersValidSet() {
+        return Set.copyOf(moduleControllersValidSet);
+    }
+
+    public List<ModuleInfo> getModuleInfos() {
+        return List.copyOf(moduleInfos);
+    }
+
+    /** Для additionalDisplay */
+    public String debugModuleAtPublic(BlockPos pos) {
+        return debugModuleAt(pos);
+    }
+
     // ---------------- motor tier ----------------
 
-    private void recalcMotorTierAndSlotsSafe() {
-        Iterable<BlockPos> cache = safeGetCache();
-        if (cache == null) {
-            this.motorTier = 1;
-            this.unlockedModuleSlots = slotsForMotorTier(1);
-            return;
-        }
-        recalcMotorTierAndSlotsSafe(cache);
+    private void recalcMotorTierAndSlots(Iterable<BlockPos> cache) {
+        int newMotorTier = computeMotorTierMin(cache);
+        motorTier = newMotorTier;
+        unlockedModuleSlots = slotsForMotorTier(newMotorTier);
     }
 
-    private void recalcMotorTierAndSlotsSafe(Iterable<BlockPos> cache) {
-        int newMotorTier = safeComputeMotorTierMin(cache);
-        this.motorTier = newMotorTier;
-        this.unlockedModuleSlots = slotsForMotorTier(newMotorTier);
-    }
-
-    private int safeComputeMotorTierMin(Iterable<BlockPos> cache) {
+    private int computeMotorTierMin(Iterable<BlockPos> cache) {
         if (getLevel() == null) return 1;
         if (cache == null) return 1;
 
@@ -210,70 +241,76 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
 
     // ---------------- modules scan/enabling ----------------
 
-    private void rebuildModulesSafe() {
-        Iterable<BlockPos> cache = safeGetCache();
-        if (cache == null) {
-            clearModules();
-            return;
-        }
-        rebuildModulesSafe(cache);
-    }
+    private void rebuildModules(Iterable<BlockPos> cache) {
+        moduleControllersAll.clear();
+        moduleControllersValid.clear();
+        moduleControllersValidSet.clear();
+        moduleInfos.clear();
 
-    private void rebuildModulesSafe(Iterable<BlockPos> cache) {
-        clearModules();
-
-        if (getLevel() == null || !isFormed()) {
-            return;
-        }
-        if (cache == null) {
+        if (getLevel() == null || !isFormed() || cache == null) {
+            modulesFound = 0;
+            modulesValid = 0;
+            modulesActive = 0;
             return;
         }
 
         for (BlockPos pos : cache) {
             MetaMachine mm = MetaMachine.getMachine(getLevel(), pos);
-            if (isElevatorModuleController(mm)) {
-                BlockPos cp = pos.immutable();
-                moduleControllersAll.add(cp);
+            IElevatorModule module = asElevatorModule(mm);
+            if (module == null) continue;
 
-                if (isModuleStructureValid(cp)) {
-                    moduleControllersValid.add(cp);
-                    moduleControllersValidSet.add(cp);
-                }
+            BlockPos cp = pos.immutable();
+            moduleControllersAll.add(cp);
+
+            ElevatorModuleKind kind = module.getElevatorModuleKind();
+            boolean valid = isModuleValidByHatches(cp, kind);
+
+            if (valid) {
+                moduleControllersValid.add(cp);
+                moduleControllersValidSet.add(cp);
             }
         }
 
-        // стабильный порядок
+
         moduleControllersAll.sort(Comparator.comparingLong(BlockPos::asLong));
         moduleControllersValid.sort(Comparator.comparingLong(BlockPos::asLong));
 
         modulesFound = moduleControllersAll.size();
         modulesValid = moduleControllersValid.size();
         modulesActive = Math.min(unlockedModuleSlots, modulesValid);
-    }
 
-    private void clearModules() {
-        moduleControllersAll.clear();
-        moduleControllersValid.clear();
-        moduleControllersValidSet.clear();
-        modulesFound = 0;
-        modulesValid = 0;
-        modulesActive = 0;
+
+        Set<BlockPos> activeSet = new HashSet<>();
+        for (int i = 0; i < moduleControllersValid.size() && i < modulesActive; i++) {
+            activeSet.add(moduleControllersValid.get(i));
+        }
+
+
+        for (BlockPos p : moduleControllersAll) {
+            MetaMachine mm = MetaMachine.getMachine(getLevel(), p);
+            IElevatorModule module = asElevatorModule(mm);
+
+            ElevatorModuleKind kind = (module != null) ? module.getElevatorModuleKind() : null;
+
+            boolean valid = moduleControllersValidSet.contains(p);
+            boolean active = activeSet.contains(p);
+
+
+            moduleInfos.add(new ModuleInfo(p, kind != null ? kind.name() : "UNKNOWN", valid, active));
+        }
     }
 
     private void applyModuleEnabling() {
         if (getLevel() == null || !isFormed()) return;
 
-        // Сначала выключаем всё найденное
+
         for (BlockPos pos : moduleControllersAll) {
             MetaMachine mm = MetaMachine.getMachine(getLevel(), pos);
             setModuleEnabled(mm, false);
         }
 
-        // Потом включаем только первые N валидных
-        for (int i = 0; i < moduleControllersValid.size(); i++) {
-            boolean enable = i < modulesActive;
-            if (!enable) break;
 
+        for (int i = 0; i < moduleControllersValid.size() && i < modulesActive; i++) {
             BlockPos pos = moduleControllersValid.get(i);
             MetaMachine mm = MetaMachine.getMachine(getLevel(), pos);
             setModuleEnabled(mm, true);
@@ -289,31 +326,145 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         }
     }
 
+    // -------- Stage 1 helpers --------
+
+    private IElevatorModule asElevatorModule(MetaMachine mm) {
+        return (mm instanceof IElevatorModule m) ? m : null;
+    }
+
     private void setModuleEnabled(MetaMachine mm, boolean enabled) {
-        if (mm instanceof SpaceMinerMachine m) m.setEnabledByElevator(enabled);
-        else if (mm instanceof SpacePumpMachine m) m.setEnabledByElevator(enabled);
-        else if (mm instanceof SpaceAssemblerMachine m) m.setEnabledByElevator(enabled);
-    }
-
-    private static boolean isElevatorModuleController(MetaMachine machine) {
-        return machine instanceof SpaceMinerMachine
-                || machine instanceof SpacePumpMachine
-                || machine instanceof SpaceAssemblerMachine;
-    }
-
-    // ---------------- module structure validation (MVP) ----------------
-
-    private boolean isModuleStructureValid(BlockPos controllerPos) {
-        if (getLevel() == null) return false;
-
-        // MVP: 4 блока вверх от контроллера должны быть кейсингами лифта
-        for (int dy = 1; dy <= 4; dy++) {
-            BlockPos p = controllerPos.above(dy);
-            Block b = getLevel().getBlockState(p).getBlock();
-            if (b != GTCABlocks.SPACE_ELEVATOR_CASING.get()) {
-                return false;
-            }
+        IElevatorModule module = asElevatorModule(mm);
+        if (module != null) {
+            module.setEnabledByElevator(enabled);
         }
+    }
+
+    // ---------------- module validation by hatches ----------------
+
+    private boolean isModuleValidByHatches(BlockPos controllerPos, ElevatorModuleKind kind) {
+        if (getLevel() == null || kind == null) return false;
+
+        Direction facing = getControllerFacing(controllerPos);
+        if (facing == null) return false;
+
+        BlockPos back = controllerPos.relative(facing.getOpposite());
+
+
+        BlockPos[] slots = new BlockPos[]{
+                back.above(1),
+                back,
+                back.below(1),
+                back.below(2)
+        };
+
+        PartAbility[] required = requiredAbilities(kind);
+
+        for (PartAbility need : required) {
+            if (!hasAbilityInSlots(need, slots)) return false;
+        }
+
         return true;
     }
+
+    private PartAbility[] requiredAbilities(ElevatorModuleKind kind) {
+        return switch (kind) {
+            case MINER -> new PartAbility[]{
+                    PartAbility.IMPORT_ITEMS,
+                    PartAbility.EXPORT_ITEMS,
+                    PartAbility.IMPORT_FLUIDS,
+                    PartAbility.COMPUTATION_DATA_RECEPTION
+            };
+            case ASSEMBLER -> new PartAbility[]{
+                    PartAbility.IMPORT_ITEMS,
+                    PartAbility.EXPORT_ITEMS,
+                    PartAbility.IMPORT_FLUIDS
+            };
+            case PUMP -> new PartAbility[]{
+                    PartAbility.EXPORT_FLUIDS
+            };
+        };
+    }
+
+    private boolean hasAbilityInSlots(PartAbility ability, BlockPos[] slots) {
+        if (getLevel() == null) return false;
+        for (BlockPos p : slots) {
+            Block b = getLevel().getBlockState(p).getBlock();
+            if (ability.isApplicable(b)) return true;
+        }
+        return false;
+    }
+
+    private Direction getControllerFacing(BlockPos controllerPos) {
+        if (getLevel() == null) return null;
+
+        BlockState state = getLevel().getBlockState(controllerPos);
+        Block block = state.getBlock();
+
+        if (block instanceof IMachineBlock mb) {
+            return mb.getFrontFacing(state);
+        }
+
+        if (state.hasProperty(HorizontalDirectionalBlock.FACING)) {
+            return state.getValue(HorizontalDirectionalBlock.FACING);
+        }
+
+        return null;
+    }
+
+    // ---------------- diagnostics ----------------
+
+    private String debugModuleAt(BlockPos controllerPos) {
+        if (getLevel() == null) return "no level";
+
+        MetaMachine mm = MetaMachine.getMachine(getLevel(), controllerPos);
+        IElevatorModule module = asElevatorModule(mm);
+
+        if (module == null) return "not a module controller";
+
+        ElevatorModuleKind kind = module.getElevatorModuleKind();
+
+        Direction facing = getControllerFacing(controllerPos);
+        if (facing == null) return "no facing property";
+
+        BlockPos back = controllerPos.relative(facing.getOpposite());
+        BlockPos[] slots = new BlockPos[]{
+                back.above(1),
+                back,
+                back.below(1),
+                back.below(2)
+        };
+
+        PartAbility[] required = requiredAbilities(kind);
+
+        List<String> missing = new ArrayList<>();
+        for (PartAbility need : required) {
+            if (!hasAbilityInSlots(need, slots)) {
+                missing.add(need.getName());
+            }
+        }
+
+        if (missing.isEmpty()) return "ok";
+        return "missing: " + String.join(", ", missing);
+    }
+
+    // ---------------- data holder ----------------
+
+    public static final class ModuleInfo {
+        public final BlockPos pos;
+        public final String kind;
+        public final boolean valid;
+        public final boolean active;
+        public final boolean formed;
+
+        public ModuleInfo(BlockPos pos, String kind, boolean valid, boolean active) {
+            this.pos = pos;
+            this.kind = kind;
+            this.valid = valid;
+            this.active = active;
+            this.formed = valid;
+        }
+    }
 }
+
+
+
