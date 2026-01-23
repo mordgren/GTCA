@@ -42,6 +42,7 @@ import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.client.renderer.machine.GTCADynamicRenderHelpers;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.*;
+import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevatorDisplay;
 import net.mordgren.gtca.common.machine.multiblock.generator.ChemicalGeneratorMachine;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 
@@ -991,7 +992,7 @@ public class GTCAMachines {
             .recipeType(GTCARecipeTypes.SPACE_ELEVATOR)
                     .additionalDisplay((machine, list) -> {
                         if (machine instanceof SpaceElevatorMachine se) {
-                            se.addElevatorDisplayText(list);
+                            SpaceElevatorDisplay.addDisplay(se, list);
                         }
                     })
             .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
