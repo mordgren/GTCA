@@ -4,7 +4,6 @@ import com.gregtechceu.gtceu.api.block.IMachineBlock;
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.TickableSubscription;
-import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
 import com.lowdragmc.lowdraglib.syncdata.annotation.DescSynced;
@@ -12,19 +11,19 @@ import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
 
 import net.mordgren.gtca.common.data.GTCABlocks;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.state.BlockState;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.ElevatorModuleKind;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.IElevatorModule;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockState;
+
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
 
@@ -36,7 +35,8 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         return MANAGED_FIELD_HOLDER;
     }
 
-    // -------- persisted / synced --------
+    // ---------------- persisted/synced ----------------
+
     @Persisted
     @DescSynced
     private int motorTier = 1;
@@ -57,82 +57,219 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
     @DescSynced
     private int modulesActive = 0;
 
-    // -------- runtime --------
-    private final List<BlockPos> moduleControllersAll = new ArrayList<>();
-    private final List<BlockPos> moduleControllersValid = new ArrayList<>();
-    private final Set<BlockPos> moduleControllersValidSet = new HashSet<>();
-    private final List<ModuleInfo> moduleInfos = new ArrayList<>();
+    // ---------------- runtime ----------------
+    private TickableSubscription scanSub = null;
+    private int scanTimer = 0;
 
-    private TickableSubscription rescanSub = null;
-    private int rescanTimer = 0;
+    private final List<SlotInfo> slotInfos = new ArrayList<>();
 
     public SpaceElevatorMachine(IMachineBlockEntity holder) {
         super(holder);
     }
 
-    // ---------------- lifecycle ----------------
+    // =========================================================
+    //  SLOT LAYOUT (LOCAL OFFSETS)
+    // =========================================================
 
-    @Override
-    public void onUnload() {
-        super.onUnload();
-        rescanSub = null;
-        rescanTimer = 0;
-        clearModules();
-    }
+    private static final List<BlockPos> MODULE_SLOTS_LOCAL = List.of(
+            new BlockPos( 2, 0,  5),
+            new BlockPos( 0, 0,  5),
+            new BlockPos(-2, 0,  5),
+
+            new BlockPos(-8, 0, -1),
+            new BlockPos(-8, 0, -3),
+            new BlockPos(-8, 0, -5),
+
+            new BlockPos(-2, 0, -11),
+            new BlockPos( 0, 0, -11),
+            new BlockPos( 2, 0, -11),
+
+            new BlockPos( 8, 0, -5),
+            new BlockPos( 8, 0, -3),
+            new BlockPos( 8, 0, -1)
+    );
+
+    // ---------------- lifecycle ----------------
 
     @Override
     public void onStructureFormed() {
         super.onStructureFormed();
 
-        if (rescanSub == null) {
-            rescanSub = subscribeServerTick(this::onServerTickSubscribed);
+        if (scanSub == null) {
+            scanSub = subscribeServerTick(this::onServerTickSubscribed);
         }
 
-        Iterable<BlockPos> cache = safeGetCache();
-        if (cache != null) {
-            recalcMotorTierAndSlots(cache);
-            rebuildModules(cache);
-            applyModuleEnabling();
-        } else {
-            motorTier = 1;
-            unlockedModuleSlots = slotsForMotorTier(1);
-            clearModules();
-        }
-
-        rescanTimer = 0;
+        scanTimer = 0;
+        rescanAll();
     }
 
     @Override
     public void onStructureInvalid() {
         super.onStructureInvalid();
 
-        disableAllKnownModules();
+        disableAllModulesInSlots();
 
         motorTier = 1;
         unlockedModuleSlots = 0;
-
-        clearModules();
-        rescanTimer = 0;
+        modulesFound = 0;
+        modulesValid = 0;
+        modulesActive = 0;
+        slotInfos.clear();
+        scanTimer = 0;
     }
 
-    // ---------------- tick ----------------
+    @Override
+    public void onUnload() {
+        super.onUnload();
+        scanSub = null;
+        scanTimer = 0;
+        slotInfos.clear();
+    }
 
     private void onServerTickSubscribed() {
         if (getLevel() == null) return;
         if (!isFormed()) return;
 
-        Iterable<BlockPos> cache = safeGetCache();
-        if (cache == null) return;
-
-        // перескан раз в секунду
-        rescanTimer++;
-        if (rescanTimer >= 20) {
-            rescanTimer = 0;
-
-            recalcMotorTierAndSlots(cache);
-            rebuildModules(cache);
-            applyModuleEnabling();
+        scanTimer++;
+        if (scanTimer >= 20) { // раз в секунду
+            scanTimer = 0;
+            rescanAll();
         }
+    }
+
+    // ---------------- public getters (UI) ----------------
+
+    public int getMotorTier() { return motorTier; }
+    public int getUnlockedModuleSlots() { return unlockedModuleSlots; }
+    public int getModulesFound() { return modulesFound; }
+    public int getModulesValid() { return modulesValid; }
+    public int getModulesActive() { return modulesActive; }
+
+    public Direction getElevatorFacingPublic() {
+        return getElevatorFacing();
+    }
+
+    public List<SlotInfo> getSlotInfos() {
+        return List.copyOf(slotInfos);
+    }
+
+    // =========================================================
+    //  DISPLAY (pretty)
+    // =========================================================
+    public void addElevatorDisplayText(List<Component> list) {
+
+        list.add(Component.literal("Space Elevator").withStyle(ChatFormatting.AQUA, ChatFormatting.BOLD));
+
+        list.add(Component.literal("Formed: ").withStyle(ChatFormatting.GRAY)
+                .append(Component.literal(String.valueOf(isFormed()))
+                        .withStyle(isFormed() ? ChatFormatting.GREEN : ChatFormatting.RED)));
+
+        if (!isFormed()) return;
+
+        list.add(Component.literal("Motor Tier: ").withStyle(ChatFormatting.GRAY)
+                .append(Component.literal("MK" + motorTier).withStyle(ChatFormatting.GOLD))
+                .append(Component.literal("  |  Slots: ").withStyle(ChatFormatting.DARK_GRAY))
+                .append(Component.literal(String.valueOf(unlockedModuleSlots)).withStyle(ChatFormatting.GOLD)));
+
+        list.add(Component.literal("Modules: ").withStyle(ChatFormatting.GRAY)
+                .append(Component.literal(String.valueOf(modulesFound)).withStyle(ChatFormatting.WHITE))
+                .append(Component.literal("  |  Valid: ").withStyle(ChatFormatting.DARK_GRAY))
+                .append(Component.literal(String.valueOf(modulesValid)).withStyle(ChatFormatting.GREEN))
+                .append(Component.literal("  |  Active: ").withStyle(ChatFormatting.DARK_GRAY))
+                .append(Component.literal(String.valueOf(modulesActive)).withStyle(ChatFormatting.AQUA)));
+
+        // Legend
+        list.add(Component.literal("Legend: ").withStyle(ChatFormatting.DARK_GRAY)
+                .append(Component.literal("P").withStyle(ChatFormatting.YELLOW))
+                .append(Component.literal("=Present ").withStyle(ChatFormatting.GRAY))
+                .append(Component.literal("F").withStyle(ChatFormatting.GREEN))
+                .append(Component.literal("=Formed ").withStyle(ChatFormatting.GRAY))
+                .append(Component.literal("V").withStyle(ChatFormatting.AQUA))
+                .append(Component.literal("=Valid ").withStyle(ChatFormatting.GRAY))
+                .append(Component.literal("A").withStyle(ChatFormatting.LIGHT_PURPLE))
+                .append(Component.literal("=Active").withStyle(ChatFormatting.GRAY)));
+
+        list.add(Component.literal("Types: ").withStyle(ChatFormatting.DARK_GRAY)
+                .append(Component.literal("Miner ").withStyle(ChatFormatting.BLUE))
+                .append(Component.literal("Assembler ").withStyle(ChatFormatting.LIGHT_PURPLE))
+                .append(Component.literal("Pump").withStyle(ChatFormatting.AQUA)));
+
+        // 12 точек без координат
+        for (SlotInfo s : slotInfos) {
+            int num = s.index + 1;
+
+            String dot = s.present ? "●" : "○";
+            ChatFormatting dotColor = s.active
+                    ? ChatFormatting.GREEN
+                    : s.present ? ChatFormatting.YELLOW : ChatFormatting.DARK_GRAY;
+
+            Component line = Component.literal(String.format("%02d ", num)).withStyle(ChatFormatting.DARK_GRAY)
+                    .append(Component.literal(dot).withStyle(dotColor))
+                    .append(Component.literal(" ").withStyle(ChatFormatting.DARK_GRAY))
+                    .append(Component.literal("[").withStyle(ChatFormatting.DARK_GRAY))
+                    .append(flag(s.present, "P", ChatFormatting.YELLOW))
+                    .append(flag(s.formed, "F", ChatFormatting.GREEN))
+                    .append(flag(s.valid, "V", ChatFormatting.AQUA))
+                    .append(flag(s.active, "A", ChatFormatting.LIGHT_PURPLE))
+                    .append(Component.literal("] ").withStyle(ChatFormatting.DARK_GRAY))
+                    .append(kindComponent(s.kind));
+
+            list.add(line);
+        }
+    }
+
+    private Component flag(boolean state, String ch, ChatFormatting onColor) {
+        return Component.literal(state ? ch : "-").withStyle(state ? onColor : ChatFormatting.DARK_GRAY);
+    }
+
+    private Component kindComponent(ElevatorModuleKind kind) {
+        if (kind == null) {
+            return Component.literal("Empty").withStyle(ChatFormatting.DARK_GRAY);
+        }
+
+        return switch (kind) {
+            case MINER -> Component.literal("Miner").withStyle(ChatFormatting.BLUE);
+            case ASSEMBLER -> Component.literal("Assembler").withStyle(ChatFormatting.LIGHT_PURPLE);
+            case PUMP -> Component.literal("Pump").withStyle(ChatFormatting.AQUA);
+            default -> Component.literal(kind.name()).withStyle(ChatFormatting.GRAY); // на всякий случай
+        };
+    }
+
+    // =========================================================
+    //  MAIN RESCAN
+    // =========================================================
+    private void rescanAll() {
+        recalcMotorTierAndSlots();
+        rebuildSlots();
+        applyEnabling();
+    }
+
+    // ---------------- motor tier logic ----------------
+
+    private void recalcMotorTierAndSlots() {
+        int newMotorTier = computeMotorTierMinFromCache();
+        motorTier = newMotorTier;
+        unlockedModuleSlots = slotsForMotorTier(newMotorTier);
+    }
+
+    private int computeMotorTierMinFromCache() {
+        if (getLevel() == null) return 1;
+
+        Iterable<BlockPos> cache = safeGetCache();
+        if (cache == null) return 1;
+
+        int minTier = Integer.MAX_VALUE;
+        boolean foundAny = false;
+
+        for (BlockPos pos : cache) {
+            Block b = getLevel().getBlockState(pos).getBlock();
+            int t = tierOfMotorBlock(b);
+            if (t > 0) {
+                foundAny = true;
+                if (t < minTier) minTier = t;
+            }
+        }
+        return foundAny ? minTier : 1;
     }
 
     private Iterable<BlockPos> safeGetCache() {
@@ -141,82 +278,6 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         } catch (NullPointerException ignored) {
             return null;
         }
-    }
-
-    private void clearModules() {
-        moduleControllersAll.clear();
-        moduleControllersValid.clear();
-        moduleControllersValidSet.clear();
-        moduleInfos.clear();
-        modulesFound = 0;
-        modulesValid = 0;
-        modulesActive = 0;
-    }
-
-    // ---------------- getters (UI / debug) ----------------
-
-    public int getMotorTier() {
-        return motorTier;
-    }
-
-    public int getUnlockedModuleSlots() {
-        return unlockedModuleSlots;
-    }
-
-    public int getModulesFound() {
-        return modulesFound;
-    }
-
-    public int getModulesValid() {
-        return modulesValid;
-    }
-
-    public int getModulesActive() {
-        return modulesActive;
-    }
-
-    public List<BlockPos> getModuleControllersAll() {
-        return List.copyOf(moduleControllersAll);
-    }
-
-    public Set<BlockPos> getModuleControllersValidSet() {
-        return Set.copyOf(moduleControllersValidSet);
-    }
-
-    public List<ModuleInfo> getModuleInfos() {
-        return List.copyOf(moduleInfos);
-    }
-
-    /** Для additionalDisplay */
-    public String debugModuleAtPublic(BlockPos pos) {
-        return debugModuleAt(pos);
-    }
-
-    // ---------------- motor tier ----------------
-
-    private void recalcMotorTierAndSlots(Iterable<BlockPos> cache) {
-        int newMotorTier = computeMotorTierMin(cache);
-        motorTier = newMotorTier;
-        unlockedModuleSlots = slotsForMotorTier(newMotorTier);
-    }
-
-    private int computeMotorTierMin(Iterable<BlockPos> cache) {
-        if (getLevel() == null) return 1;
-        if (cache == null) return 1;
-
-        int minTier = Integer.MAX_VALUE;
-        boolean foundAnyMotor = false;
-
-        for (BlockPos pos : cache) {
-            Block block = getLevel().getBlockState(pos).getBlock();
-            int tier = tierOfMotorBlock(block);
-            if (tier > 0) {
-                foundAnyMotor = true;
-                if (tier < minTier) minTier = tier;
-            }
-        }
-
-        return foundAnyMotor ? minTier : 1;
     }
 
     private static int tierOfMotorBlock(Block b) {
@@ -239,232 +300,185 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         };
     }
 
-    // ---------------- modules scan/enabling ----------------
+    // ---------------- slot scanning ----------------
 
-    private void rebuildModules(Iterable<BlockPos> cache) {
-        moduleControllersAll.clear();
-        moduleControllersValid.clear();
-        moduleControllersValidSet.clear();
-        moduleInfos.clear();
+    private void rebuildSlots() {
+        slotInfos.clear();
+        modulesFound = 0;
+        modulesValid = 0;
 
-        if (getLevel() == null || !isFormed() || cache == null) {
-            modulesFound = 0;
-            modulesValid = 0;
+        if (getLevel() == null || !isFormed()) {
             modulesActive = 0;
             return;
         }
 
-        for (BlockPos pos : cache) {
-            MetaMachine mm = MetaMachine.getMachine(getLevel(), pos);
-            IElevatorModule module = asElevatorModule(mm);
-            if (module == null) continue;
+        Direction elevatorFacing = getElevatorFacing();
+        BlockPos base = getPos();
 
-            BlockPos cp = pos.immutable();
-            moduleControllersAll.add(cp);
+        for (int i = 0; i < MODULE_SLOTS_LOCAL.size(); i++) {
+            BlockPos local = MODULE_SLOTS_LOCAL.get(i);
+            BlockPos worldPos = base.offset(
+                    rotateLocalX(local, elevatorFacing),
+                    local.getY(),
+                    rotateLocalZ(local, elevatorFacing)
+            );
 
-            ElevatorModuleKind kind = module.getElevatorModuleKind();
-            boolean valid = isModuleValidByHatches(cp, kind);
+            MetaMachine mm = MetaMachine.getMachine(getLevel(), worldPos);
+            IElevatorModule mod = asElevatorModule(mm);
 
-            if (valid) {
-                moduleControllersValid.add(cp);
-                moduleControllersValidSet.add(cp);
-            }
+            boolean present = (mod != null);
+            boolean formed = present && isMachineFormed(mm);
+            boolean valid = formed;
+
+            ElevatorModuleKind kind = present ? safeGetKind(mod) : null;
+
+            if (present) modulesFound++;
+            if (valid) modulesValid++;
+
+            slotInfos.add(new SlotInfo(i, worldPos, present, formed, valid, false, kind));
         }
 
 
-        moduleControllersAll.sort(Comparator.comparingLong(BlockPos::asLong));
-        moduleControllersValid.sort(Comparator.comparingLong(BlockPos::asLong));
-
-        modulesFound = moduleControllersAll.size();
-        modulesValid = moduleControllersValid.size();
         modulesActive = Math.min(unlockedModuleSlots, modulesValid);
 
-
-        Set<BlockPos> activeSet = new HashSet<>();
-        for (int i = 0; i < moduleControllersValid.size() && i < modulesActive; i++) {
-            activeSet.add(moduleControllersValid.get(i));
-        }
-
-
-        for (BlockPos p : moduleControllersAll) {
-            MetaMachine mm = MetaMachine.getMachine(getLevel(), p);
-            IElevatorModule module = asElevatorModule(mm);
-
-            ElevatorModuleKind kind = (module != null) ? module.getElevatorModuleKind() : null;
-
-            boolean valid = moduleControllersValidSet.contains(p);
-            boolean active = activeSet.contains(p);
-
-
-            moduleInfos.add(new ModuleInfo(p, kind != null ? kind.name() : "UNKNOWN", valid, active));
+        int activeLeft = modulesActive;
+        for (SlotInfo info : slotInfos) {
+            if (activeLeft <= 0) break;
+            if (info.valid) {
+                info.active = true;
+                activeLeft--;
+            }
         }
     }
 
-    private void applyModuleEnabling() {
+    private ElevatorModuleKind safeGetKind(IElevatorModule mod) {
+        try {
+            return mod.getElevatorModuleKind();
+        } catch (Throwable t) {
+            return null;
+        }
+    }
+
+    private void applyEnabling() {
         if (getLevel() == null || !isFormed()) return;
 
 
-        for (BlockPos pos : moduleControllersAll) {
-            MetaMachine mm = MetaMachine.getMachine(getLevel(), pos);
+        for (SlotInfo s : slotInfos) {
+            if (!s.present) continue;
+            MetaMachine mm = MetaMachine.getMachine(getLevel(), s.pos);
             setModuleEnabled(mm, false);
         }
 
 
-        for (int i = 0; i < moduleControllersValid.size() && i < modulesActive; i++) {
-            BlockPos pos = moduleControllersValid.get(i);
-            MetaMachine mm = MetaMachine.getMachine(getLevel(), pos);
-            setModuleEnabled(mm, true);
+        for (SlotInfo s : slotInfos) {
+            if (!s.present) continue;
+            MetaMachine mm = MetaMachine.getMachine(getLevel(), s.pos);
+            if (s.active) setModuleEnabled(mm, true);
         }
     }
 
-    private void disableAllKnownModules() {
+    private void disableAllModulesInSlots() {
         if (getLevel() == null) return;
 
-        for (BlockPos pos : moduleControllersAll) {
-            MetaMachine mm = MetaMachine.getMachine(getLevel(), pos);
+        Direction elevatorFacing = getElevatorFacing();
+        BlockPos base = getPos();
+
+        for (BlockPos local : MODULE_SLOTS_LOCAL) {
+            BlockPos worldPos = base.offset(
+                    rotateLocalX(local, elevatorFacing),
+                    local.getY(),
+                    rotateLocalZ(local, elevatorFacing)
+            );
+            MetaMachine mm = MetaMachine.getMachine(getLevel(), worldPos);
             setModuleEnabled(mm, false);
         }
     }
 
-    // -------- Stage 1 helpers --------
+    // ---------------- helpers ----------------
 
     private IElevatorModule asElevatorModule(MetaMachine mm) {
         return (mm instanceof IElevatorModule m) ? m : null;
     }
 
     private void setModuleEnabled(MetaMachine mm, boolean enabled) {
-        IElevatorModule module = asElevatorModule(mm);
-        if (module != null) {
-            module.setEnabledByElevator(enabled);
+        IElevatorModule mod = asElevatorModule(mm);
+        if (mod != null) {
+            mod.setEnabledByElevator(enabled);
         }
     }
 
-    // ---------------- module validation by hatches ----------------
-
-    private boolean isModuleValidByHatches(BlockPos controllerPos, ElevatorModuleKind kind) {
-        if (getLevel() == null || kind == null) return false;
-
-        Direction facing = getControllerFacing(controllerPos);
-        if (facing == null) return false;
-
-        BlockPos back = controllerPos.relative(facing.getOpposite());
-
-
-        BlockPos[] slots = new BlockPos[]{
-                back.above(1),
-                back,
-                back.below(1),
-                back.below(2)
-        };
-
-        PartAbility[] required = requiredAbilities(kind);
-
-        for (PartAbility need : required) {
-            if (!hasAbilityInSlots(need, slots)) return false;
-        }
-
-        return true;
-    }
-
-    private PartAbility[] requiredAbilities(ElevatorModuleKind kind) {
-        return switch (kind) {
-            case MINER -> new PartAbility[]{
-                    PartAbility.IMPORT_ITEMS,
-                    PartAbility.EXPORT_ITEMS,
-                    PartAbility.IMPORT_FLUIDS,
-                    PartAbility.COMPUTATION_DATA_RECEPTION
-            };
-            case ASSEMBLER -> new PartAbility[]{
-                    PartAbility.IMPORT_ITEMS,
-                    PartAbility.EXPORT_ITEMS,
-                    PartAbility.IMPORT_FLUIDS
-            };
-            case PUMP -> new PartAbility[]{
-                    PartAbility.EXPORT_FLUIDS
-            };
-        };
-    }
-
-    private boolean hasAbilityInSlots(PartAbility ability, BlockPos[] slots) {
-        if (getLevel() == null) return false;
-        for (BlockPos p : slots) {
-            Block b = getLevel().getBlockState(p).getBlock();
-            if (ability.isApplicable(b)) return true;
+    private boolean isMachineFormed(MetaMachine mm) {
+        if (mm instanceof WorkableMultiblockMachine w) {
+            return w.isFormed();
         }
         return false;
     }
 
-    private Direction getControllerFacing(BlockPos controllerPos) {
-        if (getLevel() == null) return null;
+    private Direction getElevatorFacing() {
+        if (getLevel() == null) return Direction.SOUTH;
 
-        BlockState state = getLevel().getBlockState(controllerPos);
+        BlockState state = getLevel().getBlockState(getPos());
         Block block = state.getBlock();
 
         if (block instanceof IMachineBlock mb) {
             return mb.getFrontFacing(state);
         }
-
         if (state.hasProperty(HorizontalDirectionalBlock.FACING)) {
             return state.getValue(HorizontalDirectionalBlock.FACING);
         }
-
-        return null;
+        return Direction.SOUTH;
     }
 
-    // ---------------- diagnostics ----------------
-
-    private String debugModuleAt(BlockPos controllerPos) {
-        if (getLevel() == null) return "no level";
-
-        MetaMachine mm = MetaMachine.getMachine(getLevel(), controllerPos);
-        IElevatorModule module = asElevatorModule(mm);
-
-        if (module == null) return "not a module controller";
-
-        ElevatorModuleKind kind = module.getElevatorModuleKind();
-
-        Direction facing = getControllerFacing(controllerPos);
-        if (facing == null) return "no facing property";
-
-        BlockPos back = controllerPos.relative(facing.getOpposite());
-        BlockPos[] slots = new BlockPos[]{
-                back.above(1),
-                back,
-                back.below(1),
-                back.below(2)
+    // SOUTH: (x,z)
+    // NORTH: (-x,-z)
+    // EAST:  (z,-x)
+    // WEST:  (-z,x)
+    private int rotateLocalX(BlockPos local, Direction facing) {
+        int x = local.getX();
+        int z = local.getZ();
+        return switch (facing) {
+            case SOUTH -> x;
+            case NORTH -> -x;
+            case EAST  -> z;
+            case WEST  -> -z;
+            default    -> x;
         };
+    }
 
-        PartAbility[] required = requiredAbilities(kind);
-
-        List<String> missing = new ArrayList<>();
-        for (PartAbility need : required) {
-            if (!hasAbilityInSlots(need, slots)) {
-                missing.add(need.getName());
-            }
-        }
-
-        if (missing.isEmpty()) return "ok";
-        return "missing: " + String.join(", ", missing);
+    private int rotateLocalZ(BlockPos local, Direction facing) {
+        int x = local.getX();
+        int z = local.getZ();
+        return switch (facing) {
+            case SOUTH -> z;
+            case NORTH -> -z;
+            case EAST  -> -x;
+            case WEST  -> x;
+            default    -> z;
+        };
     }
 
     // ---------------- data holder ----------------
 
-    public static final class ModuleInfo {
+    public static final class SlotInfo {
+        public final int index;
         public final BlockPos pos;
-        public final String kind;
-        public final boolean valid;
-        public final boolean active;
+        public final boolean present;
         public final boolean formed;
+        public final boolean valid;
+        public boolean active;
+        public final ElevatorModuleKind kind; // null = empty
 
-        public ModuleInfo(BlockPos pos, String kind, boolean valid, boolean active) {
+        public SlotInfo(int index, BlockPos pos, boolean present, boolean formed, boolean valid, boolean active,
+                        ElevatorModuleKind kind) {
+            this.index = index;
             this.pos = pos;
-            this.kind = kind;
+            this.present = present;
+            this.formed = formed;
             this.valid = valid;
             this.active = active;
-            this.formed = valid;
+            this.kind = kind;
         }
     }
 }
-
 
 

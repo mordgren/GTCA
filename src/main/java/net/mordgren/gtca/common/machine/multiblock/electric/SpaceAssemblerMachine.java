@@ -1,42 +1,37 @@
-
 package net.mordgren.gtca.common.machine.multiblock.electric;
 
 import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
-import com.gregtechceu.gtceu.api.machine.TickableSubscription;
 import com.gregtechceu.gtceu.api.machine.feature.ITieredMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.ElevatorModuleKind;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.IElevatorModule;
 
 public class SpaceAssemblerMachine extends WorkableElectricMultiblockMachine implements ITieredMachine, IElevatorModule {
 
-    public final int tier;
+    private final int moduleTier;
     private boolean enabledByElevator = false;
 
     public SpaceAssemblerMachine(IMachineBlockEntity holder, int tier) {
         super(holder);
-        this.tier = tier;
+        this.moduleTier = tier;
+    }
+
+    @Override
+    public int getTier() {
+        return moduleTier;
     }
 
     @Override
     public ElevatorModuleKind getElevatorModuleKind() {
         return ElevatorModuleKind.ASSEMBLER;
     }
-    private boolean cachedPlayerWorkingEnabled = true;
+
     @Override
     public void setEnabledByElevator(boolean enabled) {
-        if (this.enabledByElevator == enabled) return;
         this.enabledByElevator = enabled;
-
-        if (getLevel() == null || getLevel().isClientSide) return;
-
-        if (!enabled) {
-
-            cachedPlayerWorkingEnabled = recipeLogic.isWorkingEnabled();
-            recipeLogic.setWorkingEnabled(false);
-        } else {
-
-            recipeLogic.setWorkingEnabled(cachedPlayerWorkingEnabled);
+        if (getLevel() != null && !getLevel().isClientSide) {
+            recipeLogic.setWorkingEnabled(enabled);
         }
     }
 
@@ -44,30 +39,5 @@ public class SpaceAssemblerMachine extends WorkableElectricMultiblockMachine imp
     public boolean isEnabledByElevator() {
         return enabledByElevator;
     }
-
-    @Override
-    public boolean requiresComputation() {
-        return false;
-    }
-
-    private TickableSubscription elevatorGateSub;
-
-    @Override
-    public void onLoad() {
-        super.onLoad();
-        if (elevatorGateSub == null) {
-            elevatorGateSub = subscribeServerTick(() -> {
-                if (!enabledByElevator && recipeLogic.isWorkingEnabled()) {
-                    recipeLogic.setWorkingEnabled(false);
-                }
-            });
-        }
-    }
-    @Override
-    public void onUnload() {
-        super.onUnload();
-        elevatorGateSub = null;
-    }
-
 }
 
