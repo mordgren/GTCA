@@ -36,7 +36,7 @@ public final class SpaceElevatorDisplay {
 
 
         list.add(Component.empty()
-                .append(Component.literal("Legend: ").withStyle(ChatFormatting.DARK_GRAY))
+                .append(Component.literal("Brief: ").withStyle(ChatFormatting.DARK_GRAY))
                 .append(Component.literal("P").withStyle(ChatFormatting.YELLOW))
                 .append(Component.literal("=Present ").withStyle(ChatFormatting.GRAY))
                 .append(Component.literal("F").withStyle(ChatFormatting.GREEN))

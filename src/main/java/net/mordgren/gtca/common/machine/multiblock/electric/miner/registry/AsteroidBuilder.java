@@ -1,0 +1,136 @@
+package net.mordgren.gtca.common.machine.multiblock.electric.miner.registry;
+
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.*;
+import net.minecraft.resources.ResourceLocation;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public final class AsteroidBuilder {
+
+    private final ResourceLocation id;
+
+    private long baseEUt;
+    private int baseDurationTicks;
+
+    private int requiredModuleMk;
+
+    private int distanceMin;
+    private int distanceMax;
+
+    private int baseSizeMinStacks;
+    private int baseSizeMaxStacks;
+
+    private int minCWU;
+    private int weight;
+
+    private DroneTier minDrone = DroneTier.MK1_LV;
+    private DroneTier maxDrone = DroneTier.MK7_ZPM;
+    private DroneTier baselineDrone = null; // если null — будет minDrone
+
+    private DrillMaterialTier minDrill = DrillMaterialTier.STEEL;
+    private DrillMaterialTier maxDrill = DrillMaterialTier.NAQUADAH;
+
+    private final List<OreEntry> ores = new ArrayList<>();
+
+    private AsteroidBuilder(ResourceLocation id) {
+        this.id = Objects.requireNonNull(id);
+    }
+
+    public static AsteroidBuilder asteroid(ResourceLocation id) {
+        return new AsteroidBuilder(id);
+    }
+
+    public AsteroidBuilder eut(long eut) { this.baseEUt = eut; return this; }
+
+    public AsteroidBuilder timeSeconds(double seconds) {
+        this.baseDurationTicks = Math.max(1, (int) Math.round(seconds * 20.0));
+        return this;
+    }
+
+    public AsteroidBuilder durationTicks(int ticks) {
+        this.baseDurationTicks = Math.max(1, ticks);
+        return this;
+    }
+
+    public AsteroidBuilder requiresModuleMk(int mk) {
+        this.requiredModuleMk = mk;
+        return this;
+    }
+
+    public AsteroidBuilder distance(int min, int max) {
+        this.distanceMin = min;
+        this.distanceMax = max;
+        return this;
+    }
+
+    public AsteroidBuilder sizeStacks(int min, int max) {
+        this.baseSizeMinStacks = min;
+        this.baseSizeMaxStacks = max;
+        return this;
+    }
+
+    public AsteroidBuilder minCWU(int cwu) { this.minCWU = cwu; return this; }
+    public AsteroidBuilder weight(int w) { this.weight = w; return this; }
+
+    public AsteroidBuilder droneTiers(DroneTier min, DroneTier max) {
+        this.minDrone = min;
+        this.maxDrone = max;
+        return this;
+    }
+
+    public AsteroidBuilder baselineDrone(DroneTier base) {
+        this.baselineDrone = base;
+        return this;
+    }
+
+    public AsteroidBuilder drillRange(DrillMaterialTier min, DrillMaterialTier max) {
+        this.minDrill = min;
+        this.maxDrill = max;
+        return this;
+    }
+
+    public AsteroidBuilder ore(Material material, double percent01) {
+        this.ores.add(new OreEntry(material, percent01));
+        return this;
+    }
+
+    public AsteroidDefinition build() {
+        if (baseEUt <= 0) throw new IllegalStateException("baseEUt");
+        if (baseDurationTicks <= 0) throw new IllegalStateException("baseDurationTicks");
+        if (requiredModuleMk <= 0) throw new IllegalStateException("requiredModuleMk");
+        if (distanceMax < distanceMin) throw new IllegalStateException("distance range");
+        if (baseSizeMaxStacks < baseSizeMinStacks) throw new IllegalStateException("size range");
+        if (weight <= 0) throw new IllegalStateException("weight");
+        if (ores.isEmpty()) throw new IllegalStateException("no ores defined");
+
+        DroneTier base = (baselineDrone != null) ? baselineDrone : minDrone;
+
+        return new AsteroidDefinition(
+                id,
+                baseEUt,
+                baseDurationTicks,
+                requiredModuleMk,
+                distanceMin,
+                distanceMax,
+                baseSizeMinStacks,
+                baseSizeMaxStacks,
+                minCWU,
+                weight,
+                minDrone,
+                maxDrone,
+                base,
+                minDrill,
+                maxDrill,
+                List.copyOf(ores)
+        );
+    }
+
+    public AsteroidDefinition buildAndRegister() {
+        AsteroidDefinition def = build();
+        SpaceMiningRegistry.register(def);
+        return def;
+    }
+}

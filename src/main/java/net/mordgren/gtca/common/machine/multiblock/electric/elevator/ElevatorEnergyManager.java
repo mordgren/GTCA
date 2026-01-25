@@ -11,6 +11,13 @@ public class ElevatorEnergyManager {
 
     private final SpaceElevatorMachine elevator;
 
+    /*
+    Created by sensesgone
+    25.1.2026
+     */
+
+
+
     public ElevatorEnergyManager(SpaceElevatorMachine elevator) {
         this.elevator = elevator;
     }

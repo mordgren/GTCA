@@ -15,6 +15,11 @@ import java.util.List;
 
 public class ElevatorModuleManager {
 
+    /*
+    Created by sensesgone
+    25.1.2026
+     */
+
     private final SpaceElevatorMachine elevator;
 
     private static final List<BlockPos> MODULE_SLOTS_LOCAL = List.of(
