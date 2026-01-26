@@ -1,13 +1,17 @@
-package net.mordgren.gtca.common.data;
+package net.mordgren.gtca.common.machine.multiblock.electric.miner.data;
 
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.mordgren.gtca.GTCA;
-import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.AsteroidBuilder;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.SpaceMiningRegistry;
 
 public final class GTCASpaceMiningAsteroids {
 
+    private GTCASpaceMiningAsteroids() {}
+
     public static void init() {
+        GTCA.LOGGER.info("[SpaceMining] GTCASpaceMiningAsteroids.init() called");
+
         AsteroidBuilder.asteroid(GTCA.id("asteroid/coal"))
                 .eut(1920)
                 .timeSeconds(10)
@@ -21,5 +25,7 @@ public final class GTCASpaceMiningAsteroids {
                 .ore(GTMaterials.Coal, 0.70)
                 .ore(GTMaterials.Graphite, 0.30)
                 .buildAndRegister();
+
+        GTCA.LOGGER.info("[SpaceMining] Registered asteroids = {}", SpaceMiningRegistry.size());
     }
 }

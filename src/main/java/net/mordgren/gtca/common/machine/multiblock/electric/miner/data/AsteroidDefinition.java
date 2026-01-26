@@ -3,6 +3,7 @@ package net.mordgren.gtca.common.machine.multiblock.electric.miner.data;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
+import java.util.Objects;
 
 public record AsteroidDefinition(
         ResourceLocation id,
@@ -31,8 +32,30 @@ public record AsteroidDefinition(
         List<OreEntry> ores
 ) {
     public AsteroidDefinition {
-        // Нормализация: если baseline не задан — делаем равным minDrone
+        Objects.requireNonNull(id, "id");
+        Objects.requireNonNull(minDrone, "minDrone");
+        Objects.requireNonNull(maxDrone, "maxDrone");
+        Objects.requireNonNull(minDrill, "minDrill");
+        Objects.requireNonNull(maxDrill, "maxDrill");
+
         if (baselineDrone == null) baselineDrone = minDrone;
-        ores = List.copyOf(ores);
+
+        if (baseEUt <= 0) throw new IllegalArgumentException("baseEUt must be > 0");
+        if (baseDurationTicks <= 0) throw new IllegalArgumentException("baseDurationTicks must be > 0");
+        if (requiredModuleMk < 1) throw new IllegalArgumentException("requiredModuleMk must be >= 1");
+        if (minCWU < 0) throw new IllegalArgumentException("minCWU must be >= 0");
+        if (weight <= 0) throw new IllegalArgumentException("weight must be > 0");
+
+        if (distanceMin > distanceMax) throw new IllegalArgumentException("distanceMin > distanceMax");
+        if (baseSizeMinStacks > baseSizeMaxStacks) throw new IllegalArgumentException("baseSizeMinStacks > baseSizeMaxStacks");
+
+        // нормализуем список
+        ores = (ores == null) ? List.of() : List.copyOf(ores);
+        if (ores.isEmpty()) throw new IllegalArgumentException("ores is empty");
+
+        // baseline должен быть в диапазоне дронов
+        if (!baselineDrone.isBetween(minDrone, maxDrone)) {
+            throw new IllegalArgumentException("baselineDrone must be between minDrone and maxDrone");
+        }
     }
 }

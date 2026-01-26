@@ -1,25 +1,56 @@
 package net.mordgren.gtca.common.machine.multiblock.electric.miner.data;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+
 public enum DrillMaterialTier {
     STEEL(1),
     TITANIUM(2),
     TUNGSTEN_STEEL(3),
     NAQUADAH(4),
     NAQUADAH_ALLOY(5),
-    NEUTRONIUM(6),
-    COSMIC_NEUTRONIUM(7); // пока не используешь — но пусть будет
+    NEUTRONIUM(6);
 
-    private final int tier;
+    private final int level;
 
-    DrillMaterialTier(int tier) {
-        this.tier = tier;
+    DrillMaterialTier(int level) {
+        this.level = level;
     }
 
-    public int tier() {
-        return tier;
+    public int level() {
+        return level;
+    }
+    // --- сравнение тиров ---
+    public boolean isAtMost(DrillMaterialTier other) {
+        return this.level <= other.level;
     }
 
     public boolean isBetween(DrillMaterialTier min, DrillMaterialTier max) {
-        return this.tier >= min.tier && this.tier <= max.tier;
+        return this.level >= min.level && this.level <= max.level;
+    }
+
+    // --- маппинг -> GTCEu Material ---
+    public Material material() {
+        return switch (this) {
+            case STEEL -> GTMaterials.Steel;
+            case TITANIUM -> GTMaterials.Titanium;
+            case TUNGSTEN_STEEL -> GTMaterials.TungstenSteel;
+            case NAQUADAH -> GTMaterials.Naquadah;
+            case NAQUADAH_ALLOY -> GTMaterials.NaquadahAlloy;
+            case NEUTRONIUM -> GTMaterials.Neutronium;
+        };
+    }
+
+
+    // --- обратный маппинг из Material -> tier ---
+    public static DrillMaterialTier fromMaterial(Material m) {
+        if (m == null) return null;
+        if (m == GTMaterials.Steel) return STEEL;
+        if (m == GTMaterials.Titanium) return TITANIUM;
+        if (m == GTMaterials.TungstenSteel) return TUNGSTEN_STEEL;
+        if (m == GTMaterials.Naquadah) return NAQUADAH;
+        if (m == GTMaterials.NaquadahAlloy) return NAQUADAH_ALLOY;
+        if (m == GTMaterials.Neutronium) return NEUTRONIUM;
+        return null;
     }
 }

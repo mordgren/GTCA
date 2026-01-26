@@ -2,6 +2,8 @@ package net.mordgren.gtca.common.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.GTCA;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMiningAsteroids;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMiningRecipeGen;
 import net.mordgren.gtca.data.recipe.*;
 import net.mordgren.gtca.data.recipe.BLRecipes;
 import net.mordgren.gtca.integration.gtnn.GTNNIntProxy;
@@ -35,9 +37,11 @@ public class GTCARecipeInit {
             FrothLineRecipes.init(provider);
             TMForgeRecipes.init(provider);
             PCBFRecipes.init(provider);
+            GTCASpaceMiningAsteroids.init();
 
             CasingRecipes.init(provider);
             GTCAMachinesRecipes.init(provider);
+            GTCASpaceMiningRecipeGen.generate(provider);
 
             MiscRecipes.init(provider);
 

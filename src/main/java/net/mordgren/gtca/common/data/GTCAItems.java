@@ -10,6 +10,10 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import net.minecraft.world.item.Item;
 import net.mordgren.gtca.GTCA;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.DrillMaterialTier;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.DroneTier;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.DrillTierResolver;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.DroneTierResolver;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import net.mordgren.gtca.common.item.ScrapBoxBehaviour;
 
@@ -104,12 +108,16 @@ public class GTCAItems {
     public static ItemEntry<Item> GRAVITON_ANOMALY_EMPTY = REGISTRATE.item("graviton_anomaly_empty", Item::new).register();
 
     // drones
-
+    public static ItemEntry<Item> MinerDroneLV = REGISTRATE.item("lv_drone", Item::new).register();
+    public static ItemEntry<Item> MinerDroneMV = REGISTRATE.item("mv_drone", Item::new).register();
     public static ItemEntry<Item> MinerDroneHV = REGISTRATE.item("hv_drone", Item::new).register();
     public static ItemEntry<Item> MinerDroneEV = REGISTRATE.item("ev_drone", Item::new).register();
     public static ItemEntry<Item> MinerDroneIV = REGISTRATE.item("iv_drone", Item::new).register();
     public static ItemEntry<Item> MinerDroneLuV = REGISTRATE.item("luv_drone", Item::new).register();
     public static ItemEntry<Item> MinerDroneZPM = REGISTRATE.item("zpm_drone", Item::new).register();
+    public static ItemEntry<Item> MinerDroneUV = REGISTRATE.item("uv_drone", Item::new).register();
+    public static ItemEntry<Item> MinerDroneUHV = REGISTRATE.item("uhv_drone", Item::new).register();
+    public static ItemEntry<Item> MinerDroneUEV = REGISTRATE.item("uev_drone", Item::new).register();
 
     // wafers
 
@@ -143,20 +151,23 @@ public class GTCAItems {
     public static ItemEntry<Item> OPTICAL_ASSEMBLY = REGISTRATE.item("optical_assembly", Item::new).register();
     public static ItemEntry<Item> OPTICAL_SUPERCOMPUTER = REGISTRATE.item("optical_supercomputer", Item::new).register();
     public static ItemEntry<Item> OPTICAL_MAINFRAME = REGISTRATE.item("optical_mainframe", Item::new).register();
-
-
-
     public static ItemEntry<Item> NANOTUBE_SPOOL = REGISTRATE.item("nanotube_spool", Item::new).register();
 
-
+    public static void initTierMappings() {
+        // Drones
+        DroneTierResolver.register(GTCAItems.MinerDroneLV.get(), DroneTier.MK1_LV);
+        DroneTierResolver.register(GTCAItems.MinerDroneMV.get(), DroneTier.MK2_MV);
+        DroneTierResolver.register(GTCAItems.MinerDroneHV.get(), DroneTier.MK3_HV);
+        DroneTierResolver.register(GTCAItems.MinerDroneEV.get(), DroneTier.MK4_EV);
+        DroneTierResolver.register(GTCAItems.MinerDroneIV.get(), DroneTier.MK5_IV);
+        DroneTierResolver.register(GTCAItems.MinerDroneLuV.get(), DroneTier.MK6_LuV);
+        DroneTierResolver.register(GTCAItems.MinerDroneZPM.get(), DroneTier.MK7_ZPM);
+        DroneTierResolver.register(GTCAItems.MinerDroneUV.get(), DroneTier.MK8_UV);
+        DroneTierResolver.register(GTCAItems.MinerDroneUHV.get(), DroneTier.MK9_UHV);
+        DroneTierResolver.register(GTCAItems.MinerDroneUEV.get(), DroneTier.MK10_UEV);
+    }
     private static <T extends IComponentItem> NonNullConsumer<T> attach(IItemComponent components) {
         return item -> item.attachComponents(components);
-
-
-
-
-
-
     }
 
 
