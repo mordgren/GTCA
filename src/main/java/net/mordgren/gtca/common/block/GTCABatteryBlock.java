@@ -5,9 +5,10 @@ import com.gregtechceu.gtceu.api.block.AppearanceBlock;
 import com.gregtechceu.gtceu.api.machine.multiblock.IBatteryData;
 import lombok.Getter;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
-public class    GTCABatteryBlock extends AppearanceBlock {
+public class GTCABatteryBlock extends Block {
 
     @Getter
     private final IBatteryData data;

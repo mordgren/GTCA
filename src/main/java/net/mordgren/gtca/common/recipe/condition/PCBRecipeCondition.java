@@ -73,31 +73,31 @@ public class PCBRecipeCondition extends RecipeCondition {
         return new PCBRecipeCondition();
     }
 
-    @Override
-    public @NotNull JsonObject serialize() {
-        JsonObject value = super.serialize();
-        value.addProperty("casingTier", tier);
-        return value;
-    }
-
-    @Override
-    public RecipeCondition deserialize(@NotNull JsonObject config) {
-        super.deserialize(config);
-        this.tier = GsonHelper.getAsInt(config, "casingTier", 0);
-        return this;
-    }
-
-    @Override
-    public void toNetwork(FriendlyByteBuf buf) {
-        super.toNetwork(buf);
-        buf.writeInt(tier);
-    }
-
-    @Override
-    public RecipeCondition fromNetwork(FriendlyByteBuf buf) {
-        super.fromNetwork(buf);
-        this.tier = buf.readInt();
-        return this;
-    }
+//    @Override
+//    public @NotNull JsonObject serialize() {
+//        JsonObject value = super.serialize();
+//        value.addProperty("casingTier", tier);
+//        return value;
+//    }
+//
+//    @Override
+//    public RecipeCondition deserialize(@NotNull JsonObject config) {
+//        super.deserialize(config);
+//        this.tier = GsonHelper.getAsInt(config, "casingTier", 0);
+//        return this;
+//    }
+//
+//    @Override
+//    public void toNetwork(FriendlyByteBuf buf) {
+//        super.toNetwork(buf);
+//        buf.writeInt(tier);
+//    }
+//
+//    @Override
+//    public RecipeCondition fromNetwork(FriendlyByteBuf buf) {
+//        super.fromNetwork(buf);
+//        this.tier = buf.readInt();
+//        return this;
+//    }
 
 }

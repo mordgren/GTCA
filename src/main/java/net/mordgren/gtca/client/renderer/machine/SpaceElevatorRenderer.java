@@ -113,7 +113,7 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
     public void renderBeam(PoseStack poseStack, VertexConsumer consumer,
                            float totalTick, int packedLight, int packedOverlay) {
         poseStack.pushPose();
-        poseStack.translate(0.5f, 0.5f, -3.5f);
+        poseStack.translate(0.5f, 0.5f, -2.5f);
         poseStack.scale(1f, 16f, 1f);
 
         PoseStack.Pose pose = poseStack.last();
@@ -128,7 +128,7 @@ public class SpaceElevatorRenderer extends DynamicRender<WorkableElectricMultibl
     public void renderShuttle(PoseStack poseStack, VertexConsumer consumer,
                               float totalTick, int packedLight, int packedOverlay) {
         poseStack.pushPose();
-        poseStack.translate(0.5f, 50f, -3.5f);
+        poseStack.translate(0.5f, 50f, -2.5f);
         Quaternionf rot = new Quaternionf()
                 .rotateAxis(totalTick * Mth.TWO_PI / 1200f, 0f, 1f, 0f);
         poseStack.mulPose(rot);

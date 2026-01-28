@@ -1,12 +1,8 @@
 package net.mordgren.gtca.common.data.machines;
 
-import com.gregtechceu.gtceu.api.block.IMachineBlock;
-import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IRotorHolderMachine;
 import com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
 import com.gregtechceu.gtceu.api.pattern.predicates.SimplePredicate;
-import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
-import com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder;
 import com.gregtechceu.gtceu.common.data.GCYMBlocks;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
@@ -21,16 +17,12 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMa
 import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.MultiblockShapeInfo;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
-import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
 import com.gregtechceu.gtceu.common.data.*;
 import com.gregtechceu.gtceu.common.data.models.GTMachineModels;
 import com.gregtechceu.gtceu.common.machine.multiblock.generator.LargeTurbineMachine;
-import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.utils.BlockInfo;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -43,22 +35,21 @@ import net.mordgren.gtca.client.renderer.machine.GTCADynamicRenderHelpers;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevatorDisplay;
-import net.mordgren.gtca.common.machine.multiblock.generator.ChemicalGeneratorMachine;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
-import java.util.function.BiFunction;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
+
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.*;
+import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.BATCH_MODE;
+import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.OC_NON_PERFECT_SUBTICK;
 import static net.mordgren.gtca.common.data.machines.GTCAMachineUtils.*;
 import static net.mordgren.gtca.common.registry.GTCARegistration.REGISTRATE;
 import static net.mordgren.gtca.common.data.GTCAMaterials.*;
@@ -82,7 +73,7 @@ public class GTCAMachines {
             .langValue("Steam Pressurizer")
             .recipeType(GTCARecipeTypes.STEAM_PRESSURIZER)
             .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("BAAAB", "BCCCB")
@@ -108,8 +99,8 @@ public class GTCAMachines {
             .langValue("Volcanus")
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTRecipeTypes.BLAST_RECIPES)
-            .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH,
-                    GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK_SUBTICK), GTCARecipeModifiers::aebfOverclock)
+            .recipeModifiers(BATCH_MODE,
+                    OC_NON_PERFECT_SUBTICK, GTCARecipeModifiers::aebfOverclock)
             .appearanceBlock(GTCABlocks.CASING_AEBF)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("XXXXXXX", "FFXXXFF", "F#####F", "F#####F", "F#####F", "FFXXXFF", "XXXVXXX", "##XXX##", "#######")
@@ -207,7 +198,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.GREEN_HOUSE)
             .appearanceBlock(GTCABlocks.CASING_GREENHOUSE)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("AAAAA", "FAAAF", "FAAAF", "FBBBF", "FBBBF", "FBBBF", "FFFFF")
                     .aisle("AAAAA", "ACCCA", "A###A", "B###B", "B###B", "B###B", "FBBBF")
@@ -262,7 +253,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.POLYMERIZER)
             .appearanceBlock(GTCABlocks.DURAL_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC")
                     .aisle("CCCCC", "CHCHC", "CPPPC", "CHCHC", "CCCCC")
@@ -382,8 +373,8 @@ public class GTCAMachines {
             .langValue("Mega Oil Cracking Unit")
             .rotationState(RotationState.ALL)
             .recipeType(GTRecipeTypes.CRACKING_RECIPES)
-            .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH,
-                    GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK_SUBTICK), GTRecipeModifiers::crackerOverclock)
+            .recipeModifiers(BATCH_MODE,
+                    OC_NON_PERFECT_SUBTICK, GTRecipeModifiers::crackerOverclock)
             .appearanceBlock(CASING_STAINLESS_CLEAN)
             .pattern(definition -> FactoryBlockPattern.start()
                     .aisle("HHHHHHHHHHHHH", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#", "#H#########H#")
@@ -459,8 +450,8 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeTypes(GTRecipeTypes.LARGE_CHEMICAL_RECIPES)
             .appearanceBlock(CASING_PTFE_INERT)
-            .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH,
-                    GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK_SUBTICK))
+            .recipeModifiers(BATCH_MODE,
+                    OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC")
@@ -497,7 +488,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.INDUSTRIAL_COKE_OVEN)
             .appearanceBlock(GTCABlocks.TANTALLOY61_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("CCC", "FFF", "CCC")
@@ -595,7 +586,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.COMET_CYCLOTRON)
             .appearanceBlock(GTCABlocks.COMET_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("###############", "######BBB######", "###############")
@@ -638,7 +629,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.ISAMILL)
             .appearanceBlock(GTCABlocks.ISAMILL_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("ACCCCCC", "ACCCCCC", "ACCCCCC")
@@ -669,7 +660,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.FLCR)
             .appearanceBlock(GTCABlocks.FLCR_CASING_TYPE_II)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("##CCC##", "##CCC##", "#######", "#######", "#######", "#######", "#######", "#######", "#######")
@@ -703,7 +694,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.TEGMARK_FORGE)
             .appearanceBlock(GTCABlocks.P_N_PROTECTIVE_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("#############################", "#############################", "#############BB##############", "############B##B#############", "############B##B#############", "#############BB##############", "#############################")
@@ -763,7 +754,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.NANOFORGE)
             .appearanceBlock(GTCABlocks.RADIANT_NAQUADAH_ALLOY_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("##KKKKK##", "#########", "#########", "#########", "#########", "#########", "#########", "#########", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "###CDC###", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "###CBC###", "#########", "#########", "#########", "#########", "#########", "#########", "#########", "#########", "#########", "#########", "#########", "#########", "#########", "#########")
@@ -851,7 +842,7 @@ public class GTCAMachines {
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_MINER)
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                .recipeModifier(OC_NON_PERFECT_SUBTICK)
                 .pattern(definition ->
                         FactoryBlockPattern.start()
                                 .aisle("C", "C", "C", "C", "C")
@@ -908,7 +899,7 @@ public class GTCAMachines {
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_PUMP)
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                .recipeModifiers(true, GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                .recipeModifiers(true, OC_NON_PERFECT_SUBTICK)
                 .pattern(definition ->
                         FactoryBlockPattern.start()
                                 .aisle("C", "C", "C", "C", "C")
@@ -962,7 +953,7 @@ public class GTCAMachines {
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_ASSEMBLER)
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+                .recipeModifier(OC_NON_PERFECT_SUBTICK)
                 .pattern(definition ->
                         FactoryBlockPattern.start()
                                 .aisle("C", "C", "C", "C", "C")
@@ -996,7 +987,7 @@ public class GTCAMachines {
                         }
                     })
             .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                     .aisle("###############BBBBB###############", "###############CC#CC###############", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################", "###################################")
@@ -1072,7 +1063,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.CLARIFIER_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.REINFORCED_STERILE_WATER_PLANT_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("###BBBBB###", "###BCBCB###", "###BBBBB###", "###########")
@@ -1118,7 +1109,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.OZONATION_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.INERT_FILTRATION_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                     .aisle("#####BHB#", "#####BHB#", "#####BHB#", "#####BHB#", "#####BBB#", "#####BBB#", "######B##", "######B##", "#########", "#########", "#########")
@@ -1158,7 +1149,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.FLOCCULATION_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.SLICK_STERILE_FLOCCULATION_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                         	.aisle("AA#####AA", "AA#####AA", "AA#####AA", "AA#####AA", "AA#####AA")
@@ -1203,7 +1194,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.PH_NEUTRALIZATION_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.STABILIZED_WATER_PLANT_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                         	.aisle("ABBBA#####ABBBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABBBA#####ABBBA", "###############")
@@ -1243,7 +1234,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.HEAT_RESISTANT_TRINIUM_PLATED_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#############BBBBB#####")
@@ -1295,7 +1286,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.HIGH_ENERGY_LASER_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.NAQUADRIA_REINFORCED_WATERPLANT_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                         	.aisle("#####BBB#####", "#####CCC#####", "#############", "#############", "#############", "#############", "#############", "#####CCC#####", "#############")
@@ -1337,7 +1328,7 @@ public class GTCAMachines {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.RESIDUAL_DECONTAMINANT_DEGASSER_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.HEAT_RESISTANT_TRINIUM_PLATED_CASING)
-            .recipeModifier(GTRecipeModifiers.ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK))
+            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
 	.aisle("######BBBBB######", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "#################", "######BBBBB######")
