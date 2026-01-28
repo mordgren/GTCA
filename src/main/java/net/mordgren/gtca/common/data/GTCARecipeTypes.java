@@ -149,7 +149,7 @@ public class GTCARecipeTypes {
             .setMaxIOSize(6,9,1,0)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setMaxTooltips(4)
+            .setMaxTooltips(9)
             .setEUIO(IO.IN);
 
     public static final GTRecipeType SPACE_ASSEMBLER = register("space_assembler", MULTIBLOCK)

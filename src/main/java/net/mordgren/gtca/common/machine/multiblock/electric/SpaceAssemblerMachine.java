@@ -34,7 +34,6 @@ public class SpaceAssemblerMachine extends WorkableElectricMultiblockMachine imp
         this.recipeLogic.setWorkingEnabled(false);
     }
 
-    // ---- IElevatorModule ----
 
     @Override
     public ElevatorModuleKind getElevatorModuleKind() {
@@ -60,7 +59,6 @@ public class SpaceAssemblerMachine extends WorkableElectricMultiblockMachine imp
         return wirelessEnergy;
     }
 
-    // ---- capacity helper ----
     private static long wirelessCapacityForTier(int tier) {
 
         int mk = switch (tier) {

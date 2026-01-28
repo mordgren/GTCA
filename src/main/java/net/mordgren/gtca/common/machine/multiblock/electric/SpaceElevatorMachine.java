@@ -109,7 +109,6 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         modulesActive = moduleManager.getModulesActive();
     }
 
-    // -------- getters for UI/display --------
     public int getMotorTier() { return motorTier; }
     public int getUnlockedModuleSlots() { return unlockedModuleSlots; }
     public int getModulesFound() { return modulesFound; }
@@ -120,7 +119,6 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
         return moduleManager.getSlotInfos();
     }
 
-    // -------- motor tier logic --------
 
     private void recalcMotorTierAndSlots() {
         int newMotorTier = computeMotorTierMinFromCache();

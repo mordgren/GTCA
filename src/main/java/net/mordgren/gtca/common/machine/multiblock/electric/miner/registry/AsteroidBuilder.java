@@ -82,7 +82,7 @@ public final class AsteroidBuilder {
     }
 
     public AsteroidBuilder baselineDrone(DroneTier base) {
-        this.baselineDrone = base; // nullable allowed
+        this.baselineDrone = base;
         return this;
     }
 
@@ -107,23 +107,20 @@ public final class AsteroidBuilder {
         if (weight <= 0) throw new IllegalStateException("weight");
         if (ores.isEmpty()) throw new IllegalStateException("no ores defined");
 
-        // drone range check
+
         if (minDrone.index() > maxDrone.index()) {
             throw new IllegalStateException("droneTiers range");
         }
 
-        // drill range check
         if (!minDrill.isAtMost(maxDrill)) {
             throw new IllegalStateException("drillRange");
         }
 
-        // baseline normalization + check
         DroneTier base = (baselineDrone != null) ? baselineDrone : minDrone;
         if (!base.isBetween(minDrone, maxDrone)) {
             throw new IllegalStateException("baselineDrone out of range");
         }
 
-        // ores sum ~ 1.0
         double sum = 0.0;
         for (OreEntry e : ores) sum += e.percent01();
         if (Math.abs(sum - 1.0) > 1e-6) {

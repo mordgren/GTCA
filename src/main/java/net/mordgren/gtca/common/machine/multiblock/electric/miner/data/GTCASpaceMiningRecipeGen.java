@@ -1,9 +1,13 @@
 package net.mordgren.gtca.common.machine.multiblock.electric.miner.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraftforge.fluids.FluidStack;
 
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.GTCASpaceMiningCapabilities;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfo;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfoRecipeCapability;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.MiningParts;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.SpaceMiningRegistry;
 import net.mordgren.gtca.common.util.GTCAHelper;
@@ -18,7 +22,7 @@ public final class GTCASpaceMiningRecipeGen {
 
     public static void generate(Consumer<FinishedRecipe> provider) {
         GTCA.LOGGER.info("[SpaceMining] Generating SPACE_MINER recipes, asteroids={}", SpaceMiningRegistry.size());
-
+        GTCASpaceMiningCapabilities.init();
         for (AsteroidDefinition a : SpaceMiningRegistry.all()) {
             generateForAsteroid(a, provider);
         }
@@ -43,6 +47,14 @@ public final class GTCASpaceMiningRecipeGen {
             int sizeMax = adjustedSizeMax(a, drone);
             int avgStacks = Math.max(1, (sizeMin + sizeMax) / 2);
 
+            SpaceMiningInfo info = new SpaceMiningInfo(
+                    a.requiredModuleMk(),
+                    a.distanceMin(),
+                    a.distanceMax(),
+                    sizeMin,
+                    sizeMax,
+                    a.weight()
+            );
 
             List<OreEntry> ores = a.ores();
             if (ores.size() > 9) ores = ores.subList(0, 9);
@@ -51,20 +63,25 @@ public final class GTCASpaceMiningRecipeGen {
             String droneKey = drone.name().toLowerCase();
 
             for (PlasmaTier plasma : PlasmaTier.values()) {
+                FluidStack plasmaStack = plasma.plasma(1000);
+                if (plasmaStack.isEmpty()) {
+                    GTCA.LOGGER.warn("[SpaceMining] Missing plasma fluid for tier={} material={}",
+                            plasma.name(), plasma.material());
+                    continue;
+                }
+
                 String rid = "space_miner_" + asteroidKey + "_" + droneKey + "_" + plasma.name().toLowerCase();
 
                 var b = GTCARecipeTypes.SPACE_MINER.recipeBuilder(rid)
                         .EUt(eut)
                         .duration(dur)
-                        // входы
                         .notConsumable(drone.droneStack(1))
                         .inputItems(MiningParts.drillTip(requiredDrill, 4))
                         .inputItems(MiningParts.drillRod(requiredDrill, 4))
-                        .inputFluids(plasma.plasma(1000)); // 1000 mB
+                        .inputFluids(plasmaStack);
 
-
+                SpaceMiningInfoRecipeCapability.putInfo(b, info);
                 trySetCWUt(b, a.minCWU());
-
 
                 for (OreEntry ore : ores) {
                     double baseItems = avgStacks * 64.0 * ore.percent01();
@@ -77,18 +94,15 @@ public final class GTCASpaceMiningRecipeGen {
         }
     }
 
-    // ---------- CWU reflection ----------
     private static void trySetCWUt(Object recipeBuilder, int cwu) {
         if (recipeBuilder == null) return;
         try {
             Method m = recipeBuilder.getClass().getMethod("CWUt", int.class);
             m.invoke(recipeBuilder, cwu);
         } catch (Throwable ignored) {
-
         }
     }
 
-    // ---------- math ----------
     private static long adjustedEUt(AsteroidDefinition a, DroneTier drone) {
         DroneTier base = a.baselineDrone();
         double k = Math.sqrt((double) drone.index() / (double) base.index());

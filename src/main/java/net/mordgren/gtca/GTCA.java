@@ -1,12 +1,13 @@
 package net.mordgren.gtca;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability;
+import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
-import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.Platform;
 
@@ -22,11 +23,11 @@ import net.mordgren.gtca.common.data.machines.GTCAMachineUtils;
 import net.mordgren.gtca.common.data.machines.GTCAMachines;
 import net.mordgren.gtca.common.data.materials.GTCAMaterialSet;
 import net.mordgren.gtca.common.data.materials.GTMaterialAdjustments;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.GTCASpaceMiningCapabilities;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfoRecipeCapability;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMiningAsteroids;
-import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMiningRecipeGen;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import net.mordgren.gtca.config.ConfigHandler;
-import net.mordgren.gtca.common.data.GTCARecipeConditions;
 import net.mordgren.gtca.data.GTCADataGen;
 
 import org.slf4j.Logger;
@@ -46,29 +47,27 @@ public class GTCA {
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
 
-
-
         bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         bus.addGenericListener(RecipeConditionType.class, this::registerRecipeConditions);
         bus.addGenericListener(MachineDefinition.class, this::registerMachines);
+        bus.addGenericListener(RecipeCapability.class, this::registerRecipeCapabilities);
 
         if (Platform.isClient()) {
             GTCAClient.init(bus);
         }
     }
-
     @SubscribeEvent
     public static void onCommonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             GTCA.LOGGER.info("[SpaceMining] CommonSetup start");
 
-            GTCAItems.initTierMappings();              // маппинги дронов/буров
-            GTCASpaceMiningAsteroids.init();           // реестр астероидов
+            GTCASpaceMiningAsteroids.init();      // астероиды
+            GTCASpaceMiningCapabilities.init();   // capability для JEI/EMI
+            GTCAItems.initTierMappings();         // твои маппинги
 
             GTCA.LOGGER.info("[SpaceMining] CommonSetup done");
         });
     }
-
     public static void init() {
         GTCAItems.init();
         GTCABlocks.init();
@@ -77,33 +76,29 @@ public class GTCA {
         GTCARegistration.REGISTRATE.registerRegistrate();
         GTCAMaterialSet.init();
     }
-
     public static ResourceLocation id(String path) {
         return new ResourceLocation(MOD_ID, FormattingUtil.toLowerCaseUnder(path));
     }
-
-
     @SubscribeEvent
     public void registerMaterialRegistry(MaterialRegistryEvent event) {
         MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(GTCA.MOD_ID);
     }
-
     @SubscribeEvent
     public void registerMaterials(MaterialEvent event) {
         GTCAMaterials.init();
         GTMaterialAdjustments.init();
     }
-
     public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
         GTCARecipeTypes.init();
     }
-
     public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
         GTCAMachines.init();
         GTCAMachineUtils.init();
     }
-
     public void registerRecipeConditions(GTCEuAPI.RegisterEvent<String, RecipeConditionType<?>> event) {
         GTCARecipeConditions.init();
+    }
+    public void registerRecipeCapabilities(GTCEuAPI.RegisterEvent.String<RecipeCapability<?>> event) {
+        event.register("space_mining_info", SpaceMiningInfoRecipeCapability.CAP);
     }
 }

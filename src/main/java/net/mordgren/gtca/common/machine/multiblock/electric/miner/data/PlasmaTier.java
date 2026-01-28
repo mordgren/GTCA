@@ -1,8 +1,10 @@
 package net.mordgren.gtca.common.machine.multiblock.electric.miner.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 public enum PlasmaTier {
@@ -30,6 +32,14 @@ public enum PlasmaTier {
 
     /** amount — в mB */
     public FluidStack plasma(int amount) {
-        return material.getFluid(FluidStorageKeys.PLASMA, amount);
+        var prop = material.getProperty(PropertyKey.FLUID);
+        if (prop == null) return FluidStack.EMPTY;
+
+        Fluid f = prop.get(FluidStorageKeys.PLASMA);
+        if (f == null) return FluidStack.EMPTY;
+
+        return new FluidStack(f, amount);
     }
+
+
 }

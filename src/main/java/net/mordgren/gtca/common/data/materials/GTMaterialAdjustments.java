@@ -4,11 +4,8 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
-import com.gregtechceu.gtceu.api.fluids.FluidState;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-
-import javax.tools.Tool;
-
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
@@ -18,15 +15,12 @@ public class GTMaterialAdjustments {
         addDust(Zirconium);
         addDust(Terbium);
         addDust(Technetium);
+
         addIngot(Holmium);
         addIngot(Germanium);
         addIngot(Gadolinium);
-        addFluid(AmmoniumChloride);
-        addTool(Naquadah);
-        addPlasma(Technetium);
-        addPlasma(Bismuth);
-        addPlasma(Plutonium241);
 
+        addTool(Naquadah);
 
         Carbon.addFlags(MaterialFlags.FORCE_GENERATE_BLOCK);
         NiobiumTitanium.addFlags(MaterialFlags.GENERATE_FRAME);
@@ -34,6 +28,15 @@ public class GTMaterialAdjustments {
         Stellite100.addFlags(MaterialFlags.GENERATE_GEAR, MaterialFlags.GENERATE_RING);
         Duranium.addFlags(GENERATE_FRAME);
         RedSteel.addFlags(GENERATE_FOIL);
+
+        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.AmmoniumChloride, FluidStorageKeys.LIQUID);
+        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Technetium, FluidStorageKeys.LIQUID);
+        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Bismuth, FluidStorageKeys.LIQUID);
+        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Plutonium241, FluidStorageKeys.LIQUID);
+
+        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Technetium, FluidStorageKeys.PLASMA);
+        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Bismuth, FluidStorageKeys.PLASMA);
+        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Plutonium241, FluidStorageKeys.PLASMA);
 
     }
 
@@ -47,42 +50,33 @@ public class GTMaterialAdjustments {
             material.setProperty(PropertyKey.INGOT, new IngotProperty());
         }
     }
-
     public static void addOre(Material material) {
         if (!material.hasProperty(PropertyKey.ORE)) {
             material.setProperty(PropertyKey.ORE, new OreProperty());
         }
     }
-
     public static void addTool(Material material) {
         if (!material.hasProperty(PropertyKey.TOOL)) {
             material.setProperty(PropertyKey.TOOL, new ToolProperty());
         }
     }
+    private static void ensureFluidKey(Material material, FluidStorageKey key) {
+        if (material == null) return;
+        FluidProperty prop = material.getProperty(PropertyKey.FLUID);
+        if (prop == null) {
 
-    public static void addFluid(Material material) {
-        if (!material.hasProperty(PropertyKey.FLUID)) {
-            material.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder()));
-        }
-    }
-    public static void addPlasma(Material material) {
-        FluidProperty prop;
-        if (!material.hasProperty(PropertyKey.FLUID)) {
             prop = new FluidProperty();
+            prop.enqueueRegistration(key, new FluidBuilder());
             material.setProperty(PropertyKey.FLUID, prop);
-        } else {
-            prop = material.getProperty(PropertyKey.FLUID);
+            return;
         }
-        try {
-            if (material.getFluidBuilder(FluidStorageKeys.PLASMA) != null) return;
-        } catch (IllegalArgumentException ignored) {
-        }
-        try {
-            prop.enqueueRegistration(FluidStorageKeys.PLASMA, new FluidBuilder().state(FluidState.PLASMA));
-        } catch (IllegalArgumentException ignored) {
-        }
+        if (prop.get(key) != null) return;
+        if (prop.getStorage().getQueuedBuilder(key) != null) return;
+        prop.enqueueRegistration(key, new FluidBuilder());
+    }
+}
 
-    }}
+
 
 
 

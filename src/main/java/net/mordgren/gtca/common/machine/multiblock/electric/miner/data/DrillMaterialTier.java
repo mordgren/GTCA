@@ -20,7 +20,7 @@ public enum DrillMaterialTier {
     public int level() {
         return level;
     }
-    // --- сравнение тиров ---
+
     public boolean isAtMost(DrillMaterialTier other) {
         return this.level <= other.level;
     }
@@ -29,7 +29,6 @@ public enum DrillMaterialTier {
         return this.level >= min.level && this.level <= max.level;
     }
 
-    // --- маппинг -> GTCEu Material ---
     public Material material() {
         return switch (this) {
             case STEEL -> GTMaterials.Steel;
@@ -41,8 +40,6 @@ public enum DrillMaterialTier {
         };
     }
 
-
-    // --- обратный маппинг из Material -> tier ---
     public static DrillMaterialTier fromMaterial(Material m) {
         if (m == null) return null;
         if (m == GTMaterials.Steel) return STEEL;

@@ -1,0 +1,10 @@
+package net.mordgren.gtca.common.machine.multiblock.electric.miner.capability;
+
+public record SpaceMiningInfo(
+        int requiredModuleMk,
+        int distanceMin,
+        int distanceMax,
+        int sizeMinStacks,
+        int sizeMaxStacks,
+        int weight
+) {}

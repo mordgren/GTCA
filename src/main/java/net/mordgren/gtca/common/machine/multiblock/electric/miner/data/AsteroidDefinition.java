@@ -49,11 +49,9 @@ public record AsteroidDefinition(
         if (distanceMin > distanceMax) throw new IllegalArgumentException("distanceMin > distanceMax");
         if (baseSizeMinStacks > baseSizeMaxStacks) throw new IllegalArgumentException("baseSizeMinStacks > baseSizeMaxStacks");
 
-        // нормализуем список
         ores = (ores == null) ? List.of() : List.copyOf(ores);
         if (ores.isEmpty()) throw new IllegalArgumentException("ores is empty");
 
-        // baseline должен быть в диапазоне дронов
         if (!baselineDrone.isBetween(minDrone, maxDrone)) {
             throw new IllegalArgumentException("baselineDrone must be between minDrone and maxDrone");
         }

@@ -38,8 +38,6 @@ public class SpaceMinerMachine extends WorkableElectricMultiblockMachine impleme
         this.recipeLogic.setWorkingEnabled(false);
     }
 
-    // ---- IElevatorModule ----
-
     @Override
     public ElevatorModuleKind getElevatorModuleKind() {
         return ElevatorModuleKind.MINER;
@@ -70,7 +68,6 @@ public class SpaceMinerMachine extends WorkableElectricMultiblockMachine impleme
         return wirelessEnergy;
     }
 
-    // ---- capacity helper ----
     private static long wirelessCapacityForTier(int tier) {
 
         int mk = switch (tier) {

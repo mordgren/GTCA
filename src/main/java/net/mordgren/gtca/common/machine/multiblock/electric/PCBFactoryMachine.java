@@ -5,8 +5,8 @@ import com.gregtechceu.gtceu.api.machine.feature.ITieredMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import lombok.Getter;
 
-@Getter
-public class PCBFactoryMachine extends WorkableElectricMultiblockMachine implements ITieredMachine {
+ @Getter
+ public class PCBFactoryMachine extends WorkableElectricMultiblockMachine implements ITieredMachine {
 
 
     public PCBFactoryMachine(IMachineBlockEntity holder, int tier) {
@@ -15,4 +15,4 @@ public class PCBFactoryMachine extends WorkableElectricMultiblockMachine impleme
     }
 
     public final int tier;
-}
+ }

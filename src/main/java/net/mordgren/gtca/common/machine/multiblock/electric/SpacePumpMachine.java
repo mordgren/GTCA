@@ -34,8 +34,6 @@ public class SpacePumpMachine extends WorkableElectricMultiblockMachine implemen
         this.recipeLogic.setWorkingEnabled(false);
     }
 
-    // ---- IElevatorModule ----
-
     @Override
     public ElevatorModuleKind getElevatorModuleKind() {
         return ElevatorModuleKind.PUMP;
@@ -60,7 +58,6 @@ public class SpacePumpMachine extends WorkableElectricMultiblockMachine implemen
         return wirelessEnergy;
     }
 
-    // ---- capacity helper ----
     private static long wirelessCapacityForTier(int tier) {
 
         int mk = switch (tier) {
