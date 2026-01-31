@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "gtceu:machine",
+  "machine": "gtca:space_miner_deep_output_bus",
+  "variants": {
+    "": {
+      "model": "gtca:block/machine/template/space_miner_deep_output_bus"
+    }
+  }
+}

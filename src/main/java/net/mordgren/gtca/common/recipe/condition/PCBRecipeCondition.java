@@ -1,15 +1,12 @@
 package net.mordgren.gtca.common.recipe.condition;
 
-import com.google.gson.JsonObject;
 import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.RecipeCondition;
 import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.util.Mth;
 import net.mordgren.gtca.common.data.GTCARecipeConditions;
 import net.mordgren.gtca.common.machine.multiblock.electric.PCBFactoryMachine;

@@ -36,7 +36,7 @@ public enum DroneTier {
         return 1.0 / Math.sqrt(index);
     }
     public int sizeAdd() {
-        int shift = Math.max(0, Math.min(index - 1, 30)); // safety
+        int shift = Math.max(0, Math.min(index - 1, 30));
         return (int)((1L << shift) - 1L);
     }
 

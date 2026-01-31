@@ -8,6 +8,7 @@ import net.mordgren.gtca.common.data.GTCAMaterials;
 import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static net.mordgren.gtca.common.data.GTCARecipeTypes.COMET_CYCLOTRON;
+import static net.mordgren.gtca.common.data.GTCARecipeTypes.SPACE_MINER;
 
 public class CometRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
@@ -90,5 +91,12 @@ public class CometRecipes {
                 .chancedOutput(GTCAItems.UnknownParticle.asStack(1), 750, 0)
                 .outputFluids(GTCAMaterials.HydrogenPlasma.getFluid(100))
                 .save(provider);
+
+        SPACE_MINER.recipeBuilder("ha").EUt(30720).duration(100)
+                .inputItems(GTCAItems.HydrogenIon.asStack(1))
+                .outputItems(GTCAItems.GoldNanites.asStack(1024))
+                .CWUt(20)
+                .save(provider);
+
     }
 }

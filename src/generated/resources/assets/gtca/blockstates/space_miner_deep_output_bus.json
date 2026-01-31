@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gtca:block/machine/space_miner_deep_output_bus",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gtca:block/machine/space_miner_deep_output_bus"
+    },
+    "facing=south": {
+      "model": "gtca:block/machine/space_miner_deep_output_bus",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gtca:block/machine/space_miner_deep_output_bus",
+      "y": 270
+    }
+  }
+}

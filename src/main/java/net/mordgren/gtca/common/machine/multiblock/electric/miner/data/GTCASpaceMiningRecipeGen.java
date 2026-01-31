@@ -1,11 +1,11 @@
 package net.mordgren.gtca.common.machine.multiblock.electric.miner.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
-import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.GTCASpaceMiningCapabilities;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfo;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfoRecipeCapability;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.MiningParts;
@@ -22,14 +22,16 @@ public final class GTCASpaceMiningRecipeGen {
 
     public static void generate(Consumer<FinishedRecipe> provider) {
         GTCA.LOGGER.info("[SpaceMining] Generating SPACE_MINER recipes, asteroids={}", SpaceMiningRegistry.size());
-        GTCASpaceMiningCapabilities.init();
+
+        // БЫЛО (ломало, потому что frozen):
+        // GTCASpaceMiningCapabilities.init();
+
         for (AsteroidDefinition a : SpaceMiningRegistry.all()) {
             generateForAsteroid(a, provider);
         }
 
         GTCA.LOGGER.info("[SpaceMining] Done generating SPACE_MINER recipes.");
     }
-
     private static void generateForAsteroid(AsteroidDefinition a, Consumer<FinishedRecipe> provider) {
 
         for (DroneTier drone : DroneTier.values()) {
@@ -80,13 +82,27 @@ public final class GTCASpaceMiningRecipeGen {
                         .inputItems(MiningParts.drillRod(requiredDrill, 4))
                         .inputFluids(plasmaStack);
 
+                // БЫЛО: putInfo писал в INPUT-map => ломал матчинг
+                // СТАЛО: putInfo пишет в OUTPUT-map (мы исправили внутри SpaceMiningInfoRecipeCapability)
                 SpaceMiningInfoRecipeCapability.putInfo(b, info);
+
                 trySetCWUt(b, a.minCWU());
+
+                // (оставляю твою попытку скрытия категорий как есть — на работу рецепта она НЕ должна влиять)
+                if (plasma != PlasmaTier.HELIUM) {
+                    trySetRecipeCategory(b,
+                            net.mordgren.gtca.common.machine.multiblock.electric.miner.xei.GTCASpaceMiningXEI.HIDDEN_CATEGORY_ID);
+                }
 
                 for (OreEntry ore : ores) {
                     double baseItems = avgStacks * 64.0 * ore.percent01();
                     int out = Math.max(1, (int) Math.round(baseItems * plasma.lootMultiplier()));
-                    b.outputItems(GTCAHelper.getItem("raw", ore.material(), out));
+
+                    // БЫЛО: ты резал показ до 64 (shown)
+                    // СТАЛО: оставляю как было у тебя, но если DeepOutputBus уже есть — можешь вернуть out
+                    int shown = Math.min(out, 64);
+
+                    b.outputItems(GTCAHelper.getItem("raw", ore.material(), shown));
                 }
 
                 b.save(provider);
@@ -94,14 +110,54 @@ public final class GTCASpaceMiningRecipeGen {
         }
     }
 
+    // ------------------ category helpers ------------------
+
+    private static void trySetRecipeCategory(Object recipeBuilder, ResourceLocation categoryId) {
+        if (recipeBuilder == null || categoryId == null) return;
+        if (tryInvoke(recipeBuilder, "recipeCategory", ResourceLocation.class, categoryId)) return;
+        if (tryInvoke(recipeBuilder, "category", ResourceLocation.class, categoryId)) return;
+        String s = categoryId.toString();
+        if (tryInvoke(recipeBuilder, "recipeCategory", String.class, s)) return;
+        if (tryInvoke(recipeBuilder, "category", String.class, s)) return;
+        trySetField(recipeBuilder, "recipeCategory", categoryId);
+        trySetField(recipeBuilder, "category", categoryId);
+    }
+
+    private static boolean tryInvoke(Object obj, String method, Class<?> argType, Object arg) {
+        try {
+            var m = obj.getClass().getMethod(method, argType);
+            m.invoke(obj, arg);
+            return true;
+        } catch (Throwable ignored) {
+            return false;
+        }
+    }
+
+    private static void trySetField(Object obj, String field, Object value) {
+        try {
+            var f = obj.getClass().getField(field);
+            f.set(obj, value);
+        } catch (Throwable ignored) {
+            try {
+                var f = obj.getClass().getDeclaredField(field);
+                f.setAccessible(true);
+                f.set(obj, value);
+            } catch (Throwable ignored2) {
+            }
+        }
+    }
+
+    // ------------------ CWU reflection ------------------
+
     private static void trySetCWUt(Object recipeBuilder, int cwu) {
         if (recipeBuilder == null) return;
         try {
             Method m = recipeBuilder.getClass().getMethod("CWUt", int.class);
             m.invoke(recipeBuilder, cwu);
-        } catch (Throwable ignored) {
-        }
+        } catch (Throwable ignored) {}
     }
+
+    // ------------------ math ------------------
 
     private static long adjustedEUt(AsteroidDefinition a, DroneTier drone) {
         DroneTier base = a.baselineDrone();

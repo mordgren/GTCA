@@ -17,12 +17,16 @@ public final class SpaceMiningInfoRecipeCapability extends RecipeCapability<Spac
 
     public static final SpaceMiningInfoRecipeCapability CAP = new SpaceMiningInfoRecipeCapability();
 
+
+    private static final int X_BASE = 80;
+    private static final int LINE_H = 11;
+
     private SpaceMiningInfoRecipeCapability() {
         super(
                 "gtca:space_mining_info",
                 0xFF66CCFF,
                 false,
-                100000,
+                1000,
                 SpaceMiningInfoSerializer.INSTANCE
         );
     }
@@ -36,38 +40,34 @@ public final class SpaceMiningInfoRecipeCapability extends RecipeCapability<Spac
                            boolean isInput,
                            MutableInt yOffset) {
 
-        if (!isInput) return;
-
         if (contents == null || contents.isEmpty()) return;
+
 
         Object raw = contents.get(0).getContent();
         if (!(raw instanceof SpaceMiningInfo info)) return;
 
-        int x = 3 - xOffset;
-
-        final int LINE = 10;
-        int y = yOffset.intValue() + 10;
-
-        group.addWidget(new LabelWidget(x, y, "Needs: MK-" + info.requiredModuleMk()));
-        y += LINE;
-
-        group.addWidget(new LabelWidget(x, y, "Distance: " + info.distanceMin() + "-" + info.distanceMax()));
-        y += LINE;
-
-        group.addWidget(new LabelWidget(x, y, "Size: " + info.sizeMinStacks() + "-" + info.sizeMaxStacks()));
-        y += LINE;
-
-        group.addWidget(new LabelWidget(x, y, "Weight: " + info.weight()));
-        y += LINE;
+        int x = X_BASE - xOffset;
 
 
-        yOffset.setValue(y);
+        group.addWidget(new LabelWidget(x, yOffset.getAndAdd(LINE_H),
+                "Needs: MK-" + info.requiredModuleMk()));
+
+        group.addWidget(new LabelWidget(x, yOffset.getAndAdd(LINE_H),
+                "Distance: " + info.distanceMin() + "-" + info.distanceMax()));
+
+        group.addWidget(new LabelWidget(x, yOffset.getAndAdd(LINE_H),
+                "Size: " + info.sizeMinStacks() + "-" + info.sizeMaxStacks()));
+
+        group.addWidget(new LabelWidget(x, yOffset.getAndAdd(LINE_H),
+                "Weight: " + info.weight()));
     }
+
     public static void putInfo(Object recipeBuilder, SpaceMiningInfo info) {
         if (recipeBuilder == null || info == null) return;
 
         try {
             Field f = findField(recipeBuilder.getClass(), "input", "inputs");
+            if (f == null) f = findField(recipeBuilder.getClass(), "output", "outputs");
             if (f == null) return;
             f.setAccessible(true);
 
@@ -84,12 +84,18 @@ public final class SpaceMiningInfoRecipeCapability extends RecipeCapability<Spac
             map.computeIfAbsent(CAP, k -> new ArrayList<>()).add(c);
 
         } catch (Throwable ignored) {
+
         }
     }
+
     private static Field findField(Class<?> cls, String... names) {
         for (String n : names) {
             try { return cls.getField(n); } catch (Throwable ignored) {}
-            try { return cls.getDeclaredField(n); } catch (Throwable ignored) {}
+            try {
+                Field f = cls.getDeclaredField(n);
+                f.setAccessible(true);
+                return f;
+            } catch (Throwable ignored) {}
         }
         return null;
     }

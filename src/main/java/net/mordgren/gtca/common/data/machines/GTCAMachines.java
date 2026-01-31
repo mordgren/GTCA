@@ -58,6 +58,7 @@ import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 public class GTCAMachines {
     public static void init() {
         GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);
+        GTCAPartAbilities.init();
     }
 
 
@@ -65,7 +66,7 @@ public class GTCAMachines {
     public static final MachineDefinition[] MATTER_AMPLIFICATOR = registerSimpleMachines("matter_amplificator", GTCARecipeTypes.UU_MATTER_AMPLIFICATOR, defaultTankSizeFunction, false, "UU-Matter Amplificator", GTValues.tiersBetween(EV, UHV));
     public static final MachineDefinition[] RECYCLER = registerSimpleMachines("recycler", GTCARecipeTypes.RECYCLER, defaultTankSizeFunction, false, "Recycler", GTValues.tiersBetween(LV, UHV));
 
-    
+
 
     /// STEAM PRESSURIZER ///
     public static final MultiblockMachineDefinition STEAM_PRESSURIZER = REGISTRATE.multiblock("steam_pressurizer", WorkableElectricMultiblockMachine::new)

@@ -203,12 +203,12 @@ public class SpaceElevatorMachine extends WorkableElectricMultiblockMachine {
             long toSend = Math.min(need, available);
 
 
-            long removedDelta = this.energyContainer.changeEnergy(-toSend); // отрицательное
+            long removedDelta = this.energyContainer.changeEnergy(-toSend);
             long removed = -removedDelta;
             if (removed <= 0) continue;
 
 
-            long inserted = dst.changeEnergy(removed); // положительное
+            long inserted = dst.changeEnergy(removed);
             if (inserted < removed) {
 
                 this.energyContainer.changeEnergy(removed - inserted);

@@ -21,7 +21,7 @@ public final class DrillTierResolver {
 
     @Nullable
     public static DrillMaterialTier resolveRod(ItemStack stack) {
-        return resolveByPrefix(stack, TagPrefix.rodLong); // longRod
+        return resolveByPrefix(stack, TagPrefix.rodLong);
     }
 
     @Nullable

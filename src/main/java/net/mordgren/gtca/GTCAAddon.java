@@ -2,12 +2,14 @@ package net.mordgren.gtca;
 
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.addon.events.KJSRecipeKeyEvent;
+import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.mordgren.gtca.common.data.GTCAElements;
 import net.mordgren.gtca.common.data.GTCAOres;
 import net.mordgren.gtca.common.data.GTCARecipeInit;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfoRecipeCapability;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import net.mordgren.gtca.common.data.GTCASounds;
 
@@ -48,6 +50,7 @@ public class GTCAAddon implements IGTAddon {
 
         @Override
         public void registerRecipeCapabilities() {
+                GTRegistries.RECIPE_CAPABILITIES.register("gtca:space_mining_info", SpaceMiningInfoRecipeCapability.CAP);
         }
 
         @Override

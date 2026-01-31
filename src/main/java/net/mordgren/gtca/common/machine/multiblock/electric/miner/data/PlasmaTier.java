@@ -30,7 +30,6 @@ public enum PlasmaTier {
         return material;
     }
 
-    /** amount — в mB */
     public FluidStack plasma(int amount) {
         var prop = material.getProperty(PropertyKey.FLUID);
         if (prop == null) return FluidStack.EMPTY;

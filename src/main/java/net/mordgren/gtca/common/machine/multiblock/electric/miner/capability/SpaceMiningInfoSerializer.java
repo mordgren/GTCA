@@ -6,7 +6,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public final class SpaceMiningInfoSerializer implements IContentSerializer<SpaceMiningInfo> {
     public static final SpaceMiningInfoSerializer INSTANCE = new SpaceMiningInfoSerializer();
-
     private SpaceMiningInfoSerializer() {}
 
     public static final Codec<SpaceMiningInfo> CODEC = RecordCodecBuilder.create(inst -> inst.group(
@@ -25,12 +24,12 @@ public final class SpaceMiningInfoSerializer implements IContentSerializer<Space
 
     @Override
     public SpaceMiningInfo of(Object obj) {
-        return (obj instanceof SpaceMiningInfo info) ? info : defaultValue();
+        return (SpaceMiningInfo) obj;
     }
 
     @Override
     public SpaceMiningInfo defaultValue() {
-        return new SpaceMiningInfo(0, 0, 0, 0, 0, 0);
+        return new SpaceMiningInfo(0,0,0,0,0,0);
     }
 
     @Override

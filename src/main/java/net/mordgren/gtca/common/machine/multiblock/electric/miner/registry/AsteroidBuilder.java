@@ -28,7 +28,7 @@ public final class AsteroidBuilder {
 
     private DroneTier minDrone = DroneTier.MK1_LV;
     private DroneTier maxDrone = DroneTier.MK7_ZPM;
-    private DroneTier baselineDrone = null; // если null — будет minDrone
+    private DroneTier baselineDrone = null;
 
     private DrillMaterialTier minDrill = DrillMaterialTier.STEEL;
     private DrillMaterialTier maxDrill = DrillMaterialTier.NAQUADAH;
@@ -140,7 +140,7 @@ public final class AsteroidBuilder {
                 weight,
                 minDrone,
                 maxDrone,
-                base, // baselineDrone
+                base,
                 minDrill,
                 maxDrill,
                 List.copyOf(ores)
