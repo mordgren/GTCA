@@ -23,5 +23,9 @@ dependencies {
     api(forge.mixinExtras.common)
     jarJar(forge.mixinExtras.forge)
 
+    // Recipe Viewers
+    modCompileOnly(forge.bundles.jei)
+    modCompileOnly(forge.emi)
+
     testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
