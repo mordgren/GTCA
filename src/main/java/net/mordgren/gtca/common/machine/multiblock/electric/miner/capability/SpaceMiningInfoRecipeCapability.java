@@ -18,7 +18,7 @@ public final class SpaceMiningInfoRecipeCapability extends RecipeCapability<Spac
     public static final SpaceMiningInfoRecipeCapability CAP = new SpaceMiningInfoRecipeCapability();
 
 
-    private static final int X_BASE = 80;
+    private static final int X_BASE = 0;
     private static final int LINE_H = 11;
 
     private SpaceMiningInfoRecipeCapability() {

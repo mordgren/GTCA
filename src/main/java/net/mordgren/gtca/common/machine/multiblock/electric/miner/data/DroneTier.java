@@ -25,7 +25,6 @@ public enum DroneTier {
         return requiredDrillTier();
     }
 
-
     public int index() {
         return index;
     }
@@ -39,14 +38,12 @@ public enum DroneTier {
         int shift = Math.max(0, Math.min(index - 1, 30));
         return (int)((1L << shift) - 1L);
     }
-
     public boolean isBetween(DroneTier min, DroneTier max) {
         return this.index >= min.index && this.index <= max.index;
     }
     public boolean matchesDrillTier(DrillMaterialTier tier) {
         return tier == requiredDrillTier();
     }
-
     public DrillMaterialTier requiredDrillTier() {
         return switch (this) {
             case MK1_LV, MK2_MV -> DrillMaterialTier.STEEL;

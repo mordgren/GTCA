@@ -23,15 +23,12 @@ public final class GTCASpaceMiningRecipeGen {
     public static void generate(Consumer<FinishedRecipe> provider) {
         GTCA.LOGGER.info("[SpaceMining] Generating SPACE_MINER recipes, asteroids={}", SpaceMiningRegistry.size());
 
-        // БЫЛО (ломало, потому что frozen):
-        // GTCASpaceMiningCapabilities.init();
-
         for (AsteroidDefinition a : SpaceMiningRegistry.all()) {
             generateForAsteroid(a, provider);
         }
-
         GTCA.LOGGER.info("[SpaceMining] Done generating SPACE_MINER recipes.");
     }
+
     private static void generateForAsteroid(AsteroidDefinition a, Consumer<FinishedRecipe> provider) {
 
         for (DroneTier drone : DroneTier.values()) {
@@ -62,17 +59,16 @@ public final class GTCASpaceMiningRecipeGen {
             if (ores.size() > 9) ores = ores.subList(0, 9);
 
             String asteroidKey = a.id().getPath().replace('/', '_');
-            String droneKey = drone.name().toLowerCase();
+            String droneKey = drone.name().toLowerCase(java.util.Locale.ROOT);
 
             for (PlasmaTier plasma : PlasmaTier.values()) {
-                FluidStack plasmaStack = plasma.plasma(1000);
+
+
+                FluidStack plasmaStack = plasma.plasma(plasma.usageMb());
                 if (plasmaStack.isEmpty()) {
-                    GTCA.LOGGER.warn("[SpaceMining] Missing plasma fluid for tier={} material={}",
-                            plasma.name(), plasma.material());
                     continue;
                 }
-
-                String rid = "space_miner_" + asteroidKey + "_" + droneKey + "_" + plasma.name().toLowerCase();
+                String rid = "space_miner_" + asteroidKey + "_" + droneKey + "_" + plasma.name().toLowerCase(java.util.Locale.ROOT);
 
                 var b = GTCARecipeTypes.SPACE_MINER.recipeBuilder(rid)
                         .EUt(eut)
@@ -82,35 +78,29 @@ public final class GTCASpaceMiningRecipeGen {
                         .inputItems(MiningParts.drillRod(requiredDrill, 4))
                         .inputFluids(plasmaStack);
 
-                // БЫЛО: putInfo писал в INPUT-map => ломал матчинг
-                // СТАЛО: putInfo пишет в OUTPUT-map (мы исправили внутри SpaceMiningInfoRecipeCapability)
                 SpaceMiningInfoRecipeCapability.putInfo(b, info);
-
                 trySetCWUt(b, a.minCWU());
-
-                // (оставляю твою попытку скрытия категорий как есть — на работу рецепта она НЕ должна влиять)
                 if (plasma != PlasmaTier.HELIUM) {
                     trySetRecipeCategory(b,
                             net.mordgren.gtca.common.machine.multiblock.electric.miner.xei.GTCASpaceMiningXEI.HIDDEN_CATEGORY_ID);
                 }
+                double sum = 0.0;
+                for (OreEntry o : ores) sum += Math.max(0.0, o.percent01());
+                if (sum <= 0.0) sum = 1.0;
 
                 for (OreEntry ore : ores) {
-                    double baseItems = avgStacks * 64.0 * ore.percent01();
-                    int out = Math.max(1, (int) Math.round(baseItems * plasma.lootMultiplier()));
+                    double share = Math.max(0.0, ore.percent01()) / sum;
 
-                    // БЫЛО: ты резал показ до 64 (shown)
-                    // СТАЛО: оставляю как было у тебя, но если DeepOutputBus уже есть — можешь вернуть out
-                    int shown = Math.min(out, 64);
+                    double baseItems = avgStacks * 64.0 * share;
+                    long outL = Math.max(1L, Math.round(baseItems * plasma.lootMultiplier()));
+                    int out = (int) Math.min((long) Integer.MAX_VALUE, outL);
 
-                    b.outputItems(GTCAHelper.getItem("raw", ore.material(), shown));
+                    b.outputItems(GTCAHelper.getItem("raw", ore.material(), out));
                 }
-
                 b.save(provider);
             }
         }
     }
-
-    // ------------------ category helpers ------------------
 
     private static void trySetRecipeCategory(Object recipeBuilder, ResourceLocation categoryId) {
         if (recipeBuilder == null || categoryId == null) return;
@@ -147,8 +137,6 @@ public final class GTCASpaceMiningRecipeGen {
         }
     }
 
-    // ------------------ CWU reflection ------------------
-
     private static void trySetCWUt(Object recipeBuilder, int cwu) {
         if (recipeBuilder == null) return;
         try {
@@ -156,8 +144,6 @@ public final class GTCASpaceMiningRecipeGen {
             m.invoke(recipeBuilder, cwu);
         } catch (Throwable ignored) {}
     }
-
-    // ------------------ math ------------------
 
     private static long adjustedEUt(AsteroidDefinition a, DroneTier drone) {
         DroneTier base = a.baselineDrone();

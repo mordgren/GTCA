@@ -45,13 +45,10 @@ public record AsteroidDefinition(
         if (requiredModuleMk < 1) throw new IllegalArgumentException("requiredModuleMk must be >= 1");
         if (minCWU < 0) throw new IllegalArgumentException("minCWU must be >= 0");
         if (weight <= 0) throw new IllegalArgumentException("weight must be > 0");
-
         if (distanceMin > distanceMax) throw new IllegalArgumentException("distanceMin > distanceMax");
         if (baseSizeMinStacks > baseSizeMaxStacks) throw new IllegalArgumentException("baseSizeMinStacks > baseSizeMaxStacks");
-
         ores = (ores == null) ? List.of() : List.copyOf(ores);
         if (ores.isEmpty()) throw new IllegalArgumentException("ores is empty");
-
         if (!baselineDrone.isBetween(minDrone, maxDrone)) {
             throw new IllegalArgumentException("baselineDrone must be between minDrone and maxDrone");
         }

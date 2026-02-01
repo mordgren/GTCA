@@ -29,14 +29,15 @@ public class GTMaterialAdjustments {
         Duranium.addFlags(GENERATE_FRAME);
         RedSteel.addFlags(GENERATE_FOIL);
 
-        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.AmmoniumChloride, FluidStorageKeys.LIQUID);
-        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Technetium, FluidStorageKeys.LIQUID);
-        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Bismuth, FluidStorageKeys.LIQUID);
-        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Plutonium241, FluidStorageKeys.LIQUID);
+        ensureFluidKey(AmmoniumChloride, FluidStorageKeys.LIQUID);
+        ensureFluidKey(Technetium, FluidStorageKeys.LIQUID);
+        ensureFluidKey(Bismuth, FluidStorageKeys.LIQUID);
+        ensureFluidKey(Plutonium241, FluidStorageKeys.LIQUID);
 
-        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Technetium, FluidStorageKeys.PLASMA);
-        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Bismuth, FluidStorageKeys.PLASMA);
-        ensureFluidKey(com.gregtechceu.gtceu.common.data.GTMaterials.Plutonium241, FluidStorageKeys.PLASMA);
+        ensureFluidKey(Technetium, FluidStorageKeys.PLASMA);
+        ensureFluidKey(Bismuth, FluidStorageKeys.PLASMA);
+        ensureFluidKey(Plutonium241, FluidStorageKeys.PLASMA);
+        ensureFluidKey(Radon, FluidStorageKeys.PLASMA);
 
     }
 

@@ -152,7 +152,6 @@ public class ChemicalGeneratorMachine extends WorkableElectricMultiblockMachine 
 
     @Nullable
     public String getRecipeFluidInputInfo() {
-        // Previous Recipe is always null on first world load, so try to acquire a new recipe
         GTRecipe recipe = recipeLogic.getLastRecipe();
         if (recipe == null) {
             Iterator<GTRecipe> iterator = recipeLogic.searchRecipe();
