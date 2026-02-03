@@ -35,6 +35,7 @@ import net.mordgren.gtca.client.renderer.machine.GTCADynamicRenderHelpers;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevatorDisplay;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMinerTooltips;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 
 import java.util.ArrayList;
@@ -857,10 +858,7 @@ public class GTCAMachines {
                                 )).or(Predicates.autoAbilities(false, false, false)))
                                 .build())
 
-                .tooltips(
-                        Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Mining Module"),
-                        Component.translatable("gtca.machine.space_miner_desc.tooltip")
-                )
+                .tooltips(GTCASpaceMinerTooltips.mk1())
                 .workableCasingModel(
                         casingTexture,
                         overlayModel

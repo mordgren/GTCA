@@ -31,7 +31,6 @@ public class LangHandler extends com.gregtechceu.gtceu.data.lang.LangHandler {
 
 
 
-
         /// MATERIAL LANG
         replace(provider, "material.gtca.tm_20_mn_alloy", "TM-20-Mn Alloy");
         replace(provider, "material.gtca.c_n_f_alloy", "CFNi-Alloy");
