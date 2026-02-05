@@ -5,11 +5,12 @@ import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
-
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.ElevatorModuleKind;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.IElevatorModule;
 
 public class SpaceAssemblerMachine extends WorkableElectricMultiblockMachine implements IElevatorModule {
+
+    private static final boolean DEBUG_FORCE_ENABLED = false;
 
     public final int moduleTier;
     private boolean enabledByElevator = false;
@@ -25,15 +26,22 @@ public class SpaceAssemblerMachine extends WorkableElectricMultiblockMachine imp
         long voltage = GTValues.V[tier];
 
         this.wirelessEnergy = NotifiableEnergyContainer.receiverContainer(this, cap, voltage, 1);
-
-
         this.wirelessEnergy.setSideInputCondition(side -> false);
         this.wirelessEnergy.setSideOutputCondition(side -> false);
 
 
-        this.recipeLogic.setWorkingEnabled(false);
+        attachTraits(wirelessEnergy);
+
+        this.recipeLogic.setWorkingEnabled(DEBUG_FORCE_ENABLED);
     }
 
+    @Override
+    public void onStructureFormed() {
+        super.onStructureFormed();
+        if (getLevel() != null && !getLevel().isClientSide) {
+            this.recipeLogic.setWorkingEnabled(DEBUG_FORCE_ENABLED || enabledByElevator);
+        }
+    }
 
     @Override
     public ElevatorModuleKind getElevatorModuleKind() {
@@ -43,9 +51,8 @@ public class SpaceAssemblerMachine extends WorkableElectricMultiblockMachine imp
     @Override
     public void setEnabledByElevator(boolean enabled) {
         this.enabledByElevator = enabled;
-
         if (getLevel() != null && !getLevel().isClientSide) {
-            this.recipeLogic.setWorkingEnabled(enabled);
+            this.recipeLogic.setWorkingEnabled(DEBUG_FORCE_ENABLED || enabled);
         }
     }
 
@@ -60,7 +67,6 @@ public class SpaceAssemblerMachine extends WorkableElectricMultiblockMachine imp
     }
 
     private static long wirelessCapacityForTier(int tier) {
-
         int mk = switch (tier) {
             case GTValues.LuV -> 1;
             case GTValues.ZPM -> 2;

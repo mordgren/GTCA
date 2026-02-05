@@ -5,11 +5,12 @@ import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
-
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.ElevatorModuleKind;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.IElevatorModule;
 
 public class SpacePumpMachine extends WorkableElectricMultiblockMachine implements IElevatorModule {
+
+    private static final boolean DEBUG_FORCE_ENABLED = false;
 
     public final int moduleTier;
     private boolean enabledByElevator = false;
@@ -25,13 +26,19 @@ public class SpacePumpMachine extends WorkableElectricMultiblockMachine implemen
         long voltage = GTValues.V[tier];
 
         this.wirelessEnergy = NotifiableEnergyContainer.receiverContainer(this, cap, voltage, 1);
-
-
         this.wirelessEnergy.setSideInputCondition(side -> false);
         this.wirelessEnergy.setSideOutputCondition(side -> false);
 
+        attachTraits(wirelessEnergy);
+        this.recipeLogic.setWorkingEnabled(DEBUG_FORCE_ENABLED);
+    }
 
-        this.recipeLogic.setWorkingEnabled(false);
+    @Override
+    public void onStructureFormed() {
+        super.onStructureFormed();
+        if (getLevel() != null && !getLevel().isClientSide) {
+            this.recipeLogic.setWorkingEnabled(DEBUG_FORCE_ENABLED || enabledByElevator);
+        }
     }
 
     @Override
@@ -42,9 +49,8 @@ public class SpacePumpMachine extends WorkableElectricMultiblockMachine implemen
     @Override
     public void setEnabledByElevator(boolean enabled) {
         this.enabledByElevator = enabled;
-
         if (getLevel() != null && !getLevel().isClientSide) {
-            this.recipeLogic.setWorkingEnabled(enabled);
+            this.recipeLogic.setWorkingEnabled(DEBUG_FORCE_ENABLED || enabled);
         }
     }
 
@@ -59,7 +65,6 @@ public class SpacePumpMachine extends WorkableElectricMultiblockMachine implemen
     }
 
     private static long wirelessCapacityForTier(int tier) {
-
         int mk = switch (tier) {
             case GTValues.LuV -> 1;
             case GTValues.ZPM -> 2;
