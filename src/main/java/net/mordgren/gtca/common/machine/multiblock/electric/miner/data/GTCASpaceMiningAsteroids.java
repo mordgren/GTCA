@@ -13,6 +13,33 @@ public final class GTCASpaceMiningAsteroids {
     public static void init() {
         GTCA.LOGGER.info("[SpaceMining] GTCASpaceMiningAsteroids.init() called");
 
+        /**
+         * ---------------------------------- MK1 RECIPES ----------------------------------
+         * Ores to add:
+         * Arsenic
+         * Bismuth
+         * Gallium
+         * Iridium
+         * NetherStar
+         * Vintenum
+         * Naquadah En
+         * Naquadria
+         * Tungsten
+         * Titanium
+         * Uranium 238/235
+         * Plutonium 239
+         * Strange Crystal
+         * Ohriharukon
+         * Mytril
+         * Endium
+         * Chrome
+         * Osmium
+         * Bedrockium
+         * Space Plutonium
+         * Space Neutronium
+         * -----------------------------------------------------------------------------------
+         */
+
         AsteroidBuilder.asteroid(GTCA.id("asteroid/coal"))
                 .eut(1920)
                 .timeSeconds(180)
@@ -348,10 +375,59 @@ public final class GTCASpaceMiningAsteroids {
                 .droneTiers(DroneTier.MK5_IV, DroneTier.MK10_UEV)
                 .drillRange(DrillMaterialTier.TUNGSTEN_STEEL, DrillMaterialTier.NEUTRONIUM)
                 .ore(GTCAMaterials.StrangeCrystal, 0.75)
-                .ore(GTCAMaterials.Mytryl, 0.20)
+                .ore(GTCAMaterials.Mytryl, 0.05)
                 .ore(GTCAMaterials.Ohriharukon, 0.10)
                 .ore(GTCAMaterials.Endium, 0.10)
                 .buildAndRegister();
+
+        AsteroidBuilder.asteroid(GTCA.id("asteroid/chrome"))
+                .eut(30720)
+                .timeSeconds(60)
+                .requiresModuleMk(1)
+                .distance(10,20)
+                .sizeStacks(16,32)
+                .minCWU(40)
+                .weight(100)
+                .droneTiers(DroneTier.MK2_MV, DroneTier.MK6_LuV)
+                .drillRange(DrillMaterialTier.STEEL, DrillMaterialTier.TUNGSTEN_STEEL)
+                .ore(GTMaterials.Chromium, 0.50)
+                .ore(GTMaterials.Chromite, 0.30)
+                .ore(GTMaterials.Ruby, 0.20)
+                .buildAndRegister();
+
+        AsteroidBuilder.asteroid(GTCA.id("asteroid/platinum"))
+                .eut(30720)
+                .timeSeconds(60)
+                .requiresModuleMk(1)
+                .distance(10,50)
+                .sizeStacks(20,40)
+                .minCWU(60)
+                .weight(130)
+                .droneTiers(DroneTier.MK3_HV, DroneTier.MK7_ZPM)
+                .drillRange(DrillMaterialTier.TITANIUM, DrillMaterialTier.NAQUADAH)
+                .ore(GTMaterials.Platinum, 0.60)
+                .ore(GTMaterials.Palladium, 0.20)
+                .ore(GTMaterials.Iridium, 0.15)
+                .ore(GTMaterials.Osmium, 0.05)
+                .buildAndRegister();
+
+        AsteroidBuilder.asteroid(GTCA.id("asteroid/spneutron"))
+                .eut(122880)
+                .timeSeconds(200)
+                .requiresModuleMk(1)
+                .distance(150,200)
+                .sizeStacks(10,50)
+                .minCWU(240)
+                .weight(100)
+                .droneTiers(DroneTier.MK8_UV, DroneTier.MK10_UEV)
+                .drillRange(DrillMaterialTier.NAQUADAH, DrillMaterialTier.NEUTRONIUM)
+                .ore(GTCAMaterials.CosmicNeutronium, 0.60)
+                .ore(GTCAMaterials.CosmicPlutonium, 0.20)
+                .ore(GTMaterials.Neutronium, 0.15)
+                .ore(GTCAMaterials.Bedrockium, 0.05) // xd
+                .buildAndRegister();
+
+
 
         GTCA.LOGGER.info("[SpaceMining] Registered asteroids = {}", SpaceMiningRegistry.size());
     }
