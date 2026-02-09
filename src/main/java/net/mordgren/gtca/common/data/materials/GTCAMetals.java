@@ -2,6 +2,7 @@ package net.mordgren.gtca.common.data.materials;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
@@ -808,12 +809,80 @@ public class GTCAMetals {
                 .setFormula("CoMo8WCuCr7Ni32",true);
 
 
+        GTCAMaterials.Vinteum = new Material.Builder(GTCA.id(""))
+                .dust()
+                .ingot()
+                .iconSet(METALLIC)
+                .ore()
+                .flags(
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.DISABLE_DECOMPOSITION
+                )
+                .color(0x4aa3f4)
+                .blastTemp(4800, BlastProperty.GasTier.HIGHEST, GTValues.VA[GTValues.EV], 2000)
+                .buildAndRegister()
+                .setFormula("FeMa*",true);
+
+        GTCAMaterials.Thaumium = new Material.Builder(GTCA.id(""))
+                .dust()
+                .ingot()
+                .iconSet(SHINY)
+                .ore()
+                .flags(
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.DISABLE_DECOMPOSITION
+                )
+                .color(0x4a2e81)
+                .blastTemp(4400, BlastProperty.GasTier.HIGHEST, GTValues.VA[GTValues.EV], 2000)
+                .buildAndRegister()
+                .setFormula("FeMa",true);
+
+        GTCAMaterials.Mytryl = new Material.Builder(GTCA.id(""))
+                .dust()
+                .ingot()
+                .ore()
+                .iconSet(SHINY)
+                .flags(
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.DISABLE_DECOMPOSITION
+                )
+                .color(0xff7200)
+                .blastTemp(3200, BlastProperty.GasTier.HIGHEST, GTValues.VA[GTValues.EV], 2000)
+                .buildAndRegister()
+                .setFormula("SpPt2FeMa",true);
+
+        GTCAMaterials.Bedrockium = new Material.Builder(GTCA.id(""))
+                .dust()
+                .ingot()
+                .ore()
+                .flags(
+                        MaterialFlags.GENERATE_BOLT_SCREW,
+                        MaterialFlags.GENERATE_PLATE,
+                        MaterialFlags.GENERATE_ROD,
+                        MaterialFlags.GENERATE_FRAME,
+                        MaterialFlags.DISABLE_DECOMPOSITION
+                )
+                .color(0x050505)
+                .blastTemp(9900, BlastProperty.GasTier.HIGHEST, GTValues.VA[GTValues.ZPM], 2180)
+                .buildAndRegister()
+                .setFormula("(SiO2)26244C9",true);
+
+
+
         // MISC
-
-
         GTCAMaterials.StrangeCrystal = new Material.Builder(GTCA.id("strange_crystal"))
                 .gem()
                 .iconSet(DIAMOND)
+                .ore()
                 .flags(
                         MaterialFlags.NO_SMELTING,
                         MaterialFlags.GENERATE_PLATE,

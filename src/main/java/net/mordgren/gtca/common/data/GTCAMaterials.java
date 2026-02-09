@@ -111,6 +111,10 @@ public class GTCAMaterials {
     public static Material QuantumAlloy;
     public static Material CelestialTungsten;
     public static Material HasteAlloy276;
+    public static Material Thaumium;
+    public static Material Vinteum;
+    public static Material Mytryl;
+    public static Material Bedrockium;
 
     // Misc
 
@@ -156,6 +160,7 @@ public class GTCAMaterials {
     public static Material Ohriharukon;
     public static Material CosmicNeutronium;
     public static Material CosmicPlutonium;
+    public static Material Endium;
 
     // Bastnasite Line
     public static Material MuddyBastnasiteRareEarthSolution;

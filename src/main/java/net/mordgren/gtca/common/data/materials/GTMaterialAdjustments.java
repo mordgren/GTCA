@@ -39,6 +39,19 @@ public class GTMaterialAdjustments {
         ensureFluidKey(Plutonium241, FluidStorageKeys.PLASMA);
         ensureFluidKey(Radon, FluidStorageKeys.PLASMA);
 
+        addOre(Arsenic);
+        addOre(Bismuth);
+        addOre(Gallium);
+        addOre(Iridium);
+        addOre(NetherStar);
+        addOre(NaquadahEnriched);
+        addOre(Naquadria);
+        addOre(Tungsten);
+        addOre(Titanium);
+        addOre(Uranium238);
+        addOre(Uranium235);
+        addOre(Chromium);
+        addOre(Osmium);
     }
 
     public static void addDust(Material material) {

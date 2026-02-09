@@ -75,5 +75,15 @@ public class GTCAElementMetals {
                 .element(GTCAElements.SpPu)
                 .buildAndRegister();
 
+        GTCAMaterials.Endium = new Material.Builder(GTCA.id("Endium"))
+                .color(0xbdd7f7)
+                .ingot()
+                .liquid(new FluidBuilder().temperature(1039))
+                .appendFlags(EXT_METAL, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_LONG_ROD, GENERATE_FOIL, GENERATE_PLATE, GENERATE_ROUND)
+                .ore()
+                .blastTemp(9000, BlastProperty.GasTier.HIGHEST, VA[ZPM])
+                .element(GTCAElements.Em)
+                .buildAndRegister();
+
     }
 }

@@ -15,28 +15,7 @@ public final class GTCASpaceMiningAsteroids {
 
         /**
          * ---------------------------------- MK1 RECIPES ----------------------------------
-         * Ores to add:
-         * Arsenic
-         * Bismuth
-         * Gallium
-         * Iridium
-         * NetherStar
-         * Vintenum
-         * Naquadah En
-         * Naquadria
-         * Tungsten
-         * Titanium
-         * Uranium 238/235
-         * Plutonium 239
-         * Strange Crystal
-         * Ohriharukon
-         * Mytril
-         * Endium
-         * Chrome
-         * Osmium
-         * Bedrockium
-         * Space Plutonium
-         * Space Neutronium
+         * Ores to add: -
          * -----------------------------------------------------------------------------------
          */
 

@@ -12,5 +12,6 @@ public class GTCAElements {
     public static final Element Oh = GTElements.createAndRegister(99, 149, -1, null, "Ohriharukon", "Oh", false);
     public static final Element SpNt = GTElements.createAndRegister(43, 48, -1, null, "Cosmic Neutronium", "SpNt", false);
     public static final Element SpPu = GTElements.createAndRegister(101, 45, -1, null, "Space Plutonium", "SpPu", false);
+    public static final Element Em = GTElements.createAndRegister(142, 54, -1, null, "Endium", "Em", false);
 }
 
