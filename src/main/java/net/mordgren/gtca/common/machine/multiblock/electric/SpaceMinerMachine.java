@@ -13,6 +13,7 @@ import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.ElevatorModuleKind;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.IElevatorModule;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfoHandlerTrait;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningKeyHandlerTrait;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.logic.SpaceMinerRandomLootRecipeLogic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class SpaceMinerMachine extends WorkableElectricMultiblockMachine implements IElevatorModule {
 
-    // Если хочешь принудительно включать работу без лифта (для тестов) -> true
+
     private static final boolean DEBUG_FORCE_ENABLED = false;
 
     public final int moduleTier;
@@ -48,6 +49,7 @@ public class SpaceMinerMachine extends WorkableElectricMultiblockMachine impleme
 
         attachTraits(wirelessEnergy);
         attachTraits(new SpaceMiningInfoHandlerTrait(this));
+        attachTraits(new SpaceMiningKeyHandlerTrait(this));
 
         this.recipeLogic.setWorkingEnabled(DEBUG_FORCE_ENABLED);
     }

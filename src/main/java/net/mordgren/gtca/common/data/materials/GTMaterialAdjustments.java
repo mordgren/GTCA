@@ -12,13 +12,43 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 public class GTMaterialAdjustments {
     public static void init() {
 
+        addOre(Arsenic);
+        addOre(Bismuth);
+        addOre(Gallium);
+        addOre(Iridium);
+        addOre(NetherStar);
+        addOre(NaquadahEnriched);
+        addOre(Naquadria);
+        addOre(Tungsten);
+        addOre(Titanium);
+        addOre(Uranium238);
+        addOre(Uranium235);
+        addOre(Plutonium241);
+        addOre(Chromium);
+        addOre(Osmium);
+        addOre(Tellurium);
+        addOre(Barium);
+        addOre(Antimony);
+        addOre(Rutile);
+        addOre(Magnesium);
+        addOre(Manganese);
+        addOre(Phosphate);
+        addOre(Neutronium);
+        addOre(Thulium);
+        addOre(Tantalum);
+        addOre(Lutetium);
+
         addDust(Zirconium);
         addDust(Terbium);
         addDust(Technetium);
+        addDust(Tellurium);
+        addDust(Thulium);
 
         addIngot(Holmium);
         addIngot(Germanium);
         addIngot(Gadolinium);
+        addIngot(Tellurium);
+        addIngot(Thulium);
 
         addTool(Naquadah);
 
@@ -39,19 +69,6 @@ public class GTMaterialAdjustments {
         ensureFluidKey(Plutonium241, FluidStorageKeys.PLASMA);
         ensureFluidKey(Radon, FluidStorageKeys.PLASMA);
 
-        addOre(Arsenic);
-        addOre(Bismuth);
-        addOre(Gallium);
-        addOre(Iridium);
-        addOre(NetherStar);
-        addOre(NaquadahEnriched);
-        addOre(Naquadria);
-        addOre(Tungsten);
-        addOre(Titanium);
-        addOre(Uranium238);
-        addOre(Uranium235);
-        addOre(Chromium);
-        addOre(Osmium);
     }
 
     public static void addDust(Material material) {

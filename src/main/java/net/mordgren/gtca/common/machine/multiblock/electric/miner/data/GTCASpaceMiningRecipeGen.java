@@ -2,18 +2,24 @@ package net.mordgren.gtca.common.machine.multiblock.electric.miner.data;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfo;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningInfoRecipeCapability;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningKey;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.capability.SpaceMiningKeyRecipeCapability;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.MiningParts;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.SpaceMiningRegistry;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.lang.reflect.Method;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 import java.util.function.Consumer;
 
 public final class GTCASpaceMiningRecipeGen {
@@ -21,22 +27,75 @@ public final class GTCASpaceMiningRecipeGen {
     private GTCASpaceMiningRecipeGen() {}
 
     public static void generate(Consumer<FinishedRecipe> provider) {
-        GTCA.LOGGER.info("[SpaceMining] Generating SPACE_MINER recipes, asteroids={}", SpaceMiningRegistry.size());
+        int asteroids = SpaceMiningRegistry.size();
+        GTCA.LOGGER.info("[SpaceMining] Generating SPACE_MINER recipes, asteroids={}", asteroids);
+
+        // counters
+        int attempted = 0;
+        int saved = 0;
+
+        int skipDrone = 0;
+        int skipDrill = 0;
+        int skipPlasmaEmpty = 0;
+        int skipOutputEmpty = 0;
+        int skipNoOutputs = 0;
+        int dupId = 0;
+        int exceptions = 0;
+
+        Set<String> ids = new HashSet<>();
 
         for (AsteroidDefinition a : SpaceMiningRegistry.all()) {
-            generateForAsteroid(a, provider);
+            try {
+                Result r = generateForAsteroid(a, provider, ids);
+                attempted += r.attempted;
+                saved += r.saved;
+                skipDrone += r.skipDrone;
+                skipDrill += r.skipDrill;
+                skipPlasmaEmpty += r.skipPlasmaEmpty;
+                skipOutputEmpty += r.skipOutputEmpty;
+                skipNoOutputs += r.skipNoOutputs;
+                dupId += r.dupId;
+                exceptions += r.exceptions;
+            } catch (Throwable t) {
+                exceptions++;
+                GTCA.LOGGER.error("[SpaceMining] FAILED asteroid={} (uncaught)", a.id(), t);
+            }
         }
-        GTCA.LOGGER.info("[SpaceMining] Done generating SPACE_MINER recipes.");
+
+        GTCA.LOGGER.info(
+                "[SpaceMining] Done. attempted={} saved={} | skipDrone={} skipDrill={} skipPlasmaEmpty={} skipOutputEmpty={} skipNoOutputs={} dupId={} exceptions={}",
+                attempted, saved, skipDrone, skipDrill, skipPlasmaEmpty, skipOutputEmpty, skipNoOutputs, dupId, exceptions
+        );
     }
 
-    private static void generateForAsteroid(AsteroidDefinition a, Consumer<FinishedRecipe> provider) {
+    private record Result(
+            int attempted, int saved,
+            int skipDrone, int skipDrill, int skipPlasmaEmpty,
+            int skipOutputEmpty, int skipNoOutputs,
+            int dupId, int exceptions
+    ) {}
+
+    private static Result generateForAsteroid(AsteroidDefinition a,
+                                              Consumer<FinishedRecipe> provider,
+                                              Set<String> ids) {
+
+        int attempted = 0;
+        int saved = 0;
+
+        int skipDrone = 0;
+        int skipDrill = 0;
+        int skipPlasmaEmpty = 0;
+        int skipOutputEmpty = 0;
+        int skipNoOutputs = 0;
+        int dupId = 0;
+        int exceptions = 0;
 
         for (DroneTier drone : DroneTier.values()) {
-            if (!drone.isBetween(a.minDrone(), a.maxDrone())) continue;
+            if (!drone.isBetween(a.minDrone(), a.maxDrone())) { skipDrone++; continue; }
 
             DrillMaterialTier requiredDrill = drone.requiredDrillTier();
-            if (requiredDrill == null) continue;
-            if (!requiredDrill.isBetween(a.minDrill(), a.maxDrill())) continue;
+            if (requiredDrill == null) { skipDrill++; continue; }
+            if (!requiredDrill.isBetween(a.minDrill(), a.maxDrill())) { skipDrill++; continue; }
 
             long eutL = adjustedEUt(a, drone);
             int eut = (int) Math.min(Integer.MAX_VALUE, Math.max(1L, eutL));
@@ -59,84 +118,86 @@ public final class GTCASpaceMiningRecipeGen {
             if (ores.size() > 9) ores = ores.subList(0, 9);
 
             String asteroidKey = a.id().getPath().replace('/', '_');
-            String droneKey = drone.name().toLowerCase(java.util.Locale.ROOT);
+            String droneKey = drone.name().toLowerCase(Locale.ROOT);
+
 
             for (PlasmaTier plasma : PlasmaTier.values()) {
 
-
                 FluidStack plasmaStack = plasma.plasma(plasma.usageMb());
                 if (plasmaStack.isEmpty()) {
+                    skipPlasmaEmpty++;
+                    GTCA.LOGGER.warn("[SpaceMining] plasma empty: asteroid={} drone={} plasma={} (material={})",
+                            a.id(), drone.name(), plasma.name(), plasma.material());
                     continue;
                 }
-                String rid = "space_miner_" + asteroidKey + "_" + droneKey + "_" + plasma.name().toLowerCase(java.util.Locale.ROOT);
 
-                var b = GTCARecipeTypes.SPACE_MINER.recipeBuilder(rid)
-                        .EUt(eut)
-                        .duration(dur)
-                        .notConsumable(drone.droneStack(1))
-                        .inputItems(MiningParts.drillTip(requiredDrill, 4))
-                        .inputItems(MiningParts.drillRod(requiredDrill, 4))
-                        .inputFluids(plasmaStack);
+                String rid = "space_miner_" + asteroidKey + "_" + droneKey + "_" + plasma.name().toLowerCase(Locale.ROOT);
 
-                SpaceMiningInfoRecipeCapability.putInfo(b, info);
-                trySetCWUt(b, a.minCWU());
-                if (plasma != PlasmaTier.HELIUM) {
-                    trySetRecipeCategory(b,
-                            net.mordgren.gtca.common.machine.multiblock.electric.miner.xei.GTCASpaceMiningXEI.HIDDEN_CATEGORY_ID);
+                // duplicate id check (если это случится — у тебя реально будут “пропадать” сотни рецептов)
+                if (!ids.add(rid)) {
+                    dupId++;
+                    GTCA.LOGGER.error("[SpaceMining] DUPLICATE RECIPE ID: {} (asteroid={}, drone={}, plasma={})",
+                            rid, a.id(), drone.name(), plasma.name());
+                    continue;
                 }
-                double sum = 0.0;
-                for (OreEntry o : ores) sum += Math.max(0.0, o.percent01());
-                if (sum <= 0.0) sum = 1.0;
 
-                for (OreEntry ore : ores) {
-                    double share = Math.max(0.0, ore.percent01()) / sum;
+                attempted++;
 
-                    double baseItems = avgStacks * 64.0 * share;
-                    long outL = Math.max(1L, Math.round(baseItems * plasma.lootMultiplier()));
-                    int out = (int) Math.min((long) Integer.MAX_VALUE, outL);
+                try {
+                    var b = GTCARecipeTypes.SPACE_MINER.recipeBuilder(rid)
+                            .EUt(eut)
+                            .duration(dur)
+                            .notConsumable(drone.droneStack(1))
+                            .inputItems(MiningParts.drillTip(requiredDrill, 4))
+                            .inputItems(MiningParts.drillRod(requiredDrill, 4))
+                            .inputFluids(plasmaStack);
 
-                    b.outputItems(GTCAHelper.getItem("raw", ore.material(), out));
+                    SpaceMiningInfoRecipeCapability.putInfo(b, info);
+                    SpaceMiningKeyRecipeCapability.putKey(b, SpaceMiningKey.of(a.id()));
+                    trySetCWUt(b, a.minCWU());
+
+                    boolean hasAnyOutput = false;
+
+                    for (OreEntry ore : ores) {
+                        double baseItems = avgStacks * 64.0 * ore.percent01();
+                        int out = Math.max(1, (int) Math.round(baseItems * plasma.lootMultiplier()));
+
+                        ItemStack stack = GTCAHelper.getItem("raw", ore.material(), out);
+
+                        if (stack.isEmpty()) {
+                            skipOutputEmpty++;
+                            GTCA.LOGGER.error("[SpaceMining] EMPTY OUTPUT: rid={} asteroid={} drone={} plasma={} material={} amount={}",
+                                    rid, a.id(), drone.name(), plasma.name(), ore.material().getName(), out);
+                            // не добавляем пустоту
+                            continue;
+                        }
+
+                        b.outputItems(stack);
+                        hasAnyOutput = true;
+                    }
+
+                    if (!hasAnyOutput) {
+                        skipNoOutputs++;
+                        GTCA.LOGGER.error("[SpaceMining] NO OUTPUTS AFTER BUILD: rid={} asteroid={} drone={} plasma={}",
+                                rid, a.id(), drone.name(), plasma.name());
+                        continue;
+                    }
+
+                    b.save(provider);
+                    saved++;
+
+                } catch (Throwable t) {
+                    exceptions++;
+                    GTCA.LOGGER.error("[SpaceMining] EXCEPTION building rid={} asteroid={} drone={} plasma={}",
+                            rid, a.id(), drone.name(), plasma.name(), t);
                 }
-                b.save(provider);
             }
         }
+
+        return new Result(attempted, saved, skipDrone, skipDrill, skipPlasmaEmpty, skipOutputEmpty, skipNoOutputs, dupId, exceptions);
     }
 
-    private static void trySetRecipeCategory(Object recipeBuilder, ResourceLocation categoryId) {
-        if (recipeBuilder == null || categoryId == null) return;
-        if (tryInvoke(recipeBuilder, "recipeCategory", ResourceLocation.class, categoryId)) return;
-        if (tryInvoke(recipeBuilder, "category", ResourceLocation.class, categoryId)) return;
-        String s = categoryId.toString();
-        if (tryInvoke(recipeBuilder, "recipeCategory", String.class, s)) return;
-        if (tryInvoke(recipeBuilder, "category", String.class, s)) return;
-        trySetField(recipeBuilder, "recipeCategory", categoryId);
-        trySetField(recipeBuilder, "category", categoryId);
-    }
-
-    private static boolean tryInvoke(Object obj, String method, Class<?> argType, Object arg) {
-        try {
-            var m = obj.getClass().getMethod(method, argType);
-            m.invoke(obj, arg);
-            return true;
-        } catch (Throwable ignored) {
-            return false;
-        }
-    }
-
-    private static void trySetField(Object obj, String field, Object value) {
-        try {
-            var f = obj.getClass().getField(field);
-            f.set(obj, value);
-        } catch (Throwable ignored) {
-            try {
-                var f = obj.getClass().getDeclaredField(field);
-                f.setAccessible(true);
-                f.set(obj, value);
-            } catch (Throwable ignored2) {
-            }
-        }
-    }
-
+    // ------------------ CWU reflection ------------------
     private static void trySetCWUt(Object recipeBuilder, int cwu) {
         if (recipeBuilder == null) return;
         try {
@@ -145,6 +206,7 @@ public final class GTCASpaceMiningRecipeGen {
         } catch (Throwable ignored) {}
     }
 
+    // ------------------ math ------------------
     private static long adjustedEUt(AsteroidDefinition a, DroneTier drone) {
         DroneTier base = a.baselineDrone();
         double k = Math.sqrt((double) drone.index() / (double) base.index());

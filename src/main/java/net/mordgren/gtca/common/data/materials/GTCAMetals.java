@@ -809,7 +809,7 @@ public class GTCAMetals {
                 .setFormula("CoMo8WCuCr7Ni32",true);
 
 
-        GTCAMaterials.Vinteum = new Material.Builder(GTCA.id(""))
+        GTCAMaterials.Vinteum = new Material.Builder(GTCA.id("vinteum"))
                 .dust()
                 .ingot()
                 .iconSet(METALLIC)
@@ -826,7 +826,7 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("FeMa*",true);
 
-        GTCAMaterials.Thaumium = new Material.Builder(GTCA.id(""))
+        GTCAMaterials.Thaumium = new Material.Builder(GTCA.id("thaumium"))
                 .dust()
                 .ingot()
                 .iconSet(SHINY)
@@ -843,7 +843,7 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("FeMa",true);
 
-        GTCAMaterials.Mytryl = new Material.Builder(GTCA.id(""))
+        GTCAMaterials.Mytryl = new Material.Builder(GTCA.id("mytryl"))
                 .dust()
                 .ingot()
                 .ore()
@@ -860,7 +860,7 @@ public class GTCAMetals {
                 .buildAndRegister()
                 .setFormula("SpPt2FeMa",true);
 
-        GTCAMaterials.Bedrockium = new Material.Builder(GTCA.id(""))
+        GTCAMaterials.Bedrockium = new Material.Builder(GTCA.id("bedrockium"))
                 .dust()
                 .ingot()
                 .ore()

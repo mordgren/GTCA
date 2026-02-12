@@ -39,13 +39,6 @@ public class SpaceMiningInfoHandlerTrait extends NotifiableRecipeHandlerTrait<Sp
         return Collections.emptyList();
     }
 
-    /**
-     * ВАЖНО: public (как в интерфейсе), НЕ protected
-     *
-     * Возвращаем:
-     * - null -> успешно матчится, "остатков" нет
-     * - left -> НЕ матчится
-     */
     @Override
     public @Nullable List<SpaceMiningInfo> handleRecipeInner(@NotNull IO io,
                                                              @NotNull GTRecipe recipe,

@@ -146,7 +146,7 @@ public class GTCARecipeTypes {
             .setEUIO(IO.IN);
 
     public static final GTRecipeType SPACE_MINER = register("space_miner", MULTIBLOCK)
-            .setMaxIOSize(6,9,1,0)
+            .setMaxIOSize(6,16,1,0)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(9)
