@@ -7,6 +7,8 @@ import com.gregtechceu.gtceu.api.recipe.RecipeCondition;
 import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.GsonHelper;
@@ -17,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class PCBRecipeCondition extends RecipeCondition {
+public class PCBRecipeCondition extends RecipeCondition<PCBRecipeCondition> {
 
     public static final Codec<PCBRecipeCondition> CODEC = RecordCodecBuilder.create(instance -> RecipeCondition
             .isReverse(instance).and(
@@ -49,7 +51,7 @@ public class PCBRecipeCondition extends RecipeCondition {
     public PCBRecipeCondition() {}
 
     @Override
-    public RecipeConditionType<?> getType() {
+    public RecipeConditionType<PCBRecipeCondition> getType() {
         return GTCARecipeConditions.PCB_CONDITION;
     }
 
@@ -69,7 +71,7 @@ public class PCBRecipeCondition extends RecipeCondition {
     }
 
     @Override
-    public RecipeCondition createTemplate() {
+    public PCBRecipeCondition createTemplate() {
         return new PCBRecipeCondition();
     }
 
