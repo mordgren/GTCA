@@ -7,9 +7,16 @@ import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.Space
 
 public final class GTCASpaceMiningAsteroids {
 
+    private static boolean initialized = false;
+
     private GTCASpaceMiningAsteroids() {}
 
     public static void init() {
+        if (initialized) {
+            GTCA.LOGGER.info("[SpaceMining] GTCASpaceMiningAsteroids.init() already called, skipping duplicate registration.");
+            return;
+        }
+
         GTCA.LOGGER.info("[SpaceMining] GTCASpaceMiningAsteroids.init() called");
 
         AsteroidBuilder.asteroid(GTCA.id("asteroid/coal"))
@@ -26,6 +33,7 @@ public final class GTCASpaceMiningAsteroids {
                 .ore(GTMaterials.Graphite, 0.30)
                 .buildAndRegister();
 
+        initialized = true;
         GTCA.LOGGER.info("[SpaceMining] Registered asteroids = {}", SpaceMiningRegistry.size());
     }
 }
