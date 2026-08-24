@@ -1,0 +1,89 @@
+// package net.mordgren.gtca.common.machine.multiblock.electric.miner.capability;
+//
+// import com.gregtechceu.gtceu.api.capability.recipe.IO;
+// import com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability;
+// import com.gregtechceu.gtceu.api.machine.MetaMachine;
+// import com.gregtechceu.gtceu.api.machine.trait.NotifiableRecipeHandlerTrait;
+// import com.gregtechceu.gtceu.api.recipe.GTRecipe;
+// import org.jetbrains.annotations.NotNull;
+// import org.jetbrains.annotations.Nullable;
+//
+// import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.AsteroidDefinition;
+// import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.DroneTier;
+// import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.PlasmaTier;
+// import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.SpaceMiningRegistry;
+//
+// import java.util.ArrayList;
+// import java.util.Collections;
+// import java.util.List;
+// import java.util.Locale;
+//
+// public class SpaceMiningKeyHandlerTrait extends NotifiableRecipeHandlerTrait<SpaceMiningKey> {
+//
+//     // Кэшируем, чтобы не пересобирать список каждый тик/поиск
+//     private static volatile List<Object> CACHED_KEYS = null;
+//     private static volatile int CACHED_ASTEROIDS = -1;
+//
+//     public SpaceMiningKeyHandlerTrait(MetaMachine machine) {
+//         super(machine);
+//     }
+//
+//     @Override
+//     public RecipeCapability<SpaceMiningKey> getCapability() {
+//         return SpaceMiningKeyRecipeCapability.CAP;
+//     }
+//
+//     @Override
+//     public IO getHandlerIO() {
+//         return IO.IN;
+//     }
+//
+//     @Override
+//     public double getTotalContentAmount() {
+//         return 0.0;
+//     }
+//
+//     /**
+//      * ВАЖНО:
+//      * Возвращаем СПИСОК ключей, чтобы рецепты могли находиться через RecipeDB
+//      * и НЕ схлопывались (ключ участвует в поиске).
+//      *
+//      * Тут специально "разрешаем всё" — потом логика машины может выбирать рандомно.
+//      */
+//     @Override
+//     public @NotNull List<Object> getContents() {
+//         int sz = SpaceMiningRegistry.size();
+//         List<Object> cached = CACHED_KEYS;
+//         if (cached != null && CACHED_ASTEROIDS == sz) {
+//             return cached;
+//         }
+//
+//         List<Object> out = new ArrayList<>(Math.max(16, sz * 32));
+//         for (AsteroidDefinition a : SpaceMiningRegistry.all()) {
+//             for (DroneTier d : DroneTier.values()) {
+//                 String droneKey = d.name().toLowerCase(Locale.ROOT);
+//                 for (PlasmaTier p : PlasmaTier.values()) {
+//                     String plasmaKey = p.name().toLowerCase(Locale.ROOT);
+//                     out.add(SpaceMiningKey.of(a.id(), droneKey, plasmaKey));
+//                 }
+//             }
+//         }
+//
+//         CACHED_KEYS = Collections.unmodifiableList(out);
+//         CACHED_ASTEROIDS = sz;
+//         return CACHED_KEYS;
+//     }
+//
+//     /**
+//      * Не потребляем ничего. Если рецепт дошёл до проверки этой capability —
+//      * всегда считаем, что всё ок.
+//      */
+//     @Override
+//     public @Nullable List<SpaceMiningKey> handleRecipeInner(@NotNull IO io,
+//                                                             @NotNull GTRecipe recipe,
+//                                                             @NotNull List<SpaceMiningKey> left,
+//                                                             boolean simulate) {
+//         if (io != IO.IN) return left;
+//         return null;
+//     }
+// }

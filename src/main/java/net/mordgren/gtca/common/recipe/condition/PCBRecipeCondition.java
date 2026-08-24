@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class PCBRecipeCondition extends RecipeCondition {
+public class PCBRecipeCondition extends RecipeCondition<PCBRecipeCondition> {
 
     public static final Codec<PCBRecipeCondition> CODEC = RecordCodecBuilder.create(instance -> RecipeCondition
             .isReverse(instance).and(
@@ -29,16 +29,17 @@ public class PCBRecipeCondition extends RecipeCondition {
     public static final int MKII = 9;
     public static final int MKIII = 10;
 
-    public static Map<Integer, String> CASING_TIERS = Map.of(
+    public static final Map<Integer, String> CASING_TIERS = Map.of(
             MKI, "gtca.recipe.condition.tier_casing.tier.mki",
             MKII, "gtca.recipe.condition.tier_casing.tier.mkii",
-            MKIII, "gtca.recipe.condition.tier_casing.tier.mkiii");
+            MKIII, "gtca.recipe.condition.tier_casing.tier.mkiii"
+    );
 
     public PCBRecipeCondition(int tier) {
         this.tier = Mth.clamp(tier, 8, 10);
     }
 
-    public PCBRecipeCondition(Boolean isReverse, int tier) {
+    public PCBRecipeCondition(boolean isReverse, int tier) {
         super(isReverse);
         this.tier = Mth.clamp(tier, 8, 10);
     }
@@ -46,7 +47,7 @@ public class PCBRecipeCondition extends RecipeCondition {
     public PCBRecipeCondition() {}
 
     @Override
-    public RecipeConditionType<?> getType() {
+    public RecipeConditionType<PCBRecipeCondition> getType() {
         return GTCARecipeConditions.PCB_CONDITION;
     }
 
@@ -54,47 +55,20 @@ public class PCBRecipeCondition extends RecipeCondition {
     public Component getTooltips() {
         return Component.translatable(
                 "gtca.recipe.condition.tier_casing.tooltip",
-                Component.translatable(CASING_TIERS.get(tier)));
+                Component.translatable(CASING_TIERS.get(tier))
+        );
     }
 
     @Override
     protected boolean testCondition(@NotNull GTRecipe recipe, @NotNull RecipeLogic recipeLogic) {
-        if (recipeLogic.machine instanceof PCBFactoryMachine pcbProps) {
-            return pcbProps.getTier() >= tier;
+        if (recipeLogic.machine instanceof PCBFactoryMachine pcbFactory) {
+            return pcbFactory.getTier() >= tier;
         }
         return false;
     }
 
     @Override
-    public RecipeCondition createTemplate() {
+    public PCBRecipeCondition createTemplate() {
         return new PCBRecipeCondition();
     }
-
-//    @Override
-//    public @NotNull JsonObject serialize() {
-//        JsonObject value = super.serialize();
-//        value.addProperty("casingTier", tier);
-//        return value;
-//    }
-//
-//    @Override
-//    public RecipeCondition deserialize(@NotNull JsonObject config) {
-//        super.deserialize(config);
-//        this.tier = GsonHelper.getAsInt(config, "casingTier", 0);
-//        return this;
-//    }
-//
-//    @Override
-//    public void toNetwork(FriendlyByteBuf buf) {
-//        super.toNetwork(buf);
-//        buf.writeInt(tier);
-//    }
-//
-//    @Override
-//    public RecipeCondition fromNetwork(FriendlyByteBuf buf) {
-//        super.fromNetwork(buf);
-//        this.tier = buf.readInt();
-//        return this;
-//    }
-
 }

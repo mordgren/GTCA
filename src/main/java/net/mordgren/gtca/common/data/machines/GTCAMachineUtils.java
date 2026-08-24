@@ -24,7 +24,7 @@ import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.data.GTCABlocks;
 import net.mordgren.gtca.common.data.GTCARecipeTypes;
 import net.mordgren.gtca.common.machine.multiblock.electric.PCBFactoryMachine;
-import net.mordgren.gtca.common.machine.multiblock.electric.SpacePumpMachine;
+// import net.mordgren.gtca.common.machine.multiblock.electric.SpacePumpMachine;
 import net.mordgren.gtca.common.machine.multiblock.generator.ChemicalGeneratorMachine;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import org.jetbrains.annotations.Nullable;
@@ -79,7 +79,7 @@ public class GTCAMachineUtils {
 
     public static MachineDefinition[] registerTieredMachines(String name,
                                                              BiFunction<IMachineBlockEntity, Integer, MetaMachine> factory,
-                                                             BiFunction<Integer, MachineBuilder<MachineDefinition>, MachineDefinition> builder,
+                                                             BiFunction<Integer, MachineBuilder<MachineDefinition, ?>, MachineDefinition> builder,
                                                              int... tiers) {
         MachineDefinition[] definitions = new MachineDefinition[GTValues.TIER_COUNT];
         for (int tier : tiers) {

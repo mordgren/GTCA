@@ -1,0 +1,35 @@
+// package net.mordgren.gtca.common.machine.multiblock.electric.miner.capability;
+//
+// import com.gregtechceu.gtceu.api.recipe.lookup.ingredient.AbstractMapIngredient;
+// import net.minecraft.resources.ResourceLocation;
+//
+// public final class SpaceMiningKeyMapIngredient extends AbstractMapIngredient {
+//
+//     private final ResourceLocation asteroidId;
+//
+//     public SpaceMiningKeyMapIngredient(SpaceMiningKey key) {
+//         // super();
+//         this.asteroidId = key.asteroidId();
+//     }
+//
+//     public ResourceLocation asteroidId() {
+//         return asteroidId;
+//     }
+//
+//     @Override
+//     protected int hash() {
+//         return asteroidId.hashCode();
+//     }
+//
+//     @Override
+//     public boolean equals(Object o) {
+//         if (!super.equals(o)) return false; // сравнение по классу (как ожидает AbstractMapIngredient)
+//         SpaceMiningKeyMapIngredient that = (SpaceMiningKeyMapIngredient) o;
+//         return this.asteroidId.equals(that.asteroidId);
+//     }
+//
+//     @Override
+//     public String toString() {
+//         return "SpaceMiningKeyMapIngredient{" + asteroidId + "}";
+//     }
+// }

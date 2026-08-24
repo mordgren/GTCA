@@ -1,0 +1,40 @@
+// package net.mordgren.gtca.common.machine.multiblock.electric.miner.capability;
+//
+// import net.minecraft.resources.ResourceLocation;
+//
+// import java.util.Locale;
+// import java.util.Objects;
+//
+// public record SpaceMiningKey(ResourceLocation asteroidId, String droneKey, String plasmaKey) {
+//
+//     public static final SpaceMiningKey DEFAULT =
+//             new SpaceMiningKey(new ResourceLocation("minecraft", "air"), "any", "any");
+//
+//     public SpaceMiningKey {
+//         asteroidId = Objects.requireNonNull(asteroidId, "asteroidId");
+//         droneKey = normalize(droneKey);
+//         plasmaKey = normalize(plasmaKey);
+//     }
+//
+//     /** Удобный конструктор (если где-то нужен только астероид). */
+//     public SpaceMiningKey(ResourceLocation asteroidId) {
+//         this(asteroidId, "any", "any");
+//     }
+//
+//     /** Главный factory, который используй в генераторе рецептов. */
+//     public static SpaceMiningKey of(ResourceLocation asteroidId, String droneKey, String plasmaKey) {
+//         return new SpaceMiningKey(asteroidId, droneKey, plasmaKey);
+//     }
+//
+//     /** Плоская строка (иногда удобно для логов). */
+//     public String flat() {
+//         return asteroidId.getNamespace() + ":" + asteroidId.getPath() + "|" + droneKey + "|" + plasmaKey;
+//     }
+//
+//     private static String normalize(String s) {
+//         if (s == null || s.isBlank()) return "any";
+//         return s.toLowerCase(Locale.ROOT);
+//     }
+// }
+
+

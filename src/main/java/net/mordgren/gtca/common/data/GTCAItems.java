@@ -2,24 +2,17 @@ package net.mordgren.gtca.common.data;
 
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.item.ComponentItem;
-import com.gregtechceu.gtceu.api.item.IComponentItem;
 import com.gregtechceu.gtceu.api.item.component.ElectricStats;
-import com.gregtechceu.gtceu.api.item.component.IItemComponent;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import net.minecraft.world.item.Item;
 import net.mordgren.gtca.GTCA;
-import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.DrillMaterialTier;
-import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.DroneTier;
-import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.DrillTierResolver;
-import net.mordgren.gtca.common.machine.multiblock.electric.miner.registry.DroneTierResolver;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import net.mordgren.gtca.common.item.ScrapBoxBehaviour;
 
+import static com.gregtechceu.gtceu.common.data.GTItems.attach;
 import static com.gregtechceu.gtceu.common.data.models.GTModels.overrideModel;
 import static net.mordgren.gtca.common.registry.GTCARegistration.REGISTRATE;
-import com.gregtechceu.gtceu.common.data.models.GTModels;
 
 public class GTCAItems {
     static{GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);}
@@ -74,33 +67,39 @@ public class GTCAItems {
     public static ItemEntry<Item> Scrap = REGISTRATE.item("scrap", Item::new).register();
     public static ItemEntry<ScrapBoxBehaviour> ScrapBox = REGISTRATE.item("scrapbox", props -> new ScrapBoxBehaviour(props)).register();
 
-    public static ItemEntry<ComponentItem> PROTON_CELL = REGISTRATE
-            .item("proton_cell", ComponentItem::create)
-            .model(overrideModel(GTCA.id("battery"),5))
-            .onRegister(attach(ElectricStats.createRechargeableBattery(4_915_200_000L, GTValues.LuV)))
-            .tag(CustomTags.LuV_BATTERIES)
-            .register();
+//  public static ItemEntry<ComponentItem> PROTON_CELL = REGISTRATE
+//          .item("proton_cell", ComponentItem::create)
+//          .model(overrideModel(GTCA.id("battery"),5))
+//          .onRegister(attach(ElectricStats.createRechargeableBattery(4_915_200_000L, GTValues.LuV)))
+//          .tag(CustomTags.LuV_BATTERIES)
+//          .register();
 
-    public static ItemEntry<ComponentItem> ELECTRON_CELL = REGISTRATE
-            .item("electron_cell", ComponentItem::create)
-            .model(overrideModel(GTCA.id("battery"),5))
-            .onRegister(attach(ElectricStats.createRechargeableBattery(19_660_800_000L, GTValues.ZPM)))
-            .tag(CustomTags.ZPM_BATTERIES)
-            .register();
+//  public static ItemEntry<ComponentItem> ELECTRON_CELL = REGISTRATE
+//          .item("electron_cell", ComponentItem::create)
+//          .model(overrideModel(GTCA.id("battery"),5))
+//          .onRegister(attach(ElectricStats.createRechargeableBattery(19_660_800_000L, GTValues.ZPM)))
+//          .tag(CustomTags.ZPM_BATTERIES)
+//          .register();
 
-    public static ItemEntry<ComponentItem> QUARK_ENTANGLEMENT = REGISTRATE
-            .item("quark_entanglement", ComponentItem::create)
-            .model(overrideModel(GTCA.id("battery"),5))
-            .onRegister(attach(ElectricStats.createRechargeableBattery(78_643_200_000L, GTValues.UV)))
-            .tag(CustomTags.UV_BATTERIES)
-            .register();
+//  public static ItemEntry<ComponentItem> QUARK_ENTANGLEMENT = REGISTRATE
+//          .item("quark_entanglement", ComponentItem::create)
+//          .model(overrideModel(GTCA.id("battery"),5))
+//          .onRegister(attach(ElectricStats.createRechargeableBattery(78_643_200_000L, GTValues.UV)))
+//          .tag(CustomTags.UV_BATTERIES)
+//          .register();
 
-    public static ItemEntry<ComponentItem> GRAVITON_ANOMALY = REGISTRATE
-            .item("graviton_anomaly", ComponentItem::create)
-            .model(overrideModel(GTCA.id("battery"),5))
-            .onRegister(attach(ElectricStats.createRechargeableBattery(1_024_000_000_000_000L, GTValues.UHV)))
-            .tag(CustomTags.UHV_BATTERIES)
-            .register();
+//  public static ItemEntry<ComponentItem> GRAVITON_ANOMALY = REGISTRATE
+//          .item("graviton_anomaly", ComponentItem::create)
+//          .model(overrideModel(GTCA.id("battery"),5))
+//          .onRegister(attach(ElectricStats.createRechargeableBattery(1_024_000_000_000_000L, GTValues.UHV)))
+//          .tag(CustomTags.UHV_BATTERIES)
+//          .register();
+
+
+    // TODO GTCEu 7.5.3:
+// Custom rechargeable batteries crash runData/runClient due early GTItems initialization.
+// Re-enable after Space Elevator rewrite.
+
 
     public static ItemEntry<Item> PROTON_CELL_EMPTY = REGISTRATE.item("proton_cell_empty", Item::new).register();
     public static ItemEntry<Item> ELECTRON_CELL_EMPTY = REGISTRATE.item("electron_cell_empty", Item::new).register();
@@ -153,22 +152,22 @@ public class GTCAItems {
     public static ItemEntry<Item> OPTICAL_MAINFRAME = REGISTRATE.item("optical_mainframe", Item::new).register();
     public static ItemEntry<Item> NANOTUBE_SPOOL = REGISTRATE.item("nanotube_spool", Item::new).register();
 
-    public static void initTierMappings() {
-        // Drones
-        DroneTierResolver.register(GTCAItems.MinerDroneLV.get(), DroneTier.MK1_LV);
-        DroneTierResolver.register(GTCAItems.MinerDroneMV.get(), DroneTier.MK2_MV);
-        DroneTierResolver.register(GTCAItems.MinerDroneHV.get(), DroneTier.MK3_HV);
-        DroneTierResolver.register(GTCAItems.MinerDroneEV.get(), DroneTier.MK4_EV);
-        DroneTierResolver.register(GTCAItems.MinerDroneIV.get(), DroneTier.MK5_IV);
-        DroneTierResolver.register(GTCAItems.MinerDroneLuV.get(), DroneTier.MK6_LuV);
-        DroneTierResolver.register(GTCAItems.MinerDroneZPM.get(), DroneTier.MK7_ZPM);
-        DroneTierResolver.register(GTCAItems.MinerDroneUV.get(), DroneTier.MK8_UV);
-        DroneTierResolver.register(GTCAItems.MinerDroneUHV.get(), DroneTier.MK9_UHV);
-        DroneTierResolver.register(GTCAItems.MinerDroneUEV.get(), DroneTier.MK10_UEV);
-    }
-    private static <T extends IComponentItem> NonNullConsumer<T> attach(IItemComponent components) {
-        return item -> item.attachComponents(components);
-    }
+//   public static void initTierMappings() {
+//       // Drones
+//       DroneTierResolver.register(GTCAItems.MinerDroneLV.get(), DroneTier.MK1_LV);
+//       DroneTierResolver.register(GTCAItems.MinerDroneMV.get(), DroneTier.MK2_MV);
+//       DroneTierResolver.register(GTCAItems.MinerDroneHV.get(), DroneTier.MK3_HV);
+//       DroneTierResolver.register(GTCAItems.MinerDroneEV.get(), DroneTier.MK4_EV);
+//       DroneTierResolver.register(GTCAItems.MinerDroneIV.get(), DroneTier.MK5_IV);
+//       DroneTierResolver.register(GTCAItems.MinerDroneLuV.get(), DroneTier.MK6_LuV);
+//       DroneTierResolver.register(GTCAItems.MinerDroneZPM.get(), DroneTier.MK7_ZPM);
+//       DroneTierResolver.register(GTCAItems.MinerDroneUV.get(), DroneTier.MK8_UV);
+//       DroneTierResolver.register(GTCAItems.MinerDroneUHV.get(), DroneTier.MK9_UHV);
+//       DroneTierResolver.register(GTCAItems.MinerDroneUEV.get(), DroneTier.MK10_UEV);
+//   }
+//   private static <T extends IComponentItem> NonNullConsumer<T> attach(IItemComponent components) {
+//       return item -> item.attachComponents(components);
+//   }
 
 
     public static void init(){

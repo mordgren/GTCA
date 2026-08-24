@@ -1,0 +1,230 @@
+// package net.mordgren.gtca.common.machine.multiblock.electric.miner.deepbus;
+//
+// import com.gregtechceu.gtceu.api.capability.recipe.IO;
+// import com.gregtechceu.gtceu.api.capability.recipe.ItemRecipeCapability;
+// import com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability;
+// import com.gregtechceu.gtceu.api.machine.MetaMachine;
+// import com.gregtechceu.gtceu.api.machine.trait.NotifiableRecipeHandlerTrait;
+// import com.gregtechceu.gtceu.api.recipe.GTRecipe;
+// import com.gregtechceu.gtceu.api.transfer.item.CustomItemStackHandler;
+//
+// import com.lowdragmc.lowdraglib.syncdata.field.ManagedFieldHolder;
+//
+//
+// import net.minecraft.world.item.ItemStack;
+// import net.minecraft.world.item.crafting.Ingredient;
+// import net.minecraftforge.items.IItemHandlerModifiable;
+// import org.jetbrains.annotations.NotNull;
+// import org.jetbrains.annotations.Nullable;
+//
+// import java.util.ArrayList;
+// import java.util.List;
+// import java.util.stream.Stream;
+//
+//
+// /**
+//  * Deep Output Bus handler:
+//  */
+// public class DeepOutputBusItemHandlerTrait extends NotifiableRecipeHandlerTrait<Ingredient>
+//         implements IItemHandlerModifiable {
+//
+//     public static final ManagedFieldHolder MANAGED_FIELD_HOLDER =
+//             new ManagedFieldHolder(DeepOutputBusItemHandlerTrait.class, NotifiableRecipeHandlerTrait.MANAGED_FIELD_HOLDER);
+//
+//     private final IO handlerIO;
+//     private final DeepStackHandler storage;
+//
+//     /**
+//      * @param machine
+//      * @param slots
+//      * @param io
+//      * @param slotLimitPerSlot
+//      */
+//     public DeepOutputBusItemHandlerTrait(MetaMachine machine, int slots, IO io, int slotLimitPerSlot) {
+//         super(machine);
+//         this.handlerIO = io;
+//         this.storage = new DeepStackHandler(this, Math.max(1, slots), Math.max(1, slotLimitPerSlot));
+//     }
+//
+//     public DeepOutputBusItemHandlerTrait(MetaMachine machine, int slots, IO io) {
+//         this(machine, slots, io, 65536);
+//     }
+//
+//     @Override
+//     public ManagedFieldHolder getFieldHolder() {
+//         return MANAGED_FIELD_HOLDER;
+//     }
+//
+//
+//     @Override
+//     public IO getHandlerIO() {
+//         return handlerIO;
+//     }
+//
+//     @Override
+//     public RecipeCapability<Ingredient> getCapability() {
+//         return ItemRecipeCapability.CAP;
+//     }
+//
+//     @Override
+//     public List<Object> getContents() {
+//
+//         int slots = getSlots();
+//         List<Object> out = new ArrayList<>(slots);
+//         for (int i = 0; i < slots; i++) {
+//             out.add(getStackInSlot(i));
+//         }
+//         return out;
+//     }
+//
+//     @Override
+//     public double getTotalContentAmount() {
+//         long sum = 0;
+//         for (int i = 0; i < getSlots(); i++) sum += getStackInSlot(i).getCount();
+//         return sum;
+//     }
+//
+//     @Override
+//     public int getSize() {
+//         return getSlots();
+//     }
+//
+//     @Override
+//     public @Nullable List<Ingredient> handleRecipeInner(@NotNull IO io,
+//                                                         @NotNull GTRecipe recipe,
+//                                                         @NotNull List<Ingredient> left,
+//                                                         boolean simulate) {
+//         if (left.isEmpty()) return null;
+//
+//         List<Ingredient> remainder = null;
+//
+//         for (Ingredient ing : left) {
+//             if (ing == null) continue;
+//
+//             ItemStack[] items = ing.getItems();
+//             if (items.length == 0) continue;
+//
+//             ItemStack toProcess = items[0].copy();
+//             if (toProcess.isEmpty()) continue;
+//
+//             ItemStack rem = (io == IO.IN)
+//                     ? consumeStack(toProcess, simulate)
+//                     : insertDeep(toProcess, simulate);
+//
+//             if (rem != null && !rem.isEmpty()) {
+//                 if (remainder == null) remainder = new ArrayList<>();
+//
+//                 remainder.add(Ingredient.of(Stream.of(rem)));
+//             }
+//         }
+//
+//         return remainder;
+//     }
+//
+//     @Override
+//     public int getSlots() {
+//         return storage.getSlots();
+//     }
+//
+//     @Override
+//     public @NotNull ItemStack getStackInSlot(int slot) {
+//         return storage.getStackInSlot(slot);
+//     }
+//
+//     @Override
+//     public void setStackInSlot(int slot, @NotNull ItemStack stack) {
+//         storage.setStackInSlot(slot, stack);
+//     }
+//
+//     @Override
+//     public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+//         return storage.insertItem(slot, stack, simulate);
+//     }
+//
+//     @Override
+//     public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
+//         return storage.extractItem(slot, amount, simulate);
+//     }
+//
+//     @Override
+//     public int getSlotLimit(int slot) {
+//         return storage.getSlotLimit(slot);
+//     }
+//
+//     @Override
+//     public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+//         return storage.isItemValid(slot, stack);
+//     }
+//
+//
+//
+//     private @Nullable ItemStack insertDeep(@NotNull ItemStack stack, boolean simulate) {
+//         if (stack.isEmpty()) return null;
+//
+//         ItemStack left = stack.copy();
+//
+//         for (int i = 0; i < getSlots(); i++) {
+//             if (left.isEmpty()) break;
+//             left = storage.insertItem(i, left, simulate);
+//         }
+//
+//         return left.isEmpty() ? null : left;
+//     }
+//
+//     private @Nullable ItemStack consumeStack(@NotNull ItemStack needed, boolean simulate) {
+//         if (needed.isEmpty()) return null;
+//
+//         ItemStack left = needed.copy();
+//
+//         for (int i = 0; i < getSlots(); i++) {
+//             if (left.isEmpty()) break;
+//
+//             ItemStack inSlot = getStackInSlot(i);
+//             if (inSlot.isEmpty()) continue;
+//             if (!ItemStack.isSameItemSameTags(inSlot, left)) continue;
+//
+//             int take = Math.min(left.getCount(), inSlot.getCount());
+//             if (!simulate) {
+//                 ItemStack newStack = inSlot.copy();
+//                 newStack.shrink(take);
+//                 setStackInSlot(i, newStack);
+//             }
+//             left.shrink(take);
+//         }
+//
+//         return left.isEmpty() ? null : left;
+//     }
+//
+//
+//
+//     private static final class DeepStackHandler extends CustomItemStackHandler {
+//
+//         private final DeepOutputBusItemHandlerTrait parent;
+//         private final int slotLimitPerSlot;
+//
+//         DeepStackHandler(DeepOutputBusItemHandlerTrait parent, int slots, int slotLimitPerSlot) {
+//             super(slots);
+//             this.parent = parent;
+//             this.slotLimitPerSlot = slotLimitPerSlot;
+//         }
+//
+//         @Override
+//         public int getSlotLimit(int slot) {
+//             return slotLimitPerSlot;
+//         }
+//
+//
+//         @Override
+//         protected int getStackLimit(int slot, @NotNull ItemStack stack) {
+//             return getSlotLimit(slot);
+//         }
+//
+//
+//         @Override
+//         public void onContentsChanged(int slot) {
+//             super.onContentsChanged(slot);
+//             parent.notifyListeners();
+//         }
+//     }
+// }
+//

@@ -19,7 +19,7 @@ repositories {
 
     maven { // LDLib, Shimmer
         name = "FirstDarkDev Maven"
-        url = "https://maven.firstdarkdev.xyz/snapshots"
+        url = "https://maven.firstdark.dev/snapshots"
     }
 
     maven {

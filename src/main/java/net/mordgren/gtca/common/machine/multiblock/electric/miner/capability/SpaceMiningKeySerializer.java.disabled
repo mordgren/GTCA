@@ -1,0 +1,102 @@
+// package net.mordgren.gtca.common.machine.multiblock.electric.miner.capability;
+//
+// import com.google.gson.JsonElement;
+// import com.google.gson.JsonObject;
+// import com.google.gson.JsonPrimitive;
+// import com.mojang.serialization.Codec;
+// import com.mojang.serialization.codecs.RecordCodecBuilder;
+// import net.minecraft.network.FriendlyByteBuf;
+// import net.minecraft.resources.ResourceLocation;
+// import net.minecraft.util.GsonHelper;
+//
+// import com.gregtechceu.gtceu.api.recipe.content.IContentSerializer;
+//
+// public final class SpaceMiningKeySerializer implements IContentSerializer<SpaceMiningKey> {
+//
+//     public static final SpaceMiningKeySerializer INSTANCE = new SpaceMiningKeySerializer();
+//
+//     private static final Codec<SpaceMiningKey> CODEC = RecordCodecBuilder.create(i -> i.group(
+//             ResourceLocation.CODEC.fieldOf("asteroid").forGetter(SpaceMiningKey::asteroidId),
+//             Codec.STRING.optionalFieldOf("drone", "any").forGetter(SpaceMiningKey::droneKey),
+//             Codec.STRING.optionalFieldOf("plasma", "any").forGetter(SpaceMiningKey::plasmaKey)
+//     ).apply(i, SpaceMiningKey::new));
+//
+//     private SpaceMiningKeySerializer() {}
+//
+//     @Override
+//     public Class<SpaceMiningKey> contentClass() {
+//         return SpaceMiningKey.class;
+//     }
+//
+//     @Override
+//     public Codec<SpaceMiningKey> codec() {
+//         return CODEC;
+//     }
+//
+//     @Override
+//     public SpaceMiningKey of(Object o) {
+//         if (o instanceof SpaceMiningKey k) return k;
+//         if (o instanceof ResourceLocation rl) return new SpaceMiningKey(rl);
+//         if (o instanceof String s) {
+//             // строка может быть "namespace:path" или просто "path"
+//             ResourceLocation rl = ResourceLocation.tryParse(s);
+//             if (rl == null) rl = new ResourceLocation("gtca", s);
+//             return new SpaceMiningKey(rl);
+//         }
+//         return defaultValue();
+//     }
+//
+//     @Override
+//     public SpaceMiningKey defaultValue() {
+//         return SpaceMiningKey.DEFAULT;
+//     }
+//
+//     @Override
+//     public void toNetwork(FriendlyByteBuf buf, SpaceMiningKey content) {
+//         buf.writeResourceLocation(content.asteroidId());
+//         buf.writeUtf(content.droneKey());
+//         buf.writeUtf(content.plasmaKey());
+//     }
+//
+//     @Override
+//     public SpaceMiningKey fromNetwork(FriendlyByteBuf buf) {
+//         ResourceLocation a = buf.readResourceLocation();
+//         String d = buf.readUtf();
+//         String p = buf.readUtf();
+//         return new SpaceMiningKey(a, d, p);
+//     }
+//
+//     @Override
+//     public JsonElement toJson(SpaceMiningKey content) {
+//         JsonObject json = new JsonObject();
+//         json.addProperty("asteroid", content.asteroidId().toString());
+//         json.addProperty("drone", content.droneKey());
+//         json.addProperty("plasma", content.plasmaKey());
+//         return json;
+//     }
+//
+//     @Override
+//     public SpaceMiningKey fromJson(JsonElement element) {
+//         if (element == null || element.isJsonNull()) return defaultValue();
+//
+//         // на всякий случай поддержим старый формат: "namespace:path"
+//         if (element.isJsonPrimitive()) {
+//             JsonPrimitive p = element.getAsJsonPrimitive();
+//             if (p.isString()) {
+//                 ResourceLocation rl = ResourceLocation.tryParse(p.getAsString());
+//                 if (rl == null) rl = new ResourceLocation("gtca", p.getAsString());
+//                 return new SpaceMiningKey(rl);
+//             }
+//             return defaultValue();
+//         }
+//
+//         JsonObject obj = element.getAsJsonObject();
+//         String asteroid = GsonHelper.getAsString(obj, "asteroid", "minecraft:air");
+//         String drone = GsonHelper.getAsString(obj, "drone", "any");
+//         String plasma = GsonHelper.getAsString(obj, "plasma", "any");
+//
+//         ResourceLocation rl = ResourceLocation.tryParse(asteroid);
+//         if (rl == null) rl = new ResourceLocation("minecraft", "air");
+//         return new SpaceMiningKey(rl, drone, plasma);
+//     }
+// }

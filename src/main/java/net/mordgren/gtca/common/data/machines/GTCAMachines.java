@@ -35,7 +35,7 @@ import net.mordgren.gtca.client.renderer.machine.GTCADynamicRenderHelpers;
 import net.mordgren.gtca.common.data.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.*;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevatorDisplay;
-import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMinerTooltips;
+// import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMinerTooltips;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 
 import java.util.ArrayList;
@@ -59,7 +59,7 @@ import static net.mordgren.gtca.common.data.GTCAMaterials.*;
 public class GTCAMachines {
     public static void init() {
         GTCARegistration.REGISTRATE.creativeModeTab(() -> GTCACreativeModTab.MAIN);
-        GTCAPartAbilities.init();
+//        GTCAPartAbilities.init();
     }
 
 
@@ -836,10 +836,10 @@ public class GTCAMachines {
                                                                  ResourceLocation overlayModel,
                                                                  String lang) {
 
-        // один общий билдер, чтобы не копипастить 3 раза
+
         if (tier != LuV && tier != ZPM && tier != UV) return null;
 
-        return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
+        return REGISTRATE.multiblock(name, holder -> new WorkableElectricMultiblockMachine(holder, tier))
                 .langValue(lang)
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_MINER)
@@ -858,7 +858,7 @@ public class GTCAMachines {
                                 )).or(Predicates.autoAbilities(false, false, false)))
                                 .build())
 
-                .tooltips(GTCASpaceMinerTooltips.mk1())
+//                .tooltips(GTCASpaceMinerTooltips.mk1())
                 .workableCasingModel(
                         casingTexture,
                         overlayModel
@@ -893,7 +893,7 @@ public class GTCAMachines {
 
         if (tier != LuV && tier != ZPM && tier != UV) return null;
 
-        return REGISTRATE.multiblock(name, holder -> new SpacePumpMachine(holder, tier))
+        return REGISTRATE.multiblock(name, holder -> new WorkableElectricMultiblockMachine(holder, tier))
                 .langValue(lang)
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_PUMP)
@@ -947,7 +947,7 @@ public class GTCAMachines {
 
         if (tier != LuV && tier != ZPM && tier != UV) return null;
 
-        return REGISTRATE.multiblock(name, holder -> new SpaceAssemblerMachine(holder, tier))
+        return REGISTRATE.multiblock(name, holder -> new WorkableElectricMultiblockMachine(holder, tier))
                 .langValue(lang)
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_ASSEMBLER)

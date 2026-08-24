@@ -41,81 +41,85 @@ public class MiscRecipes {
                 .duration(2400).EUt(32768)
                 .save(provider);
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder("proton_cell")
-                .inputItems(GTCAItems.PROTON_CELL_EMPTY.asStack())
-                .inputItems(GTCAItems.Proton.asStack(16))
-                .inputItems(GTCAHelper.getItem("plate", Zeron182, 16))
-                .inputItems(CustomTags.LuV_CIRCUITS, 8)
-                .inputItems(GTCAHelper.getItem("wireGtHex", YttriumBariumCuprate, 32))
-                .inputItems(GTCAHelper.getItem("bolt", TriniumNaquadahCarbonite, 8))
-                .inputItems(GTCAHelper.getItem("screw", Nitinol60, 8))
-                .inputItems(GTItems.ENERGIUM_DUST.asStack(16))
-                .inputFluids(Zeron182.getFluid(2304))
-                .inputFluids(HastelloyN.getFluid(4608))
-                .inputFluids(LafiumCompound.getFluid(2304))
-                .outputItems(GTCAItems.PROTON_CELL.asStack())
-                .scannerResearch(b -> b
-                        .researchStack(GTCAItems.Proton.asStack())
-                        .duration(1125)
-                        .EUt(VA[EV]))
-                .duration(2400).EUt(32768)
-                .save(provider);
+//      ASSEMBLY_LINE_RECIPES.recipeBuilder("proton_cell")
+//              .inputItems(GTCAItems.PROTON_CELL_EMPTY.asStack())
+//              .inputItems(GTCAItems.Proton.asStack(16))
+//              .inputItems(GTCAHelper.getItem("plate", Zeron182, 16))
+//              .inputItems(CustomTags.LuV_CIRCUITS, 8)
+//              .inputItems(GTCAHelper.getItem("wireGtHex", YttriumBariumCuprate, 32))
+//              .inputItems(GTCAHelper.getItem("bolt", TriniumNaquadahCarbonite, 8))
+//              .inputItems(GTCAHelper.getItem("screw", Nitinol60, 8))
+//              .inputItems(GTItems.ENERGIUM_DUST.asStack(16))
+//              .inputFluids(Zeron182.getFluid(2304))
+//              .inputFluids(HastelloyN.getFluid(4608))
+//              .inputFluids(LafiumCompound.getFluid(2304))
+//              .outputItems(GTCAItems.PROTON_CELL.asStack())
+//              .scannerResearch(b -> b
+//                      .researchStack(GTCAItems.Proton.asStack())
+//                      .duration(1125)
+//                      .EUt(VA[EV]))
+//              .duration(2400).EUt(32768)
+//              .save(provider);
 
-        CANNER_RECIPES.recipeBuilder("proton_capacitor").duration(200).EUt(VA[EV])
-                .inputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
-                .inputItems(GTCAItems.PROTON_CELL.asStack())
-                .outputItems(GTCABlocks.BATTERY_PROTON_CELL).save(provider);
-        PACKER_RECIPES.recipeBuilder("proton_capacitor").duration(200).EUt(30).circuitMeta(2)
-                .inputItems(GTCABlocks.BATTERY_PROTON_CELL)
-                .outputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
-                .outputItems(GTCAItems.PROTON_CELL.asStack()).save(provider);
+//      CANNER_RECIPES.recipeBuilder("proton_capacitor").duration(200).EUt(VA[EV])
+//              .inputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
+//              .inputItems(GTCAItems.PROTON_CELL.asStack())
+//              .outputItems(GTCABlocks.BATTERY_PROTON_CELL).save(provider);
+//      PACKER_RECIPES.recipeBuilder("proton_capacitor").duration(200).EUt(30).circuitMeta(2)
+//              .inputItems(GTCABlocks.BATTERY_PROTON_CELL)
+//              .outputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
+//              .outputItems(GTCAItems.PROTON_CELL.asStack()).save(provider);
 
-        /// ELECTRON CELL
-        ASSEMBLY_LINE_RECIPES.recipeBuilder("electron_cell_empty")
-                .inputItems(GTCAHelper.getItem("plate", Zeron182, 16))
-                .inputItems(GTCAHelper.getItem("cableGtOctal", Naquadah, 32))
-                .inputItems(GTCAHelper.getItem("gear", Zeron182, 4))
-                .inputItems(GTItems.VOLTAGE_COIL_IV.asStack(64))
-                .inputItems(GTItems.ENERGIUM_DUST.asStack(16))
-                .inputFluids(Pikyonium64Y.getFluid(1152))
-                .inputFluids(CinobiteA241.getFluid(2304))
-                .outputItems(GTCAItems.ELECTRON_CELL_EMPTY.asStack())
-                .scannerResearch(b -> b
-                        .researchStack(GTCAItems.PROTON_CELL_EMPTY.asStack())
-                        .duration(1125)
-                        .EUt(VA[EV]))
-                .duration(2400).EUt(131072)
-                .save(provider);
+//      /// ELECTRON CELL
+//      ASSEMBLY_LINE_RECIPES.recipeBuilder("electron_cell_empty")
+//              .inputItems(GTCAHelper.getItem("plate", Zeron182, 16))
+//              .inputItems(GTCAHelper.getItem("cableGtOctal", Naquadah, 32))
+//              .inputItems(GTCAHelper.getItem("gear", Zeron182, 4))
+//              .inputItems(GTItems.VOLTAGE_COIL_IV.asStack(64))
+//              .inputItems(GTItems.ENERGIUM_DUST.asStack(16))
+//              .inputFluids(Pikyonium64Y.getFluid(1152))
+//              .inputFluids(CinobiteA241.getFluid(2304))
+//              .outputItems(GTCAItems.ELECTRON_CELL_EMPTY.asStack())
+//              .scannerResearch(b -> b
+//                      .researchStack(GTCAItems.PROTON_CELL_EMPTY.asStack())
+//                      .duration(1125)
+//                      .EUt(VA[EV]))
+//              .duration(2400).EUt(131072)
+//              .save(provider);
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder("electron_cell")
-                .inputItems(GTCAItems.ELECTRON_CELL_EMPTY.asStack())
-                .inputItems(GTCAItems.Electron.asStack(16))
-                .inputItems(GTCAHelper.getItem("plate", Pikyonium64Y, 16))
-                .inputItems(CustomTags.ZPM_CIRCUITS, 16)
-                .inputItems(GTCAHelper.getItem("wireGtHex", Naquadah, 32))
-                .inputItems(GTCAHelper.getItem("bolt", NaquadahAlloy, 8))
-                .inputItems(GTCAHelper.getItem("screw", Zeron182, 8))
-                .inputItems(GTItems.ENERGIUM_DUST.asStack(32))
-                .inputFluids(Pikyonium64Y.getFluid(2304))
-                .inputFluids(CinobiteA241.getFluid(2304))
-                .inputFluids(TriniumNaquadahCarbonite.getFluid(2304))
-                .outputItems(GTCAItems.ELECTRON_CELL.asStack())
-                .scannerResearch(b -> b
-                        .researchStack(GTCAItems.Electron.asStack())
-                        .duration(1125)
-                        .EUt(VA[EV]))
-                .duration(2400).EUt(131072)
-                .save(provider);
+//      ASSEMBLY_LINE_RECIPES.recipeBuilder("electron_cell")
+//              .inputItems(GTCAItems.ELECTRON_CELL_EMPTY.asStack())
+//              .inputItems(GTCAItems.Electron.asStack(16))
+//              .inputItems(GTCAHelper.getItem("plate", Pikyonium64Y, 16))
+//              .inputItems(CustomTags.ZPM_CIRCUITS, 16)
+//              .inputItems(GTCAHelper.getItem("wireGtHex", Naquadah, 32))
+//              .inputItems(GTCAHelper.getItem("bolt", NaquadahAlloy, 8))
+//              .inputItems(GTCAHelper.getItem("screw", Zeron182, 8))
+//              .inputItems(GTItems.ENERGIUM_DUST.asStack(32))
+//              .inputFluids(Pikyonium64Y.getFluid(2304))
+//              .inputFluids(CinobiteA241.getFluid(2304))
+//              .inputFluids(TriniumNaquadahCarbonite.getFluid(2304))
+//              .outputItems(GTCAItems.ELECTRON_CELL.asStack())
+//              .scannerResearch(b -> b
+//                      .researchStack(GTCAItems.Electron.asStack())
+//                      .duration(1125)
+//                      .EUt(VA[EV]))
+//              .duration(2400).EUt(131072)
+//              .save(provider);
 
-        CANNER_RECIPES.recipeBuilder("electron_capacitor").duration(400).EUt(VA[EV])
-                .inputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
-                .inputItems(GTCAItems.ELECTRON_CELL.asStack())
-                .outputItems(GTCABlocks.BATTERY_ELECTRON_CELL).save(provider);
-        PACKER_RECIPES.recipeBuilder("electron_capacitor").duration(200).EUt(30).circuitMeta(2)
-                .inputItems(GTCABlocks.BATTERY_ELECTRON_CELL)
-                .outputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
-                .outputItems(GTCAItems.ELECTRON_CELL.asStack()).save(provider);
+//      CANNER_RECIPES.recipeBuilder("electron_capacitor").duration(400).EUt(VA[EV])
+//              .inputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
+//              .inputItems(GTCAItems.ELECTRON_CELL.asStack())
+//              .outputItems(GTCABlocks.BATTERY_ELECTRON_CELL).save(provider);
+//      PACKER_RECIPES.recipeBuilder("electron_capacitor").duration(200).EUt(30).circuitMeta(2)
+//              .inputItems(GTCABlocks.BATTERY_ELECTRON_CELL)
+//              .outputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack())
+//              .outputItems(GTCAItems.ELECTRON_CELL.asStack()).save(provider);
 
+
+        // TODO GTCEu 7.5.3:
+// Custom rechargeable batteries crash runData/runClient due early GTItems initialization.
+// Re-enable after Space Elevator rewrite.
 
         CENTRIFUGE_RECIPES.recipeBuilder("pahoehoe_nugget").duration(40).EUt(VA[EV])
                 .inputFluids(PahoehoeLava.getFluid(100))
