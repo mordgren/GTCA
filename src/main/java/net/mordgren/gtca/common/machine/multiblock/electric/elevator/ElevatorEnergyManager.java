@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 public class ElevatorEnergyManager {
     private final SpaceElevatorMachine elevator;
+
     /**
     Created by sensesgone
-    25.1.2026
+    8.25.2026
      **/
+
     public ElevatorEnergyManager(SpaceElevatorMachine elevator) {
         this.elevator = elevator;
     }
@@ -47,7 +49,7 @@ public class ElevatorEnergyManager {
                 share = (toSendTotal * r.need) / totalNeed;
             }
             if (share <= 0) continue;
-            long extracted = -elevatorEnergy.changeEnergy(-share); // changeEnergy возвращает delta (отриц.)
+            long extracted = -elevatorEnergy.changeEnergy(-share);
             if (extracted <= 0) continue;
             long inserted = r.buf.changeEnergy(extracted);
             long leftover = extracted - inserted;
