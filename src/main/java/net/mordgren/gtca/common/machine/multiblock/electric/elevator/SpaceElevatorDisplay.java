@@ -81,4 +81,47 @@ public final class SpaceElevatorDisplay {
             default -> ChatFormatting.DARK_GRAY;
         };
     }
+    public static void addModuleDisplay(SpaceElevatorModuleMachine module, List<Component> list) {
+        var energy = module.getWirelessEnergyContainer();
+
+        list.add(Component.literal("Space Elevator Module")
+                .withStyle(ChatFormatting.AQUA, ChatFormatting.BOLD));
+
+        list.add(Component.empty()
+                .append(Component.literal("Type: ").withStyle(ChatFormatting.GRAY))
+                .append(Component.literal(module.getElevatorModuleKind().displayName())
+                        .withStyle(typeColor(module.getElevatorModuleKind())))
+                .append(Component.literal("  |  MK: ").withStyle(ChatFormatting.DARK_GRAY))
+                .append(Component.literal(String.valueOf(module.getModuleMk())).withStyle(ChatFormatting.GOLD)));
+
+        list.add(Component.empty()
+                .append(Component.literal("Formed: ").withStyle(ChatFormatting.GRAY))
+                .append(Component.literal(String.valueOf(module.isFormed()))
+                        .withStyle(module.isFormed() ? ChatFormatting.GREEN : ChatFormatting.RED))
+                .append(Component.literal("  |  Elevator: ").withStyle(ChatFormatting.DARK_GRAY))
+                .append(Component.literal(module.isEnabledByElevator() ? "Enabled" : "Disabled")
+                        .withStyle(module.isEnabledByElevator() ? ChatFormatting.GREEN : ChatFormatting.RED)));
+
+        list.add(Component.empty()
+                .append(Component.literal("Energy: ").withStyle(ChatFormatting.GRAY))
+                .append(Component.literal(energy.getEnergyStored() + " / " + energy.getEnergyCapacity() + " EU")
+                        .withStyle(ChatFormatting.YELLOW)));
+
+        list.add(Component.empty()
+                .append(Component.literal("Power Input: ").withStyle(ChatFormatting.GRAY))
+                .append(Component.literal("Space Elevator Wireless")
+                        .withStyle(ChatFormatting.LIGHT_PURPLE)));
+
+        if (module.requiresComputation()) {
+            list.add(Component.empty()
+                    .append(Component.literal("Computation: ").withStyle(ChatFormatting.GRAY))
+                    .append(Component.literal("Requires CWU/t")
+                            .withStyle(ChatFormatting.AQUA)));
+        } else {
+            list.add(Component.empty()
+                    .append(Component.literal("Computation: ").withStyle(ChatFormatting.GRAY))
+                    .append(Component.literal("Not required")
+                            .withStyle(ChatFormatting.DARK_GRAY)));
+        }
+    }
 }

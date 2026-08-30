@@ -11,6 +11,9 @@ dependencies {
     // LDLib
     jarJar(modApi(forge.ldlib.get()))
 
+    // MUI
+    jarJar(modImplementation(forge.mui.get()))
+
     // Registrate
     jarJar(modApi(forge.registrate.get()))
 

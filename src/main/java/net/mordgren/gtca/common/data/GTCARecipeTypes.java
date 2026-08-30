@@ -13,6 +13,7 @@ import com.lowdragmc.lowdraglib.utils.CycleItemStackHandler;
 import com.lowdragmc.lowdraglib.utils.LocalizationUtils;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.world.item.ItemStack;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.SpaceMiningRecipeDataKeys;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,11 +147,38 @@ public class GTCARecipeTypes {
             .setEUIO(IO.IN);
 
     public static final GTRecipeType SPACE_MINER = register("space_miner", MULTIBLOCK)
-            .setMaxIOSize(6,16,1,0)
+            .setMaxIOSize(6, 16, 1, 0)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setMaxTooltips(9)
+
+
+            .setMaxTooltips(4)
+
+            .addDataInfo(data -> "")
+
+            .addDataInfo(data -> {
+                if (!data.contains(SpaceMiningRecipeDataKeys.CIRCUIT)) return "";
+
+                int mk = data.getInt(SpaceMiningRecipeDataKeys.REQUIRED_MODULE_MK);
+                int circuit = data.getInt(SpaceMiningRecipeDataKeys.CIRCUIT);
+
+                int distMin = data.getInt(SpaceMiningRecipeDataKeys.DISTANCE_MIN);
+                int distMax = data.getInt(SpaceMiningRecipeDataKeys.DISTANCE_MAX);
+
+                int sizeMin = data.getInt(SpaceMiningRecipeDataKeys.SIZE_MIN_STACKS);
+                int sizeMax = data.getInt(SpaceMiningRecipeDataKeys.SIZE_MAX_STACKS);
+
+                int weight = data.getInt(SpaceMiningRecipeDataKeys.WEIGHT);
+
+                return "MK" + mk
+                        + " C" + circuit
+                        + " D" + distMin + "-" + distMax
+                        + " S" + sizeMin + "-" + sizeMax
+                        + " W" + weight;
+            })
+
             .setEUIO(IO.IN);
+
 
     public static final GTRecipeType SPACE_ASSEMBLER = register("space_assembler", MULTIBLOCK)
             .setMaxIOSize(6,6,3,0)

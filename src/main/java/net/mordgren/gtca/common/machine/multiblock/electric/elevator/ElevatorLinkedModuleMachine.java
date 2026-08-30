@@ -4,10 +4,12 @@ import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.TickableSubscription;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
-    /*
-    Created by sensesgone
-    25.1.2026
-     */
+import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
+
+/*
+Created by sensesgone
+25.1.2026
+ */
     public abstract class ElevatorLinkedModuleMachine extends WorkableElectricMultiblockMachine implements IElevatorModule {
 
         protected final int moduleTier;
@@ -43,8 +45,12 @@ import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
 
             if (!isRemote() && gateSub == null) {
                 gateSub = subscribeServerTick(() -> {
-                    if (!enabledByElevator && recipeLogic.isWorkingEnabled()) {
+                    if (!enabledByElevator && !recipeLogic.isSuspend()) {
                         recipeLogic.setWorkingEnabled(false);
+
+                        if (recipeLogic.isActive()) {
+                            recipeLogic.setStatus(RecipeLogic.Status.SUSPEND);
+                        }
                     }
                 });
             }
@@ -74,8 +80,28 @@ import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
         public void setEnabledByElevator(boolean enabled) {
             this.enabledByElevator = enabled;
 
-            if (!isRemote()) {
-                recipeLogic.setWorkingEnabled(enabled);
+            if (getLevel() == null || getLevel().isClientSide) {
+                return;
+            }
+
+            if (enabled) {
+                recipeLogic.setWorkingEnabled(true);
+
+                if (recipeLogic.isSuspend()) {
+                    if (recipeLogic.getLastRecipe() != null && recipeLogic.getMaxProgress() > 0) {
+                        recipeLogic.setStatus(RecipeLogic.Status.WORKING);
+                    } else {
+                        recipeLogic.setStatus(RecipeLogic.Status.IDLE);
+                    }
+                }
+
+                return;
+            }
+
+            recipeLogic.setWorkingEnabled(false);
+
+            if (recipeLogic.isActive()) {
+                recipeLogic.setStatus(RecipeLogic.Status.SUSPEND);
             }
         }
 
@@ -93,6 +119,15 @@ import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
             return moduleTier;
         }
 
+        public int getModuleMk() {
+            return switch (moduleTier) {
+                case GTValues.LuV -> 1;
+                case GTValues.ZPM -> 2;
+                case GTValues.UV -> 3;
+                default -> 1;
+            };
+        }
+
         protected long computeBufferCapacity(int tier) {
             int mk = switch (tier) {
                 case GTValues.LuV -> 1;
@@ -108,6 +143,8 @@ import com.gregtechceu.gtceu.api.machine.trait.NotifiableEnergyContainer;
                 cap *= 4L;
             }
 
-            return cap;
+            // TEMP TEST:
+            return cap * 10L;
         }
     }
+

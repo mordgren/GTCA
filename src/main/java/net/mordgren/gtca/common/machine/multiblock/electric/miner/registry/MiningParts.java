@@ -1,0 +1,18 @@
+package net.mordgren.gtca.common.machine.multiblock.electric.miner.registry;
+
+import net.minecraft.world.item.ItemStack;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.DrillMaterialTier;
+import net.mordgren.gtca.common.util.GTCAHelper;
+
+public final class MiningParts {
+
+    private MiningParts() {}
+
+    public static ItemStack drillTip(DrillMaterialTier tier, int count) {
+        return GTCAHelper.getItem("drillHead", tier.material(), count);
+    }
+
+    public static ItemStack drillRod(DrillMaterialTier tier, int count) {
+        return GTCAHelper.getItem("longRod", tier.material(), count);
+    }
+}

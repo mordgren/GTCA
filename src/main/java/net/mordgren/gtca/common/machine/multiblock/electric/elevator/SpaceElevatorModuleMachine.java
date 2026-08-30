@@ -23,7 +23,7 @@ public class SpaceElevatorModuleMachine extends ElevatorLinkedModuleMachine {
 
     @Override
     public boolean requiresComputation() {
-        return kind == ElevatorModuleKind.MINER;
+        return kind.requiresComputation();
     }
 
     @Override

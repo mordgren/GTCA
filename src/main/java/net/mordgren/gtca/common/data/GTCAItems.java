@@ -1,17 +1,8 @@
 package net.mordgren.gtca.common.data;
-
-import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.item.ComponentItem;
-import com.gregtechceu.gtceu.api.item.component.ElectricStats;
-import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.item.Item;
-import net.mordgren.gtca.GTCA;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 import net.mordgren.gtca.common.item.ScrapBoxBehaviour;
-
-import static com.gregtechceu.gtceu.common.data.GTItems.attach;
-import static com.gregtechceu.gtceu.common.data.models.GTModels.overrideModel;
 import static net.mordgren.gtca.common.registry.GTCARegistration.REGISTRATE;
 
 public class GTCAItems {
@@ -117,6 +108,7 @@ public class GTCAItems {
     public static ItemEntry<Item> MinerDroneUV = REGISTRATE.item("uv_drone", Item::new).register();
     public static ItemEntry<Item> MinerDroneUHV = REGISTRATE.item("uhv_drone", Item::new).register();
     public static ItemEntry<Item> MinerDroneUEV = REGISTRATE.item("uev_drone", Item::new).register();
+
 
     // wafers
 

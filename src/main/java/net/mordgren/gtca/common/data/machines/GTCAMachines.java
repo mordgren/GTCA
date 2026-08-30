@@ -38,6 +38,7 @@ import net.mordgren.gtca.common.machine.multiblock.electric.elevator.ElevatorMod
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevatorDisplay;
 // import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMinerTooltips;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevatorModuleMachine;
+import net.mordgren.gtca.common.machine.multiblock.electric.miner.SpaceMinerMachine;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 
 import java.util.ArrayList;
@@ -841,12 +842,20 @@ public class GTCAMachines {
 
         if (tier != LuV && tier != ZPM && tier != UV) return null;
 
-        return REGISTRATE.multiblock(name, holder -> new SpaceElevatorModuleMachine(holder, tier, ElevatorModuleKind.MINER))
+        return REGISTRATE.multiblock(name, holder -> new SpaceMinerMachine(holder, tier))
                 .langValue(lang)
                 .rotationState(RotationState.NON_Y_AXIS)
+                .additionalDisplay((machine, list) -> {
+                    if (machine instanceof SpaceElevatorModuleMachine module) {
+                        SpaceElevatorDisplay.addModuleDisplay(module, list);
+                    }
+                })
                 .recipeType(GTCARecipeTypes.SPACE_MINER)
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                .recipeModifier(OC_NON_PERFECT_SUBTICK)
+                .recipeModifiers(
+                        SpaceMinerMachine::recipeModifier,
+                        OC_NON_PERFECT_SUBTICK
+                )
                 .pattern(definition ->
                         FactoryBlockPattern.start()
                                 .aisle("C", "C", "C", "C", "C")
@@ -860,7 +869,7 @@ public class GTCAMachines {
                                 )).or(Predicates.autoAbilities(false, false, false)))
                                 .build())
 
-//                .tooltips(GTCASpaceMinerTooltips.mk1())
+                .tooltips(spaceModuleTooltips(ElevatorModuleKind.MINER))
                 .workableCasingModel(
                         casingTexture,
                         overlayModel
@@ -901,6 +910,11 @@ public class GTCAMachines {
                 .recipeType(GTCARecipeTypes.SPACE_PUMP)
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
                 .recipeModifiers(true, OC_NON_PERFECT_SUBTICK)
+                .additionalDisplay((machine, list) -> {
+                    if (machine instanceof SpaceElevatorModuleMachine module) {
+                        SpaceElevatorDisplay.addModuleDisplay(module, list);
+                    }
+                })
                 .pattern(definition ->
                         FactoryBlockPattern.start()
                                 .aisle("C", "C", "C", "C", "C")
@@ -910,11 +924,7 @@ public class GTCAMachines {
                                         PartAbility.EXPORT_FLUIDS
                                 )).or(Predicates.autoAbilities(false, false, false)))
                                 .build())
-
-                .tooltips(
-                        Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Pump Module"),
-                        Component.translatable("gtca.machine.space_pump_desc.tooltip")
-                )
+                .tooltips(spaceModuleTooltips(ElevatorModuleKind.PUMP))
                 .workableCasingModel(
                         casingTexture,
                         overlayModel
@@ -953,6 +963,11 @@ public class GTCAMachines {
                 .langValue(lang)
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_ASSEMBLER)
+                .additionalDisplay((machine, list) -> {
+                    if (machine instanceof SpaceElevatorModuleMachine module) {
+                        SpaceElevatorDisplay.addModuleDisplay(module, list);
+                    }
+                })
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
                 .recipeModifier(OC_NON_PERFECT_SUBTICK)
                 .pattern(definition ->
@@ -966,10 +981,7 @@ public class GTCAMachines {
                                         PartAbility.IMPORT_FLUIDS
                                 )).or(Predicates.autoAbilities(false, false, false)))
                                 .build())
-                .tooltips(
-                        Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Assembler Module"),
-                        Component.translatable("gtca.machine.space_assembler_desc.tooltip")
-                )
+                .tooltips(spaceModuleTooltips(ElevatorModuleKind.ASSEMBLER))
                 .workableCasingModel(
                         casingTexture,
                         overlayModel
@@ -1370,6 +1382,29 @@ public class GTCAMachines {
                     GTCA.id("block/casing/purification/heat_resistant_trinium_plated_casing"),
                     GTCA.id("block/multiblock/purification_multiblock")))
             .register();
+
+    private static Component[] spaceModuleTooltips(ElevatorModuleKind kind) {
+        return new Component[] {
+                Component.literal("Space Elevator Module")
+                        .withStyle(ChatFormatting.AQUA, ChatFormatting.BOLD),
+
+                Component.literal("Type: ")
+                        .withStyle(ChatFormatting.GRAY)
+                        .append(Component.literal(kind.displayName()).withStyle(ChatFormatting.WHITE)),
+
+                Component.literal("Works only when connected to an active Space Elevator.")
+                        .withStyle(ChatFormatting.GRAY),
+
+                Component.literal("Receives EU wirelessly from the Space Elevator.")
+                        .withStyle(ChatFormatting.YELLOW),
+
+                kind.requiresComputation()
+                        ? Component.literal("Requires CWU/t via computation hatches.")
+                        .withStyle(ChatFormatting.AQUA)
+                        : Component.literal("Does not require computation yet.")
+                        .withStyle(ChatFormatting.DARK_GRAY),
+        };
+    }
 }
 
 
