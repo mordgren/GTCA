@@ -1,0 +1,127 @@
+name: Build and publish
+
+on:
+  push:
+    branches: ['7.5.x']
+  pull_request:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      file: ${{ steps.metadata.outputs.file }}
+      version: ${{ steps.metadata.outputs.version }}
+      minecraft: ${{ steps.metadata.outputs.minecraft }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # On releases, github.ref is the release tag, not the default branch.
+          persist-credentials: false
+      - uses: actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c # v6.0.0
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-provider: basic
+      - name: Build and check
+        # The wrapper is not executable in the upstream repository.
+        run: bash ./gradlew --no-daemon build
+      - name: Validate distribution and release version
+        id: metadata
+        env:
+          RELEASE_TAG: ${{ github.event_name == 'release' && github.event.release.tag_name || '' }}
+        shell: python
+        run: |
+          import os
+          import re
+          import tomllib
+          import zipfile
+          from pathlib import Path
+
+          properties = dict(re.findall(r'^\s*(mod_id|mod_version)\s*=\s*(\S+)\s*$', Path('gradle.properties').read_text(), re.M))
+          version = properties['mod_version']
+          minecraft = tomllib.loads(Path('gradle/libs.versions.toml').read_text())['versions']['minecraft']
+          mod_id = properties['mod_id']
+          for value in (mod_id, version, minecraft):
+              if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.+_-]*', value):
+                  raise SystemExit('Unsafe or unsupported build metadata: ' + repr(value))
+          if os.environ['RELEASE_TAG'] and os.environ['RELEASE_TAG'] != version:
+              raise SystemExit('Release tag must exactly match mod_version: ' + version)
+          filename = f'{mod_id}-{minecraft}-{version}.jar'
+          # Do not use a wildcard: dev, dev-slim, slim and sources are not releases.
+          with zipfile.ZipFile(Path('build/libs') / filename) as jar:
+              metadata = tomllib.loads(jar.read('META-INF/mods.toml').decode())
+              mod = next(mod for mod in metadata['mods'] if mod['modId'] == mod_id)
+              if mod['version'] != version:
+                  raise SystemExit('Built JAR version does not match mod_version')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'file={filename}\nversion={version}\nminecraft={minecraft}\n')
+      - name: Save distribution JAR
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: distribution
+          path: build/libs/${{ steps.metadata.outputs.file }}
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: Publish to ${{ matrix.platform }}
+    if: github.event_name == 'release'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      # Each destination can succeed or be retried independently.
+      fail-fast: false
+      matrix:
+        include:
+          - platform: curseforge
+            config_prefix: CURSEFORGE
+          - platform: modrinth
+            config_prefix: MODRINTH
+    steps:
+      - name: Check publishing configuration
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          PROJECT_ID: ${{ vars[format('{0}_PROJECT_ID', matrix.config_prefix)] }}
+          API_TOKEN: ${{ secrets[format('{0}_TOKEN', matrix.config_prefix)] }}
+        run: |
+          if [[ -z "$PROJECT_ID" || -z "$API_TOKEN" ]]; then
+            printf '::error::Configure the project ID variable and API token secret for %s in repository Settings > Secrets and variables > Actions.\n' "$PLATFORM"
+            exit 1
+          fi
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: distribution
+          path: dist
+      - name: Publish distribution
+        uses: Kira-NT/mc-publish@52307b03863581dec6b652b83e597aec02ebb075 # v3.3
+        with:
+          curseforge-id: ${{ matrix.platform == 'curseforge' && vars.CURSEFORGE_PROJECT_ID || '' }}
+          curseforge-token: ${{ matrix.platform == 'curseforge' && secrets.CURSEFORGE_TOKEN || '' }}
+          modrinth-id: ${{ matrix.platform == 'modrinth' && vars.MODRINTH_PROJECT_ID || '' }}
+          modrinth-token: ${{ matrix.platform == 'modrinth' && secrets.MODRINTH_TOKEN || '' }}
+          files: dist/${{ needs.build.outputs.file }}
+          name: ${{ github.event.release.name || github.event.release.tag_name }}
+          version: ${{ needs.build.outputs.version }}
+          version-type: ${{ github.event.release.prerelease && 'beta' || 'release' }}
+          changelog: ${{ github.event.release.body }}
+          loaders: forge
+          game-versions: ${{ needs.build.outputs.minecraft }}
+          java: '17'
+          dependencies: |
+            gtceu(required){curseforge:890405}{modrinth:7tG215v7}
+            jei(optional){curseforge:just-enough-items-jei}{modrinth:jei}
+            emi(optional)
+          fail-mode: fail
