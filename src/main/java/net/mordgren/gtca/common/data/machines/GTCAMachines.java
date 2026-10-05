@@ -904,33 +904,30 @@ public class GTCAMachines {
 
         if (tier != LuV && tier != ZPM && tier != UV) return null;
 
-        return REGISTRATE.multiblock(name, holder -> new SpaceElevatorModuleMachine(holder, tier, ElevatorModuleKind.PUMP))
+        return REGISTRATE.multiblock(name, holder -> new SpacePumpMachine(holder, tier))
                 .langValue(lang)
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_PUMP)
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                .recipeModifiers(true, OC_NON_PERFECT_SUBTICK)
-                .additionalDisplay((machine, list) -> {
-                    if (machine instanceof SpaceElevatorModuleMachine module) {
-                        SpaceElevatorDisplay.addModuleDisplay(module, list);
-                    }
-                })
+                .recipeModifier(SpacePumpMachine::recipeModifier)
                 .pattern(definition ->
                         FactoryBlockPattern.start()
                                 .aisle("C", "C", "C", "C", "C")
                                 .aisle("C", "C", "C", "X", "C")
                                 .where('X', Predicates.controller(Predicates.blocks(definition.get())))
                                 .where('C', blocks(GTCABlocks.SPACE_ELEVATOR_CASING.get()).or(Predicates.abilities(
+                                        PartAbility.IMPORT_ITEMS,
                                         PartAbility.EXPORT_FLUIDS
                                 )).or(Predicates.autoAbilities(false, false, false)))
                                 .build())
-                .tooltips(spaceModuleTooltips(ElevatorModuleKind.PUMP))
-                .workableCasingModel(
-                        casingTexture,
-                        overlayModel
+                .tooltips(
+                        Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Pump Module"),
+                        Component.translatable("gtca.machine.space_pump_desc.tooltip")
                 )
+                .workableCasingModel(casingTexture, overlayModel)
                 .register();
     }
+
 
 
     public static final MultiblockMachineDefinition SPACE_ASSEMBLER_MKI = registerSpaceAssembler(
@@ -959,17 +956,12 @@ public class GTCAMachines {
 
         if (tier != LuV && tier != ZPM && tier != UV) return null;
 
-        return REGISTRATE.multiblock(name, holder -> new SpaceElevatorModuleMachine(holder, tier, ElevatorModuleKind.ASSEMBLER))
+        return REGISTRATE.multiblock(name, holder -> new SpaceAssemblerMachine(holder, tier))
                 .langValue(lang)
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GTCARecipeTypes.SPACE_ASSEMBLER)
-                .additionalDisplay((machine, list) -> {
-                    if (machine instanceof SpaceElevatorModuleMachine module) {
-                        SpaceElevatorDisplay.addModuleDisplay(module, list);
-                    }
-                })
                 .appearanceBlock(GTCABlocks.SPACE_ELEVATOR_CASING)
-                .recipeModifier(OC_NON_PERFECT_SUBTICK)
+                .recipeModifier(SpaceAssemblerMachine::recipeModifier)
                 .pattern(definition ->
                         FactoryBlockPattern.start()
                                 .aisle("C", "C", "C", "C", "C")
@@ -981,13 +973,14 @@ public class GTCAMachines {
                                         PartAbility.IMPORT_FLUIDS
                                 )).or(Predicates.autoAbilities(false, false, false)))
                                 .build())
-                .tooltips(spaceModuleTooltips(ElevatorModuleKind.ASSEMBLER))
-                .workableCasingModel(
-                        casingTexture,
-                        overlayModel
+                .tooltips(
+                        Component.translatable("gtceu.machine.available_recipe_map_1.tooltip", "Space Assembler Module"),
+                        Component.translatable("gtca.machine.space_assembler_desc.tooltip")
                 )
+                .workableCasingModel(casingTexture, overlayModel)
                 .register();
     }
+
 
     public static final MultiblockMachineDefinition SPACE_ELEVATOR =
             REGISTRATE.multiblock("space_elevator", holder -> new SpaceElevatorMachine(holder))

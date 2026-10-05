@@ -13,6 +13,7 @@ import com.lowdragmc.lowdraglib.utils.CycleItemStackHandler;
 import com.lowdragmc.lowdraglib.utils.LocalizationUtils;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.world.item.ItemStack;
+import net.mordgren.gtca.common.machine.multiblock.electric.SpacePumpMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.SpaceMiningRecipeDataKeys;
 
 import java.util.ArrayList;
@@ -181,7 +182,7 @@ public class GTCARecipeTypes {
 
 
     public static final GTRecipeType SPACE_ASSEMBLER = register("space_assembler", MULTIBLOCK)
-            .setMaxIOSize(6,6,3,0)
+            .setMaxIOSize(16, 1, 4, 0)
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)
@@ -190,9 +191,12 @@ public class GTCARecipeTypes {
 
     public static final GTRecipeType SPACE_PUMP = register("space_pump", MULTIBLOCK)
             .setMaxIOSize(2,0,1,1)
+            .addDataInfo(data -> "Required Space Pump: any tier (MK I - MK III)")
+            .addDataInfo(data -> "Max Parallels: MK I x4 | MK II x16 | MK III x256")
+            .addDataInfo(data -> "Power: 1,966,080 EU/t per parallel")
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
-            .setMaxTooltips(4)
+            .setMaxTooltips(6)
             .setEUIO(IO.IN);
 
     public static final GTRecipeType SPACE_ELEVATOR = register("space_elevator", MULTIBLOCK)

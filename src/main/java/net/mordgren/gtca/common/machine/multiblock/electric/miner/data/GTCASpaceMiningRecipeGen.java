@@ -1,5 +1,6 @@
 package net.mordgren.gtca.common.machine.multiblock.electric.miner.data;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.ItemStack;
@@ -18,6 +19,8 @@ import java.util.function.Consumer;
 
 public final class GTCASpaceMiningRecipeGen {
 
+    private static final int MAX_RECIPE_OUTPUTS = 16;
+
     private GTCASpaceMiningRecipeGen() {}
 
     public static void generate(Consumer<FinishedRecipe> provider) {
@@ -31,7 +34,6 @@ public final class GTCASpaceMiningRecipeGen {
 
         for (AsteroidDefinition asteroid : SpaceMiningRegistry.all()) {
             Result result = generateForAsteroid(asteroid, provider, ids);
-
             attempted += result.attempted;
             saved += result.saved;
             skipped += result.skipped;
@@ -58,7 +60,6 @@ public final class GTCASpaceMiningRecipeGen {
             }
 
             DrillMaterialTier drill = drone.requiredDrillTier();
-
             if (!drill.isBetween(asteroid.minDrill(), asteroid.maxDrill())) {
                 skipped++;
                 continue;
@@ -70,8 +71,6 @@ public final class GTCASpaceMiningRecipeGen {
             int duration = adjustedDurationTicks(asteroid, drone);
             int sizeMin = adjustedSizeMin(asteroid, drone);
             int sizeMax = adjustedSizeMax(asteroid, drone);
-
-            int avgStacks = Math.max(1, (sizeMin + sizeMax) / 2);
 
             String droneKey = drone.name().toLowerCase(Locale.ROOT);
 
@@ -97,6 +96,16 @@ public final class GTCASpaceMiningRecipeGen {
                 attempted++;
 
                 try {
+                    List<OreEntry> ores = asteroid.ores();
+                    if (ores.size() > MAX_RECIPE_OUTPUTS) {
+                        skipped++;
+                        GTCA.LOGGER.error(
+                                "[SpaceMining] Too many outputs for asteroid {}: {} (max {})",
+                                asteroid.id(), ores.size(), MAX_RECIPE_OUTPUTS
+                        );
+                        continue;
+                    }
+
                     var builder = GTCARecipeTypes.SPACE_MINER.recipeBuilder(recipeId)
                             .EUt(eut)
                             .duration(duration)
@@ -117,18 +126,13 @@ public final class GTCASpaceMiningRecipeGen {
                             .addData(SpaceMiningRecipeDataKeys.MIN_CWU, asteroid.minCWU())
                             .addData(SpaceMiningRecipeDataKeys.WEIGHT, asteroid.weight());
 
-
                     boolean hasAnyOutput = false;
-
-                    List<OreEntry> ores = asteroid.ores();
-                    if (ores.size() > 9) {
-                        ores = ores.subList(0, 9);
-                    }
 
                     double sum = 0.0;
                     for (OreEntry ore : ores) {
                         sum += Math.max(0.0, ore.percent01());
                     }
+
                     if (sum <= 0.0) {
                         skipped++;
                         GTCA.LOGGER.error("[SpaceMining] Invalid ore percent sum for {}", asteroid.id());
@@ -148,10 +152,11 @@ public final class GTCASpaceMiningRecipeGen {
                         }
 
                         ItemStack previewStack = GTCAHelper.getItem("raw", ore.material(), 1);
-
                         if (previewStack.isEmpty()) {
-                            GTCA.LOGGER.warn("[SpaceMining] Empty output skipped: recipe={} material={} range={}..{}",
-                                    recipeId, ore.material().getName(), minOut, maxOut);
+                            GTCA.LOGGER.warn(
+                                    "[SpaceMining] Empty output skipped: recipe={} material={} range={}..{}",
+                                    recipeId, ore.material().getName(), minOut, maxOut
+                            );
                             continue;
                         }
 
@@ -173,10 +178,12 @@ public final class GTCASpaceMiningRecipeGen {
                     builder.save(provider);
                     saved++;
 
-                } catch (Throwable t) {
+                } catch (Exception e) {
                     skipped++;
-                    GTCA.LOGGER.error("[SpaceMining] Exception building recipe={} asteroid={} drone={} plasma={}",
-                            recipeId, asteroid.id(), drone.name(), plasma.name(), t);
+                    GTCA.LOGGER.error(
+                            "[SpaceMining] Exception building recipe={} asteroid={} drone={} plasma={}",
+                            recipeId, asteroid.id(), drone.name(), plasma.name(), e
+                    );
                 }
             }
         }
@@ -185,11 +192,35 @@ public final class GTCASpaceMiningRecipeGen {
     }
 
     private static long adjustedEUt(AsteroidDefinition asteroid, DroneTier drone) {
-        DroneTier base = asteroid.baselineDrone();
+        int moduleMk = Math.max(1, asteroid.requiredModuleMk());
 
-        double multiplier = Math.sqrt((double) drone.index() / (double) base.index());
+        int voltageTier = switch (moduleMk) {
+            case 1 -> GTValues.LuV;
+            case 2 -> GTValues.ZPM;
+            case 3 -> GTValues.UV;
+            default -> GTValues.LuV;
+        };
 
-        return Math.max(1L, Math.round(asteroid.baseEUt() * multiplier));
+        long voltage = GTValues.V[voltageTier];
+
+        int baseAmp = switch (moduleMk) {
+            case 1 -> 1;
+            case 2 -> 2;
+            case 3 -> 4;
+            default -> 1;
+        };
+
+        int droneBonusAmp = Math.max(0, drone.index() - asteroid.baselineDrone().index());
+        int amps = baseAmp + droneBonusAmp;
+
+        amps = Math.min(amps, switch (moduleMk) {
+            case 1 -> 16;
+            case 2 -> 24;
+            case 3 -> 32;
+            default -> 16;
+        });
+
+        return voltage * amps;
     }
 
     private static int outputAmount(int sizeStacks, double share, PlasmaTier plasma) {
@@ -213,14 +244,15 @@ public final class GTCASpaceMiningRecipeGen {
         StringBuilder result = new StringBuilder();
 
         for (String word : words) {
-            if (word.isBlank()) continue;
+            if (word.isBlank()) {
+                continue;
+            }
 
             if (!result.isEmpty()) {
                 result.append(' ');
             }
 
             result.append(Character.toUpperCase(word.charAt(0)));
-
             if (word.length() > 1) {
                 result.append(word.substring(1));
             }
@@ -235,7 +267,6 @@ public final class GTCASpaceMiningRecipeGen {
 
     private static int adjustedDurationTicks(AsteroidDefinition asteroid, DroneTier drone) {
         DroneTier base = asteroid.baselineDrone();
-
         double multiplier = Math.sqrt((double) base.index() / (double) drone.index());
 
         return Math.max(1, (int) Math.round(asteroid.baseDurationTicks() * multiplier));
@@ -243,7 +274,6 @@ public final class GTCASpaceMiningRecipeGen {
 
     private static int adjustedSizeMin(AsteroidDefinition asteroid, DroneTier drone) {
         DroneTier base = asteroid.baselineDrone();
-
         int delta = Math.max(0, drone.index() - base.index());
         int add = (int) ((1L << Math.min(delta, 30)) - 1L);
 
@@ -252,7 +282,6 @@ public final class GTCASpaceMiningRecipeGen {
 
     private static int adjustedSizeMax(AsteroidDefinition asteroid, DroneTier drone) {
         DroneTier base = asteroid.baselineDrone();
-
         int delta = Math.max(0, drone.index() - base.index());
         int add = (int) ((1L << Math.min(delta, 30)) - 1L);
 
