@@ -43,7 +43,7 @@ public class GTCARecipeInit {
             GTCASpaceMiningAsteroids.init();
             GTCASpaceMiningRecipeGen.generate(provider);
             SpacePumpRecipes.init(provider);
-            SpaceAssemblerRecipes.init(provider);
+            SARecipes.init(provider);
 
 
             MiscRecipes.init(provider);

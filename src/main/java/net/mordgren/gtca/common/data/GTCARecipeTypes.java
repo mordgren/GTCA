@@ -13,6 +13,7 @@ import com.lowdragmc.lowdraglib.utils.CycleItemStackHandler;
 import com.lowdragmc.lowdraglib.utils.LocalizationUtils;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.world.item.ItemStack;
+import net.mordgren.gtca.common.machine.multiblock.electric.SpaceAssemblerMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.SpacePumpMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.SpaceMiningRecipeDataKeys;
 
@@ -186,6 +187,17 @@ public class GTCARecipeTypes {
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ASSEMBLER, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)
+            .addDataInfo(data -> {
+                if (!data.contains(SpaceAssemblerMachine.REQUIRED_MODULE_MK_KEY)) {
+                    return "";
+                }
+
+                int mk = data.getInt(
+                        SpaceAssemblerMachine.REQUIRED_MODULE_MK_KEY
+                );
+
+                return "Required Space Assembler: MK" + mk;
+            })
             .setEUIO(IO.IN);
 
 

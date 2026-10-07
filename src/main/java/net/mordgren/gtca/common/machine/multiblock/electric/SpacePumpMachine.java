@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SpacePumpMachine extends ElevatorLinkedModuleMachine {
 
-    public static final long EU_PER_PARALLEL = 65_536L;
+    public static final long EU_PER_PARALLEL = 32_768L;
 
     public SpacePumpMachine(IMachineBlockEntity holder, int moduleTier) {
         super(holder, moduleTier);
