@@ -111,5 +111,24 @@ public class GTCAChemicals {
                 .buildAndRegister()
                 .setFormula("C14Os11O7Ag3?",true);
 
+        GTCAMaterials.SodiumAluminate = new Material.Builder(GTCA.id("sodium_aluminate"))
+                        .components(GTMaterials.Sodium, 1, GTMaterials.Aluminium, 1, GTMaterials.Oxygen, 2)
+                        .dust()
+                        .color(0xE8E8D0)
+                        .iconSet(MaterialIconSet.DULL)
+                        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
+                        .buildAndRegister()
+                        .setFormula("NaAlO2", true);
+
+
+        GTCAMaterials.AluminiumHydroxide = new Material.Builder(GTCA.id("aluminium_hydroxide"))
+                        .components(GTMaterials.Aluminium, 1, GTMaterials.Oxygen, 3, GTMaterials.Hydrogen, 3)
+                        .dust()
+                        .color(0xEFEFEF)
+                        .iconSet(MaterialIconSet.FINE)
+                        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
+                        .buildAndRegister()
+                        .setFormula("Al(OH)3", true);
+
     }
 }

@@ -25,6 +25,31 @@ public class GTCAFluids {
                 .color(0xc03eb5)
                 .buildAndRegister();
 
+        GTCAMaterials.Ozone = new Material.Builder(GTCA.id("ozone"))
+                        .components(GTMaterials.Oxygen, 3)
+                        .gas()
+                        .color(0x78A8FF)
+                        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
+                        .buildAndRegister()
+                        .setFormula("O3", true);
+
+
+        GTCAMaterials.PolyAluminiumChloride = new Material.Builder(GTCA.id("polyaluminium_chloride"))
+                        .components(GTMaterials.Aluminium, 2, GTMaterials.Oxygen, 3, GTMaterials.Hydrogen, 3, GTMaterials.Chlorine, 3)
+                        .fluid()
+                        .color(0xD5E4E8)
+                        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
+                        .buildAndRegister()
+                        .setFormula("Al2(OH)3Cl3", true);
+
+
+        GTCAMaterials.FlocculationWasteLiquid = new Material.Builder(GTCA.id("flocculation_waste_liquid"))
+                        .fluid()
+                        .color(0x74796C)
+                        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
+                        .buildAndRegister()
+                        .setFormula("Al2(OH)3?Cl3", true);
+
         GTCAMaterials.SphaleriteFroth = new Material.Builder(GTCA.id("sphalerite_froth")).fluid().color(0xdadada).buildAndRegister();
         GTCAMaterials.ChalcopyriteFroth = new Material.Builder(GTCA.id("chalcopyrite_froth")).fluid().color(0x896726).buildAndRegister();
         GTCAMaterials.NickelFroth = new Material.Builder(GTCA.id("nickel_froth")).fluid().color(0xababd4).buildAndRegister();

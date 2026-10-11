@@ -58,6 +58,7 @@ public class GTMaterialAdjustments {
         Stellite100.addFlags(MaterialFlags.GENERATE_GEAR, MaterialFlags.GENERATE_RING);
         Duranium.addFlags(GENERATE_FRAME);
         RedSteel.addFlags(GENERATE_FOIL);
+        StainlessSteel.addFlags(GENERATE_FINE_WIRE);
 
         ensureFluidKey(AmmoniumChloride, FluidStorageKeys.LIQUID);
         ensureFluidKey(Technetium, FluidStorageKeys.LIQUID);

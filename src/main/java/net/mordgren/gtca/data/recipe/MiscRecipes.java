@@ -9,6 +9,7 @@ import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.mordgren.gtca.common.data.*;
+import net.mordgren.gtca.common.machine.multiblock.electric.purification.data.PurificationRecipeDataKeys;
 import net.mordgren.gtca.common.util.GTCAHelper;
 
 import java.util.ArrayList;
@@ -24,22 +25,22 @@ import static net.mordgren.gtca.common.data.GTCAMaterials.HastelloyN;
 public class MiscRecipes {
     public static void init(Consumer<FinishedRecipe> provider) {
 
-        ///PROTON CELL
-        ASSEMBLY_LINE_RECIPES.recipeBuilder("proton_cell_empty")
-                .inputItems(GTCAHelper.getItem("plate", Nitinol60, 16))
-                .inputItems(GTCAHelper.getItem("cableGtOctal", YttriumBariumCuprate, 32))
-                .inputItems(GTCAHelper.getItem("gear", Nitinol60, 4))
-                .inputItems(GTItems.VOLTAGE_COIL_EV.asStack(64))
-                .inputFluids(Zeron182.getFluid(1152))
-                .inputFluids(HastelloyN.getFluid(2304))
-                .inputFluids(LafiumCompound.getFluid(2304))
-                .outputItems(GTCAItems.PROTON_CELL_EMPTY.asStack())
-                .scannerResearch(b -> b
-                        .researchStack(GTCAItems.UnknownParticle.asStack())
-                        .duration(1125)
-                        .EUt(VA[EV]))
-                .duration(2400).EUt(32768)
-                .save(provider);
+//      ///PROTON CELL
+//      ASSEMBLY_LINE_RECIPES.recipeBuilder("proton_cell_empty")
+//              .inputItems(GTCAHelper.getItem("plate", Nitinol60, 16))
+//              .inputItems(GTCAHelper.getItem("cableGtOctal", YttriumBariumCuprate, 32))
+//              .inputItems(GTCAHelper.getItem("gear", Nitinol60, 4))
+//              .inputItems(GTItems.VOLTAGE_COIL_EV.asStack(64))
+//              .inputFluids(Zeron182.getFluid(1152))
+//              .inputFluids(HastelloyN.getFluid(2304))
+//              .inputFluids(LafiumCompound.getFluid(2304))
+//              .outputItems(GTCAItems.PROTON_CELL_EMPTY.asStack())
+//              .scannerResearch(b -> b
+//                      .researchStack(GTCAItems.UnknownParticle.asStack())
+//                      .duration(1125)
+//                      .EUt(VA[EV]))
+//              .duration(2400).EUt(32768)
+//              .save(provider);
 
 //      ASSEMBLY_LINE_RECIPES.recipeBuilder("proton_cell")
 //              .inputItems(GTCAItems.PROTON_CELL_EMPTY.asStack())
@@ -219,7 +220,8 @@ public class MiscRecipes {
                 .outputItems(GTCAHelper.getItem("lens", RadonPolymer, 1))
                 .save(provider);
 
-    /// MATTER
+    // MATTER
+
         setScraps();
         for (Object[] objectType : Scraps) {
             ItemStack dust = (GTCAHelper.getItem("dust", (Material) objectType[0], 1));
@@ -252,11 +254,8 @@ public class MiscRecipes {
         // scrapbox
 
         VanillaRecipeHelper.addShapedRecipe(provider, true, "scrapbox",
-                /// Output
                 GTCAItems.ScrapBox.asStack(),
-                /// Pattern
                 "AAA", "AAA", "AAA",
-                /// Ingredients definition
                 'A', GTCAItems.Scrap.asStack());
 
         PACKER_RECIPES.recipeBuilder("scrapbox_in_packer").duration(60).EUt(VA[LV])
@@ -270,48 +269,12 @@ public class MiscRecipes {
                 .outputFluids(UUMatter.getFluid(1))
                 .save(provider);
 
-        // GRADE 1-7 WATERLINE TEST RTUI //
-
-        GTCARecipeTypes.CLARIFIER_PURIFICATION_UNIT.recipeBuilder("a").duration(20).EUt(VA[LV])
-                .inputFluids(UUMatter.getFluid(1))
-                .outputFluids(UUMatter.getFluid(1))
-                .save(provider);
-
-        GTCARecipeTypes.EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT.recipeBuilder("b").duration(20).EUt(VA[LV])
-                .inputFluids(UUMatter.getFluid(1))
-                .outputFluids(UUMatter.getFluid(1))
-                .save(provider);
-
-        GTCARecipeTypes.FLOCCULATION_PURIFICATION_UNIT.recipeBuilder("c").duration(20).EUt(VA[LV])
-                .inputFluids(UUMatter.getFluid(1))
-                .outputFluids(UUMatter.getFluid(1))
-                .save(provider);
-
-        GTCARecipeTypes.HIGH_ENERGY_LASER_PURIFICATION_UNIT.recipeBuilder("d").duration(20).EUt(VA[LV])
-                .inputFluids(UUMatter.getFluid(1))
-                .outputFluids(UUMatter.getFluid(1))
-                .save(provider);
-
-        GTCARecipeTypes.OZONATION_PURIFICATION_UNIT.recipeBuilder("f").duration(20).EUt(VA[LV])
-                .inputFluids(UUMatter.getFluid(1))
-                .outputFluids(UUMatter.getFluid(1))
-                .save(provider);
-
-        GTCARecipeTypes.PH_NEUTRALIZATION_PURIFICATION_UNIT.recipeBuilder("i").duration(20).EUt(VA[LV])
-                .inputFluids(UUMatter.getFluid(1))
-                .outputFluids(UUMatter.getFluid(1))
-                .save(provider);
-
-
     }
-
-
 
     private static ArrayList<Object[]> Scraps;
 
     private static void setScraps() {
         Scraps = new ArrayList<>();
-
         Scraps.add(new Object[]{Stone, "stone"});
         Scraps.add(new Object[]{Endstone, "endstone"});
         Scraps.add(new Object[]{Deepslate, "deepslate"});

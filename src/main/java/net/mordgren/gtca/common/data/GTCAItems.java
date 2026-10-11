@@ -26,7 +26,9 @@ public class GTCAItems {
 
     public static ItemEntry<Item> PNEresistor = REGISTRATE.item("pne_resistor", Item::new).register();
 
-    public static ItemEntry<Item> CARBON_FILTER = REGISTRATE.item("carbon_filter", Item::new).register();
+    public static ItemEntry<Item> CARBON_FILTER = REGISTRATE.item("carbon_filter", Item::new)
+                    .lang("Activated Carbon Filter Mesh")
+                    .register();
 
     // Nanites
 

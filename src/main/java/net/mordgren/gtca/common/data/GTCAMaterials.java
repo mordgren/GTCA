@@ -154,6 +154,7 @@ public class GTCAMaterials {
     public static Material EnderFluid;
     public static Material PahoehoeLava;
 
+
     // Elements
     public static Material Adamantium;
     public static Material Orundum;
@@ -206,6 +207,13 @@ public class GTCAMaterials {
     public static Material PurifiedWaterGradeVI;
     public static Material PurifiedWaterGradeVII;
     public static Material PurifiedWaterGradeVIII;
+    public static Material Ozone;
+    public static Material PolyAluminiumChloride;
+    public static Material FlocculationWasteLiquid;
+    public static Material SodiumAluminate;
+    public static Material AluminiumHydroxide;
+
+    
 
 
 }

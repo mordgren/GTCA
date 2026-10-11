@@ -16,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.mordgren.gtca.common.machine.multiblock.electric.SpaceAssemblerMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.SpacePumpMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.SpaceMiningRecipeDataKeys;
+import net.mordgren.gtca.common.machine.multiblock.electric.purification.data.PurificationRecipeDataKeys;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -220,6 +221,11 @@ public class GTCARecipeTypes {
 
     public static final GTRecipeType CLARIFIER_PURIFICATION_UNIT = register("clarifier_purification_unit", MULTIBLOCK)
             .setMaxIOSize(1,4,1,1)
+            .addDataInfo(data -> {
+                if (!data.contains(PurificationRecipeDataKeys.BASE_SUCCESS_CHANCE_BP)) return "";
+                return String.format("Base purification chance: %.2f%%",
+                        data.getInt(PurificationRecipeDataKeys.BASE_SUCCESS_CHANCE_BP) / 100.0);
+            })
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)
@@ -227,6 +233,12 @@ public class GTCARecipeTypes {
 
     public static final GTRecipeType OZONATION_PURIFICATION_UNIT = register("ozonation_purification_unit", MULTIBLOCK)
             .setMaxIOSize(0,4,2,1)
+            .addDataInfo(data -> {
+                if (!data.contains(PurificationRecipeDataKeys.BASE_SUCCESS_CHANCE_BP)) return "";
+                return String.format("Base purification chance: %.2f%%",
+                        data.getInt(PurificationRecipeDataKeys.BASE_SUCCESS_CHANCE_BP) / 100.0);
+            })
+
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)
@@ -234,6 +246,12 @@ public class GTCARecipeTypes {
 
     public static final GTRecipeType FLOCCULATION_PURIFICATION_UNIT = register("flocculation_purification_unit", MULTIBLOCK)
             .setMaxIOSize(0,3,2,2)
+            .addDataInfo(data -> {
+                if (!data.contains(PurificationRecipeDataKeys.BASE_SUCCESS_CHANCE_BP)) return "";
+                return String.format("Base purification chance: %.2f%%",
+                        data.getInt(PurificationRecipeDataKeys.BASE_SUCCESS_CHANCE_BP) / 100.0);
+            })
+
             .setSlotOverlay(false, false, GuiTextures.SLOT)
             .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, ProgressTexture.FillDirection.LEFT_TO_RIGHT)
             .setMaxTooltips(4)

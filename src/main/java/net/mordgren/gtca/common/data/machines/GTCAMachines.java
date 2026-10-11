@@ -1,6 +1,7 @@
 package net.mordgren.gtca.common.data.machines;
 
 import com.gregtechceu.gtceu.api.machine.feature.multiblock.IRotorHolderMachine;
+import com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
 import com.gregtechceu.gtceu.api.pattern.TraceabilityPredicate;
 import com.gregtechceu.gtceu.api.pattern.predicates.SimplePredicate;
 import com.gregtechceu.gtceu.common.data.GCYMBlocks;
@@ -39,6 +40,14 @@ import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevat
 // import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMinerTooltips;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevatorModuleMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.SpaceMinerMachine;
+import net.mordgren.gtca.common.machine.multiblock.electric.purification.ClarifierPurificationUnitMachine;
+import net.mordgren.gtca.common.machine.multiblock.electric.purification.FlocculationPurificationUnitMachine;
+import net.mordgren.gtca.common.machine.multiblock.electric.purification.OzonationPurificationUnitMachine;
+import net.mordgren.gtca.common.machine.multiblock.electric.purification.PHNeutralizationPurificationUnitMachine;
+import net.mordgren.gtca.common.machine.multiblock.part.GTCAPartAbilities;
+import net.mordgren.gtca.common.machine.multiblock.part.PHAcidDosingHatchMachine;
+import net.mordgren.gtca.common.machine.multiblock.part.PHBaseDosingHatchMachine;
+import net.mordgren.gtca.common.machine.multiblock.part.PHSensorHatchMachine;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 
 import java.util.ArrayList;
@@ -70,7 +79,64 @@ public class GTCAMachines {
     public static final MachineDefinition[] MATTER_AMPLIFICATOR = registerSimpleMachines("matter_amplificator", GTCARecipeTypes.UU_MATTER_AMPLIFICATOR, defaultTankSizeFunction, false, "UU-Matter Amplificator", GTValues.tiersBetween(EV, UHV));
     public static final MachineDefinition[] RECYCLER = registerSimpleMachines("recycler", GTCARecipeTypes.RECYCLER, defaultTankSizeFunction, false, "Recycler", GTValues.tiersBetween(LV, UHV));
 
+    public static final MachineDefinition PH_SENSOR_HATCH =
+            REGISTRATE.machine(
+                            "ph_sensor_hatch",
+                            PHSensorHatchMachine::new
+                    )
+                    .langValue("pH Sensor Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(GTCAPartAbilities.PH_SENSOR)
+                    .modelProperty(GTMachineModelProperties.IS_FORMED, false)
+                    .tooltips(
+                            Component.literal("Reads the current pH of the Neutralization Unit."),
+                            Component.literal("Redstone: 0 = Acidic, 7 = Neutral/Idle, 15 = Alkaline")
+                    )
+                    .workableCasingModel(
+                            GTCA.id("block/casing/purification/stabilized_water_plant_casing"),
+                            GTCA.id("block/machines/ph_sensor_hatch")
+                    )
+                    .register();
 
+
+    public static final MachineDefinition PH_BASE_DOSING_HATCH =
+            REGISTRATE.machine(
+                            "ph_base_dosing_hatch",
+                            PHBaseDosingHatchMachine::new
+                    )
+                    .langValue("pH Base Dosing Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(GTCAPartAbilities.PH_BASE_DOSER)
+                    .modelProperty(GTMachineModelProperties.IS_FORMED, false)
+                    .tooltips(
+                            Component.literal("Stores Sodium Hydroxide for pH regulation."),
+                            Component.literal("1 NaOH Dust raises pH by 0.01.")
+                    )
+                    .allowCoverOnFront(true)
+                    .workableCasingModel(
+                            GTCA.id("block/casing/purification/stabilized_water_plant_casing"),
+                            GTCA.id("block/machines/ph_base_dose_hatch"))
+                    .register();
+
+
+    public static final MachineDefinition PH_ACID_DOSING_HATCH =
+            REGISTRATE.machine(
+                            "ph_acid_dosing_hatch",
+                            PHAcidDosingHatchMachine::new
+                    )
+                    .langValue("pH Acid Dosing Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(GTCAPartAbilities.PH_ACID_DOSER)
+                    .modelProperty(GTMachineModelProperties.IS_FORMED, false)
+                    .tooltips(
+                            Component.literal("Stores Hydrochloric Acid for pH regulation."),
+                            Component.literal("10 L HCl lowers pH by 0.01.")
+                    )
+                    .allowCoverOnFront(true)
+                    .workableCasingModel(
+                            GTCA.id("block/casing/purification/stabilized_water_plant_casing"),
+                            GTCA.id("block/machines/ph_acid_dose_hatch"))
+                    .register();
 
     /// STEAM PRESSURIZER ///
     public static final MultiblockMachineDefinition STEAM_PRESSURIZER = REGISTRATE.multiblock("steam_pressurizer", WorkableElectricMultiblockMachine::new)
@@ -1064,12 +1130,14 @@ public class GTCAMachines {
             .hasBER(true)
             .register();
 
-    public static final MultiblockMachineDefinition CLARIFIER_PURIFICATION_UNIT = REGISTRATE.multiblock("clarifier_purification_unit", WorkableElectricMultiblockMachine::new)
+    public static final MultiblockMachineDefinition CLARIFIER_PURIFICATION_UNIT = REGISTRATE.multiblock(
+                    "clarifier_purification_unit",
+                    ClarifierPurificationUnitMachine::new
+            )
             .langValue("Clarifier Purification Unit")
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.CLARIFIER_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.REINFORCED_STERILE_WATER_PLANT_CASING)
-            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                             .aisle("###BBBBB###", "###BCBCB###", "###BBBBB###", "###########")
@@ -1110,12 +1178,11 @@ public class GTCAMachines {
             .hasBER(true)
             .register();
 
-    public static final MultiblockMachineDefinition OZONATION_PURIFICATION_UNIT = REGISTRATE.multiblock("ozonation_purification_unit", WorkableElectricMultiblockMachine::new)
+    public static final MultiblockMachineDefinition OZONATION_PURIFICATION_UNIT = REGISTRATE.multiblock("ozonation_purification_unit", OzonationPurificationUnitMachine::new)
             .langValue("Ozonation Purification Unit")
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.OZONATION_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.INERT_FILTRATION_CASING)
-            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                     .aisle("#####BHB#", "#####BHB#", "#####BHB#", "#####BHB#", "#####BBB#", "#####BBB#", "######B##", "######B##", "#########", "#########", "#########")
@@ -1150,12 +1217,12 @@ public class GTCAMachines {
                     GTCA.id("block/multiblock/purification_multiblock")))
             .register();
 
-    public static final MultiblockMachineDefinition FLOCCULATION_PURIFICATION_UNIT = REGISTRATE.multiblock("flocculation_purification_unit", WorkableElectricMultiblockMachine::new)
+    public static final MultiblockMachineDefinition FLOCCULATION_PURIFICATION_UNIT = REGISTRATE.multiblock("flocculation_purification_unit", FlocculationPurificationUnitMachine::new)
+
             .langValue("Flocculation Purification Unit")
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.FLOCCULATION_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.SLICK_STERILE_FLOCCULATION_CASING)
-            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                         	.aisle("AA#####AA", "AA#####AA", "AA#####AA", "AA#####AA", "AA#####AA")
@@ -1195,29 +1262,45 @@ public class GTCAMachines {
                     GTCA.id("block/multiblock/purification_multiblock")))
             .register();
 
-    public static final MultiblockMachineDefinition PH_NEUTRALIZATION_PURIFICATION_UNIT = REGISTRATE.multiblock("ph_neutralization_purification_unit", WorkableElectricMultiblockMachine::new)
+    public static final MultiblockMachineDefinition PH_NEUTRALIZATION_PURIFICATION_UNIT = REGISTRATE.multiblock("ph_neutralization_purification_unit", PHNeutralizationPurificationUnitMachine::new)
             .langValue("Ph Neutralization Purification Unit")
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.PH_NEUTRALIZATION_PURIFICATION_UNIT)
             .appearanceBlock(GTCABlocks.STABILIZED_WATER_PLANT_CASING)
-            .recipeModifier(OC_NON_PERFECT_SUBTICK)
             .pattern(definition ->
                     FactoryBlockPattern.start()
                         	.aisle("ABBBA#####ABBBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABBBA#####ABBBA", "###############")
                         	.aisle("BBBBB#####BBBBB", "B###BDDDDDB###B", "B###B#####B###B", "B###B#####B###B", "B###B#####B###B", "B###B#####B###B", "#BBB#######BBB#")
-                        	.aisle("BBBBBEEEEEBBBBB", "C#############C", "C###BFFFFFB###C", "C###B#####B###C", "C###B#####B###C", "B###B#####B###B", "#BBB#######BBB#")
+                        	.aisle("BBBBBKKKKKBBBBB", "C#############C", "C###BFFFFFB###C", "C###B#####B###C", "C###B#####B###C", "B###B#####B###B", "#BBB#######BBB#")
                         	.aisle("BBBBB#####BBBBB", "B###BEEGEEB###B", "B###B#####B###B", "B###B#####B###B", "B###B#####B###B", "B###B#####B###B", "#BBB#######BBB#")
                         	.aisle("ABBBA#####ABBBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABCBA#####ABCBA", "ABBBA#####ABBBA", "###############")
                             .where('#', Predicates.any())
                             .where('A', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, NaquadahAlloy)))
                             .where('B', blocks(GTCABlocks.INERT_NEUTRALIZATION_INTERT_CASING.get()))
                             .where('E', blocks(GTCABlocks.STABILIZED_WATER_PLANT_CASING.get()))
+                            .where('K',
+                                    blocks(GTCABlocks.STABILIZED_WATER_PLANT_CASING.get())
+                                            .or(Predicates
+                                                    .abilities(GTCAPartAbilities.PH_BASE_DOSER)
+                                                    .setMinGlobalLimited(0)
+                                                    .setMaxGlobalLimited(1)
+                                                    .setPreviewCount(1))
+                                            .or(Predicates
+                                                    .abilities(GTCAPartAbilities.PH_ACID_DOSER)
+                                                    .setMinGlobalLimited(0)
+                                                    .setMaxGlobalLimited(1)
+                                                    .setPreviewCount(1))
+                                            .or(Predicates
+                                                    .abilities(GTCAPartAbilities.PH_SENSOR)
+                                                    .setMaxGlobalLimited(1)
+                                                    .setPreviewCount(1))
+                            )
                             .where('C', blocks(GTCABlocks.BORSILICATE_YTTRIUM_GLASS.get()))
                             .where('G', Predicates.controller(Predicates.blocks(definition.get())))
-                            .where('F', blocks(GTCABlocks.INERT_NEUTRALIZATION_INTERT_CASING.get())
+                            .where('F', blocks(GTCABlocks.STABILIZED_WATER_PLANT_CASING.get())
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes(), true, false, true, false, true, false))
                                     .or(Predicates.autoAbilities(true, false, false)))
-                            .where('D', blocks(GTCABlocks.INERT_NEUTRALIZATION_INTERT_CASING.get())
+                            .where('D', blocks(GTCABlocks.STABILIZED_WATER_PLANT_CASING.get())
                                     .or(Predicates.autoAbilities(definition.getRecipeTypes(), false, false, false, true, false, true)))
 
                             .build()
