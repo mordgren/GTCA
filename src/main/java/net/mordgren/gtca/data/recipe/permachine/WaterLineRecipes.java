@@ -16,6 +16,7 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Air;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static net.mordgren.gtca.data.recipe.builder.WaterLineRecipeBuilder.extremeTemperature;
 
 public final class WaterLineRecipes {
 
@@ -76,6 +77,14 @@ public final class WaterLineRecipes {
                 .EUt(VA[ZPM])
                 .inputFluids(GTCAMaterials.PurifiedWaterGradeIII.getFluid(1_000))
                 .outputFluids(GTCAMaterials.PurifiedWaterGradeIV.getFluid(900))
+                .save(provider);
+
+        // Tier 5 - Extreme Temperature
+                WaterLineRecipeBuilder
+        .extremeTemperature("purified_water_grade_5")
+                .EUt(VA[UV])
+                .inputFluids(GTCAMaterials.PurifiedWaterGradeIV.getFluid(1_000))
+                .outputFluids(GTCAMaterials.PurifiedWaterGradeV.getFluid(900))
                 .save(provider);
     }
 

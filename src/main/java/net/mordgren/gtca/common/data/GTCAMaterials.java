@@ -153,6 +153,7 @@ public class GTCAMaterials {
 
     public static Material EnderFluid;
     public static Material PahoehoeLava;
+    public static Material SuperCoolant;
 
 
     // Elements

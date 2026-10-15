@@ -13,6 +13,15 @@ public final class GTCAPartAbilities {
     public static final PartAbility PH_ACID_DOSER =
             new PartAbility("ph_acid_doser");
 
+    public static final PartAbility EXTREME_TEMP_PLASMA_INPUT =
+            new PartAbility("extreme_temp_plasma_input");
+
+    public static final PartAbility EXTREME_TEMP_COOLANT_INPUT =
+            new PartAbility("extreme_temp_coolant_input");
+
+    public static final PartAbility THERMAL_CONTROL =
+            new PartAbility("thermal_control");
+
     private GTCAPartAbilities() {
     }
 }

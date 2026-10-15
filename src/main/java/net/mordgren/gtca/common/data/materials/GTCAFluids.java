@@ -50,6 +50,12 @@ public class GTCAFluids {
                         .buildAndRegister()
                         .setFormula("Al2(OH)3?Cl3", true);
 
+        GTCAMaterials.SuperCoolant = new Material.Builder(GTCA.id("super_coolant"))
+                .fluid()
+                .color(0x58DDE8)
+                .flags(MaterialFlags.DISABLE_DECOMPOSITION)
+                .buildAndRegister();
+
         GTCAMaterials.SphaleriteFroth = new Material.Builder(GTCA.id("sphalerite_froth")).fluid().color(0xdadada).buildAndRegister();
         GTCAMaterials.ChalcopyriteFroth = new Material.Builder(GTCA.id("chalcopyrite_froth")).fluid().color(0x896726).buildAndRegister();
         GTCAMaterials.NickelFroth = new Material.Builder(GTCA.id("nickel_froth")).fluid().color(0xababd4).buildAndRegister();

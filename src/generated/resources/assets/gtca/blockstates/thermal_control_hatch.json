@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "gtca:block/machine/thermal_control_hatch",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "gtca:block/machine/thermal_control_hatch",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gtca:block/machine/thermal_control_hatch"
+    },
+    "facing=south": {
+      "model": "gtca:block/machine/thermal_control_hatch",
+      "y": 180
+    },
+    "facing=up": {
+      "gtceu:z": 180,
+      "model": "gtca:block/machine/thermal_control_hatch",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "gtca:block/machine/thermal_control_hatch",
+      "y": 270
+    }
+  }
+}

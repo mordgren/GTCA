@@ -40,14 +40,8 @@ import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevat
 // import net.mordgren.gtca.common.machine.multiblock.electric.miner.data.GTCASpaceMinerTooltips;
 import net.mordgren.gtca.common.machine.multiblock.electric.elevator.SpaceElevatorModuleMachine;
 import net.mordgren.gtca.common.machine.multiblock.electric.miner.SpaceMinerMachine;
-import net.mordgren.gtca.common.machine.multiblock.electric.purification.ClarifierPurificationUnitMachine;
-import net.mordgren.gtca.common.machine.multiblock.electric.purification.FlocculationPurificationUnitMachine;
-import net.mordgren.gtca.common.machine.multiblock.electric.purification.OzonationPurificationUnitMachine;
-import net.mordgren.gtca.common.machine.multiblock.electric.purification.PHNeutralizationPurificationUnitMachine;
-import net.mordgren.gtca.common.machine.multiblock.part.GTCAPartAbilities;
-import net.mordgren.gtca.common.machine.multiblock.part.PHAcidDosingHatchMachine;
-import net.mordgren.gtca.common.machine.multiblock.part.PHBaseDosingHatchMachine;
-import net.mordgren.gtca.common.machine.multiblock.part.PHSensorHatchMachine;
+import net.mordgren.gtca.common.machine.multiblock.electric.purification.*;
+import net.mordgren.gtca.common.machine.multiblock.part.*;
 import net.mordgren.gtca.common.registry.GTCARegistration;
 
 import java.util.ArrayList;
@@ -136,6 +130,56 @@ public class GTCAMachines {
                     .workableCasingModel(
                             GTCA.id("block/casing/purification/stabilized_water_plant_casing"),
                             GTCA.id("block/machines/ph_acid_dose_hatch"))
+                    .register();
+
+    public static final MachineDefinition EXTREME_TEMP_PLASMA_HATCH =
+            REGISTRATE.machine(
+                            "extreme_temperature_plasma_hatch",
+                            holder -> new ThermalFluidInputHatchMachine(
+                                    holder,
+                                    ThermalFluidInputHatchMachine.Kind.HELIUM_PLASMA
+                            )
+                    )
+                    .langValue("Helium Plasma Input Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(GTCAPartAbilities.EXTREME_TEMP_PLASMA_INPUT)
+                    .allowCoverOnFront(true)
+                    .workableCasingModel(
+                            GTCA.id("block/casing/purification/reinforced_sterile_water_platn_casing"),
+                            GTCA.id("block/machines/extreme_temperature_plasma_hatch")
+                    )
+                    .register();
+
+    public static final MachineDefinition EXTREME_TEMP_COOLANT_HATCH =
+            REGISTRATE.machine(
+                            "extreme_temperature_coolant_hatch",
+                            holder -> new ThermalFluidInputHatchMachine(
+                                    holder,
+                                    ThermalFluidInputHatchMachine.Kind.SUPER_COOLANT
+                            )
+                    )
+                    .langValue("Super Coolant Input Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(GTCAPartAbilities.EXTREME_TEMP_COOLANT_INPUT)
+                    .allowCoverOnFront(true)
+                    .workableCasingModel(
+                            GTCA.id("block/casing/purification/reinforced_sterile_water_platn_casing"),
+                            GTCA.id("block/machines/extreme_temperature_coolant_hatch")
+                    )
+                    .register();
+
+    public static final MachineDefinition THERMAL_CONTROL_HATCH =
+            REGISTRATE.machine(
+                            "thermal_control_hatch",
+                            ThermalControlHatchMachine::new
+                    )
+                    .langValue("Thermal Control Hatch")
+                    .rotationState(RotationState.ALL)
+                    .abilities(GTCAPartAbilities.THERMAL_CONTROL)
+                    .workableCasingModel(
+                            GTCA.id("block/casing/purification/reinforced_sterile_water_platn_casing"),
+                            GTCA.id("block/machines/thermal_control_hatch")
+                    )
                     .register();
 
     /// STEAM PRESSURIZER ///
@@ -1318,7 +1362,7 @@ public class GTCAMachines {
                     GTCA.id("block/multiblock/purification_multiblock")))
             .register();
 
-    public static final MultiblockMachineDefinition EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT = REGISTRATE.multiblock("extreme_temperature_purification_unit", WorkableElectricMultiblockMachine::new)
+    public static final MultiblockMachineDefinition EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT = REGISTRATE.multiblock("extreme_temperature_purification_unit", ExtremeTemperaturePurificationUnitMachine::new)
             .langValue("Extreme Temperature Purification Unit")
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(GTCARecipeTypes.EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT)
@@ -1340,12 +1384,30 @@ public class GTCAMachines {
                             .aisle("#########BBBBBBBBBBBBB#", "#########B###########B#", "#########B###########B#", "#########B###########B#", "##########B#########B##", "##########B#########B##", "##########B#########B##", "###########BB#####BB###", "###########BB#####BB###", "###########BB#####BB###", "###########BB#####BB###", "###########BB#####BB###", "###########BB#####BB###", "##########B#########B##", "#########B###########B#")
                             .aisle("##########BBBBBBBBBBB##", "##########B#########B##", "##########B#########B##", "##########B#########B##", "###########BB#####BB###", "###########BB#####BB###", "###########BB#####BB###", "#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "###########BB#####BB###", "##########B#########B##")
                             .aisle("###########BBBBBBBBB###", "###########BB#####BB###", "###########BB#####BB###", "###########BB#####BB###", "#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#############BBBBB#####", "###########BB#####BB###")
-                            .aisle("#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#############BBBBB#####")
+                            .aisle("#############BKKKB#####", "#############BBBBB#####", "#############BBBBB#####", "#############BBBBB#####", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#######################", "#############BBBBB#####")
                             .where('#', Predicates.any())
                             .where('D', blocks(ChemicalHelper.getBlock(TagPrefix.frameGt, StellarAlloy)))
                             .where('F', blocks(GTCABlocks.HEAT_RESISTANT_TRINIUM_PLATED_CASING.get()))
                             .where('G', blocks(GTBlocks.SUPERCONDUCTING_COIL.get()))
                             .where('I', blocks(GTCABlocks.NEONITE.get()))
+                            .where('K',
+                                    blocks(GTCABlocks.REINFORCED_STERILE_WATER_PLANT_CASING.get())
+                                            .or(Predicates
+                                                    .abilities(GTCAPartAbilities.EXTREME_TEMP_COOLANT_INPUT)
+                                                    .setMinGlobalLimited(1)
+                                                    .setMaxGlobalLimited(1)
+                                                    .setPreviewCount(1))
+                                            .or(Predicates
+                                                    .abilities(GTCAPartAbilities.EXTREME_TEMP_PLASMA_INPUT)
+                                                    .setMinGlobalLimited(1)
+                                                    .setMaxGlobalLimited(1)
+                                                    .setPreviewCount(1))
+                                            .or(Predicates
+                                                    .abilities(GTCAPartAbilities.THERMAL_CONTROL)
+                                                    .setMinGlobalLimited(0)
+                                                    .setMaxGlobalLimited(1)
+                                                    .setPreviewCount(1))
+                            )
                             .where('H', blocks(GTCABlocks.BORSILICATE_REINFORCED_IRIDIUM_GLASS.get()))
                             .where('J', Predicates.controller(Predicates.blocks(definition.get())))
                             .where('B', blocks(GTCABlocks.REINFORCED_STERILE_WATER_PLANT_CASING.get()))

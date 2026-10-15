@@ -23,6 +23,14 @@ public final class WaterLineRecipeBuilder {
         );
     }
 
+    public static GTRecipeBuilder extremeTemperature(String id) {
+        return base(
+                GTCARecipeTypes.EXTREME_TEMPERATURE_FLOCCULATION_PURIFICATION_UNIT,
+                id,
+                0
+        );
+    }
+
     public static GTRecipeBuilder clarifier(String id, int baseSuccessChanceBP) {
         return base(GTCARecipeTypes.CLARIFIER_PURIFICATION_UNIT, id, baseSuccessChanceBP);
     }
